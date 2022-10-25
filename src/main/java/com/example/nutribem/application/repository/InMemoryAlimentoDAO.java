@@ -1,11 +1,12 @@
 package com.example.nutribem.application.repository;
 
 import com.example.nutribem.domain.entities.alimento.Alimento;
+import com.example.nutribem.domain.usecases.alimento.AlimentoDAO;
 import com.example.nutribem.domain.usecases.utils.DAO;
 
 import java.util.*;
 
-public class InMemoryAlimentoDAO implements DAO<Alimento, Integer> {
+public class InMemoryAlimentoDAO implements AlimentoDAO{
 
     public static final Map<Integer, Alimento> db = new LinkedHashMap<>();
     public static int idCounter = 0;
@@ -52,4 +53,6 @@ public class InMemoryAlimentoDAO implements DAO<Alimento, Integer> {
     public boolean delete(Alimento alimento) {
         return deleteByKey(alimento.getId());
     }
+
+
 }

@@ -1,5 +1,7 @@
 package com.example.nutribem.domain.entities.alimento;
 
+import java.util.Objects;
+
 public class Alimento {
 
     private String nome;
@@ -104,5 +106,18 @@ public class Alimento {
 
     public void setLactose(Float lactose) {
         this.lactose = lactose;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Alimento alimento = (Alimento) o;
+        return Objects.equals(id, alimento.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }
