@@ -2,7 +2,7 @@
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/iuricode/README-template?style=for-the-badge)
 ![image](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white)
-![image](BadgeURLAqui)![image](https://img.shields.io/badge/SQLite-07405E?style=for-the-badge&logo=sqlite&logoColor=white)
+![image](https://img.shields.io/badge/SQLite-07405E?style=for-the-badge&logo=sqlite&logoColor=white)
 
 > NutriBem é um sistema desktop que tem o objetivo fornecer ao nutricionista organização e planejamento melhorados, assim como a automação do processo de atendimento aos pacientes, possibilitando maior controle de dados e consultas.
 
