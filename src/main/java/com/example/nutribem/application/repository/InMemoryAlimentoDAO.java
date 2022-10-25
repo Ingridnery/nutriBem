@@ -25,6 +25,13 @@ public class InMemoryAlimentoDAO implements AlimentoDAO{
         return Optional.empty();
     }
 
+    @Override
+    public Optional<Alimento> findByName(String name) {
+        return db.values().stream()
+                .filter(alimento -> alimento.getNome().equals(name))
+                .findAny();
+    }
+
 
     @Override
     public List<Alimento> findAll() {
@@ -54,6 +61,7 @@ public class InMemoryAlimentoDAO implements AlimentoDAO{
     public boolean delete(Alimento alimento) {
         return deleteByKey(alimento.getId());
     }
+
 
 
 }
