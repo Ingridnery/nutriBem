@@ -8,7 +8,7 @@ public class Paciente {
     private Integer circunferencia;
     private Integer altura;
     private String nome;
-    private String cpf;
+    private CPF cpf;
     private String email;
     private String telefone;
     private String historicoClinicoGeral;
@@ -27,7 +27,7 @@ public class Paciente {
         this.circunferencia = circunferencia;
         this.altura = altura;
         this.nome = nome;
-        this.cpf = cpf;
+        this.cpf = CPF.valueOf(cpf);
         this.email = email;
         this.telefone = telefone;
         this.historicoClinicoGeral = historicoClinicoGeral;
