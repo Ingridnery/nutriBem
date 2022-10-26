@@ -41,6 +41,8 @@ public class Alimento {
     }
 
     public void setId(Integer id) {
+        if(this.id != null)
+            throw new IllegalArgumentException("O alimento "+this.nome+" já possui um id associado.");
         this.id = id;
     }
 
