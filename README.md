@@ -26,7 +26,7 @@ Nosso time é formado por:
 <table>
   <tr>
     <td align="center">
-      <a href="#">
+      <a href="https://github.com/DiegoPagotto">
         <img src="https://avatars.githubusercontent.com/u/41785379?v=4" width="100px;" alt="Foto do Diego Pagotto no GitHub"/><br>
         <sub>
           <b>Diego Pagotto</b>
@@ -34,7 +34,7 @@ Nosso time é formado por:
       </a>
     </td>
     <td align="center">
-      <a href="#">
+      <a href="https://github.com/ingridnery">
         <img src="https://avatars.githubusercontent.com/u/82603509?v=4" width="100px;" alt="Foto da Ingrid Nery no GitHub"/><br>
         <sub>
           <b>Ingrid Nery</b>
@@ -42,7 +42,7 @@ Nosso time é formado por:
       </a>
     </td>
     <td align="center">
-      <a href="#">
+      <a href="https://github.com/jeancremonezzi">
         <img src="https://avatars.githubusercontent.com/u/41790256?v=4" width="100px;" alt="Foto do Jean Cremonezzi no GitHub"/><br>
         <sub>
           <b>Jean Cremonezzi</b>
@@ -62,7 +62,7 @@ Equipe responsável pela documentação:
 <table>
   <tr>
     <td align="center">
-      <a href="#">
+      <a href="https://github.com/NathanHermes/">
         <img src="https://avatars.githubusercontent.com/u/39421934?v=4" width="50px;" alt="Foto do Nathan Hermes no GitHub"/><br>
         <sub>
           <b>Nathan Hermes</b>
@@ -70,7 +70,7 @@ Equipe responsável pela documentação:
       </a>
     </td>
     <td align="center">
-      <a href="#">
+      <a href="https://github.com/pedropiassi">
         <img src="https://avatars.githubusercontent.com/u/41785409?v=4" width="50px;" alt="Foto do Pedro Piassi no GitHub"/><br>
         <sub>
           <b>Pedro Piassi</b>
@@ -78,7 +78,7 @@ Equipe responsável pela documentação:
       </a>
     </td>
     <td align="center">
-      <a href="#">
+      <a href="https://github.com/dudasantos2522">
         <img src="https://avatars.githubusercontent.com/u/62100586?v=4" width="50px;" alt="Foto da Maria Santos no GitHub"/><br>
         <sub>
           <b>Maria Santos</b>
