@@ -19,6 +19,10 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 
 Uma cópia da documentação desenvolvida pelo grupo responsável pela confecção do projeto pode ser encontrada [AQUI](Documentação.pdf).
 
+## ✅ Notion
+
+O arquivo do Notion onde atualizamos com o processo do desenvolvimento está disponível [AQUI](https://fuchsia-year-860.notion.site/7215376bb7304084ad094b1173700a6c?v=4a0ca384ba8743eea418c02eda3e62a1).
+
 ## 🤝 Equipe
 
 Nosso time é formado por:
