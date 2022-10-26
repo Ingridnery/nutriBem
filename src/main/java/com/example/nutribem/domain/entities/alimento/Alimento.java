@@ -112,7 +112,7 @@ public class Alimento {
         this.lactose = lactose;
     }
 
-    public Boolean getAtivado() {
+    public Boolean isAtivado() {
         return ativado;
     }
 
