@@ -2,7 +2,6 @@ package com.example.nutribem.application.repository;
 
 import com.example.nutribem.domain.entities.alimento.Alimento;
 import com.example.nutribem.domain.usecases.alimento.AlimentoDAO;
-import com.example.nutribem.domain.usecases.utils.DAO;
 
 import java.util.*;
 
@@ -30,6 +29,12 @@ public class InMemoryAlimentoDAO implements AlimentoDAO{
         return db.values().stream()
                 .filter(alimento -> alimento.getNome().equals(name))
                 .findAny();
+    }
+
+    @Override
+    public boolean isInAnyRefeicao(Alimento alimento) {
+        //TODO
+        return false;
     }
 
 
