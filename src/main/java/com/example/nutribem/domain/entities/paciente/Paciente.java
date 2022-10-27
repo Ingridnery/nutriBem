@@ -22,6 +22,7 @@ public class Paciente {
     private LocalDate dataNascimento;
     private Double peso;
     private Character sexo;
+    private Boolean ativado;
 
     public Paciente(Integer id, Integer circunferencia, Integer altura, String nome, String cpf, String email, String telefone, String historicoClinicoGeral, IntoleranciaLactose intoleranciaLactose, String intoleranciaGluten, String diabetes, String alergias, String observacoesGerais, String objetivos, LocalDate dataNascimento, Double peso, Character sexo) {
         this.id = id;
@@ -41,6 +42,7 @@ public class Paciente {
         this.dataNascimento = dataNascimento;
         this.peso = peso;
         this.sexo = sexo;
+        this.ativado = true;
     }
 
     public Integer getId() {
@@ -79,6 +81,10 @@ public class Paciente {
 
     public CPF getCpf() {
         return cpf;
+    }
+
+    public void setCpf(CPF cpf) {
+        this.cpf = cpf;
     }
 
     public void setCpf(String cpf) {
@@ -183,6 +189,14 @@ public class Paciente {
 
     public void setSexo(Character sexo) {
         this.sexo = sexo;
+    }
+
+    public Boolean getAtivado() {
+        return ativado;
+    }
+
+    public void setAtivado(Boolean ativado) {
+        this.ativado = ativado;
     }
 
     @Override
