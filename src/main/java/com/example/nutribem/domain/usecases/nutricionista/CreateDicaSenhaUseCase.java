@@ -7,9 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CreateDicaSenhaUseCase {
-
-
-    private  NutricionistaDAO nutricionistaDAO;
+    private NutricionistaDAO nutricionistaDAO;
     private static final int MAXLENGTH = 255;
 
     public boolean insert(Nutricionista nutricionista, ArrayList<String> dicas){
