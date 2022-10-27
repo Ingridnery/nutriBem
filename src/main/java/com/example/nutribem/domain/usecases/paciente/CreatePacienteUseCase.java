@@ -23,6 +23,6 @@ public class CreatePacienteUseCase {
         if (pacienteDAO.findByCpf(cpf).isPresent())
             throw new EntityAlreadyExistsException("Cpf '" + cpf + "' já está cadastrado.");
 
-        return 0;
+        return pacienteDAO.create(paciente);
     }
 }
