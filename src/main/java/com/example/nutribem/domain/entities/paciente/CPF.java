@@ -63,7 +63,7 @@ public class CPF {
         );
     }
 
-    public String getCpf() {
+    public String getNumber() {
         return number;
     }
 
@@ -81,11 +81,11 @@ public class CPF {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         CPF cpf = (CPF) o;
-        return getCpf().equals(cpf.getCpf());
+        return getNumber().equals(cpf.getNumber());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getCpf());
+        return Objects.hash(getNumber());
     }
 }
