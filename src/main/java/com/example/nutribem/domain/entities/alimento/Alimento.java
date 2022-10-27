@@ -13,7 +13,8 @@ public class Alimento {
     private Float gordurasSaturadas;
     private Float sodio;
     private Float acucar;
-   private Float lactose;
+    private Float lactose;
+    private Boolean ativado;
 
     public Alimento(String nome, Integer porcao, Integer calorias, Integer colesterol, Integer gluten, Float gordurasSaturadas, Float sodio, Float acucar, Float lactose) {
         this.nome = nome;
@@ -26,6 +27,7 @@ public class Alimento {
         this.sodio = sodio;
         this.acucar = acucar;
         this.lactose = lactose;
+        this.ativado = true;
     }
 
     public String getNome() {
@@ -41,6 +43,8 @@ public class Alimento {
     }
 
     public void setId(Integer id) {
+        if(this.id != null)
+            throw new IllegalArgumentException("O alimento "+this.nome+" já possui um id associado.");
         this.id = id;
     }
 
@@ -106,6 +110,14 @@ public class Alimento {
 
     public void setLactose(Float lactose) {
         this.lactose = lactose;
+    }
+
+    public Boolean isAtivado() {
+        return ativado;
+    }
+
+    public void setAtivado(Boolean ativado) {
+        this.ativado = ativado;
     }
 
     @Override
