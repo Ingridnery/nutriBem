@@ -6,7 +6,13 @@ public class Refeicao {
 
     private Integer id;
     private Date horario;
-    private String categoria;
+    private RefeicaoCategoria categoria;
+
+    public Refeicao(Integer id, Date horario, RefeicaoCategoria categoria) {
+        this.id = id;
+        this.horario = horario;
+        this.categoria = categoria;
+    }
 
     public Integer getId() {
         return id;
@@ -24,11 +30,11 @@ public class Refeicao {
         this.horario = horario;
     }
 
-    public String getCategoria() {
+    public RefeicaoCategoria getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(String categoria) {
+    public void setCategoria(RefeicaoCategoria categoria) {
         this.categoria = categoria;
     }
 }
