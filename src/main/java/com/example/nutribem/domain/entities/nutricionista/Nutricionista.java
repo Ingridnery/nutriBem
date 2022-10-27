@@ -7,10 +7,13 @@ public class Nutricionista {
     private String senha;
     private ArrayList<String> dicas;
 
-    public Nutricionista(String senha, ArrayList<String> dicas) {
+    private String nomeUsuario;
+
+    public Nutricionista(String senha, String nomeUsuario) {
         this.senha = senha;
-        this.dicas = dicas;
+        this.nomeUsuario = nomeUsuario;
     }
+
 
     public String getSenha() {
         return senha;
@@ -26,5 +29,13 @@ public class Nutricionista {
 
     public void setDicas(ArrayList<String> dicas) {
         this.dicas = dicas;
+    }
+
+    public String getNomeUsuario() {
+        return nomeUsuario;
+    }
+
+    public void setNomeUsuario(String nomeUsuario) {
+        this.nomeUsuario = nomeUsuario;
     }
 }
