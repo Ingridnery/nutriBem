@@ -13,6 +13,7 @@ public enum RefeicaoCategoria {
 
     private String label;
 
+
     RefeicaoCategoria(String label){
         this.label=label;
     }
