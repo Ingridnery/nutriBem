@@ -5,7 +5,7 @@ import java.time.Period;
 import java.util.Objects;
 
 public class Paciente {
-    private final Integer id;
+    private Integer id;
     private Integer circunferencia;
     private Integer altura;
     private String nome;
@@ -20,10 +20,10 @@ public class Paciente {
     private String observacoesGerais;
     private String objetivos;
     private LocalDate dataNascimento;
-    private Float peso;
+    private Double peso;
     private Character sexo;
 
-    public Paciente(Integer id, Integer circunferencia, Integer altura, String nome, String cpf, String email, String telefone, String historicoClinicoGeral, IntoleranciaLactose intoleranciaLactose, String intoleranciaGluten, String diabetes, String alergias, String observacoesGerais, String objetivos, LocalDate dataNascimento, Float peso, Character sexo) {
+    public Paciente(Integer id, Integer circunferencia, Integer altura, String nome, String cpf, String email, String telefone, String historicoClinicoGeral, IntoleranciaLactose intoleranciaLactose, String intoleranciaGluten, String diabetes, String alergias, String observacoesGerais, String objetivos, LocalDate dataNascimento, Double peso, Character sexo) {
         this.id = id;
         this.circunferencia = circunferencia;
         this.altura = altura;
@@ -45,6 +45,12 @@ public class Paciente {
 
     public Integer getId() {
         return id;
+    }
+
+    public void setId(Integer id) {
+        if(this.id != null)
+            throw new IllegalArgumentException("O paciente "+ this.nome +" já possui um id associado.");
+        this.id = id;
     }
 
     public Integer getCircunferencia() {
@@ -163,11 +169,11 @@ public class Paciente {
         return Period.between(dataNascimento, LocalDate.now()).getYears();
     }
 
-    public Float getPeso() {
+    public Double getPeso() {
         return peso;
     }
 
-    public void setPeso(Float peso) {
+    public void setPeso(Double peso) {
         this.peso = peso;
     }
 

@@ -12,7 +12,10 @@ public class CPF {
 
     public static CPF valueOf(String cpfNumber) {
         if (!isValid(cpfNumber)) throw new IllegalArgumentException("Cpf is invalid");
-        return new CPF(cpfNumber.replace(".", ""));
+        return new CPF(cpfNumber
+                .replace(".", "")
+                .replace("-", "")
+        );
     }
 
     public static CPF valueOf(Long cpfNumber) {
