@@ -191,7 +191,7 @@ public class Paciente {
         this.sexo = sexo;
     }
 
-    public Boolean getAtivado() {
+    public Boolean isAtivado() {
         return ativado;
     }
 
