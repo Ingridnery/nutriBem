@@ -29,7 +29,7 @@ public class PacienteInputRequestValidator extends Validator<Paciente> {
         if (nullOrEmpty(paciente.getTelefone()))
             notification.addError("Telefone is null or empty");
 
-        if (nullOrEmpty(String.valueOf(paciente.getSexo())))
+        if (Objects.isNull(paciente.getSexo()))
             notification.addError("Sexo is null or empty");
 
         if (paciente.getDataNascimento().isAfter(LocalDate.now()))
@@ -47,11 +47,11 @@ public class PacienteInputRequestValidator extends Validator<Paciente> {
         if (Objects.isNull(paciente.getIntoleranciaLactose()))
             notification.addError("Intolerancia a lactose is null or empty");
 
-        if (nullOrEmpty(paciente.getIntoleranciaGluten()))
-            notification.addError("Intolerancia a gluten is null or empty");
+        if (Objects.isNull(paciente.getDiabetes()))
+            notification.addError("Intolerancia a gluten is null");
 
-        if (nullOrEmpty(paciente.getDiabetes()))
-            notification.addError("Diabetes is null or empty");
+        if (Objects.isNull(paciente.getDiabetes()))
+            notification.addError("Diabetes is null");
 
         if (nullOrEmpty(paciente.getObjetivos()))
             notification.addError("Objetivos is null or empty");

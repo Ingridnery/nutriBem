@@ -14,8 +14,8 @@ public class Paciente {
     private String telefone;
     private String historicoClinicoGeral;
     private IntoleranciaLactose intoleranciaLactose;
-    private String intoleranciaGluten;
-    private String diabetes;
+    private Boolean intoleranciaGluten;
+    private Boolean diabetes;
     private String alergias;
     private String observacoesGerais;
     private String objetivos;
@@ -24,12 +24,12 @@ public class Paciente {
     private Sexo sexo;
     private Boolean ativado;
 
-    public Paciente(Integer id, Integer circunferencia, Integer altura, String nome, String cpf, String email, String telefone, String historicoClinicoGeral, IntoleranciaLactose intoleranciaLactose, String intoleranciaGluten, String diabetes, String alergias, String observacoesGerais, String objetivos, LocalDate dataNascimento, Double peso, Sexo sexo) {
+    public Paciente(Integer id, Integer circunferencia, Integer altura, String nome, CPF cpf, String email, String telefone, String historicoClinicoGeral, IntoleranciaLactose intoleranciaLactose, Boolean intoleranciaGluten, Boolean diabetes, String alergias, String observacoesGerais, String objetivos, LocalDate dataNascimento, Double peso, Sexo sexo) {
         this.id = id;
         this.circunferencia = circunferencia;
         this.altura = altura;
         this.nome = nome;
-        this.cpf = CPF.valueOf(cpf);
+        this.cpf = cpf;
         this.email = email;
         this.telefone = telefone;
         this.historicoClinicoGeral = historicoClinicoGeral;
@@ -123,19 +123,19 @@ public class Paciente {
         this.intoleranciaLactose = intoleranciaLactose;
     }
 
-    public String getIntoleranciaGluten() {
+    public Boolean getIntoleranciaGluten() {
         return intoleranciaGluten;
     }
 
-    public void setIntoleranciaGluten(String intoleranciaGluten) {
+    public void setIntoleranciaGluten(Boolean intoleranciaGluten) {
         this.intoleranciaGluten = intoleranciaGluten;
     }
 
-    public String getDiabetes() {
+    public Boolean getDiabetes() {
         return diabetes;
     }
 
-    public void setDiabetes(String diabetes) {
+    public void setDiabetes(Boolean diabetes) {
         this.diabetes = diabetes;
     }
 
@@ -171,7 +171,7 @@ public class Paciente {
         this.dataNascimento = dataNascimento;
     }
 
-    public Integer getAge() {
+    public Integer getIdade() {
         return Period.between(dataNascimento, LocalDate.now()).getYears();
     }
 
