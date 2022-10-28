@@ -21,10 +21,10 @@ public class Paciente {
     private String objetivos;
     private LocalDate dataNascimento;
     private Double peso;
-    private Character sexo;
+    private Sexo sexo;
     private Boolean ativado;
 
-    public Paciente(Integer id, Integer circunferencia, Integer altura, String nome, String cpf, String email, String telefone, String historicoClinicoGeral, IntoleranciaLactose intoleranciaLactose, String intoleranciaGluten, String diabetes, String alergias, String observacoesGerais, String objetivos, LocalDate dataNascimento, Double peso, Character sexo) {
+    public Paciente(Integer id, Integer circunferencia, Integer altura, String nome, String cpf, String email, String telefone, String historicoClinicoGeral, IntoleranciaLactose intoleranciaLactose, String intoleranciaGluten, String diabetes, String alergias, String observacoesGerais, String objetivos, LocalDate dataNascimento, Double peso, Sexo sexo) {
         this.id = id;
         this.circunferencia = circunferencia;
         this.altura = altura;
@@ -183,11 +183,11 @@ public class Paciente {
         this.peso = peso;
     }
 
-    public Character getSexo() {
+    public Sexo getSexo() {
         return sexo;
     }
 
-    public void setSexo(Character sexo) {
+    public void setSexo(Sexo sexo) {
         this.sexo = sexo;
     }
 

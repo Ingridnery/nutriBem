@@ -2,7 +2,7 @@ package com.example.nutribem.domain.entities.paciente;
 
 public enum IntoleranciaLactose {
     APTO ("Apto"),
-    INTOLERANTE ("Intolerant"),
+    INTOLERANTE ("Intolerante"),
     RESTRITO ("Restrito");
 
     public final String label;
