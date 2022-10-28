@@ -5,13 +5,14 @@ public enum IntoleranciaLactose {
     INTOLERANTE ("Intolerante"),
     RESTRITO ("Restrito");
 
-    public final String label;
+    private final String label;
 
     IntoleranciaLactose(String label) {
         this.label = label;
     }
 
-    public String getLabel() {
+    @Override
+    public String toString() {
         return label;
     }
 }

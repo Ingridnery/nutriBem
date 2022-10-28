@@ -4,13 +4,14 @@ public enum Sexo {
     MASCULINO('M'),
     FEMININO('F');
 
-    private Character label;
+    private final Character label;
 
     Sexo(Character label) {
         this.label = label;
     }
 
-    public Character getLabel() {
-        return label;
+    @Override
+    public String toString() {
+        return String.valueOf(label);
     }
 }
