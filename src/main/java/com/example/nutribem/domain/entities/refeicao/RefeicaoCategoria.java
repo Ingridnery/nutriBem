@@ -10,20 +10,21 @@ public enum RefeicaoCategoria {
     JANTAR("Jantar"),
     CEIA("Ceia");
 
-
     private String label;
-
 
     RefeicaoCategoria(String label){
         this.label=label;
     }
 
-    public static RefeicaoCategoria toEnum(String categoria) {
+    public static RefeicaoCategoria ofString(String categoria) {
         return Arrays.stream(RefeicaoCategoria.values())
                 .filter(c -> categoria.equals(c.toString()))
                 .findAny()
-                .orElseThrow(IllegalArgumentException::new);
+                .orElseThrow(() -> new IllegalArgumentException("Categoria de refeição '" + categoria + "' nao reconhecida"));
     }
 
-
+    @Override
+    public String toString() {
+        return label;
+    }
 }
