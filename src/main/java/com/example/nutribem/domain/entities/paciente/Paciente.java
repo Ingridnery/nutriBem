@@ -87,10 +87,6 @@ public class Paciente {
         this.cpf = cpf;
     }
 
-    public void setCpf(String cpf) {
-        this.cpf = CPF.valueOf(cpf);
-    }
-
     public String getEmail() {
         return email;
     }
