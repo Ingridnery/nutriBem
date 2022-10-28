@@ -34,12 +34,4 @@ public class RemovePacienteUseCase {
 
         return remove(paciente.getId());
     }
-
-    public boolean removeByNome(String nome) {
-        Paciente paciente = dao.findByNome(nome).orElseThrow(
-                () -> new EntityNotFoundException("Paciente não encontrado")
-        );
-
-        return remove(paciente.getId());
-    }
 }

@@ -31,7 +31,7 @@ public class FindPacienteUseCase {
         return dao.findByCpf(cpf);
     }
 
-    public Optional<Paciente> findByNome(String nome) {
+    public List<Paciente> findByNome(String nome) {
         if (Validator.nullOrEmpty(nome))
             throw new IllegalArgumentException("Nome não pode ser nulo");
 
