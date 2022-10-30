@@ -9,11 +9,22 @@ public class PlanoNutricional {
     private Date dataInicio;
     private Date dataFim;
 
-    public PlanoNutricional(Integer id, String nome, Date dataInicio, Date dataFim) {
+    private Integer idPaciente;
+
+    public PlanoNutricional(Integer id, String nome, Date dataInicio, Date dataFim, Integer idPaciente) {
         this.id = id;
         this.nome = nome;
         this.dataInicio = dataInicio;
         this.dataFim = dataFim;
+        this.idPaciente = idPaciente;
+    }
+
+    public Integer getIdPaciente() {
+        return idPaciente;
+    }
+
+    public void setIdPaciente(Integer idPaciente) {
+        this.idPaciente = idPaciente;
     }
 
     public Integer getId() {
