@@ -1,6 +1,7 @@
 package com.example.nutribem.application.repository;
 
 import com.example.nutribem.domain.entities.alimento.Alimento;
+import com.example.nutribem.domain.entities.paciente.Paciente;
 import com.example.nutribem.domain.entities.planoNutricional.PlanoNutricional;
 import com.example.nutribem.domain.usecases.planoNutricional.PlanoNutricionalDAO;
 
@@ -52,5 +53,20 @@ public class InMemoryPlanoNutricionalDAO implements PlanoNutricionalDAO {
     @Override
     public boolean delete(PlanoNutricional planoNutricional) {
         return deleteByKey(planoNutricional.getId());
+    }
+
+    @Override
+    public Optional<PlanoNutricional> findByName(String name) {
+        return db.values().stream()
+                .filter(planoNutricional -> planoNutricional.getNome().equals(name))
+                .findAny();
+    }
+
+    @Override
+    public Optional<PlanoNutricional> findByIdPaciente(Integer id) {
+
+        return db.values().stream()
+                .filter(planoNutricional -> planoNutricional.getIdPaciente().equals(id))
+                .findAny();
     }
 }
