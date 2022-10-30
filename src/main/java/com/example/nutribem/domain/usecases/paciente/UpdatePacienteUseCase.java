@@ -4,8 +4,6 @@ import com.example.nutribem.domain.entities.paciente.Paciente;
 import com.example.nutribem.domain.usecases.utils.Notification;
 import com.example.nutribem.domain.usecases.utils.Validator;
 
-import java.util.Optional;
-
 public class UpdatePacienteUseCase {
     private PacienteDAO dao;
 

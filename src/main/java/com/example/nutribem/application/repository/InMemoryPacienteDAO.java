@@ -19,10 +19,11 @@ public class InMemoryPacienteDAO implements PacienteDAO {
     }
 
     @Override
-    public Optional<Paciente> findByNome(String nome) {
+    public List<Paciente> findByNome(String nome) {
         return db.values().stream()
-                .filter(paciente -> paciente.getNome().equals(nome))
-                .findAny();
+                .filter(paciente -> paciente.getNome()
+                        .equals(nome))
+                .toList();
     }
 
     @Override
