@@ -25,6 +25,8 @@ public class PlanoNutricionalInputRequestValidator extends Validator<PlanoNutric
 
         if(nullOrEmpty((Collection) planoNutricional.getDataInicio()))
             notification.addError("Data inicio is null or empty");
+        if(nullOrEmpty((Collection) planoNutricional.getPaciente()))
+            notification.addError("Paciente is null or empty!");
 
         return notification;
 
