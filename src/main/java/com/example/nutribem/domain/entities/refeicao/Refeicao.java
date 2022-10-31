@@ -1,5 +1,8 @@
 package com.example.nutribem.domain.entities.refeicao;
 
+import com.example.nutribem.domain.entities.cardapio.Cardapio;
+
+import java.net.CacheRequest;
 import java.util.Date;
 
 public class Refeicao {
@@ -8,10 +11,21 @@ public class Refeicao {
     private Date horario;
     private RefeicaoCategoria categoria;
 
-    public Refeicao(Integer id, Date horario, RefeicaoCategoria categoria) {
+    private Cardapio cardapio;
+
+    public Refeicao(Integer id, Date horario, RefeicaoCategoria categoria, Cardapio cardapio) {
         this.id = id;
         this.horario = horario;
         this.categoria = categoria;
+        this.cardapio = cardapio;
+    }
+
+    public Cardapio getCardapio() {
+        return cardapio;
+    }
+
+    public void setCardapio(Cardapio cardapio) {
+        this.cardapio = cardapio;
     }
 
     public Integer getId() {
