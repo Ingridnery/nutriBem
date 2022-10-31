@@ -1,5 +1,7 @@
 package com.example.nutribem.domain.entities.planoNutricional;
 
+import com.example.nutribem.domain.entities.paciente.Paciente;
+
 import java.util.Date;
 
 public class PlanoNutricional {
@@ -9,30 +11,22 @@ public class PlanoNutricional {
     private Date dataInicio;
     private Date dataFim;
 
-    private Integer idPaciente;
+    private Paciente paciente;
 
-    public PlanoNutricional(Integer id, String nome, Date dataInicio, Date dataFim, Integer idPaciente) {
+    public PlanoNutricional(Integer id, String nome, Date dataInicio, Date dataFim, Paciente paciente) {
         this.id = id;
         this.nome = nome;
         this.dataInicio = dataInicio;
         this.dataFim = dataFim;
-        this.idPaciente = idPaciente;
-    }
-
-    public Integer getIdPaciente() {
-        return idPaciente;
-    }
-
-    public void setIdPaciente(Integer idPaciente) {
-        this.idPaciente = idPaciente;
-    }
-
-    public Integer getId() {
-        return id;
+        this.paciente = paciente;
     }
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getId() {
+        return id;
     }
 
     public String getNome() {
@@ -57,5 +51,13 @@ public class PlanoNutricional {
 
     public void setDataFim(Date dataFim) {
         this.dataFim = dataFim;
+    }
+
+    public Paciente getPaciente() {
+        return paciente;
+    }
+
+    public void setPaciente(Paciente paciente) {
+        this.paciente = paciente;
     }
 }
