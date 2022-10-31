@@ -24,7 +24,7 @@ public class UpdatePlanoNutricionalUseCase {
         if(planoNutricionalDAO.findByName(nome).isPresent())
             throw new EntityAlreadyExistsException("O plano nutricional: '"+ nome +"' já está cadastrado.");
 
-        planoNutricionalDAO.findByIdPaciente(planoNutricional.getIdPaciente());
+        planoNutricionalDAO.findByIdPaciente(planoNutricional.getPaciente().getId());
 
 
         return planoNutricionalDAO.update(planoNutricional);
