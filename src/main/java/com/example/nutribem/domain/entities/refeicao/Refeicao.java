@@ -3,17 +3,17 @@ package com.example.nutribem.domain.entities.refeicao;
 import com.example.nutribem.domain.entities.cardapio.Cardapio;
 
 import java.net.CacheRequest;
-import java.util.Date;
+import java.time.LocalTime;
 
 public class Refeicao {
 
     private Integer id;
-    private Date horario;
+    private LocalTime horario;
     private RefeicaoCategoria categoria;
 
     private Cardapio cardapio;
 
-    public Refeicao(Integer id, Date horario, RefeicaoCategoria categoria, Cardapio cardapio) {
+    public Refeicao(Integer id, LocalTime horario, RefeicaoCategoria categoria, Cardapio cardapio) {
         this.id = id;
         this.horario = horario;
         this.categoria = categoria;
@@ -36,11 +36,11 @@ public class Refeicao {
         this.id = id;
     }
 
-    public Date getHorario() {
+    public LocalTime getHorario() {
         return horario;
     }
 
-    public void setHorario(Date horario) {
+    public void setHorario(LocalTime horario) {
         this.horario = horario;
     }
 
