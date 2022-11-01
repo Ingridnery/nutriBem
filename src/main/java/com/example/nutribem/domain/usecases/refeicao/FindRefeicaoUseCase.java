@@ -18,7 +18,7 @@ public class FindRefeicaoUseCase {
         if (Validator.nullOrEmpty(cardapio))
             throw new IllegalArgumentException("ID do cardapio não pode ser nulo.");
 
-        return null;
+        return dao.findByCardapio(cardapio);
     }
 
     public List<Refeicao> findByCardapio(Cardapio cardapio) {

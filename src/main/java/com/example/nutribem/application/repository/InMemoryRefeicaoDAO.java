@@ -58,6 +58,9 @@ public class InMemoryRefeicaoDAO implements RefeicaoDAO{
 
     @Override
     public List<Refeicao> findByCardapio(Integer cardapio) {
-        return null;
+        return db.values().stream()
+                .filter(refeicao -> refeicao.getCardapio().getId()
+                        .equals(cardapio))
+                .toList();
     }
 }
