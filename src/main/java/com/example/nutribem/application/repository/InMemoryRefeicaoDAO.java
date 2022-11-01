@@ -55,4 +55,9 @@ public class InMemoryRefeicaoDAO implements RefeicaoDAO{
     public boolean delete(Refeicao refeicao) {
         return deleteByKey(refeicao.getId());
     }
+
+    @Override
+    public List<Refeicao> findByCardapio(Integer cardapio) {
+        return null;
+    }
 }
