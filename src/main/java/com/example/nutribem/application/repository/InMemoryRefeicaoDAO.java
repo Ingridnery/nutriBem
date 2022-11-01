@@ -9,7 +9,7 @@ import java.util.*;
 
 public class InMemoryRefeicaoDAO implements RefeicaoDAO{
 
-    public static final Map<Integer,Refeicao> db = new LinkedHashMap();
+    public static final Map<Integer,Refeicao> db = new LinkedHashMap<>();
     private static Integer idCounter=0;
 
     @Override
