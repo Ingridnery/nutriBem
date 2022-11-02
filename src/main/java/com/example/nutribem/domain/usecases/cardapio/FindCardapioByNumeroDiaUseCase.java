@@ -10,6 +10,8 @@ public class FindCardapioByNumeroDiaUseCase {
 
     private CardapioDAO cardapioDAO;
 
+    public FindCardapioByNumeroDiaUseCase(CardapioDAO cardapioDAO) {
+    }
 
 
     public Optional<Cardapio> findByNumeroDia(Integer numeroDia){
