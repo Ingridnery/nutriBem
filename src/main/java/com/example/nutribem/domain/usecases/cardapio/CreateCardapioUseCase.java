@@ -11,6 +11,9 @@ public class CreateCardapioUseCase {
 
     private CardapioDAO cardapioDAO;
 
+    public CreateCardapioUseCase(CardapioDAO cardapioDAO) {
+    }
+
     public Integer insert(Cardapio cardapio){
         Validator<Cardapio> validator = new CardapioInpustRequestValidator();
         Notification notification = validator.validate(cardapio);

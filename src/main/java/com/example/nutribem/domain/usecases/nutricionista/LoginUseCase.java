@@ -10,6 +10,9 @@ public class LoginUseCase {
     Notification notification;
   private static final int MINLENGTH = 4;
 
+    public LoginUseCase(NutricionistaDAO nutricionistaDAO) {
+    }
+
     public Boolean login (String userName, String senha){
         Notification notification = new Notification();
 
