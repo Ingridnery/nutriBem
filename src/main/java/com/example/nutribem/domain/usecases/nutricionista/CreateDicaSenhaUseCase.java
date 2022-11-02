@@ -10,6 +10,9 @@ public class CreateDicaSenhaUseCase {
     private NutricionistaDAO nutricionistaDAO;
     private static final int MAXLENGTH = 255;
 
+    public CreateDicaSenhaUseCase(NutricionistaDAO nutricionistaDAO) {
+    }
+
     public boolean insert(Nutricionista nutricionista, ArrayList<String> dicas){
 
        isValidLength(dicas);
