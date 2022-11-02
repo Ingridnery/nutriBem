@@ -49,12 +49,6 @@ public class Main {
 
     public static void main(String[] args) {
         configureInjection();
-        Alimento alimento = new Alimento("Batata",1,200,145,1, 4F, 15F,16F,17F);
-        createAlimentoUseCase.insert(alimento);
-        List<Alimento> alimentoList = findAlimentoUseCase.findAll();
-        for (Alimento alimento1: alimentoList) {
-            System.out.println(alimento1.getNome());
-        }
 
     }
     public static void configureInjection(){
