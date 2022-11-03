@@ -11,7 +11,6 @@ public class InMemoryPlanoNutricionalDAO implements PlanoNutricionalDAO {
     public static final Map<Integer, PlanoNutricional> db = new LinkedHashMap<>();
     public static int idCounter = 0;
 
-
     @Override
     public Integer create(PlanoNutricional planoNutricional) {
         planoNutricional.setId(++idCounter);
@@ -51,7 +50,13 @@ public class InMemoryPlanoNutricionalDAO implements PlanoNutricionalDAO {
 
     @Override
     public boolean deleteByKey(Integer key) {
-        if(db.containsKey(key)){
+        if (db.containsKey(key)) {
+            InMemoryPacienteDAO pacienteDAO = new InMemoryPacienteDAO();
+            Paciente paciente = db.get(key).getPaciente();
+            paciente.getPlanosNutricionais().removeIf(plano -> plano.getId().equals(key));
+
+            pacienteDAO.update(paciente);
+
             db.remove(key);
             return true;
         }

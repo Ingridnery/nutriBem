@@ -21,6 +21,7 @@ public class RemovePlanoNutricionalUseCase {
 
         if(planoNutricionalDAO.findOne(planoNutricional.getId()).isEmpty())
             throw new EntityAlreadyExistsException("O plano nutricional: '"+ planoNutricional.getNome() +"' não está cadastrado.");
+
         return planoNutricionalDAO.delete(planoNutricional);
     }
 }
