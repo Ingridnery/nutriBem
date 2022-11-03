@@ -1,11 +1,6 @@
 package com.example.nutribem.application.main;
 
 import com.example.nutribem.application.repository.*;
-import com.example.nutribem.domain.entities.paciente.CPF;
-import com.example.nutribem.domain.entities.paciente.IntoleranciaLactose;
-import com.example.nutribem.domain.entities.paciente.Paciente;
-import com.example.nutribem.domain.entities.paciente.Sexo;
-import com.example.nutribem.domain.entities.planoNutricional.PlanoNutricional;
 import com.example.nutribem.domain.usecases.alimento.*;
 import com.example.nutribem.domain.usecases.cardapio.*;
 import com.example.nutribem.domain.usecases.nutricionista.*;
@@ -13,12 +8,7 @@ import com.example.nutribem.domain.usecases.paciente.*;
 import com.example.nutribem.domain.usecases.planoNutricional.*;
 import com.example.nutribem.domain.usecases.refeicao.*;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-
 public class Main {
-
     public static CreateAlimentoUseCase createAlimentoUseCase;
     public static FindAlimentoUseCase findAlimentoUseCase;
     public static RemoveAlimentoUseCase removeAlimentoUseCase;
@@ -55,6 +45,7 @@ public class Main {
     public static void main(String[] args) {
         configureInjection();
     }
+
     public static void configureInjection(){
         AlimentoDAO alimentoDAO = new InMemoryAlimentoDAO();
         createAlimentoUseCase = new CreateAlimentoUseCase(alimentoDAO);
@@ -86,7 +77,7 @@ public class Main {
         PlanoNutricionalDAO planoNutricionalDAO = new InMemoryPlanoNutricionalDAO();
         createPlanoNutricionalUseCase = new CreatePlanoNutricionalUseCase(planoNutricionalDAO);
         findPlanoNutricionalUseCase = new FindPlanoNutricionalUseCase(planoNutricionalDAO);
-        removePlanoNutricionalUseCase = new RemovePlanoNutricionalUseCase();
+        removePlanoNutricionalUseCase = new RemovePlanoNutricionalUseCase(planoNutricionalDAO);
         updatePlanoNutricionalUseCase = new UpdatePlanoNutricionalUseCase(planoNutricionalDAO);
 
         RefeicaoDAO refeicaoDAO = new InMemoryRefeicaoDAO();
@@ -94,7 +85,5 @@ public class Main {
         findRefeicaoUseCase = new FindRefeicaoUseCase(refeicaoDAO);
         removeRefeicaoUseCase = new RemoveRefeicaoUseCase(refeicaoDAO);
         updateRefeicaoUseCase = new UpdateRefeicaoUseCase(refeicaoDAO);
-
-
     }
 }
