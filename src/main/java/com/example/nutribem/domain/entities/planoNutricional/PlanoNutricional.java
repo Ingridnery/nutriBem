@@ -1,19 +1,19 @@
 package com.example.nutribem.domain.entities.planoNutricional;
-
 import com.example.nutribem.domain.entities.paciente.Paciente;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.util.Objects;
 
 public class PlanoNutricional {
 
     private Integer id;
     private String nome;
-    private Date dataInicio;
-    private Date dataFim;
+    private LocalDate dataInicio;
+    private LocalDate dataFim;
 
     private Paciente paciente;
 
-    public PlanoNutricional(Integer id, String nome, Date dataInicio, Date dataFim, Paciente paciente) {
+    public PlanoNutricional(Integer id, String nome, LocalDate dataInicio, LocalDate dataFim, Paciente paciente) {
         this.id = id;
         this.nome = nome;
         this.dataInicio = dataInicio;
@@ -37,19 +37,19 @@ public class PlanoNutricional {
         this.nome = nome;
     }
 
-    public Date getDataInicio() {
+    public LocalDate getDataInicio() {
         return dataInicio;
     }
 
-    public void setDataInicio(Date dataInicio) {
+    public void setDataInicio(LocalDate dataInicio) {
         this.dataInicio = dataInicio;
     }
 
-    public Date getDataFim() {
+    public LocalDate getDataFim() {
         return dataFim;
     }
 
-    public void setDataFim(Date dataFim) {
+    public void setDataFim(LocalDate dataFim) {
         this.dataFim = dataFim;
     }
 
@@ -59,5 +59,18 @@ public class PlanoNutricional {
 
     public void setPaciente(Paciente paciente) {
         this.paciente = paciente;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        PlanoNutricional that = (PlanoNutricional) o;
+        return getId().equals(that.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId());
     }
 }
