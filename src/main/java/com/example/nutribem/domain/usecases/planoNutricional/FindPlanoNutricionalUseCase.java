@@ -24,7 +24,7 @@ public class FindPlanoNutricionalUseCase {
         return planoNutricionalDAO.findByName(name);
     }
 
-    public Optional<PlanoNutricional> findByPaciente(Integer idPaciente){
+    public List<PlanoNutricional> findByPaciente(Integer idPaciente){
         return planoNutricionalDAO.findByIdPaciente(idPaciente);
     }
 
