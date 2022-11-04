@@ -7,6 +7,7 @@ import com.example.nutribem.domain.usecases.nutricionista.*;
 import com.example.nutribem.domain.usecases.paciente.*;
 import com.example.nutribem.domain.usecases.planoNutricional.*;
 import com.example.nutribem.domain.usecases.refeicao.*;
+import com.example.nutribem.domain.usecases.relatorios.EmitirRelatorioContatosUseCase;
 
 public class Main {
     public static CreateAlimentoUseCase createAlimentoUseCase;
@@ -41,6 +42,8 @@ public class Main {
     public static FindRefeicaoUseCase findRefeicaoUseCase;
     public static RemoveRefeicaoUseCase removeRefeicaoUseCase;
     public static UpdateRefeicaoUseCase updateRefeicaoUseCase;
+
+    public static EmitirRelatorioContatosUseCase emitirRelatorioContatosUseCase;
 
     public static void main(String[] args) {
         configureInjection();
@@ -85,5 +88,7 @@ public class Main {
         findRefeicaoUseCase = new FindRefeicaoUseCase(refeicaoDAO);
         removeRefeicaoUseCase = new RemoveRefeicaoUseCase(refeicaoDAO);
         updateRefeicaoUseCase = new UpdateRefeicaoUseCase(refeicaoDAO);
+
+        emitirRelatorioContatosUseCase = new EmitirRelatorioContatosUseCase(pacienteDAO);
     }
 }
