@@ -1,6 +1,5 @@
 package com.example.nutribem.application.repository;
 
-import com.example.nutribem.domain.entities.alimento.Alimento;
 import com.example.nutribem.domain.entities.cardapio.Cardapio;
 import com.example.nutribem.domain.entities.paciente.Paciente;
 import com.example.nutribem.domain.entities.planoNutricional.PlanoNutricional;
@@ -12,11 +11,18 @@ public class InMemoryPlanoNutricionalDAO implements PlanoNutricionalDAO {
     public static final Map<Integer, PlanoNutricional> db = new LinkedHashMap<>();
     public static int idCounter = 0;
 
-
     @Override
     public Integer create(PlanoNutricional planoNutricional) {
         planoNutricional.setId(++idCounter);
         db.put(idCounter, planoNutricional);
+
+        InMemoryPacienteDAO pacienteDAO = new InMemoryPacienteDAO();
+
+        Paciente paciente = planoNutricional.getPaciente();
+        paciente.getPlanosNutricionais().add(planoNutricional);
+
+        pacienteDAO.update(paciente);
+
         return idCounter;
     }
 
@@ -44,7 +50,13 @@ public class InMemoryPlanoNutricionalDAO implements PlanoNutricionalDAO {
 
     @Override
     public boolean deleteByKey(Integer key) {
-        if(db.containsKey(key)){
+        if (db.containsKey(key)) {
+            InMemoryPacienteDAO pacienteDAO = new InMemoryPacienteDAO();
+            Paciente paciente = db.get(key).getPaciente();
+            paciente.getPlanosNutricionais().removeIf(plano -> plano.getId().equals(key));
+
+            pacienteDAO.update(paciente);
+
             db.remove(key);
             return true;
         }
@@ -74,10 +86,9 @@ public class InMemoryPlanoNutricionalDAO implements PlanoNutricionalDAO {
     }
 
     @Override
-    public Optional<PlanoNutricional> findByIdPaciente(Integer id) {
-
+    public List<PlanoNutricional> findByIdPaciente(Integer id) {
         return db.values().stream()
                 .filter(planoNutricional -> planoNutricional.getPaciente().getId().equals(id))
-                .findAny();
+                .toList();
     }
 }

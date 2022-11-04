@@ -1,7 +1,10 @@
 package com.example.nutribem.domain.entities.paciente;
 
+import com.example.nutribem.domain.entities.planoNutricional.PlanoNutricional;
+
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.List;
 import java.util.Objects;
 
 public class Paciente {
@@ -23,8 +26,9 @@ public class Paciente {
     private Double peso;
     private Sexo sexo;
     private Boolean ativado;
+    private List<PlanoNutricional> planosNutricionais;
 
-    public Paciente(Integer id, Integer circunferencia, Integer altura, String nome, CPF cpf, String email, String telefone, String historicoClinicoGeral, IntoleranciaLactose intoleranciaLactose, Boolean intoleranciaGluten, Boolean diabetes, String alergias, String observacoesGerais, String objetivos, LocalDate dataNascimento, Double peso, Sexo sexo) {
+    public Paciente(Integer id, Integer circunferencia, Integer altura, String nome, CPF cpf, String email, String telefone, String historicoClinicoGeral, IntoleranciaLactose intoleranciaLactose, Boolean intoleranciaGluten, Boolean diabetes, String alergias, String observacoesGerais, String objetivos, LocalDate dataNascimento, Double peso, Sexo sexo, List<PlanoNutricional> planos) {
         this.id = id;
         this.circunferencia = circunferencia;
         this.altura = altura;
@@ -43,6 +47,7 @@ public class Paciente {
         this.peso = peso;
         this.sexo = sexo;
         this.ativado = true;
+        this.planosNutricionais = planos;
     }
 
     public Integer getId() {
@@ -193,6 +198,18 @@ public class Paciente {
 
     public void setAtivado(Boolean ativado) {
         this.ativado = ativado;
+    }
+
+    public Boolean getAtivado() {
+        return ativado;
+    }
+
+    public List<PlanoNutricional> getPlanosNutricionais() {
+        return planosNutricionais;
+    }
+
+    public void setPlanosNutricionais(List<PlanoNutricional> planosNutricionais) {
+        this.planosNutricionais = planosNutricionais;
     }
 
     @Override
