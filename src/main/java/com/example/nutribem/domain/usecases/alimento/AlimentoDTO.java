@@ -1,16 +1,27 @@
 package com.example.nutribem.domain.usecases.alimento;
 
+import com.opencsv.bean.CsvBindByName;
+
 import java.util.Objects;
 
 public class AlimentoDTO {
+    @CsvBindByName(column = "name")
     private String name;
+    @CsvBindByName(column = "serving_portion")
     private Float serving_portion;
+    @CsvBindByName(column = "calories")
     private Float calories;
+    @CsvBindByName(column = "cholesterol")
     private Float cholesterol;
+    @CsvBindByName(column = "saturated_fat")
     private Float saturated_fat;
+    @CsvBindByName(column = "sodium")
     private Float sodium;
+    @CsvBindByName(column = "sugars")
     private Float sugars;
+    @CsvBindByName(column = "lactose")
     private Float lactose;
+    @CsvBindByName(column = "gluten")
     private Float gluten;
 
     public String getName() {
