@@ -14,7 +14,7 @@ public class InMemoryRefeicaoDAO implements RefeicaoDAO{
 
     @Override
     public Integer create(Refeicao refeicao) {
-        refeicao.setId(idCounter++);
+        refeicao.setId(++idCounter);
         db.put(idCounter,refeicao);
 
         return idCounter;

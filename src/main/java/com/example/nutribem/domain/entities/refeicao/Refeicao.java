@@ -13,8 +13,7 @@ public class Refeicao {
 
     private Cardapio cardapio;
 
-    public Refeicao(Integer id, LocalTime horario, RefeicaoCategoria categoria, Cardapio cardapio) {
-        this.id = id;
+    public Refeicao(LocalTime horario, RefeicaoCategoria categoria, Cardapio cardapio) {
         this.horario = horario;
         this.categoria = categoria;
         this.cardapio = cardapio;
@@ -32,10 +31,12 @@ public class Refeicao {
         return id;
     }
 
+
     public void setId(Integer id) {
+        if(this.id != null)
+            throw new IllegalArgumentException("Id não pode ser alterado!");
         this.id = id;
     }
-
     public LocalTime getHorario() {
         return horario;
     }

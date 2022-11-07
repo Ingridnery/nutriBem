@@ -11,9 +11,12 @@ import java.util.*;
 public class InMemoryCardapioDAO implements CardapioDAO {
 
     public static final Map<Integer,Cardapio> db = new LinkedHashMap<>();
+    private static Integer idCounter=0;
+
 
     @Override
     public Integer create(Cardapio cardapio) {
+        cardapio.setId(++idCounter);
         db.put(cardapio.getId(),cardapio);
         return cardapio.getId();
     }

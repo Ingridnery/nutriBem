@@ -9,10 +9,15 @@ public class Cardapio {
 
     private PlanoNutricional planoNutricional;
 
-    public Cardapio(Integer id, Integer numeroDia, PlanoNutricional planoNutricional) {
-        this.id = id;
+    public Cardapio(Integer numeroDia, PlanoNutricional planoNutricional) {
         this.numeroDia = numeroDia;
         this.planoNutricional = planoNutricional;
+    }
+
+    public void setId(Integer id) {
+        if(this.id != null)
+            throw new IllegalArgumentException("Id não pode ser alterado!");
+        this.id = id;
     }
 
     public Integer getId() {
