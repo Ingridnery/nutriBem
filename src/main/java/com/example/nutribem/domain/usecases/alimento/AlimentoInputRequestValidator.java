@@ -4,6 +4,8 @@ import com.example.nutribem.domain.entities.alimento.Alimento;
 import com.example.nutribem.domain.usecases.utils.Notification;
 import com.example.nutribem.domain.usecases.utils.Validator;
 
+import java.util.Collections;
+
 public class AlimentoInputRequestValidator extends Validator<Alimento> {
     @Override
     public Notification validate(Alimento alimento) {
@@ -29,7 +31,7 @@ public class AlimentoInputRequestValidator extends Validator<Alimento> {
         if(nullOrEmpty(alimento.getCalorias()))
             notification.addError("Calorias is null");
 
-        if(nullOrEmpty(alimento.getGluten()))
+        if(nullOrEmpty(Collections.singleton(alimento.getGluten())))
             notification.addError("Gluten is null");
 
         if(nullOrEmpty(alimento.getGordurasSaturadas()))
