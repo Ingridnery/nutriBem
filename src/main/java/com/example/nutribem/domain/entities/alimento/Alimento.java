@@ -1,5 +1,7 @@
 package com.example.nutribem.domain.entities.alimento;
 
+import com.example.nutribem.domain.entities.refeicao.Refeicao;
+
 import java.util.Objects;
 
 public class Alimento {
@@ -16,6 +18,23 @@ public class Alimento {
     private Float lactose;
     private Boolean ativado;
 
+    private Refeicao refeicao;
+
+    public Alimento(String nome, Integer id, Integer porcao, Integer calorias, Integer colesterol, Integer gluten, Float gordurasSaturadas, Float sodio, Float acucar, Float lactose, Boolean ativado, Refeicao refeicao) {
+        this.nome = nome;
+        this.id = id;
+        this.porcao = porcao;
+        this.calorias = calorias;
+        this.colesterol = colesterol;
+        this.gluten = gluten;
+        this.gordurasSaturadas = gordurasSaturadas;
+        this.sodio = sodio;
+        this.acucar = acucar;
+        this.lactose = lactose;
+        this.ativado = ativado;
+        this.refeicao = refeicao;
+    }
+
     public Alimento(String nome, Integer porcao, Integer calorias, Integer colesterol, Integer gluten, Float gordurasSaturadas, Float sodio, Float acucar, Float lactose) {
         this.nome = nome;
         this.id = null;
@@ -28,6 +47,30 @@ public class Alimento {
         this.acucar = acucar;
         this.lactose = lactose;
         this.ativado = true;
+    }
+
+    public Alimento(String nome, Integer id, Integer porcao, Integer calorias, Integer colesterol, Integer gluten, Float gordurasSaturadas, Float sodio, Float acucar, Float lactose, Boolean ativado) {
+        this.nome = nome;
+        this.id = id;
+        this.porcao = porcao;
+        this.calorias = calorias;
+        this.colesterol = colesterol;
+        this.gluten = gluten;
+        this.gordurasSaturadas = gordurasSaturadas;
+        this.sodio = sodio;
+        this.acucar = acucar;
+        this.lactose = lactose;
+        this.ativado = ativado;
+    }
+
+
+
+    public Refeicao getRefeicao() {
+        return refeicao;
+    }
+
+    public void setRefeicao(Refeicao refeicao) {
+        this.refeicao = refeicao;
     }
 
     public String getNome() {
