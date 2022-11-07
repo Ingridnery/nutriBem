@@ -11,6 +11,7 @@ public class LoginUseCase {
   private static final int MINLENGTH = 4;
 
     public LoginUseCase(NutricionistaDAO nutricionistaDAO) {
+        this.dao = nutricionistaDAO;
     }
 
     public Boolean login (String userName, String senha){
