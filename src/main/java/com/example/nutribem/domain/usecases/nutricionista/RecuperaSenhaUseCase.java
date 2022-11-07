@@ -12,9 +12,9 @@ public class RecuperaSenhaUseCase {
     Notification notification = new Notification();
      private static final int MINLENGTH = 4;
 
-    public RecuperaSenhaUseCase(NutricionistaDAO nutricionistaDAO) {
+    public RecuperaSenhaUseCase(NutricionistaDAO dao) {
+        this.dao = dao;
     }
-
 
     public ArrayList<String>dicasSenha(String userName){
         if(nullOrEmpty(userName)){
