@@ -18,7 +18,6 @@ public class CreateDicaSenhaUseCase {
 
        isValidLength(dicas);
        nutricionista.setDicas(dicas);
-
         return nutricionistaDAO.update(nutricionista);
     }
 

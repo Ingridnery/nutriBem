@@ -11,8 +11,8 @@ public class FindCardapioByNumeroDiaUseCase {
     private CardapioDAO cardapioDAO;
 
     public FindCardapioByNumeroDiaUseCase(CardapioDAO cardapioDAO) {
+        this.cardapioDAO = cardapioDAO;
     }
-
 
     public Optional<Cardapio> findByNumeroDia(Integer numeroDia){
 
