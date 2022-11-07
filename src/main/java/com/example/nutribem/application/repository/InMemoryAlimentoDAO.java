@@ -1,6 +1,7 @@
 package com.example.nutribem.application.repository;
 
 import com.example.nutribem.domain.entities.alimento.Alimento;
+import com.example.nutribem.domain.entities.refeicao.Refeicao;
 import com.example.nutribem.domain.usecases.alimento.AlimentoDAO;
 
 import java.util.*;
@@ -35,6 +36,13 @@ public class InMemoryAlimentoDAO implements AlimentoDAO{
     public boolean isInAnyRefeicao(Alimento alimento) {
         //TODO
         return false;
+    }
+
+    @Override
+    public List<Alimento> findAlimentosFromRefeicao(Refeicao refeicao) {
+        return db.values().stream()
+                .filter(alimento -> alimento.getRefeicao().equals(refeicao))
+                .toList();
     }
 
 
