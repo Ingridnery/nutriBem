@@ -1,5 +1,7 @@
 package com.example.nutribem.domain.usecases.valoresNutricionais;
 
+import java.util.Objects;
+
 public class ValoresNutricionais {
     private Integer calorias;
     private Integer colesterol;
@@ -86,5 +88,31 @@ public class ValoresNutricionais {
 
     public void setLactose(Float lactose) {
         this.lactose = lactose;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ValoresNutricionais that = (ValoresNutricionais) o;
+        return Objects.equals(calorias, that.calorias) && Objects.equals(colesterol, that.colesterol) && Objects.equals(gluten, that.gluten) && Objects.equals(gordurasSaturadas, that.gordurasSaturadas) && Objects.equals(sodio, that.sodio) && Objects.equals(acucar, that.acucar) && Objects.equals(lactose, that.lactose);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(calorias, colesterol, gluten, gordurasSaturadas, sodio, acucar, lactose);
+    }
+
+    @Override
+    public String toString() {
+        return "ValoresNutricionais{" +
+                "calorias=" + calorias +
+                ", colesterol=" + colesterol +
+                ", gluten=" + gluten +
+                ", gordurasSaturadas=" + gordurasSaturadas +
+                ", sodio=" + sodio +
+                ", acucar=" + acucar +
+                ", lactose=" + lactose +
+                '}';
     }
 }
