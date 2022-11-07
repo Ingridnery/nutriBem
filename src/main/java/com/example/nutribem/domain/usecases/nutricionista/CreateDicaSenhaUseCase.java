@@ -11,6 +11,7 @@ public class CreateDicaSenhaUseCase {
     private static final int MAXLENGTH = 255;
 
     public CreateDicaSenhaUseCase(NutricionistaDAO nutricionistaDAO) {
+        this.nutricionistaDAO = nutricionistaDAO;
     }
 
     public boolean insert(Nutricionista nutricionista, ArrayList<String> dicas){
