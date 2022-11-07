@@ -26,9 +26,8 @@ public class Paciente {
     private Double peso;
     private Sexo sexo;
     private Boolean ativado;
-    private List<PlanoNutricional> planosNutricionais;
 
-    public Paciente(Integer id, Integer circunferencia, Integer altura, String nome, CPF cpf, String email, String telefone, String historicoClinicoGeral, IntoleranciaLactose intoleranciaLactose, Boolean intoleranciaGluten, Boolean diabetes, String alergias, String observacoesGerais, String objetivos, LocalDate dataNascimento, Double peso, Sexo sexo, List<PlanoNutricional> planos) {
+    public Paciente(Integer id, Integer circunferencia, Integer altura, String nome, CPF cpf, String email, String telefone, String historicoClinicoGeral, IntoleranciaLactose intoleranciaLactose, Boolean intoleranciaGluten, Boolean diabetes, String alergias, String observacoesGerais, String objetivos, LocalDate dataNascimento, Double peso, Sexo sexo){
         this.id = id;
         this.circunferencia = circunferencia;
         this.altura = altura;
@@ -47,7 +46,27 @@ public class Paciente {
         this.peso = peso;
         this.sexo = sexo;
         this.ativado = true;
-        this.planosNutricionais = planos;
+    }
+
+    public Paciente(Integer id, Integer circunferencia, Integer altura, String nome, CPF cpf, String email, String telefone, String historicoClinicoGeral, IntoleranciaLactose intoleranciaLactose, Boolean intoleranciaGluten, Boolean diabetes, String alergias, String observacoesGerais, String objetivos, LocalDate dataNascimento, Double peso, Sexo sexo, Boolean ativado) {
+        this.id = id;
+        this.circunferencia = circunferencia;
+        this.altura = altura;
+        this.nome = nome;
+        this.cpf = cpf;
+        this.email = email;
+        this.telefone = telefone;
+        this.historicoClinicoGeral = historicoClinicoGeral;
+        this.intoleranciaLactose = intoleranciaLactose;
+        this.intoleranciaGluten = intoleranciaGluten;
+        this.diabetes = diabetes;
+        this.alergias = alergias;
+        this.observacoesGerais = observacoesGerais;
+        this.objetivos = objetivos;
+        this.dataNascimento = dataNascimento;
+        this.peso = peso;
+        this.sexo = sexo;
+        this.ativado = ativado;
     }
 
     public Integer getId() {
@@ -204,13 +223,6 @@ public class Paciente {
         return ativado;
     }
 
-    public List<PlanoNutricional> getPlanosNutricionais() {
-        return planosNutricionais;
-    }
-
-    public void setPlanosNutricionais(List<PlanoNutricional> planosNutricionais) {
-        this.planosNutricionais = planosNutricionais;
-    }
 
     @Override
     public boolean equals(Object o) {
