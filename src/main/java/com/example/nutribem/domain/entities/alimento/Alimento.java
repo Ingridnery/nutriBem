@@ -11,7 +11,7 @@ public class Alimento {
     private Integer porcao;
     private Integer calorias;
     private Integer colesterol;
-    private Integer gluten;
+    private Boolean gluten;
     private Float gordurasSaturadas;
     private Float sodio;
     private Float acucar;
@@ -20,7 +20,7 @@ public class Alimento {
 
     private Refeicao refeicao;
 
-    public Alimento(String nome, Integer id, Integer porcao, Integer calorias, Integer colesterol, Integer gluten, Float gordurasSaturadas, Float sodio, Float acucar, Float lactose, Boolean ativado, Refeicao refeicao) {
+    public Alimento(String nome, Integer id, Integer porcao, Integer calorias, Integer colesterol, Boolean gluten, Float gordurasSaturadas, Float sodio, Float acucar, Float lactose, Boolean ativado, Refeicao refeicao) {
         this.nome = nome;
         this.id = id;
         this.porcao = porcao;
@@ -35,7 +35,7 @@ public class Alimento {
         this.refeicao = refeicao;
     }
 
-    public Alimento(String nome, Integer porcao, Integer calorias, Integer colesterol, Integer gluten, Float gordurasSaturadas, Float sodio, Float acucar, Float lactose) {
+    public Alimento(String nome, Integer porcao, Integer calorias, Integer colesterol, Boolean gluten, Float gordurasSaturadas, Float sodio, Float acucar, Float lactose) {
         this.nome = nome;
         this.id = null;
         this.porcao = porcao;
@@ -49,7 +49,7 @@ public class Alimento {
         this.ativado = true;
     }
 
-    public Alimento(String nome, Integer id, Integer porcao, Integer calorias, Integer colesterol, Integer gluten, Float gordurasSaturadas, Float sodio, Float acucar, Float lactose, Boolean ativado) {
+    public Alimento(String nome, Integer id, Integer porcao, Integer calorias, Integer colesterol, Boolean gluten, Float gordurasSaturadas, Float sodio, Float acucar, Float lactose, Boolean ativado) {
         this.nome = nome;
         this.id = id;
         this.porcao = porcao;
@@ -115,11 +115,11 @@ public class Alimento {
         this.colesterol = colesterol;
     }
 
-    public Integer getGluten() {
+    public Boolean getGluten() {
         return gluten;
     }
 
-    public void setGluten(Integer gluten) {
+    public void setGluten(Boolean gluten) {
         this.gluten = gluten;
     }
 
