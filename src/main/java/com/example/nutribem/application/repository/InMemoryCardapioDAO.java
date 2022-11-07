@@ -30,6 +30,8 @@ public class InMemoryCardapioDAO implements CardapioDAO {
         return new ArrayList<>(db.values());
     }
 
+
+
     @Override
     public boolean update(Cardapio cardapio) {
         Integer id = cardapio.getId();
@@ -68,5 +70,17 @@ public class InMemoryCardapioDAO implements CardapioDAO {
         return db.values().stream()
                 .filter(cardapio -> cardapio.getNumeroDia().equals(numeroDia))
                 .findAny();
+    }
+
+    @Override
+    public List<Cardapio> findByPlanoNutricional(Integer idPlano) {
+        List<Cardapio> cardapios = new ArrayList<>();
+        for(Cardapio cardapio : db.values()){
+            if(cardapio.getPlanoNutricional().getId() == idPlano){
+                cardapios.add(cardapio);
+            }
+        }
+
+        return cardapios;
     }
 }
