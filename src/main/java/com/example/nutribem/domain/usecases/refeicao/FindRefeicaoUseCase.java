@@ -33,4 +33,8 @@ public class FindRefeicaoUseCase {
 
         return findByCardapio(cardapio.getId());
     }
+
+    public List<Refeicao> findAll(){
+        return dao.findAll();
+    }
 }
