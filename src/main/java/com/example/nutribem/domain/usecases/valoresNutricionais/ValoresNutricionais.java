@@ -22,6 +22,13 @@ public class ValoresNutricionais {
     }
 
     public ValoresNutricionais() {
+        this.calorias = 0;
+        this.colesterol = 0;
+        this.gluten = false;
+        this.gordurasSaturadas = (float) 0;
+        this.sodio = (float) 0;
+        this.acucar = (float) 0;
+        this.lactose = (float) 0;
     }
 
     public void somar(ValoresNutricionais novo){
