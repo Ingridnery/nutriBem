@@ -34,8 +34,7 @@ public class InMemoryAlimentoDAO implements AlimentoDAO{
 
     @Override
     public boolean isInAnyRefeicao(Alimento alimento) {
-        //TODO
-        return false;
+        return alimento.getRefeicao() != null;
     }
 
     @Override
