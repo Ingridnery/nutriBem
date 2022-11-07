@@ -13,8 +13,7 @@ public class PlanoNutricional {
 
     private Paciente paciente;
 
-    public PlanoNutricional(Integer id, String nome, LocalDate dataInicio, LocalDate dataFim, Paciente paciente) {
-        this.id = id;
+    public PlanoNutricional(String nome, LocalDate dataInicio, LocalDate dataFim, Paciente paciente) {
         this.nome = nome;
         this.dataInicio = dataInicio;
         this.dataFim = dataFim;
