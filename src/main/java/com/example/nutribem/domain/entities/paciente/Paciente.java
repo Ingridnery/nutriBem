@@ -27,8 +27,7 @@ public class Paciente {
     private Sexo sexo;
     private Boolean ativado;
 
-    public Paciente(Integer id, Integer circunferencia, Integer altura, String nome, CPF cpf, String email, String telefone, String historicoClinicoGeral, IntoleranciaLactose intoleranciaLactose, Boolean intoleranciaGluten, Boolean diabetes, String alergias, String observacoesGerais, String objetivos, LocalDate dataNascimento, Double peso, Sexo sexo){
-        this.id = id;
+    public Paciente(Integer circunferencia, Integer altura, String nome, CPF cpf, String email, String telefone, String historicoClinicoGeral, IntoleranciaLactose intoleranciaLactose, Boolean intoleranciaGluten, Boolean diabetes, String alergias, String observacoesGerais, String objetivos, LocalDate dataNascimento, Double peso, Sexo sexo){
         this.circunferencia = circunferencia;
         this.altura = altura;
         this.nome = nome;
@@ -48,8 +47,7 @@ public class Paciente {
         this.ativado = true;
     }
 
-    public Paciente(Integer id, Integer circunferencia, Integer altura, String nome, CPF cpf, String email, String telefone, String historicoClinicoGeral, IntoleranciaLactose intoleranciaLactose, Boolean intoleranciaGluten, Boolean diabetes, String alergias, String observacoesGerais, String objetivos, LocalDate dataNascimento, Double peso, Sexo sexo, Boolean ativado) {
-        this.id = id;
+    public Paciente( Integer circunferencia, Integer altura, String nome, CPF cpf, String email, String telefone, String historicoClinicoGeral, IntoleranciaLactose intoleranciaLactose, Boolean intoleranciaGluten, Boolean diabetes, String alergias, String observacoesGerais, String objetivos, LocalDate dataNascimento, Double peso, Sexo sexo, Boolean ativado) {
         this.circunferencia = circunferencia;
         this.altura = altura;
         this.nome = nome;
