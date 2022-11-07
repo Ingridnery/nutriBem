@@ -12,6 +12,7 @@ public class CreateCardapioUseCase {
     private CardapioDAO cardapioDAO;
 
     public CreateCardapioUseCase(CardapioDAO cardapioDAO) {
+        this.cardapioDAO = cardapioDAO;
     }
 
     public Integer insert(Cardapio cardapio){
