@@ -20,12 +20,12 @@ import com.example.nutribem.domain.usecases.refeicao.*;
 import com.example.nutribem.domain.usecases.relatorios.EmitirRelatorioContatosUseCase;
 import com.example.nutribem.domain.usecases.relatorios.EmitirRelatorioPlanoNutricionalUseCase;
 import com.example.nutribem.domain.usecases.relatorios.EmitirRelatorioPlanosVencidosUseCase;
+import com.example.nutribem.domain.usecases.utils.NotAuthenticatedException;
 import com.example.nutribem.domain.usecases.valoresNutricionais.CalculateValoresNutricionaisUseCase;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.Optional;
 
 public class Main {
     public static CreateAlimentoUseCase createAlimentoUseCase;
@@ -84,18 +84,23 @@ public class Main {
         System.out.println("\nDicas de senha:");
         recuperaSenhaUseCase.dicasSenha("admin").forEach(System.out::println);
 
+        if (!loginUseCase.isLogged())
+            throw new NotAuthenticatedException("Nutricionista nao esta logado.");
+
         CPF cpf  = CPF.valueOf("851.356.878-31");
         Paciente paciente = new Paciente(88,180,"José",cpf,"jose@email.com",
             "99384-7858","Sem historico",             IntoleranciaLactose.INTOLERANTE,
             false,false,"Nenhuma",
             "Saúdavel","Ganhar massa", LocalDate.of(1998,10,15),
             100.15, Sexo.MASCULINO,true);
+
         createPacienteUseCase.insert(paciente);
 
         CPF cpfPaciente2 = CPF.valueOf("224.067.048-74");
         Paciente paciente2 = new Paciente(96,170,"Maria",cpfPaciente2,"maria@email",
                 "89657-7456","Cirurgia de apendice",IntoleranciaLactose.APTO,false,false,"Camarão","Cardiaca",
                 "Perder peso",LocalDate.of(1996,10,02),89.2,Sexo.FEMININO);
+
         createPacienteUseCase.insert(paciente2);
 
         System.out.println("\nPacientes cadastrados:");
@@ -177,8 +182,6 @@ public class Main {
         findAlimentoUseCase.findAll().forEach(alimento2 ->
                 System.out.println(alimento2.getNome()));
     }
-
-
 
     public static void configureInjection(){
         AlimentoDAO alimentoDAO = new InMemoryAlimentoDAO();

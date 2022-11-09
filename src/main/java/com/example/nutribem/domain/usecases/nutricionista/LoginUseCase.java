@@ -7,8 +7,8 @@ import static com.example.nutribem.domain.usecases.utils.Validator.nullOrEmpty;
 public class LoginUseCase {
 
     private NutricionistaDAO dao;
-    Notification notification;
-  private static final int MINLENGTH = 4;
+    private Boolean isLogged = false;
+    private static final int MINLENGTH = 4;
 
     public LoginUseCase(NutricionistaDAO nutricionistaDAO) {
         this.dao = nutricionistaDAO;
@@ -17,13 +17,14 @@ public class LoginUseCase {
     public Boolean login (String userName, String senha){
         Notification notification = new Notification();
 
-
         if(nullOrEmpty(senha)){
             notification.addError("Senha is null or empty");
         }
+
         if(senha.length()<MINLENGTH){
             notification.addError("Senha does not have four digits");
         }
+
         if(nullOrEmpty(userName)){
             notification.addError("Nome de usuario is null or empty");
         }
@@ -31,9 +32,15 @@ public class LoginUseCase {
         if(!dao.getSenhaFromUserName(userName).equals(senha)){
             notification.addError("Senha invalida!");
         }
+
         if(notification.hasErrors())
             throw new IllegalArgumentException(notification.errorMessage());
-        return true;
 
+        isLogged = true;
+        return isLogged;
+    }
+
+    public Boolean isLogged() {
+        return isLogged;
     }
 }
