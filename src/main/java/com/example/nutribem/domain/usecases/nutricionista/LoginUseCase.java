@@ -1,5 +1,6 @@
 package com.example.nutribem.domain.usecases.nutricionista;
 
+import com.example.nutribem.domain.contexts.AuthenticationContext;
 import com.example.nutribem.domain.usecases.utils.Notification;
 
 import static com.example.nutribem.domain.usecases.utils.Validator.nullOrEmpty;
@@ -7,7 +8,6 @@ import static com.example.nutribem.domain.usecases.utils.Validator.nullOrEmpty;
 public class LoginUseCase {
 
     private NutricionistaDAO dao;
-    private Boolean isLogged = false;
     private static final int MINLENGTH = 4;
 
     public LoginUseCase(NutricionistaDAO nutricionistaDAO) {
@@ -36,11 +36,7 @@ public class LoginUseCase {
         if(notification.hasErrors())
             throw new IllegalArgumentException(notification.errorMessage());
 
-        isLogged = true;
-        return isLogged;
-    }
-
-    public Boolean isLogged() {
-        return isLogged;
+        AuthenticationContext.login();
+        return true;
     }
 }

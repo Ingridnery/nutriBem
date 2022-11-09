@@ -1,6 +1,7 @@
 package com.example.nutribem.application.main;
 
 import com.example.nutribem.application.repository.*;
+import com.example.nutribem.domain.contexts.AuthenticationContext;
 import com.example.nutribem.domain.entities.alimento.Alimento;
 import com.example.nutribem.domain.entities.cardapio.Cardapio;
 import com.example.nutribem.domain.entities.nutricionista.Nutricionista;
@@ -43,6 +44,7 @@ public class Main {
     public static CreateDicaSenhaUseCase createDicaSenhaUseCase;
     public static CreateNutricionistaUseCase createNutricionistaUseCase;
     public static LoginUseCase loginUseCase;
+    public static LogoutUseCase logoutUseCase;
     public static RecuperaSenhaUseCase recuperaSenhaUseCase;
 
     public static ActivatePacienteUseCase activatePacienteUseCase;
@@ -84,7 +86,7 @@ public class Main {
         System.out.println("\nDicas de senha:");
         recuperaSenhaUseCase.dicasSenha("admin").forEach(System.out::println);
 
-        if (!loginUseCase.isLogged())
+        if (!AuthenticationContext.isLogged())
             throw new NotAuthenticatedException("Nutricionista nao esta logado.");
 
         CPF cpf  = CPF.valueOf("851.356.878-31");
@@ -203,6 +205,7 @@ public class Main {
         createDicaSenhaUseCase = new CreateDicaSenhaUseCase(nutricionistaDAO);
         createNutricionistaUseCase = new CreateNutricionistaUseCase(nutricionistaDAO);
         loginUseCase = new LoginUseCase(nutricionistaDAO);
+        logoutUseCase =  new LogoutUseCase();
         recuperaSenhaUseCase = new RecuperaSenhaUseCase(nutricionistaDAO);
 
         PacienteDAO pacienteDAO = new InMemoryPacienteDAO();
