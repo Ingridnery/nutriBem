@@ -6,12 +6,12 @@ public class ValoresNutricionais {
     private Integer calorias;
     private Integer colesterol;
     private Boolean gluten;
-    private Float gordurasSaturadas;
-    private Float sodio;
-    private Float acucar;
-    private Float lactose;
+    private Double gordurasSaturadas;
+    private Double sodio;
+    private Double acucar;
+    private Double lactose;
 
-    public ValoresNutricionais(Integer calorias, Integer colesterol, Boolean gluten, Float gordurasSaturadas, Float sodio, Float acucar, Float lactose) {
+    public ValoresNutricionais(Integer calorias, Integer colesterol, Boolean gluten, Double gordurasSaturadas, Double sodio, Double acucar, Double lactose) {
         this.calorias = calorias;
         this.colesterol = colesterol;
         this.gluten = gluten;
@@ -25,10 +25,10 @@ public class ValoresNutricionais {
         this.calorias = 0;
         this.colesterol = 0;
         this.gluten = false;
-        this.gordurasSaturadas = (float) 0;
-        this.sodio = (float) 0;
-        this.acucar = (float) 0;
-        this.lactose = (float) 0;
+        this.gordurasSaturadas = 0.0;
+        this.sodio = 0.0;
+        this.acucar = 0.0;
+        this.lactose = 0.0;
     }
 
     public void somar(ValoresNutricionais novo){
@@ -65,35 +65,35 @@ public class ValoresNutricionais {
         this.gluten = gluten;
     }
 
-    public Float getGordurasSaturadas() {
+    public Double getGordurasSaturadas() {
         return gordurasSaturadas;
     }
 
-    public void setGordurasSaturadas(Float gordurasSaturadas) {
+    public void setGordurasSaturadas(Double gordurasSaturadas) {
         this.gordurasSaturadas = gordurasSaturadas;
     }
 
-    public Float getSodio() {
+    public Double getSodio() {
         return sodio;
     }
 
-    public void setSodio(Float sodio) {
+    public void setSodio(Double sodio) {
         this.sodio = sodio;
     }
 
-    public Float getAcucar() {
+    public Double getAcucar() {
         return acucar;
     }
 
-    public void setAcucar(Float acucar) {
+    public void setAcucar(Double acucar) {
         this.acucar = acucar;
     }
 
-    public Float getLactose() {
+    public Double getLactose() {
         return lactose;
     }
 
-    public void setLactose(Float lactose) {
+    public void setLactose(Double lactose) {
         this.lactose = lactose;
     }
 

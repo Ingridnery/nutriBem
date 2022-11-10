@@ -13,15 +13,15 @@ public class Alimento {
     private Integer calorias;
     private Integer colesterol;
     private Boolean gluten;
-    private Float gordurasSaturadas;
-    private Float sodio;
-    private Float acucar;
-    private Float lactose;
+    private Double gordurasSaturadas;
+    private Double sodio;
+    private Double acucar;
+    private Double lactose;
     private Boolean ativado;
 
     private Refeicao refeicao;
 
-    public Alimento(String nome, Integer porcao, Integer calorias, Integer colesterol, Boolean gluten, Float gordurasSaturadas, Float sodio, Float acucar, Float lactose) {
+    public Alimento(String nome, Integer porcao, Integer calorias, Integer colesterol, Boolean gluten, Double gordurasSaturadas, Double sodio, Double acucar, Double lactose) {
         this.nome = nome;
         this.id = null;
         this.porcao = porcao;
@@ -98,36 +98,40 @@ public class Alimento {
         this.gluten = gluten;
     }
 
-    public Float getGordurasSaturadas() {
+    public Double getGordurasSaturadas() {
         return gordurasSaturadas;
     }
 
-    public void setGordurasSaturadas(Float gordurasSaturadas) {
+    public void setGordurasSaturadas(Double gordurasSaturadas) {
         this.gordurasSaturadas = gordurasSaturadas;
     }
 
-    public Float getSodio() {
+    public Double getSodio() {
         return sodio;
     }
 
-    public void setSodio(Float sodio) {
+    public void setSodio(Double sodio) {
         this.sodio = sodio;
     }
 
-    public Float getAcucar() {
+    public Double getAcucar() {
         return acucar;
     }
 
-    public void setAcucar(Float acucar) {
+    public void setAcucar(Double acucar) {
         this.acucar = acucar;
     }
 
-    public Float getLactose() {
+    public Double getLactose() {
         return lactose;
     }
 
-    public void setLactose(Float lactose) {
+    public void setLactose(Double lactose) {
         this.lactose = lactose;
+    }
+
+    public Boolean getAtivado() {
+        return ativado;
     }
 
     public Boolean isAtivado() {
