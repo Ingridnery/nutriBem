@@ -1,6 +1,7 @@
 package com.example.nutribem.domain.entities.paciente;
 
 import com.example.nutribem.domain.entities.planoNutricional.PlanoNutricional;
+import javafx.beans.property.StringProperty;
 
 import java.time.LocalDate;
 import java.time.Period;
@@ -26,6 +27,9 @@ public class Paciente {
     private Double peso;
     private Sexo sexo;
     private Boolean ativado;
+
+    public Paciente() {
+    }
 
     public Paciente(Integer circunferencia, Integer altura, String nome, CPF cpf, String email, String telefone, String historicoClinicoGeral, IntoleranciaLactose intoleranciaLactose, Boolean intoleranciaGluten, Boolean diabetes, String alergias, String observacoesGerais, String objetivos, LocalDate dataNascimento, Double peso, Sexo sexo){
         this.circunferencia = circunferencia;
@@ -104,6 +108,8 @@ public class Paciente {
     public CPF getCpf() {
         return cpf;
     }
+
+
 
     public void setCpf(CPF cpf) {
         this.cpf = cpf;
