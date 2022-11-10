@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="505.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.nutribem.application.controller.PacienteUIController">
+    <children>
+        <Label layoutX="26.0" layoutY="27.0" text="Nome:" />
+        <Label layoutX="299.0" layoutY="27.0" text="CPF:" />
+        <Label layoutX="26.0" layoutY="76.0" text="Email:" />
+        <Label layoutX="283.0" layoutY="76.0" text="Telefone:" />
+        <Label layoutX="554.0" layoutY="76.0" prefWidth="80.0" text="Altura:" />
+        <Label layoutX="555.0" layoutY="27.0" text="Peso: " />
+      <Label layoutX="320.0" layoutY="126.0" text="Circunfêrencia: " />
+      <Label layoutX="320.0" layoutY="176.0" text="Diabético" />
+      <Label layoutX="354.0" layoutY="337.0" text="Histórico Clinico" />
+      <Label layoutX="26.0" layoutY="176.0" text="Intolerancia a Lactose" />
+      <Label layoutX="26.0" layoutY="248.0" text="Alergias" />
+      <Label layoutX="26.0" layoutY="337.0" text="Observações" />
+      <Label layoutX="377.0" layoutY="248.0" text="Objetivos" />
+      <Label layoutX="29.0" layoutY="126.0" text="Data de nascimento:" />
+      <Label layoutX="485.0" layoutY="127.0" text="Sexo" />
+      <TextField fx:id="txtNome" layoutX="80.0" layoutY="22.0" />
+      <TextField fx:id="txtCPF" layoutX="354.0" layoutY="22.0" />
+      <TextField fx:id="txtPeso" layoutX="606.0" layoutY="22.0" prefHeight="31.0" prefWidth="80.0" />
+      <TextField fx:id="txtEmail" layoutX="80.0" layoutY="72.0" />
+      <TextField fx:id="txtTelefone" layoutX="354.0" layoutY="71.0" />
+      <TextField fx:id="txtAltura" layoutX="606.0" layoutY="71.0"  prefWidth="80.0" />
+      <ComboBox fx:id="cbSexo" layoutX="534.0" layoutY="122.0"  prefWidth="85.0" />
+      <TextField fx:id="txtCircunferencia" layoutX="408.0" layoutY="122.0"  prefWidth="61.0" />
+      <DatePicker fx:id="dtDataNasc" layoutX="150.0" layoutY="122.0"  prefWidth="143.0" />
+      <ComboBox fx:id="cbDiabetes" layoutX="380.0" layoutY="172.0" prefWidth="108.0" />
+      <ComboBox fx:id="cbLactose" layoutX="150.0" layoutY="172.0" prefWidth="150.0" />
+      <TextArea fx:id="txtAlergias" layoutX="104.0" layoutY="222.0" prefHeight="72.0" prefWidth="213.0" />
+      <TextArea fx:id="txtObjetivos" layoutX="467.0" layoutY="222.0" prefHeight="72.0" prefWidth="213.0" />
+      <TextArea fx:id="txtObservacoes" layoutX="104.0" layoutY="315.0" prefHeight="72.0" prefWidth="213.0" />
+      <TextArea fx:id="txtHistorico" layoutX="467.0" layoutY="315.0" prefHeight="72.0" prefWidth="213.0" />
+        <Button fx:id="btnStatus" layoutX="445.0" layoutY="453.0" mnemonicParsing="false" onAction="#activeOrDesactive" prefHeight="39.0" prefWidth="88.0" text="Desativar" />
+        <Button fx:id="btnCancel" layoutX="650.0" layoutY="453.0" mnemonicParsing="false" onAction="#backScene" prefHeight="39.0" prefWidth="88.0" text="Voltar" />
+        <Button fx:id="btnConfirm" layoutX="545.0" layoutY="453.0" mnemonicParsing="false" onAction="#saveOrUpdate" prefHeight="39.0" prefWidth="88.0" text="Salvar" />
+
+        <Label layoutX="510.0" layoutY="177.0" text="Intolerancia a Glúten" />
+      <ComboBox fx:id="cbGluten" layoutX="630.0" layoutY="172.0" prefWidth="150.0" />
+    </children>
+
+</AnchorPane>
