@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="782.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.nutribem.application.controller.MainUIController">
+   <children>
+       <Label layoutX="25.0" layoutY="70.0" text="Nome do paciente: ">
+               <font>
+                       <Font size="15." />
+               </font>
+       </Label>
+
+       <TextField fx:id="txtNamePaciente" layoutX="155.0" layoutY="65.0" prefHeight="34.0" prefWidth="132.0" />
+      <Button fx:id="btnFindPaciente" layoutX="300.0" layoutY="65.0" mnemonicParsing="false" onAction="#findPacienteByName" prefHeight="34.0" text="Buscar" />
+      <TableView fx:id="tableView" layoutX="25.0" layoutY="119.0" onMouseClicked="#getSelectedAndSetButton" prefHeight="900.0" prefWidth="753.0" AnchorPane.bottomAnchor="134.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="134.0">
+        <columns>
+          <TableColumn fx:id="cId" prefWidth="100.0" text="ID" />
+          <TableColumn fx:id="cName" prefWidth="373.0" text="Nome" />
+            <TableColumn fx:id="cCPF" prefWidth="278.0" text="CPF" />
+        </columns>
+      </TableView>
+       <Pane layoutX="14.0" layoutY="200.0" prefHeight="61.0" prefWidth="573.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0">
+            <children>
+                <Button fx:id="btnCreate" layoutX="15.0" layoutY="-30.0" mnemonicParsing="false" prefHeight="34.0" onAction="#createPaciente" text="Novo" />
+                <Button fx:id="btnUpdate" layoutX="90.0" layoutY="-30.0" mnemonicParsing="false" prefHeight="34.0" onAction="#updatePaciente" text="Editar" />
+                <Button fx:id="btnRemove" layoutX="165.0" layoutY="-30.0" mnemonicParsing="false" prefHeight="34.0" onAction="#removePaciente" text="Excluir" />
+                <Button fx:id="btnFind" layoutX="240.0" layoutY="-30.0" mnemonicParsing="false" prefHeight="34.0" onAction="#detailPaciente" text="Detalhar" />
+            </children>
+
+       </Pane>
+   </children>
+
+
+</AnchorPane>
