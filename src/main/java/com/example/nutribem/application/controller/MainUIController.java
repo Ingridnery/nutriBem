@@ -18,7 +18,6 @@ import static com.example.nutribem.application.main.Main.removePacienteUseCase;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.stream.Collectors;
 
 
 public class MainUIController {
@@ -137,7 +136,7 @@ public class MainUIController {
         if(paciente!=null){
             WindowLoader.setRoot("PlanoNutricionalManagementUI");
             PlanoNutricionalManagementUIController controller = (PlanoNutricionalManagementUIController) WindowLoader.getController();
-            controller.setPlanoNutricional(paciente);
+            controller.setPlanoNutricionalFromPaciente(paciente);
         }
         else
             setMessagePaciente();
