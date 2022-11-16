@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.nutribem.application.controller.PlanoNutricionalUIController">
+    <children>
+        <Label layoutX="37.0" layoutY="38.0" text="Nome:" />
+        <Label layoutX="24.0" layoutY="83.0" text="Data de início:" />
+        <Label layoutX="26.0" layoutY="123.0" text="Data final:" />
+
+        <TextField fx:id="txtName" layoutX="129.0" layoutY="33.0" prefHeight="31.0" />
+        
+        <Button fx:id="btnCancel" layoutX="261.0" layoutY="200.0" mnemonicParsing="false" onAction="#backScene" prefHeight="39.0" prefWidth="88.0" text="Voltar" />
+        <Button fx:id="btnConfirm" layoutX="141.0" layoutY="200.0" mnemonicParsing="false" onAction="#saveOrUpdate" prefHeight="39.0" prefWidth="88.0" text="Salvar" />
+      <DatePicker fx:id="dpEndDate" layoutX="129.0" layoutY="118.0" />
+      <DatePicker fx:id="dpStartDate" layoutX="129.0" layoutY="78.0" />
+    </children>
+
+</AnchorPane>
