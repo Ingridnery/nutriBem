@@ -35,7 +35,7 @@
                 <Button fx:id="btnRemove" layoutX="165.0" layoutY="-30.0" mnemonicParsing="false" onAction="#removePlanoNutricional" prefHeight="34.0" text="Excluir" />
                 <Button fx:id="btnFind" layoutX="240.0" layoutY="-30.0" mnemonicParsing="false" onAction="#detailPlanoNutricional" prefHeight="34.0" text="Detalhar" />
                 <Button fx:id="btnBack" layoutX="320.0" layoutY="-30.0" mnemonicParsing="false" onAction="#backScene" prefHeight="34.0" text="Voltar" />
-                <Button fx:id="btnCardapio" layoutX="260.0" layoutY="-30.0" mnemonicParsing="false" onAction="#cardapioUI" prefHeight="34.0" text="Gerenciar Alimentos" />
+                <Button fx:id="btnCardapio" layoutX="385.0" layoutY="-30.0" mnemonicParsing="false" onAction="#cardapioUI" prefHeight="34.0" text="Gerenciar Alimentos" />
 
             </children>
 
