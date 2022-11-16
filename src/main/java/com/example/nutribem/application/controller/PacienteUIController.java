@@ -10,9 +10,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
 import java.io.IOException;
+import java.util.Objects;
 
-import static com.example.nutribem.application.main.Main.createPacienteUseCase;
-import static com.example.nutribem.application.main.Main.updatePacienteUseCase;
+import static com.example.nutribem.application.main.Main.*;
 
 public class PacienteUIController {
     @FXML
@@ -98,12 +98,8 @@ public class PacienteUIController {
         paciente.setPeso(Double.valueOf(txtPeso.getText()));
         paciente.setObjetivos(txtObjetivos.getText());
         paciente.setTelefone(txtTelefone.getText());
-        if(cbDiabetes.getValue().equals("Sim"))
-            paciente.setDiabetes(true);
-        paciente.setDiabetes(false);
-        if(cbGluten.getValue().equals("Sim"))
-            paciente.setIntoleranciaGluten(true);
-        paciente.setIntoleranciaGluten(false);
+        paciente.setDiabetes(cbDiabetes.getValue().equals("Sim"));
+        paciente.setIntoleranciaGluten(cbGluten.getValue().equals("Sim"));
         paciente.setIntoleranciaLactose(cbLactose.getValue());
         paciente.setSexo(cbSexo.getValue());
         paciente.setObservacoesGerais(txtObservacoes.getText());
@@ -137,8 +133,7 @@ public class PacienteUIController {
 
 
     public void setPaciente(Paciente paciente, UIMode mode){
-        if(paciente == null)
-            throw new IllegalArgumentException("Paciente não pode ser nulo!");
+        Objects.requireNonNull(paciente,"Paciente não pode ser nulo!");
 
         this.paciente= paciente;
         setEntityIntoView();
