@@ -11,7 +11,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
@@ -27,7 +29,8 @@ public class PlanoNutricionalManagementUIController {
     private TableColumn<PlanoNutricional,Integer> cId;
     @FXML
     private TableColumn<PlanoNutricional,String> cName;
-
+    @FXML
+    private TextField txtNamePlano;
     private ObservableList<PlanoNutricional> tableData;
     private PlanoNutricional planoNutricional;
     private Paciente paciente;
@@ -48,8 +51,6 @@ public class PlanoNutricionalManagementUIController {
 
         tableData.clear();
         tableData.addAll(planoNutricionalList);
-    }
-    public void findPlanoByName(ActionEvent actionEvent) {
     }
 
     public void getSelectedAndSetButton(MouseEvent mouseEvent) {
@@ -110,4 +111,16 @@ public class PlanoNutricionalManagementUIController {
 
     public void cardapioUI(ActionEvent actionEvent) {
     }
+
+    @FXML
+    public void handle(KeyEvent key){
+        String txtSearch = (txtNamePlano.getText() + key.getText()).toUpperCase();
+        List<PlanoNutricional> planosList = findPlanoNutricionalUseCase.findAll();
+        List<PlanoNutricional> matchesWithSearch = planosList.stream()
+                .filter(planoNutricional -> planoNutricional.getNome().toUpperCase().startsWith(txtSearch))
+                .toList();
+        tableData.clear();
+        tableData.addAll(matchesWithSearch);
+    }
+
 }
