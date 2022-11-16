@@ -35,6 +35,9 @@ public class Alimento {
         this.ativado = true;
     }
 
+    public Alimento() {
+    }
+
     public ValoresNutricionais calculateValoresNutricionais(){
         return new ValoresNutricionais(getCalorias(), getColesterol(), getGluten(),
                 getGordurasSaturadas(), getSodio(), getAcucar(), getLactose());

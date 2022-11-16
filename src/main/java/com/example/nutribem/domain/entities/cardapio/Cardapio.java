@@ -14,6 +14,9 @@ public class Cardapio {
         this.planoNutricional = planoNutricional;
     }
 
+    public Cardapio() {
+    }
+
     public void setId(Integer id) {
         if(this.id != null)
             throw new IllegalStateException("Id não pode ser alterado!");

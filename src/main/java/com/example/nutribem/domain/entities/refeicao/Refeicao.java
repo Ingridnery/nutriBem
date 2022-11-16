@@ -19,6 +19,9 @@ public class Refeicao {
         this.cardapio = cardapio;
     }
 
+    public Refeicao() {
+    }
+
     public Cardapio getCardapio() {
         return cardapio;
     }

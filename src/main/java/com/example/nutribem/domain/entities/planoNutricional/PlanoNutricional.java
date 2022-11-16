@@ -20,6 +20,9 @@ public class PlanoNutricional {
         this.paciente = paciente;
     }
 
+    public PlanoNutricional() {
+    }
+
     public void setId(Integer id) {
         this.id = id;
     }
