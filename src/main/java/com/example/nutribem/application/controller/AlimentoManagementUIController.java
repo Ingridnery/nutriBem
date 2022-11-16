@@ -2,27 +2,26 @@ package com.example.nutribem.application.controller;
 
 import com.example.nutribem.WindowLoader;
 import com.example.nutribem.domain.entities.alimento.Alimento;
+import com.example.nutribem.domain.entities.paciente.Paciente;
 import com.example.nutribem.domain.usecases.utils.AlertMessage;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
 
-import static com.example.nutribem.application.main.Main.findAlimentoUseCase;
-import static com.example.nutribem.application.main.Main.removeAlimentoUseCase;
+import static com.example.nutribem.application.main.Main.*;
 
 public class AlimentoManagementUIController {
-
+    @FXML
+    private TextField txtNameAlimento;
     @FXML
     private TableView<Alimento> tableView;
     @FXML
@@ -100,10 +99,18 @@ public class AlimentoManagementUIController {
             setMessageAlimento();
     }
 
-    public void findAlimentoByName(ActionEvent actionEvent) {
-    }
-
     public void backScene(ActionEvent actionEvent) throws IOException {
         WindowLoader.setRoot("MainUI");
+    }
+
+    @FXML
+    public void handle(KeyEvent key){
+        String txtSearch = (txtNameAlimento.getText() + key.getText()).toUpperCase();
+        List<Alimento> alimentoList = findAlimentoUseCase.findAll();
+        List<Alimento> matchesWithSearch = alimentoList.stream()
+                .filter(paciente -> paciente.getNome().toUpperCase().startsWith(txtSearch))
+                .toList();
+        tableData.clear();
+        tableData.addAll(matchesWithSearch);
     }
 }
