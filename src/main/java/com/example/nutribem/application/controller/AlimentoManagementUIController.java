@@ -108,7 +108,7 @@ public class AlimentoManagementUIController {
         String txtSearch = (txtNameAlimento.getText() + key.getText()).toUpperCase();
         List<Alimento> alimentoList = findAlimentoUseCase.findAll();
         List<Alimento> matchesWithSearch = alimentoList.stream()
-                .filter(paciente -> paciente.getNome().toUpperCase().startsWith(txtSearch))
+                .filter(alimento -> alimento.getNome().toUpperCase().startsWith(txtSearch))
                 .toList();
         tableData.clear();
         tableData.addAll(matchesWithSearch);
