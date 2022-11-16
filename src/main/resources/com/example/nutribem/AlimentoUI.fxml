@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.nutribem.application.controller.AlimentoUIController">
+
+    <children>
+        <Label layoutX="26.0" layoutY="27.0" text="Nome:" />
+        <Label layoutX="250.0" layoutY="27.0" text="Porção:" />
+        <Label layoutX="26.0" layoutY="76.0" text="Calorias:" />
+        <Label layoutX="155.0" layoutY="76.0" text="Colesterol:" />
+        <Label layoutX="26.0" layoutY="120.0" text="Glúten:" />
+        <Label layoutX="300.0" layoutY="76.0" prefHeight="21.0" prefWidth="139.0" text="Gorduras Saturadas:" />
+        <Label layoutX="370.0" layoutY="27.0" text="Sódio:" />
+        <Label layoutX="490.0" layoutY="27.0" text="Açúcar:" />
+        <Label layoutX="490.0" layoutY="76.0" text="Lactose:" />
+        <TextField fx:id="txtNome" layoutX="80.0" layoutY="22.0" prefHeight="31.0" />
+        <TextField fx:id="txtPorcao" layoutX="300.0" layoutY="22.0" prefHeight="31.0" prefWidth="56.0" />
+        <TextField fx:id="txtSodio" layoutX="417.0" layoutY="22.0" prefHeight="31.0" prefWidth="56.0" />
+        <TextField fx:id="txtCalorias" layoutX="80.0" layoutY="71.0" prefHeight="31.0" prefWidth="56.0" />
+        <TextField fx:id="txtColesterol" layoutX="220.0" layoutY="71.0" prefHeight="31.0" prefWidth="56.0" />
+        <TextField fx:id="txtGorduraSaturada" layoutX="417.0" layoutY="71.0" prefHeight="31.0" prefWidth="56.0" />
+        <TextField fx:id="txtAcucar" layoutX="544.0" layoutY="22.0" prefHeight="31.0" prefWidth="56.0" />
+        <TextField fx:id="txtLactose" layoutX="544.0" layoutY="71.0" prefHeight="31.0" prefWidth="56.0" />
+        <ComboBox fx:id="cbGluten" layoutX="79.0" layoutY="115.0" prefWidth="108.0" />
+        <Button fx:id="btnStatus" layoutX="373.0" layoutY="283.0" mnemonicParsing="false" onAction="#activeOrDesactive" prefHeight="39.0" prefWidth="88.0" text="Desativar" />
+        <Button fx:id="btnCancel" layoutX="608.0" layoutY="283.0" mnemonicParsing="false" onAction="#backScene" prefHeight="39.0" prefWidth="88.0" text="Voltar" />
+        <Button fx:id="btnConfirm" layoutX="488.0" layoutY="283.0" mnemonicParsing="false" onAction="#saveOrUpdate" prefHeight="39.0" prefWidth="88.0" text="Salvar" /><Button fx:id="btnBack" layoutX="320.0" layoutY="-30.0" mnemonicParsing="false" onAction="#backScene" prefHeight="34.0" text="Voltar" />
+
+    </children>
+
+</AnchorPane>
