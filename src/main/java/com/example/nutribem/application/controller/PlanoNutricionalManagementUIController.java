@@ -1,7 +1,6 @@
 package com.example.nutribem.application.controller;
 
 import com.example.nutribem.WindowLoader;
-import com.example.nutribem.domain.entities.alimento.Alimento;
 import com.example.nutribem.domain.entities.paciente.Paciente;
 import com.example.nutribem.domain.entities.planoNutricional.PlanoNutricional;
 import com.example.nutribem.domain.usecases.utils.AlertMessage;
@@ -10,7 +9,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -90,13 +88,14 @@ public class PlanoNutricionalManagementUIController {
             WindowLoader.setRoot("PlanoNutricionalUI");
             PlanoNutricionalUIController controller = (PlanoNutricionalUIController) WindowLoader.getController();
             controller.setPlanoNutricional(planoNutricional,mode);
+            controller.setPaciente(paciente);
         }
         else
             setMessagePlanoNutricional();
 
 
     }
-    public void setPlanoNutricional(Paciente paciente){
+    public void setPlanoNutricionalFromPaciente(Paciente paciente){
 
         Objects.requireNonNull(paciente,"Paciente não pode ser nulo!");
         planoNutricionalList= findPlanoNutricionalUseCase.findByPaciente(paciente.getId());
@@ -110,6 +109,13 @@ public class PlanoNutricionalManagementUIController {
         WindowLoader.setRoot("MainUI");
     }
 
-    public void cardapioUI(ActionEvent actionEvent) {
+    public void cardapioUI(ActionEvent actionEvent) throws IOException {
+        if(planoNutricional!=null){
+            WindowLoader.setRoot("CardapioManagementUI");
+            CardapioManagementUIController controller = (CardapioManagementUIController) WindowLoader.getController();
+            controller.setCardapioFromPlanoNutricional(planoNutricional);
+        }
+        else
+            setMessagePlanoNutricional();
     }
 }
