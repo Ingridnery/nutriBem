@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="782.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.nutribem.application.controller.MainUIController">
+<AnchorPane prefHeight="600.0" prefWidth="782.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.nutribem.application.controller.MainUIController">
    <children>
        <Label layoutX="25.0" layoutY="70.0" text="Nome do paciente: ">
                <font>
@@ -26,10 +23,13 @@
       </TableView>
        <Pane layoutX="14.0" layoutY="200.0" prefHeight="61.0" prefWidth="573.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0">
             <children>
-                <Button fx:id="btnCreate" layoutX="15.0" layoutY="-30.0" mnemonicParsing="false" prefHeight="34.0" onAction="#createPaciente" text="Novo" />
-                <Button fx:id="btnUpdate" layoutX="90.0" layoutY="-30.0" mnemonicParsing="false" prefHeight="34.0" onAction="#updatePaciente" text="Editar" />
-                <Button fx:id="btnRemove" layoutX="165.0" layoutY="-30.0" mnemonicParsing="false" prefHeight="34.0" onAction="#removePaciente" text="Excluir" />
-                <Button fx:id="btnFind" layoutX="240.0" layoutY="-30.0" mnemonicParsing="false" prefHeight="34.0" onAction="#detailPaciente" text="Detalhar" />
+                <Button fx:id="btnCreate" layoutX="15.0" layoutY="-30.0" mnemonicParsing="false" onAction="#createPaciente" prefHeight="34.0" text="Novo" />
+                <Button fx:id="btnUpdate" layoutX="70.0" layoutY="-30.0" mnemonicParsing="false" onAction="#updatePaciente" prefHeight="34.0" text="Editar" />
+                <Button fx:id="btnRemove" layoutX="127.0" layoutY="-30.0" mnemonicParsing="false" onAction="#removePaciente" prefHeight="34.0" text="Excluir" />
+                <Button fx:id="btnFind" layoutX="187.0" layoutY="-30.0" mnemonicParsing="false" onAction="#detailPaciente" prefHeight="34.0" text="Detalhar" />
+                <Button fx:id="btnAlimento" layoutX="260.0" layoutY="-30.0" mnemonicParsing="false" onAction="#alimentoUI" prefHeight="34.0" text="Gerenciar Alimentos" />
+                <Button fx:id="btnPlanoNutricional" layoutX="395.0" layoutY="-30.0" mnemonicParsing="false" onAction="#planoNutricionalUI" prefHeight="34.0" text="Gerenciar Plano Nutricional" />
+
             </children>
 
        </Pane>

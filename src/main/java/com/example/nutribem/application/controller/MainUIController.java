@@ -2,15 +2,13 @@ package com.example.nutribem.application.controller;
 
 import com.example.nutribem.WindowLoader;
 import com.example.nutribem.domain.entities.paciente.Paciente;
+import com.example.nutribem.domain.usecases.utils.AlertMessage;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 
@@ -43,9 +41,12 @@ public class MainUIController {
     private Button btnFind;
     @FXML
     private Button btnRemove;
+    @FXML
+    private Button btnAlimento;
 
     private ObservableList<Paciente> tableData;
     private Paciente paciente;
+    private final AlertMessage alert = new AlertMessage();
 
 
     @FXML
@@ -86,11 +87,21 @@ public class MainUIController {
             removePacienteUseCase.remove(paciente);
             loadDataAndShow();
         }
+        else
+            setMessagePaciente();
+
     }
 
     public void detailPaciente(ActionEvent actionEvent) throws IOException {
         showPacienteInMode(UIMode.VIEW);
     }
+
+    private void setMessagePaciente(){
+        String title = "Paciente invalido.";
+        String message = "Nenhum paciente foi selecionado!";
+        alert.showAlert(title, message, Alert.AlertType.ERROR);
+    }
+
 
     private void showPacienteInMode(UIMode mode) throws IOException {
         if(paciente !=null){
@@ -98,10 +109,30 @@ public class MainUIController {
             PacienteUIController controller = (PacienteUIController) WindowLoader.getController();
             controller.setPaciente(paciente,mode);
         }
+        else
+            setMessagePaciente();
 
     }
 
     public void getSelectedAndSetButton(MouseEvent mouseEvent) {
         paciente= tableView.getSelectionModel().getSelectedItem();
     }
+
+    public void alimentoUI(ActionEvent actionEvent) throws IOException {
+        WindowLoader.setRoot("AlimentoManagementUI");
+
+    }
+
+    public void planoNutricionalUI(ActionEvent actionEvent) throws IOException {
+        if(paciente!=null){
+            WindowLoader.setRoot("PlanoNutricionalManagementUI");
+            PlanoNutricionalManagementUIController controller = (PlanoNutricionalManagementUIController) WindowLoader.getController();
+            controller.setPlanoNutricional(paciente);
+        }
+        else
+            setMessagePaciente();
+
+    }
+
+
 }
