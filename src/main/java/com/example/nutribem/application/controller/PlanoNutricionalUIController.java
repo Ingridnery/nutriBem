@@ -23,8 +23,6 @@ public class PlanoNutricionalUIController {
     @FXML
     private DatePicker dpEndDate;
     @FXML
-    private Button btnStatus;
-    @FXML
     private Button btnConfirm;
     @FXML
     private Button btnCancel;
