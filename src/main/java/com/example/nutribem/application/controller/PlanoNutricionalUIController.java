@@ -22,7 +22,8 @@ public class PlanoNutricionalUIController {
     private DatePicker dpStartDate;
     @FXML
     private DatePicker dpEndDate;
-
+    @FXML
+    private Button btnStatus;
     @FXML
     private Button btnConfirm;
     @FXML
@@ -37,7 +38,9 @@ public class PlanoNutricionalUIController {
         WindowLoader.setRoot("PlanoNutricionalManagementUI");
 
         PlanoNutricionalManagementUIController controller = (PlanoNutricionalManagementUIController) WindowLoader.getController();
-        controller.setPlanoNutricionalFromPaciente(paciente);
+        controller.setPlanoNutricional(paciente);
+
+
 
 
     }
@@ -50,7 +53,7 @@ public class PlanoNutricionalUIController {
             updatePlanoNutricionalUseCase.update(planoNutricional);
         WindowLoader.setRoot("PlanoNutricionalManagementUI");
         PlanoNutricionalManagementUIController controller = (PlanoNutricionalManagementUIController) WindowLoader.getController();
-        controller.setPlanoNutricionalFromPaciente(paciente);
+        controller.setPlanoNutricional(paciente);
     }
 
     public void getEntityToView(){

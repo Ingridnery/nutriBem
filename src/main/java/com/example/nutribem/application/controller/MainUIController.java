@@ -10,6 +10,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 
 import static com.example.nutribem.application.main.Main.findPacienteUseCase;
@@ -38,8 +39,6 @@ public class MainUIController {
     @FXML
     private Button btnUpdate;
     @FXML
-    private Button btnFind;
-    @FXML
     private Button btnRemove;
     @FXML
     private Button btnAlimento;
@@ -55,6 +54,19 @@ public class MainUIController {
         bindColumnsToValueSources();
         loadDataAndShow();
     }
+
+    @FXML
+    public void handle(KeyEvent key){
+        String txtSearch = (txtNamePaciente.getText() + key.getText()).toUpperCase();
+        List<Paciente> pacienteList = findPacienteUseCase.findAll();
+        List<Paciente> matchesWithSearch = pacienteList.stream()
+                .filter(paciente -> paciente.getNome().toUpperCase().startsWith(txtSearch))
+                .toList();
+        tableData.clear();
+        tableData.addAll(matchesWithSearch);
+    }
+
+
     private void bindColumnsToValueSources(){
         cId.setCellValueFactory(new PropertyValueFactory<>("id"));
         cName.setCellValueFactory(new PropertyValueFactory<>("nome"));
@@ -69,9 +81,6 @@ public class MainUIController {
         List<Paciente> pacienteList = findPacienteUseCase.findAll();
         tableData.clear();
         tableData.addAll(pacienteList);
-    }
-    public void findPacienteByName(ActionEvent actionEvent) {
-
     }
 
     public void createPaciente(ActionEvent actionEvent) throws IOException {
@@ -127,7 +136,7 @@ public class MainUIController {
         if(paciente!=null){
             WindowLoader.setRoot("PlanoNutricionalManagementUI");
             PlanoNutricionalManagementUIController controller = (PlanoNutricionalManagementUIController) WindowLoader.getController();
-            controller.setPlanoNutricional(paciente);
+            controller.setPlanoNutricionalFromPaciente(paciente);
         }
         else
             setMessagePaciente();
