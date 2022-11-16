@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Font?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.nutribem.application.controller.PlanoNutricionalManagementUIController"
+            prefHeight="400.0" prefWidth="600.0">
+    <children>
+
+        <Label layoutX="25.0" layoutY="70.0" text="Nome do plano: ">
+            <font>
+                <Font size="15." />
+            </font>
+        </Label>
+
+        <TextField fx:id="txtNamePlano" layoutX="155.0" layoutY="65.0" prefHeight="34.0" prefWidth="132.0" />
+        <Button fx:id="btnFindPlano" layoutX="300.0" layoutY="65.0" mnemonicParsing="false" onAction="#findPlanoByName" prefHeight="34.0" text="Buscar" />
+
+        <TableView fx:id="tableView" layoutX="25.0" layoutY="119.0" onMouseClicked="#getSelectedAndSetButton" prefHeight="900.0" prefWidth="753.0" AnchorPane.bottomAnchor="134.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="134.0">
+            <columns>
+                <TableColumn fx:id="cId" prefWidth="100.0" text="ID" />
+                <TableColumn fx:id="cName" prefWidth="652.0" text="Nome" />
+            </columns>
+        </TableView>
+        <Pane layoutX="14.0" layoutY="200.0" prefHeight="61.0" prefWidth="573.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0">
+            <children>
+                <Button fx:id="btnCreate" layoutX="15.0" layoutY="-30.0" mnemonicParsing="false" onAction="#createPlanoNutricional" prefHeight="34.0" text="Novo" />
+                <Button fx:id="btnUpdate" layoutX="90.0" layoutY="-30.0" mnemonicParsing="false" onAction="#updatePlanoNutricional" prefHeight="34.0" text="Editar" />
+                <Button fx:id="btnRemove" layoutX="165.0" layoutY="-30.0" mnemonicParsing="false" onAction="#removePlanoNutricional" prefHeight="34.0" text="Excluir" />
+                <Button fx:id="btnFind" layoutX="240.0" layoutY="-30.0" mnemonicParsing="false" onAction="#detailPlanoNutricional" prefHeight="34.0" text="Detalhar" />
+                <Button fx:id="btnBack" layoutX="320.0" layoutY="-30.0" mnemonicParsing="false" onAction="#backScene" prefHeight="34.0" text="Voltar" />
+                <Button fx:id="btnCardapio" layoutX="260.0" layoutY="-30.0" mnemonicParsing="false" onAction="#cardapioUI" prefHeight="34.0" text="Gerenciar Alimentos" />
+
+            </children>
+
+        </Pane>
+    </children>
+
+
+</AnchorPane>
