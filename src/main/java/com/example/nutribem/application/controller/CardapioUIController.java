@@ -3,8 +3,10 @@ package com.example.nutribem.application.controller;
 import com.example.nutribem.WindowLoader;
 import com.example.nutribem.domain.entities.cardapio.Cardapio;
 import com.example.nutribem.domain.entities.planoNutricional.PlanoNutricional;
+import com.example.nutribem.domain.usecases.utils.AlertMessage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
@@ -24,6 +26,7 @@ public class CardapioUIController {
 
     private Cardapio cardapio;
     private PlanoNutricional planoNutricional;
+    private AlertMessage alertMessage = new AlertMessage();
 
 
 
@@ -35,11 +38,19 @@ public class CardapioUIController {
     }
 
     public void saveOrUpdate(ActionEvent actionEvent) throws IOException {
-        getEntityToView();
-        if(cardapio.getId() == null)
-            createCardapioUseCase.insert(cardapio);
-        else
-            updateCardapioUseCase.update(cardapio);
+
+        try{
+            getEntityToView();
+            if(cardapio.getId() == null)
+                createCardapioUseCase.insert(cardapio);
+            else
+                updateCardapioUseCase.update(cardapio);
+
+
+        }catch (Exception e){
+            alertMessage.showAlert("Erro!", e.getMessage(), Alert.AlertType.ERROR);
+        }
+
         WindowLoader.setRoot("CardapioManagementUI");
         CardapioManagementUIController controller = (CardapioManagementUIController) WindowLoader.getController();
         controller.setCardapioFromPlanoNutricional(planoNutricional);
@@ -49,7 +60,8 @@ public class CardapioUIController {
     public void getEntityToView(){
         if(cardapio==null)
             cardapio = new Cardapio();
-        cardapio.setNumeroDia(Integer.valueOf(txtNumeroDia.getText()));
+        else
+            cardapio.setNumeroDia(Integer.valueOf(txtNumeroDia.getText()));
 
     }
 

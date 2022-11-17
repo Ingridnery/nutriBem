@@ -5,6 +5,7 @@ import com.example.nutribem.domain.entities.paciente.CPF;
 import com.example.nutribem.domain.entities.paciente.IntoleranciaLactose;
 import com.example.nutribem.domain.entities.paciente.Paciente;
 import com.example.nutribem.domain.entities.paciente.Sexo;
+import com.example.nutribem.domain.usecases.utils.AlertMessage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -55,6 +56,7 @@ public class PacienteUIController {
     private Button btnCancel;
 
     private Paciente paciente;
+    private AlertMessage alert = new AlertMessage();
 
     @FXML
     public void initialize(){
@@ -66,11 +68,17 @@ public class PacienteUIController {
         cbDiabetes.getItems().add("Não");
     }
     public void saveOrUpdate(ActionEvent actionEvent) throws IOException {
-        getEntityToView();
-        if(paciente.getId() == null)
-            createPacienteUseCase.insert(paciente);
-        else
-            updatePacienteUseCase.update(paciente);
+
+        try{
+            getEntityToView();
+            if(paciente.getId() == null)
+                createPacienteUseCase.insert(paciente);
+            else
+                updatePacienteUseCase.update(paciente);
+        }catch (Exception e){
+                alert.showAlert("Erro!", e.getMessage(), Alert.AlertType.ERROR);
+        }
+
         WindowLoader.setRoot("MainUI");
     }
 
@@ -87,23 +95,27 @@ public class PacienteUIController {
     public void getEntityToView(){
         if(paciente == null)
             paciente = new Paciente();
+        else{
+            paciente.setNome(txtNome.getText());
+            paciente.setCpf(CPF.valueOf(txtCPF.getText()));
+            paciente.setAlergias(txtAlergias.getText());
+            paciente.setAltura(Integer.valueOf(txtAltura.getText()));
+            paciente.setEmail(txtEmail.getText());
+            paciente.setCircunferencia(Integer.valueOf(txtCircunferencia.getText()));
+            paciente.setHistoricoClinicoGeral(txtHistorico.getText());
+            paciente.setPeso(Double.valueOf(txtPeso.getText()));
+            paciente.setObjetivos(txtObjetivos.getText());
+            paciente.setTelefone(txtTelefone.getText());
+            paciente.setDiabetes(cbDiabetes.getValue().equals("Sim"));
+            paciente.setIntoleranciaGluten(cbGluten.getValue().equals("Sim"));
+            paciente.setIntoleranciaLactose(cbLactose.getValue());
+            paciente.setSexo(cbSexo.getValue());
+            paciente.setObservacoesGerais(txtObservacoes.getText());
+            paciente.setDataNascimento(dtDataNasc.getValue());
 
-        paciente.setNome(txtNome.getText());
-        paciente.setCpf(CPF.valueOf(txtCPF.getText()));
-        paciente.setAlergias(txtAlergias.getText());
-        paciente.setAltura(Integer.valueOf(txtAltura.getText()));
-        paciente.setEmail(txtEmail.getText());
-        paciente.setCircunferencia(Integer.valueOf(txtCircunferencia.getText()));
-        paciente.setHistoricoClinicoGeral(txtHistorico.getText());
-        paciente.setPeso(Double.valueOf(txtPeso.getText()));
-        paciente.setObjetivos(txtObjetivos.getText());
-        paciente.setTelefone(txtTelefone.getText());
-        paciente.setDiabetes(cbDiabetes.getValue().equals("Sim"));
-        paciente.setIntoleranciaGluten(cbGluten.getValue().equals("Sim"));
-        paciente.setIntoleranciaLactose(cbLactose.getValue());
-        paciente.setSexo(cbSexo.getValue());
-        paciente.setObservacoesGerais(txtObservacoes.getText());
-        paciente.setDataNascimento(dtDataNasc.getValue());
+        }
+
+
     }
 
     public void setEntityIntoView(){

@@ -5,8 +5,10 @@ import com.example.nutribem.domain.entities.alimento.Alimento;
 import com.example.nutribem.domain.entities.paciente.IntoleranciaLactose;
 import com.example.nutribem.domain.entities.paciente.Paciente;
 import com.example.nutribem.domain.entities.paciente.Sexo;
+import com.example.nutribem.domain.usecases.utils.AlertMessage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
@@ -44,6 +46,8 @@ public class AlimentoUIController {
     private Button btnCancel;
     private Alimento alimento;
 
+    private AlertMessage alert = new AlertMessage();
+
     @FXML
     public void initialize(){
         cbGluten.getItems().add("Sim");
@@ -64,31 +68,42 @@ public class AlimentoUIController {
 
     public void saveOrUpdate(ActionEvent actionEvent) throws IOException {
 
-        getEntityToView();
+        try{
+            getEntityToView();
+            if(alimento.getId() == null){
+                createAlimentoUseCase.insert(alimento);
+            }
+            else{
+                updateAlimentoUseCase.update(alimento);
+            }
 
-        if(alimento.getId() == null){
-            createAlimentoUseCase.insert(alimento);
+        }catch (Exception e){
+            alert.showAlert("Erro!", e.getMessage(), Alert.AlertType.ERROR);
         }
-        else
-            updateAlimentoUseCase.update(alimento);
+
+
         WindowLoader.setRoot("AlimentoManagementUI");
     }
 
     public void getEntityToView(){
         if(alimento == null)
             alimento = new Alimento();
+        else{
+            alimento.setNome(txtNome.getText());
 
-        alimento.setNome(txtNome.getText());
+
+            alimento.setPorcao(Integer.valueOf(txtPorcao.getText()));
+            alimento.setCalorias(Integer.valueOf(txtCalorias.getText()));
+            alimento.setColesterol(Integer.valueOf(txtColesterol.getText()));
+            alimento.setGluten(cbGluten.getValue().equals("Sim"));
+            alimento.setGordurasSaturadas(Double.valueOf(txtGorduraSaturada.getText()));
+            alimento.setSodio(Double.valueOf(txtSodio.getText()));
+            alimento.setAcucar(Double.valueOf(txtAcucar.getText()));
+            alimento.setLactose(Double.valueOf(txtLactose.getText()));
+
+        }
 
 
-        alimento.setPorcao(Integer.valueOf(txtPorcao.getText()));
-        alimento.setCalorias(Integer.valueOf(txtCalorias.getText()));
-        alimento.setColesterol(Integer.valueOf(txtColesterol.getText()));
-        alimento.setGluten(cbGluten.getValue().equals("Sim"));
-        alimento.setGordurasSaturadas(Double.valueOf(txtGorduraSaturada.getText()));
-        alimento.setSodio(Double.valueOf(txtSodio.getText()));
-        alimento.setAcucar(Double.valueOf(txtAcucar.getText()));
-        alimento.setLactose(Double.valueOf(txtLactose.getText()));
 
     }
 

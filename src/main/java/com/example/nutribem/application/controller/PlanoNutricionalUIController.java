@@ -3,8 +3,10 @@ package com.example.nutribem.application.controller;
 import com.example.nutribem.WindowLoader;
 import com.example.nutribem.domain.entities.paciente.Paciente;
 import com.example.nutribem.domain.entities.planoNutricional.PlanoNutricional;
+import com.example.nutribem.domain.usecases.utils.AlertMessage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
@@ -31,6 +33,7 @@ public class PlanoNutricionalUIController {
 
     private PlanoNutricional planoNutricional;
     private Paciente paciente;
+    private AlertMessage alert = new AlertMessage();
 
 
 
@@ -43,11 +46,17 @@ public class PlanoNutricionalUIController {
     }
 
     public void saveOrUpdate(ActionEvent actionEvent) throws IOException {
-        getEntityToView();
-        if(planoNutricional.getId() == null)
-            createPlanoNutricionalUseCase.insert(planoNutricional);
-        else
-            updatePlanoNutricionalUseCase.update(planoNutricional);
+
+            try {
+                getEntityToView();
+                if(planoNutricional.getId() == null)
+                    createPlanoNutricionalUseCase.insert(planoNutricional);
+                else
+                    updatePlanoNutricionalUseCase.update(planoNutricional);
+            }catch (Exception e){
+                alert.showAlert("Erro!", e.getMessage(), Alert.AlertType.ERROR);
+            }
+
         WindowLoader.setRoot("PlanoNutricionalManagementUI");
         PlanoNutricionalManagementUIController controller = (PlanoNutricionalManagementUIController) WindowLoader.getController();
         controller.setPlanoNutricionalFromPaciente(paciente);
@@ -56,11 +65,14 @@ public class PlanoNutricionalUIController {
     public void getEntityToView(){
         if(planoNutricional==null)
             planoNutricional= new PlanoNutricional();
+        else{
+            planoNutricional.setNome(txtName.getText());
+            planoNutricional.setDataInicio(dpStartDate.getValue());
+            planoNutricional.setDataFim(dpEndDate.getValue());
+            planoNutricional.setPaciente(paciente);
+        }
 
-        planoNutricional.setNome(txtName.getText());
-        planoNutricional.setDataInicio(dpStartDate.getValue());
-        planoNutricional.setDataFim(dpEndDate.getValue());
-        planoNutricional.setPaciente(paciente);
+
     }
     public void setEntityIntoView(){
         txtName.setText(planoNutricional.getNome());
