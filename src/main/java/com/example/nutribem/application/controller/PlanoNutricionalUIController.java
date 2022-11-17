@@ -25,8 +25,6 @@ public class PlanoNutricionalUIController {
     @FXML
     private DatePicker dpEndDate;
     @FXML
-    private Button btnStatus;
-    @FXML
     private Button btnConfirm;
     @FXML
     private Button btnCancel;
@@ -53,24 +51,25 @@ public class PlanoNutricionalUIController {
                     createPlanoNutricionalUseCase.insert(planoNutricional);
                 else
                     updatePlanoNutricionalUseCase.update(planoNutricional);
+
+                WindowLoader.setRoot("PlanoNutricionalManagementUI");
+                PlanoNutricionalManagementUIController controller = (PlanoNutricionalManagementUIController) WindowLoader.getController();
+                controller.setPlanoNutricionalFromPaciente(paciente);
             }catch (Exception e){
                 alert.showAlert("Erro!", "Dados inválidos!", Alert.AlertType.ERROR);
             }
 
-        WindowLoader.setRoot("PlanoNutricionalManagementUI");
-        PlanoNutricionalManagementUIController controller = (PlanoNutricionalManagementUIController) WindowLoader.getController();
-        controller.setPlanoNutricionalFromPaciente(paciente);
+
     }
 
     public void getEntityToView(){
         if(planoNutricional==null)
             planoNutricional= new PlanoNutricional();
-        else{
-            planoNutricional.setNome(txtName.getText());
-            planoNutricional.setDataInicio(dpStartDate.getValue());
-            planoNutricional.setDataFim(dpEndDate.getValue());
-            planoNutricional.setPaciente(paciente);
-        }
+
+        planoNutricional.setNome(txtName.getText());
+        planoNutricional.setDataInicio(dpStartDate.getValue());
+        planoNutricional.setDataFim(dpEndDate.getValue());
+        planoNutricional.setPaciente(paciente);
 
 
     }
