@@ -6,11 +6,15 @@ import com.example.nutribem.domain.entities.paciente.IntoleranciaLactose;
 import com.example.nutribem.domain.entities.paciente.Paciente;
 import com.example.nutribem.domain.entities.paciente.Sexo;
 import com.example.nutribem.domain.usecases.utils.AlertMessage;
+import com.example.nutribem.domain.usecases.utils.TextFieldFormater;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyEvent;
 
+import javax.swing.text.MaskFormatter;
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.Objects;
 
 import static com.example.nutribem.application.main.Main.*;
@@ -75,11 +79,11 @@ public class PacienteUIController {
                 createPacienteUseCase.insert(paciente);
             else
                 updatePacienteUseCase.update(paciente);
+            WindowLoader.setRoot("MainUI");
         }catch (Exception e){
-                alert.showAlert("Erro!", "Dados inválidos!", Alert.AlertType.ERROR);
+                alert.showAlert("Erro!", e.getMessage(), Alert.AlertType.ERROR);
         }
 
-        WindowLoader.setRoot("MainUI");
     }
 
     public void backScene(ActionEvent actionEvent) throws IOException {
@@ -95,25 +99,23 @@ public class PacienteUIController {
     public void getEntityToView(){
         if(paciente == null)
             paciente = new Paciente();
-        else{
-            paciente.setNome(txtNome.getText());
-            paciente.setCpf(CPF.valueOf(txtCPF.getText()));
-            paciente.setAlergias(txtAlergias.getText());
-            paciente.setAltura(Integer.valueOf(txtAltura.getText()));
-            paciente.setEmail(txtEmail.getText());
-            paciente.setCircunferencia(Integer.valueOf(txtCircunferencia.getText()));
-            paciente.setHistoricoClinicoGeral(txtHistorico.getText());
-            paciente.setPeso(Double.valueOf(txtPeso.getText()));
-            paciente.setObjetivos(txtObjetivos.getText());
-            paciente.setTelefone(txtTelefone.getText());
-            paciente.setDiabetes(cbDiabetes.getValue().equals("Sim"));
-            paciente.setIntoleranciaGluten(cbGluten.getValue().equals("Sim"));
-            paciente.setIntoleranciaLactose(cbLactose.getValue());
-            paciente.setSexo(cbSexo.getValue());
-            paciente.setObservacoesGerais(txtObservacoes.getText());
-            paciente.setDataNascimento(dtDataNasc.getValue());
 
-        }
+        paciente.setNome(txtNome.getText());
+        paciente.setCpf(CPF.valueOf(txtCPF.getText()));
+        paciente.setAlergias(txtAlergias.getText());
+        paciente.setAltura(Integer.valueOf(txtAltura.getText()));
+        paciente.setEmail(txtEmail.getText());
+        paciente.setCircunferencia(Integer.valueOf(txtCircunferencia.getText()));
+        paciente.setHistoricoClinicoGeral(txtHistorico.getText());
+        paciente.setPeso(Double.valueOf(txtPeso.getText()));
+        paciente.setObjetivos(txtObjetivos.getText());
+        paciente.setTelefone(txtTelefone.getText());
+        paciente.setDiabetes(cbDiabetes.getValue().equals("Sim"));
+        paciente.setIntoleranciaGluten(cbGluten.getValue().equals("Sim"));
+        paciente.setIntoleranciaLactose(cbLactose.getValue());
+        paciente.setSexo(cbSexo.getValue());
+        paciente.setObservacoesGerais(txtObservacoes.getText());
+        paciente.setDataNascimento(dtDataNasc.getValue());
 
 
     }
@@ -177,6 +179,23 @@ public class PacienteUIController {
         cbSexo.setDisable(true);
         dtDataNasc.setDisable(true);
         txtObservacoes.setDisable(true);
+
+    }
+
+    public void txtTelefoneKeyReleased(KeyEvent keyEvent) throws ParseException {
+        TextFieldFormater textFieldFormater = new TextFieldFormater();
+        textFieldFormater.setMask("(##)#####-####");
+        textFieldFormater.setCaracteresValidos("0123456789");
+        textFieldFormater.setTf(txtTelefone);
+        textFieldFormater.formatter();
+    }
+
+    public void txtCpfKeyReleased(KeyEvent keyEvent) {
+        TextFieldFormater textFieldFormater = new TextFieldFormater();
+        textFieldFormater.setMask("###.###.###-##");
+        textFieldFormater.setCaracteresValidos("0123456789");
+        textFieldFormater.setTf(txtCPF);
+        textFieldFormater.formatter();
 
     }
 }

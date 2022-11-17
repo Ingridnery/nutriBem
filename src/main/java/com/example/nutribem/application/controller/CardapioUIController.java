@@ -45,23 +45,21 @@ public class CardapioUIController {
                 createCardapioUseCase.insert(cardapio);
             else
                 updateCardapioUseCase.update(cardapio);
-
+            WindowLoader.setRoot("CardapioManagementUI");
+            CardapioManagementUIController controller = (CardapioManagementUIController) WindowLoader.getController();
+            controller.setCardapioFromPlanoNutricional(planoNutricional);
 
         }catch (Exception e){
-            alertMessage.showAlert("Erro!", "Dados inválidos", Alert.AlertType.ERROR);
+            alertMessage.showAlert("Erro!", e.getMessage(), Alert.AlertType.ERROR);
         }
-
-        WindowLoader.setRoot("CardapioManagementUI");
-        CardapioManagementUIController controller = (CardapioManagementUIController) WindowLoader.getController();
-        controller.setCardapioFromPlanoNutricional(planoNutricional);
 
     }
 
     public void getEntityToView(){
         if(cardapio==null)
             cardapio = new Cardapio();
-        else
-            cardapio.setNumeroDia(Integer.valueOf(txtNumeroDia.getText()));
+        cardapio.setNumeroDia(Integer.valueOf(txtNumeroDia.getText()));
+        cardapio.setPlanoNutricional(planoNutricional);
 
     }
 
