@@ -76,7 +76,7 @@ public class PacienteUIController {
             else
                 updatePacienteUseCase.update(paciente);
         }catch (Exception e){
-                alert.showAlert("Erro!", e.getMessage(), Alert.AlertType.ERROR);
+                alert.showAlert("Erro!", "Dados inválidos!", Alert.AlertType.ERROR);
         }
 
         WindowLoader.setRoot("MainUI");

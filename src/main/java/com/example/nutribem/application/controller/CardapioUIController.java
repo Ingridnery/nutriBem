@@ -48,7 +48,7 @@ public class CardapioUIController {
 
 
         }catch (Exception e){
-            alertMessage.showAlert("Erro!", e.getMessage(), Alert.AlertType.ERROR);
+            alertMessage.showAlert("Erro!", "Dados inválidos", Alert.AlertType.ERROR);
         }
 
         WindowLoader.setRoot("CardapioManagementUI");

@@ -54,7 +54,7 @@ public class PlanoNutricionalUIController {
                 else
                     updatePlanoNutricionalUseCase.update(planoNutricional);
             }catch (Exception e){
-                alert.showAlert("Erro!", e.getMessage(), Alert.AlertType.ERROR);
+                alert.showAlert("Erro!", "Dados inválidos!", Alert.AlertType.ERROR);
             }
 
         WindowLoader.setRoot("PlanoNutricionalManagementUI");
