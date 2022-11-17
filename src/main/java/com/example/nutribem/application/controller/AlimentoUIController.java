@@ -76,33 +76,28 @@ public class AlimentoUIController {
             else{
                 updateAlimentoUseCase.update(alimento);
             }
+            WindowLoader.setRoot("AlimentoManagementUI");
 
         }catch (Exception e){
             alert.showAlert("Erro!", "Dados inválidos!", Alert.AlertType.ERROR);
         }
 
 
-        WindowLoader.setRoot("AlimentoManagementUI");
     }
 
     public void getEntityToView(){
         if(alimento == null)
             alimento = new Alimento();
-        else{
-            alimento.setNome(txtNome.getText());
 
-
-            alimento.setPorcao(Integer.valueOf(txtPorcao.getText()));
-            alimento.setCalorias(Integer.valueOf(txtCalorias.getText()));
-            alimento.setColesterol(Integer.valueOf(txtColesterol.getText()));
-            alimento.setGluten(cbGluten.getValue().equals("Sim"));
-            alimento.setGordurasSaturadas(Double.valueOf(txtGorduraSaturada.getText()));
-            alimento.setSodio(Double.valueOf(txtSodio.getText()));
-            alimento.setAcucar(Double.valueOf(txtAcucar.getText()));
-            alimento.setLactose(Double.valueOf(txtLactose.getText()));
-
-        }
-
+        alimento.setNome(txtNome.getText());
+        alimento.setPorcao(Integer.valueOf(txtPorcao.getText()));
+        alimento.setCalorias(Integer.valueOf(txtCalorias.getText()));
+        alimento.setColesterol(Integer.valueOf(txtColesterol.getText()));
+        alimento.setGluten(cbGluten.getValue().equals("Sim"));
+        alimento.setGordurasSaturadas(Double.valueOf(txtGorduraSaturada.getText()));
+        alimento.setSodio(Double.valueOf(txtSodio.getText()));
+        alimento.setAcucar(Double.valueOf(txtAcucar.getText()));
+        alimento.setLactose(Double.valueOf(txtLactose.getText()));
 
 
     }
