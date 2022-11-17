@@ -7,11 +7,19 @@
 <?import javafx.scene.layout.*?>
 
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.example.nutribem.application.controller.PlanoNutricionalManagementUIController"
             prefHeight="400.0" prefWidth="600.0">
     <children>
+
+        <Text layoutX="240.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gerenciar Plano Nutricional" textAlignment="CENTER">
+            <font>
+                <Font size="24.0" />
+            </font>
+        </Text>
+
 
         <Label layoutX="25.0" layoutY="70.0" text="Nome do plano: ">
             <font>

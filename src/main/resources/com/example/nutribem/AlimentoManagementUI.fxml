@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
 <?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="505.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.nutribem.application.controller.AlimentoManagementUIController">
 
@@ -17,7 +14,7 @@
             </font>
         </Label>
 
-        <TextField fx:id="txtNameAlimento" onKeyPressed="#handle" layoutX="155.0" layoutY="65.0" prefHeight="34.0" prefWidth="132.0" />
+        <TextField fx:id="txtNameAlimento" layoutX="155.0" layoutY="65.0" onKeyPressed="#handle" prefHeight="34.0" prefWidth="132.0" />
 
         <TableView fx:id="tableView" layoutX="25.0" layoutY="119.0" onMouseClicked="#getSelectedAndSetButton" prefHeight="900.0" prefWidth="753.0" AnchorPane.bottomAnchor="134.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="134.0">
         <columns>
@@ -36,6 +33,11 @@
         </children>
 
     </Pane>
+      <Text layoutX="290.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gerenciar Alimento" textAlignment="CENTER">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
     </children>
 
 

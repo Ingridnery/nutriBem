@@ -6,6 +6,11 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="782.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.nutribem.application.controller.MainUIController">
    <children>
+       <Text layoutX="290.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nutribem" textAlignment="CENTER">
+           <font>
+               <Font size="24.0" />
+           </font>
+       </Text>
        <Label layoutX="25.0" layoutY="70.0" text="Nome do paciente: ">
                <font>
                        <Font size="15." />

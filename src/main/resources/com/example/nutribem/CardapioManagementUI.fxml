@@ -8,6 +8,11 @@
 
 
     <children>
+        <Text layoutX="290.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gerenciar Cardápio" textAlignment="CENTER">
+            <font>
+                <Font size="24.0" />
+            </font>
+        </Text>
         <Label layoutX="25.0" layoutY="70.0" text="Número do dia: ">
             <font>
                 <Font size="15." />
