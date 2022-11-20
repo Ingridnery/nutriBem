@@ -2,6 +2,7 @@ package com.example.nutribem.domain.entities.alimento;
 
 import com.example.nutribem.domain.entities.refeicao.Refeicao;
 import com.example.nutribem.domain.usecases.valoresNutricionais.ValoresNutricionais;
+import javafx.scene.control.CheckBox;
 
 import java.util.Objects;
 
@@ -18,9 +19,8 @@ public class Alimento {
     private Double acucar;
     private Double lactose;
     private Boolean ativado;
-
     private Refeicao refeicao;
-
+    private CheckBox checkBox;
     public Alimento(String nome, Integer porcao, Integer calorias, Integer colesterol, Boolean gluten, Double gordurasSaturadas, Double sodio, Double acucar, Double lactose) {
         this.nome = nome;
         this.id = null;
@@ -33,6 +33,16 @@ public class Alimento {
         this.acucar = acucar;
         this.lactose = lactose;
         this.ativado = true;
+        this.checkBox = new CheckBox();
+
+    }
+
+    public CheckBox getCheckBox() {
+        return checkBox;
+    }
+
+    public void setCheckBox(CheckBox checkBox) {
+        this.checkBox = checkBox;
     }
 
     public Alimento() {
@@ -62,6 +72,7 @@ public class Alimento {
     public Integer getId() {
         return id;
     }
+
 
     public void setId(Integer id) {
         if(this.id != null)
