@@ -2,17 +2,10 @@ package com.example.nutribem.application.controller;
 
 import com.example.nutribem.WindowLoader;
 import com.example.nutribem.domain.entities.alimento.Alimento;
-import com.example.nutribem.domain.entities.paciente.IntoleranciaLactose;
-import com.example.nutribem.domain.entities.paciente.Paciente;
-import com.example.nutribem.domain.entities.paciente.Sexo;
 import com.example.nutribem.domain.usecases.utils.AlertMessage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
-import javafx.scene.text.Text;
+import javafx.scene.control.*;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -46,7 +39,7 @@ public class AlimentoUIController {
     private Button btnCancel;
     private Alimento alimento;
 
-    private AlertMessage alert = new AlertMessage();
+    private final AlertMessage alert = new AlertMessage();
 
     @FXML
     public void initialize(){
@@ -55,7 +48,7 @@ public class AlimentoUIController {
 
     }
     @FXML
-    public void activeOrDesactive(ActionEvent actionEvent) throws IOException {
+    public void activeOrDisabled(ActionEvent actionEvent) throws IOException {
         alimento.setAtivado(!alimento.getAtivado());
         //updateAlimentoUseCase.update(alimento);
         WindowLoader.setRoot("AlimentoManagementUI");
@@ -98,6 +91,8 @@ public class AlimentoUIController {
         alimento.setSodio(Double.valueOf(txtSodio.getText()));
         alimento.setAcucar(Double.valueOf(txtAcucar.getText()));
         alimento.setLactose(Double.valueOf(txtLactose.getText()));
+        alimento.setAtivado(true);
+        alimento.setCheckBox(new CheckBox());
 
 
     }
@@ -118,6 +113,7 @@ public class AlimentoUIController {
     }
 
     public void configureViewMode(){
+
         btnConfirm.setVisible(false);
         btnCancel.setText("Fechar");
         if(alimento.getAtivado())
@@ -143,9 +139,6 @@ public class AlimentoUIController {
         setEntityIntoView();
         if(mode == UIMode.VIEW)
             configureViewMode();
-
-
-
 
     }
 
