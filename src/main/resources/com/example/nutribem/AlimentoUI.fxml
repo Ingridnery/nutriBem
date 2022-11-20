@@ -24,9 +24,9 @@
         <TextField fx:id="txtAcucar" layoutX="544.0" layoutY="22.0" prefHeight="31.0" prefWidth="56.0" />
         <TextField fx:id="txtLactose" layoutX="544.0" layoutY="71.0" prefHeight="31.0" prefWidth="56.0" />
         <ComboBox fx:id="cbGluten" layoutX="79.0" layoutY="115.0" prefWidth="108.0" />
-        <Button fx:id="btnStatus" layoutX="373.0" layoutY="283.0" mnemonicParsing="false" onAction="#activeOrDesactive" prefHeight="39.0" prefWidth="88.0" text="Desativar" />
+        <Button fx:id="btnStatus" layoutX="373.0" layoutY="283.0" mnemonicParsing="false" onAction="#activeOrDisabled" prefHeight="39.0" prefWidth="88.0" text="Desativar" />
         <Button fx:id="btnCancel" layoutX="608.0" layoutY="283.0" mnemonicParsing="false" onAction="#backScene" prefHeight="39.0" prefWidth="88.0" text="Voltar" />
-        <Button fx:id="btnConfirm" layoutX="488.0" layoutY="283.0" mnemonicParsing="false" onAction="#saveOrUpdate" prefHeight="39.0" prefWidth="88.0" text="Salvar" /><Button fx:id="btnBack" layoutX="320.0" layoutY="-30.0" mnemonicParsing="false" onAction="#backScene" prefHeight="34.0" text="Voltar" />
+        <Button fx:id="btnConfirm" layoutX="488.0" layoutY="283.0" mnemonicParsing="false" onAction="#saveOrUpdate" prefHeight="39.0" prefWidth="88.0" text="Salvar" />
 
     </children>
 
