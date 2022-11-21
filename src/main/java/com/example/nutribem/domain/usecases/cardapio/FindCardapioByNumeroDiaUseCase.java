@@ -4,6 +4,7 @@ import com.example.nutribem.domain.entities.cardapio.Cardapio;
 import com.example.nutribem.domain.usecases.utils.EntityNotFoundException;
 import com.example.nutribem.domain.usecases.utils.Validator;
 
+import java.util.List;
 import java.util.Optional;
 
 public class FindCardapioByNumeroDiaUseCase {
@@ -14,7 +15,7 @@ public class FindCardapioByNumeroDiaUseCase {
         this.cardapioDAO = cardapioDAO;
     }
 
-    public Optional<Cardapio> findByNumeroDia(Integer numeroDia){
+    public List<Cardapio> findByNumeroDia(Integer numeroDia){
 
         if(Validator.nullOrEmpty(numeroDia))
             throw new IllegalArgumentException("O numero do dia não pode ser nulo!.");

@@ -69,10 +69,10 @@ public class InMemoryCardapioDAO implements CardapioDAO {
     }
 
     @Override
-    public Optional<Cardapio> findByNumeroDia(Integer numeroDia) {
+    public List<Cardapio> findByNumeroDia(Integer numeroDia) {
         return db.values().stream()
                 .filter(cardapio -> cardapio.getNumeroDia().equals(numeroDia))
-                .findAny();
+                .toList();
     }
 
     @Override

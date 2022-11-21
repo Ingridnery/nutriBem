@@ -9,6 +9,6 @@ import java.util.Optional;
 
 public interface CardapioDAO extends DAO<Cardapio,Integer> {
 
-    Optional<Cardapio> findByNumeroDia(Integer numeroDia);
+    List<Cardapio> findByNumeroDia(Integer numeroDia);
     List<Cardapio> findByPlanoNutricional(Integer idPlano);
 }
