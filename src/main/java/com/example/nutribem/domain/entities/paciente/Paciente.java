@@ -1,13 +1,8 @@
 package com.example.nutribem.domain.entities.paciente;
-
 import com.example.nutribem.domain.entities.alimento.Alimento;
-import com.example.nutribem.domain.entities.planoNutricional.PlanoNutricional;
 import com.example.nutribem.domain.usecases.utils.PacienteIsIntolerantException;
-import javafx.beans.property.StringProperty;
-
 import java.time.LocalDate;
 import java.time.Period;
-import java.util.List;
 import java.util.Objects;
 
 public class Paciente {

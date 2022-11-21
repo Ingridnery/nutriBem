@@ -12,7 +12,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 
-import javax.swing.text.MaskFormatter;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.Objects;
@@ -90,7 +89,7 @@ public class PacienteUIController {
         WindowLoader.setRoot("MainUI");
     }
 
-    public void activeOrDesactive(ActionEvent actionEvent) throws IOException {
+    public void activeOrDisabled(ActionEvent actionEvent) throws IOException {
         paciente.setAtivado(!paciente.getAtivado());
         updatePacienteUseCase.update(paciente);
         WindowLoader.setRoot("MainUI");

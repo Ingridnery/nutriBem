@@ -35,7 +35,7 @@
       <TextArea fx:id="txtObjetivos" layoutX="467.0" layoutY="222.0" prefHeight="72.0" prefWidth="213.0" />
       <TextArea fx:id="txtObservacoes" layoutX="104.0" layoutY="315.0" prefHeight="72.0" prefWidth="213.0" />
       <TextArea fx:id="txtHistorico" layoutX="467.0" layoutY="315.0" prefHeight="72.0" prefWidth="213.0" />
-        <Button fx:id="btnStatus" layoutX="445.0" layoutY="453.0" mnemonicParsing="false" onAction="#activeOrDesactive" prefHeight="39.0" prefWidth="88.0" text="Desativar" />
+        <Button fx:id="btnStatus" layoutX="445.0" layoutY="453.0" mnemonicParsing="false" onAction="#activeOrDisabled" prefHeight="39.0" prefWidth="88.0" text="Desativar" />
         <Button fx:id="btnCancel" layoutX="650.0" layoutY="453.0" mnemonicParsing="false" onAction="#backScene" prefHeight="39.0" prefWidth="88.0" text="Voltar" />
         <Button fx:id="btnConfirm" layoutX="545.0" layoutY="453.0" mnemonicParsing="false" onAction="#saveOrUpdate" prefHeight="39.0" prefWidth="88.0" text="Salvar" />
 
