@@ -1,5 +1,6 @@
 package com.example.nutribem.application.main;
 
+import com.example.nutribem.WindowLoader;
 import com.example.nutribem.application.repository.*;
 import com.example.nutribem.domain.contexts.AuthenticationContext;
 import com.example.nutribem.domain.entities.alimento.Alimento;
@@ -82,46 +83,30 @@ public class Main {
         dicasSenha.add("Data de aniversario");
         dicasSenha.add("Padrão");
         createDicaSenhaUseCase.insert(nutricionista,dicasSenha);
-        loginUseCase.login("admin","admin");
-        System.out.println("\nDicas de senha:");
-        recuperaSenhaUseCase.dicasSenha("admin").forEach(System.out::println);
-
-        if (!AuthenticationContext.isLogged())
-            throw new NotAuthenticatedException("Nutricionista nao esta logado.");
-
         CPF cpf  = CPF.valueOf("851.356.878-31");
         Paciente paciente = new Paciente(88,180,"José",cpf,"jose@email.com",
-            "99384-7858","Sem historico",             IntoleranciaLactose.INTOLERANTE,
-            false,false,"Nenhuma",
-            "Saúdavel","Ganhar massa", LocalDate.of(1998,10,15),
-            100.15, Sexo.MASCULINO,true);
+                "99384-7858","Sem historico",             IntoleranciaLactose.INTOLERANTE,
+                false,false,"Nenhuma",
+                "Saúdavel","Ganhar massa", LocalDate.of(1998,10,15),
+                100.15, Sexo.MASCULINO,true);
 
         createPacienteUseCase.insert(paciente);
 
         CPF cpfPaciente2 = CPF.valueOf("224.067.048-74");
         Paciente paciente2 = new Paciente(96,170,"Maria",cpfPaciente2,"maria@email",
                 "89657-7456","Cirurgia de apendice",IntoleranciaLactose.APTO,false,false,"Camarão","Cardiaca",
-                "Perder peso",LocalDate.of(1996,10,02),89.2,Sexo.FEMININO);
+                "Perder peso",LocalDate.of(1996,10,2),89.2,Sexo.FEMININO);
+        System.out.println(paciente2.getCpf());
 
         createPacienteUseCase.insert(paciente2);
 
-        System.out.println("\nPacientes cadastrados:");
-        findPacienteUseCase.findAll().forEach(paciente1 -> {
-            System.out.println(paciente1.getNome());
-        });
-        paciente.setNome("José Carlos");
-        updatePacienteUseCase.update(paciente);
-        System.out.println("\nPaciente atualizado:");
+        //Alimento alimento = new Alimento("Cenoura",1,1,14,false,15.4,2.4,0.0,0.0);
+//        createAlimentoUseCase.insert(alimento);
+//        Alimento alimento1 = new Alimento("Feijoada",1,500,100,true,275.0,100.5,50.8,41.8);
+//
+//        createAlimentoUseCase.insert(alimento1);
 
-        System.out.println((findPacienteUseCase.findByOne(paciente.getId()).get().getNome()));
-        System.out.println("\nContatos de pacientes:");
-        emitirRelatorioContatosUseCase.emitir().forEach(System.out::println);
-        removePacienteUseCase.remove(paciente2.getId());
-        System.out.println("\nPacientes cadastrados:");
-        findPacienteUseCase.findAll().forEach(paciente1 -> {
-            System.out.println(paciente1.getNome());
-        });
-        System.out.println();
+        // alimento.setNome("Cenoura ralada");
 
         PlanoNutricional planoNutricional = new PlanoNutricional("Emagrecimento",LocalDate.now(),LocalDate.of(2022,12,10),paciente2);
         createPlanoNutricionalUseCase.insert(planoNutricional);
@@ -131,16 +116,6 @@ public class Main {
 
         PlanoNutricional planoNutricional2 = new PlanoNutricional("Saúdavel", LocalDate.now(),LocalDate.of(2022,10,29),paciente2);
         createPlanoNutricionalUseCase.insert(planoNutricional2);
-
-        System.out.println("\nPlanos nutricionais cadastrados: ");
-        findPlanoNutricionalUseCase.findAll().forEach(planoNutricional3 -> {
-            System.out.println(planoNutricional3.getNome());
-        });
-        System.out.println("\nPacientes com planos nutricionais vencidos:");
-        System.out.println(emitirRelatorioPlanosVencidosUseCase.emitir());
-
-
-
 
         Cardapio cardapio = new Cardapio(15,planoNutricional);
         createCardapioUseCase.insert(cardapio);
@@ -154,45 +129,23 @@ public class Main {
         Refeicao refeicao1 = new Refeicao(LocalTime.now(),RefeicaoCategoria.CEIA,cardapio1);
         createRefeicaoUseCase.insert(refeicao1);
 
-        Alimento alimento = new Alimento("Cenoura",1,1,14,false,15F,2F,0F,0F);
-        alimento.setRefeicao(refeicao);
-        createAlimentoUseCase.insert(alimento);
-
-
-        Alimento alimento1 = new Alimento("Feijoada",1,500,100,true,275F,100F,50F,41F);
-        alimento1.setRefeicao(refeicao1);
-        createAlimentoUseCase.insert(alimento1);
-
-
-        System.out.println("\nRelatorio de plano nutricional:");
-        System.out.println(emitirRelatorioPlanoNutricionalUseCase.emitir(planoNutricional,calculateValoresNutricionaisUseCase));
-
-
-        System.out.println("\nCardapios cadastrados: ");
-        findCardapioUseCase.findAll().forEach(cardapio2 ->
-                System.out.println(cardapio2.getId()));
-        removePlanoNutricionalUseCase.remove(planoNutricional);
-        System.out.println("\nCardapios cadastrados após remoção:");
-        findCardapioUseCase.findAll().forEach(cardapio2 ->
-                System.out.println(cardapio2.getId()));
-        System.out.println("\nRefeições cadastradas: ");
-        findRefeicaoUseCase.findAll().forEach(refeicoes ->
-                System.out.println(refeicoes.getId()));
-        removeCardapioUseCase.delete(cardapio1);
-
-        System.out.println("\nAlimentos cadastrados: ");
-        findAlimentoUseCase.findAll().forEach(alimento2 ->
-                System.out.println(alimento2.getNome()));
+        WindowLoader.main(args);
     }
 
     public static void configureInjection(){
+        RefeicaoDAO refeicaoDAO = new InMemoryRefeicaoDAO();
+        createRefeicaoUseCase = new CreateRefeicaoUseCase(refeicaoDAO);
+        findRefeicaoUseCase = new FindRefeicaoUseCase(refeicaoDAO);
+        removeRefeicaoUseCase = new RemoveRefeicaoUseCase(refeicaoDAO);
+        updateRefeicaoUseCase = new UpdateRefeicaoUseCase(refeicaoDAO);
+
         AlimentoDAO alimentoDAO = new InMemoryAlimentoDAO();
         createAlimentoUseCase = new CreateAlimentoUseCase(alimentoDAO);
         findAlimentoUseCase = new FindAlimentoUseCase(alimentoDAO);
-        removeAlimentoUseCase = new RemoveAlimentoUseCase(alimentoDAO);
+        removeAlimentoUseCase = new RemoveAlimentoUseCase(alimentoDAO, refeicaoDAO);
         updateAlimentoUseCase = new UpdateAlimentoUseCase(alimentoDAO);
-        activateAlimentoUseCase = new ActivateAlimentoUseCase(alimentoDAO);
-        calculateValoresNutricionaisUseCase = new CalculateValoresNutricionaisUseCase(alimentoDAO);
+        activateAlimentoUseCase = new ActivateAlimentoUseCase(alimentoDAO, refeicaoDAO);
+        calculateValoresNutricionaisUseCase = new CalculateValoresNutricionaisUseCase(alimentoDAO, refeicaoDAO);
 
         CardapioDAO cardapioDAO = new InMemoryCardapioDAO();
         createCardapioUseCase = new CreateCardapioUseCase(cardapioDAO);
@@ -220,13 +173,6 @@ public class Main {
         findPlanoNutricionalUseCase = new FindPlanoNutricionalUseCase(planoNutricionalDAO);
         removePlanoNutricionalUseCase = new RemovePlanoNutricionalUseCase(planoNutricionalDAO);
         updatePlanoNutricionalUseCase = new UpdatePlanoNutricionalUseCase(planoNutricionalDAO);
-
-        RefeicaoDAO refeicaoDAO = new InMemoryRefeicaoDAO();
-        createRefeicaoUseCase = new CreateRefeicaoUseCase(refeicaoDAO);
-        findRefeicaoUseCase = new FindRefeicaoUseCase(refeicaoDAO);
-        removeRefeicaoUseCase = new RemoveRefeicaoUseCase(refeicaoDAO);
-        updateRefeicaoUseCase = new UpdateRefeicaoUseCase(refeicaoDAO);
-
 
         emitirRelatorioContatosUseCase = new EmitirRelatorioContatosUseCase(pacienteDAO);
         emitirRelatorioPlanosVencidosUseCase = new EmitirRelatorioPlanosVencidosUseCase(planoNutricionalDAO);

@@ -32,18 +32,6 @@ public class InMemoryAlimentoDAO implements AlimentoDAO{
                 .findAny();
     }
 
-    @Override
-    public boolean isInAnyRefeicao(Alimento alimento) {
-        return alimento.getRefeicao() != null;
-    }
-
-    @Override
-    public List<Alimento> findAlimentosFromRefeicao(Refeicao refeicao) {
-        return db.values().stream()
-                .filter(alimento -> alimento.getRefeicao().equals(refeicao))
-                .toList();
-    }
-
 
     @Override
     public List<Alimento> findAll() {

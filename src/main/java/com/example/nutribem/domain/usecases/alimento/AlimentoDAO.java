@@ -10,6 +10,5 @@ import java.util.Optional;
 public interface AlimentoDAO extends DAO<Alimento, Integer> {
     Optional<Alimento> findByName(String name);
 
-    boolean isInAnyRefeicao(Alimento alimento);
-    List<Alimento> findAlimentosFromRefeicao(Refeicao refeicao);
+
 }
