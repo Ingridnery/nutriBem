@@ -19,7 +19,8 @@
             </font>
         </Label>
 
-        <TextField fx:id="txtNumeroDia" onKeyPressed="#handle"  layoutX="155.0" layoutY="65.0" prefHeight="34.0" prefWidth="132.0" />
+        <TextField fx:id="txtNumeroDia"  layoutX="145.0" layoutY="65.0" prefHeight="34.0" prefWidth="70.0" />
+        <Button fx:id="btnFindByNumeroDia" layoutX="220.0" layoutY="65.0" mnemonicParsing="false" onAction="#findByNumeroDia" prefHeight="34.0" text="Buscar" />
 
         <TableView fx:id="tableView" layoutX="25.0" layoutY="119.0" onMouseClicked="#getSelectedAndSetButton" prefHeight="163.0" prefWidth="301.0" AnchorPane.bottomAnchor="118.0" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="119.0">
             <columns>

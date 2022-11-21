@@ -2,7 +2,6 @@ package com.example.nutribem.application.controller;
 
 import com.example.nutribem.WindowLoader;
 import com.example.nutribem.domain.entities.cardapio.Cardapio;
-import com.example.nutribem.domain.entities.paciente.Paciente;
 import com.example.nutribem.domain.entities.planoNutricional.PlanoNutricional;
 import com.example.nutribem.domain.usecases.utils.AlertMessage;
 import javafx.collections.FXCollections;
@@ -14,7 +13,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
@@ -55,8 +53,7 @@ public class CardapioManagementUIController {
         tableData.addAll(cardapioList);
     }
 
-    public void findCardapioByID(ActionEvent actionEvent) {
-    }
+
 
     public void getSelectedAndSetButton(MouseEvent mouseEvent) {
         cardapio = tableView.getSelectionModel().getSelectedItem();
@@ -115,13 +112,31 @@ public class CardapioManagementUIController {
         }
         else
             setMessageCardapio();
-
     }
 
-    public void refeicaoUI(ActionEvent actionEvent) {
-    }
+    public void refeicaoUI(ActionEvent actionEvent) throws IOException {
+        if(cardapio!= null){
+            WindowLoader.setRoot("RefeicaoManagementUI");
+            RefeicaoManagementUIController controller = (RefeicaoManagementUIController) WindowLoader.getController();
+            controller.setRefeicaoFromCardapio(cardapio);
+        }else
+            setMessageCardapio();
 
-    public void handle(KeyEvent key) {
+     }
+
+    public void findByNumeroDia(ActionEvent actionEvent) {
+        tableData.clear();
+        try{
+            Integer txtSearch = Integer.valueOf(txtNumeroDia.getText());
+            List<Cardapio> cardapios = findCardapioByNumeroDiaUseCase.findByNumeroDia(txtSearch);
+            List<Cardapio> matchesWithSearch = cardapios.stream()
+                    .filter(cardapio -> cardapio.getNumeroDia().equals(txtSearch) && cardapio.getPlanoNutricional().getId().equals(planoNutricional.getId()) )
+                    .toList();
+            tableData.addAll(matchesWithSearch);
+        }catch (Exception e){
+            alert.showAlert("Nenhum cardapio encontrado","Nenhum cardapio foi encontrado!", Alert.AlertType.INFORMATION);
+        }
+
 
     }
 }
