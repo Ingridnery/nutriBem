@@ -19,7 +19,6 @@ public class Alimento {
     private Double acucar;
     private Double lactose;
     private Boolean ativado;
-    private Refeicao refeicao;
     private CheckBox checkBox;
     public Alimento(String nome, Integer porcao, Integer calorias, Integer colesterol, Boolean gluten, Double gordurasSaturadas, Double sodio, Double acucar, Double lactose) {
         this.nome = nome;
@@ -51,14 +50,6 @@ public class Alimento {
     public ValoresNutricionais calculateValoresNutricionais(){
         return new ValoresNutricionais(getCalorias(), getColesterol(), getGluten(),
                 getGordurasSaturadas(), getSodio(), getAcucar(), getLactose());
-    }
-
-    public Refeicao getRefeicao() {
-        return refeicao;
-    }
-
-    public void setRefeicao(Refeicao refeicao) {
-        this.refeicao = refeicao;
     }
 
     public String getNome() {

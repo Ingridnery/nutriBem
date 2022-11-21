@@ -1,25 +1,26 @@
 package com.example.nutribem.domain.entities.refeicao;
 
+import com.example.nutribem.domain.entities.alimento.Alimento;
 import com.example.nutribem.domain.entities.cardapio.Cardapio;
 
 import java.net.CacheRequest;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Refeicao {
 
     private Integer id;
     private LocalTime horario;
     private RefeicaoCategoria categoria;
-
     private Cardapio cardapio;
+    private List<Alimento> alimentos;
 
     public Refeicao(LocalTime horario, RefeicaoCategoria categoria, Cardapio cardapio) {
         this.horario = horario;
         this.categoria = categoria;
         this.cardapio = cardapio;
-    }
-
-    public Refeicao() {
+        this.alimentos = new ArrayList<>();
     }
 
     public Cardapio getCardapio() {
@@ -54,5 +55,13 @@ public class Refeicao {
 
     public void setCategoria(RefeicaoCategoria categoria) {
         this.categoria = categoria;
+    }
+
+    public List<Alimento> getAlimentos() {
+        return alimentos;
+    }
+
+    public void setAlimentos(List<Alimento> alimentos) {
+        this.alimentos = alimentos;
     }
 }
