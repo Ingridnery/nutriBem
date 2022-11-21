@@ -1,6 +1,8 @@
 package com.example.nutribem.domain.entities.paciente;
 
+import com.example.nutribem.domain.entities.alimento.Alimento;
 import com.example.nutribem.domain.entities.planoNutricional.PlanoNutricional;
+import com.example.nutribem.domain.usecases.utils.PacienteIsIntolerantException;
 import javafx.beans.property.StringProperty;
 
 import java.time.LocalDate;
@@ -69,6 +71,14 @@ public class Paciente {
         this.peso = peso;
         this.sexo = sexo;
         this.ativado = ativado;
+    }
+
+    public Boolean canEat(Alimento alimento){
+        if(alimento.getGluten() && intoleranciaGluten)
+            throw new PacienteIsIntolerantException("O alimento contém gluten: "+ alimento.getNome());
+        if(alimento.getLactose() > 0 && intoleranciaLactose != IntoleranciaLactose.APTO)
+            throw new PacienteIsIntolerantException("O alimento contém lactose: "+ alimento.getLactose());
+        return true;
     }
 
     public Integer getId() {
