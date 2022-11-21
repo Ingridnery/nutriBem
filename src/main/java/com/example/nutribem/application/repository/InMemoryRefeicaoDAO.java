@@ -63,4 +63,19 @@ public class InMemoryRefeicaoDAO implements RefeicaoDAO{
                         .equals(cardapio))
                 .toList();
     }
+
+    @Override
+    public boolean isInAnyRefeicao(Alimento alimento) {
+        Collection<Refeicao> refeicoes = db.values();
+        for (Refeicao refeicao : refeicoes){
+            if(refeicao.getAlimentos().contains(alimento))
+                return true;
+        }
+        return false;
+    }
+
+    @Override
+    public List<Alimento> findAlimentosFromRefeicao(Refeicao refeicao) {
+        return refeicao.getAlimentos();
+    }
 }

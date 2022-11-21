@@ -75,6 +75,7 @@ public class Main {
     public static void main(String[] args) {
         configureInjection();
 
+
         Nutricionista nutricionista = new Nutricionista("admin","admin");
         createNutricionistaUseCase.insert(nutricionista,"admin");
 
