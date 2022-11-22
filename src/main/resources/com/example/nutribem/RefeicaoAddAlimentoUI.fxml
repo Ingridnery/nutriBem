@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.nutribem.application.controller.RefeicaoAddAlimentoUIController">
+    <children>
+        <Label layoutX="25.0" layoutY="70.0" text="Nome do alimento: ">
+            <font>
+                <Font size="15." />
+            </font>
+        </Label>
+
+        <TextField fx:id="txtNameAlimento" layoutX="155.0" layoutY="65.0" onKeyPressed="#handle" prefHeight="34.0" prefWidth="132.0" />
+
+        <TableView fx:id="tableView" layoutX="25.0" layoutY="110.0" prefHeight="157.0" prefWidth="477.0" AnchorPane.bottomAnchor="133.0" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="110.0">
+            <columns>
+                <TableColumn fx:id="cId" prefWidth="100.0" text="ID" />
+                <TableColumn fx:id="cName" prefWidth="216.0" text="Nome" />
+                <TableColumn fx:id="cCheck" prefWidth="160.0" text="Selecionar" />
+            </columns>
+        </TableView>
+        <Pane layoutX="14.0" layoutY="200.0" prefHeight="61.0" prefWidth="573.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0">
+            <children>
+                <Button fx:id="btnAdd" layoutX="15.0" layoutY="-30.0" mnemonicParsing="false" onAction="#addAlimentos" prefHeight="34.0" text="Adicionar Alimentos" />
+                <Button fx:id="btnBack" layoutX="150.0" layoutY="-30.0" mnemonicParsing="false" onAction="#backScene" prefHeight="34.0" text="Voltar" />
+
+            </children>
+
+        </Pane>
+        <Text layoutX="290.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Adicionar Alimentos" textAlignment="CENTER">
+            <font>
+                <Font size="24.0" />
+            </font>
+        </Text>
+    </children>
+
+</AnchorPane>
