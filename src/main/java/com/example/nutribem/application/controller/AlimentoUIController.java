@@ -49,7 +49,7 @@ public class AlimentoUIController {
     }
     @FXML
     public void activeOrDisabled(ActionEvent actionEvent) throws IOException {
-        alimento.setAtivado(!alimento.getAtivado());
+        alimento.setAtivado(!alimento.isAtivado());
         //updateAlimentoUseCase.update(alimento);
         WindowLoader.setRoot("AlimentoManagementUI");
     }
@@ -116,7 +116,7 @@ public class AlimentoUIController {
 
         btnConfirm.setVisible(false);
         btnCancel.setText("Fechar");
-        if(alimento.getAtivado())
+        if(alimento.isAtivado())
             btnStatus.setText("Desativar");
         else
             btnStatus.setText("Ativar");
