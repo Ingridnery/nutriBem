@@ -131,4 +131,6 @@ public class PlanoNutricionalManagementUIController {
         tableData.addAll(matchesWithSearch);
     }
 
+    public void createRelatorio(ActionEvent actionEvent) {
+    }
 }

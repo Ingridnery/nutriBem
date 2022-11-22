@@ -32,21 +32,10 @@ public class MainUIController {
     private TableColumn<Paciente, String> cCPF;
     @FXML
     private TextField txtNamePaciente;
-    @FXML
-    private Button btnFindPaciente;
-    @FXML
-    private Button btnCreate;
-    @FXML
-    private Button btnUpdate;
-    @FXML
-    private Button btnRemove;
-    @FXML
-    private Button btnAlimento;
 
     private ObservableList<Paciente> tableData;
     private Paciente paciente;
     private final AlertMessage alert = new AlertMessage();
-
 
     @FXML
     private void initialize(){
@@ -54,6 +43,7 @@ public class MainUIController {
         bindColumnsToValueSources();
         loadDataAndShow();
     }
+
 
     @FXML
     public void handle(KeyEvent key){
@@ -133,15 +123,22 @@ public class MainUIController {
     }
 
     public void planoNutricionalUI(ActionEvent actionEvent) throws IOException {
-        if(paciente!=null){
+        if(!paciente.isAtivado())
+            alert.showAlert("Paciente desativado!","O paciente selecionado está desativado, é necessário ativa-lo para alterações!", Alert.AlertType.INFORMATION);
+        else if(paciente!=null){
             WindowLoader.setRoot("PlanoNutricionalManagementUI");
             PlanoNutricionalManagementUIController controller = (PlanoNutricionalManagementUIController) WindowLoader.getController();
             controller.setPlanoNutricionalFromPaciente(paciente);
         }
         else
             setMessagePaciente();
-
     }
 
 
+
+    public void createRelatorioPacienteContato(ActionEvent actionEvent) {
+    }
+
+    public void createRelatorioPlanoNutricionalVencido(ActionEvent actionEvent) {
+    }
 }

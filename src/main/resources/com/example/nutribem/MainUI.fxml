@@ -33,7 +33,8 @@
                 <Button fx:id="btnFind" layoutX="187.0" layoutY="-30.0" mnemonicParsing="false" onAction="#detailPaciente" prefHeight="34.0" text="Detalhar" />
                 <Button fx:id="btnAlimento" layoutX="260.0" layoutY="-30.0" mnemonicParsing="false" onAction="#alimentoUI" prefHeight="34.0" text="Gerenciar Alimentos" />
                 <Button fx:id="btnPlanoNutricional" layoutX="395.0" layoutY="-30.0" mnemonicParsing="false" onAction="#planoNutricionalUI" prefHeight="34.0" text="Gerenciar Plano Nutricional" />
-
+                <Button fx:id="btnRelatorioContatos" layoutX="15.0" layoutY="12.0" mnemonicParsing="false" onAction="#createRelatorioPacienteContato" prefHeight="34.0" text="Emitir relátorio de contatos" />
+                <Button fx:id="btnRelatorioPlanos" layoutX="187.0" layoutY="12.0" mnemonicParsing="false" onAction="#createRelatorioPlanoNutricionalVencido" prefHeight="34.0" text="Emitir relátorio de planos vencidos" />
             </children>
 
        </Pane>
