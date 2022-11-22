@@ -20,7 +20,7 @@ public class EmitirRelatorioPlanosVencidosUseCase {
         List<String> relatorio = new ArrayList<>();
         dao.findAll().forEach(plano -> {
             if(plano.getDataFim().isBefore(LocalDate.now())){
-                relatorio.add(plano.getPaciente().getNome() + ": Telefone: "+ plano.getPaciente().getTelefone() + ", Email: "+ plano.getPaciente().getEmail()
+                relatorio.add("Paciente: "+plano.getPaciente().getNome() + ": Telefone: "+ plano.getPaciente().getTelefone() + ", Email: "+ plano.getPaciente().getEmail()
                 + ", Plano Nutricional: "+ plano.getNome() + ", venceu em "+ plano.getDataFim());
             }
         });

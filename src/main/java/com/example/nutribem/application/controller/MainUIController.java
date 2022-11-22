@@ -13,11 +13,16 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 
-import static com.example.nutribem.application.main.Main.findPacienteUseCase;
-import static com.example.nutribem.application.main.Main.removePacienteUseCase;
-
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.time.*;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.List;
+
+import static com.example.nutribem.application.main.Main.*;
 
 
 public class MainUIController {
@@ -123,22 +128,52 @@ public class MainUIController {
     }
 
     public void planoNutricionalUI(ActionEvent actionEvent) throws IOException {
-        if(!paciente.isAtivado())
-            alert.showAlert("Paciente desativado!","O paciente selecionado está desativado, é necessário ativa-lo para alterações!", Alert.AlertType.INFORMATION);
-        else if(paciente!=null){
-            WindowLoader.setRoot("PlanoNutricionalManagementUI");
-            PlanoNutricionalManagementUIController controller = (PlanoNutricionalManagementUIController) WindowLoader.getController();
-            controller.setPlanoNutricionalFromPaciente(paciente);
+         if(paciente!=null){
+             if(!paciente.isAtivado())
+                 alert.showAlert("Paciente desativado!","O paciente selecionado está desativado, é necessário ativa-lo para alterações!", Alert.AlertType.INFORMATION);
+             WindowLoader.setRoot("PlanoNutricionalManagementUI");
+             PlanoNutricionalManagementUIController controller = (PlanoNutricionalManagementUIController) WindowLoader.getController();
+             controller.setPlanoNutricionalFromPaciente(paciente);
         }
-        else
+         else
             setMessagePaciente();
     }
 
 
 
-    public void createRelatorioPacienteContato(ActionEvent actionEvent) {
+    public void createRelatorioPacienteContato(ActionEvent actionEvent) throws IOException {
+
+        try{
+            FileWriter arq = new FileWriter(new File("resources/relatorios/relatorioContatosPacientes "+ LocalDate.now()+".txt").toString());
+            PrintWriter gravarArq = new PrintWriter(arq);
+            List<String> relatorios = emitirRelatorioContatosUseCase.emitir();
+            gravarArq.printf("--Contato dos pacientes cadastrados--\n");
+            for (String relatorio: relatorios) {
+                gravarArq.printf(relatorio+"\n");
+            }
+            arq.close();
+            alert.showAlert("Success","Relatório gerado com sucesso!", Alert.AlertType.INFORMATION);
+
+        }catch (Exception e){
+            alert.showAlert("Error","Erro ao gerar relatório! \n Tente novamente", Alert.AlertType.ERROR);
+        }
+
     }
 
     public void createRelatorioPlanoNutricionalVencido(ActionEvent actionEvent) {
+        try{
+            FileWriter arq = new FileWriter(new File("resources/relatorios/relatorioPlanosVencidos "+ LocalDate.now()+".txt").toString());
+            PrintWriter gravarArq = new PrintWriter(arq);
+            List<String> planos = emitirRelatorioPlanosVencidosUseCase.emitir();
+            gravarArq.printf("--Planos nutricionais vencidos--\n");
+            for (String plano: planos) {
+                gravarArq.printf(plano+"\n");
+            }
+            arq.close();
+            alert.showAlert("Success","Relatório gerado com sucesso!", Alert.AlertType.INFORMATION);
+
+        }catch (Exception e){
+            alert.showAlert("Error","Erro ao gerar relatório! \n Tente novamente", Alert.AlertType.ERROR);
+        }
     }
 }
