@@ -139,6 +139,11 @@ public class PacienteUIController {
             cbGluten.setValue("Sim");
         else
             cbGluten.setValue("Não");
+        if(paciente.getAtivado())
+            btnStatus.setText("Desativar");
+        else
+            btnStatus.setText("Ativar");
+
         cbLactose.setValue(paciente.getIntoleranciaLactose());
         cbSexo.setValue(paciente.getSexo());
         dtDataNasc.setValue(paciente.getDataNascimento());
@@ -157,6 +162,7 @@ public class PacienteUIController {
     private void configureViewMode(){
         btnConfirm.setVisible(false);
         btnCancel.setText("Fechar");
+
         if(paciente.getAtivado())
             btnStatus.setText("Desativar");
         else
