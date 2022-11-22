@@ -17,6 +17,7 @@ public class WindowLoader extends Application {
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("MainUI"));
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.setTitle("NutriBem");
         stage.show();
     }
