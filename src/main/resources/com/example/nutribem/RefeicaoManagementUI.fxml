@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.nutribem.application.controller.RefeicaoManagementUIController"
+            prefHeight="400.0" prefWidth="600.0">
+    <children>
+
+        <Text layoutX="290.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gerenciar Refeição" textAlignment="CENTER">
+            <font>
+                <Font size="24.0" />
+            </font>
+        </Text>
+        <Label layoutX="25.0" layoutY="70.0" text="Categoria: ">
+            <font>
+                <Font size="15." />
+            </font>
+        </Label>
+        <TextField fx:id="txtCategoriaRefeicao" onKeyPressed="#handle" layoutX="105.0" layoutY="65.0" prefHeight="34.0" prefWidth="132.0" />
+
+
+
+        <TableView fx:id="tableView" layoutX="25.0" layoutY="119.0" onMouseClicked="#getSelectedAndSetButton" prefHeight="163.0" prefWidth="301.0" AnchorPane.bottomAnchor="118.0" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="119.0">
+            <columns>
+                <TableColumn fx:id="cId" prefWidth="100.0" text="ID" />
+                <TableColumn fx:id="cCategoria" prefWidth="200.0" text="Categoria" />
+            </columns>
+        </TableView>
+        <Pane layoutX="14.0" layoutY="200.0" prefHeight="61.0" prefWidth="573.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0">
+            <children>
+                <Button fx:id="btnCreate" layoutX="15.0" layoutY="-30.0" mnemonicParsing="false" onAction="#createRefeicao" prefHeight="34.0" text="Novo" />
+                <Button fx:id="btnUpdate" layoutX="90.0" layoutY="-30.0" mnemonicParsing="false" onAction="#updateRefeicao" prefHeight="34.0" text="Editar" />
+                <Button fx:id="btnRemove" layoutX="165.0" layoutY="-30.0" mnemonicParsing="false" onAction="#removeRefeicao" prefHeight="34.0" text="Excluir" />
+                <Button fx:id="btnFind" layoutX="240.0" layoutY="-30.0" mnemonicParsing="false" onAction="#detailRefeicao" prefHeight="34.0" text="Detalhar" />
+                <Button fx:id="btnBack" layoutX="320.0" layoutY="-30.0" mnemonicParsing="false" onAction="#backScene" prefHeight="34.0" text="Voltar" />
+                <Button fx:id="btnAlimento" layoutX="390.0" layoutY="-30.0" mnemonicParsing="false" onAction="#addAlimento" prefHeight="34.0" text="Adicionar Alimentos" />
+
+            </children>
+
+        </Pane>
+    </children>
+
+</AnchorPane>

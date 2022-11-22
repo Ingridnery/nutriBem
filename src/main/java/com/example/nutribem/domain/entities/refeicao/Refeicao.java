@@ -23,6 +23,9 @@ public class Refeicao {
         this.alimentos = new ArrayList<>();
     }
 
+    public Refeicao() {
+    }
+
     public Cardapio getCardapio() {
         return cardapio;
     }
