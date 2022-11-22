@@ -16,7 +16,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 
@@ -132,5 +136,19 @@ public class PlanoNutricionalManagementUIController {
     }
 
     public void createRelatorio(ActionEvent actionEvent) {
+        try{
+            FileWriter arq = new FileWriter(new File("resources/relatorios/relatorioPlanosNutricionais"+ LocalDate.now()+".txt").toString());
+            PrintWriter gravarArq = new PrintWriter(arq);
+            List<String> planos = emitirRelatorioPlanoNutricionalUseCase.emitir(planoNutricional,calculateValoresNutricionaisUseCase);
+            gravarArq.printf("--Planos nutricionais cadastrados--\n");
+            for (String plano: planos) {
+                gravarArq.printf(plano+"\n");
+            }
+            arq.close();
+            alert.showAlert("Success","Relatório gerado com sucesso!", Alert.AlertType.INFORMATION);
+
+        }catch (Exception e){
+            alert.showAlert("Error","Erro ao gerar relatório! \n Tente novamente", Alert.AlertType.ERROR);
+        }
     }
 }
