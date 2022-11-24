@@ -92,9 +92,6 @@ public class AlimentoUIController {
         alimento.setAcucar(Double.valueOf(txtAcucar.getText()));
         alimento.setLactose(Double.valueOf(txtLactose.getText()));
         alimento.setAtivado(true);
-        alimento.setCheckBox(new CheckBox());
-
-
     }
 
     public void setEntityIntoView(){

@@ -19,7 +19,6 @@ public class Alimento {
     private Double acucar;
     private Double lactose;
     private Boolean ativado;
-    private CheckBox checkBox;
     public Alimento(String nome, Integer porcao, Integer calorias, Integer colesterol, Boolean gluten, Double gordurasSaturadas, Double sodio, Double acucar, Double lactose) {
         this.nome = nome;
         this.id = null;
@@ -32,16 +31,7 @@ public class Alimento {
         this.acucar = acucar;
         this.lactose = lactose;
         this.ativado = true;
-        this.checkBox = new CheckBox();
 
-    }
-
-    public CheckBox getCheckBox() {
-        return checkBox;
-    }
-
-    public void setCheckBox(CheckBox checkBox) {
-        this.checkBox = checkBox;
     }
 
     public Alimento() {
