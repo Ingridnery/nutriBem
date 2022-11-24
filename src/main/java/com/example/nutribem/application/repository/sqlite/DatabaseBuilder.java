@@ -20,6 +20,7 @@ public class DatabaseBuilder {
             statement.addBatch(createCardapio());
             statement.addBatch(createRefeicao());
             statement.addBatch(createAlimento());
+            statement.addBatch(createAlimentoRefeicao());
 
             statement.executeBatch();
         } catch (SQLException e) {
@@ -150,7 +151,22 @@ public class DatabaseBuilder {
         builder.append("ativado INTEGER DEFAULT 1,\n");
         builder.append("CONSTRAINT alimento_gluten_ck CHECK (gluten IN (0, 1)),\n");
         builder.append("CONSTRAINT alimento_ativado_ck CHECK (ativado IN (0, 1))\n");
-        builder.append(");");
+        builder.append(");\n");
+
+        System.out.println(builder);
+        return builder.toString();
+    }
+
+    private String createAlimentoRefeicao() {
+        StringBuilder builder = new StringBuilder();
+
+        builder.append("CREATE TABLE AlimentoRefeicao(\n");
+        builder.append("alimento INTEGER,\n");
+        builder.append("refeicao INTEGER,\n");
+        builder.append("PRIMARY KEY (alimento, refeicao),\n");
+        builder.append("FOREIGN KEY (alimento) REFERENCES Alimento(id),\n");
+        builder.append("FOREIGN KEY (refeicao) REFERENCES Refeicao(id)\n");
+        builder.append(");\n");
 
         System.out.println(builder);
         return builder.toString();
