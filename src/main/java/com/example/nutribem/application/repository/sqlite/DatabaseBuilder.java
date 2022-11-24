@@ -17,6 +17,7 @@ public class DatabaseBuilder {
             statement.addBatch(createDicas());
             statement.addBatch(createPaciente());
             statement.addBatch(createPlanoNutricional());
+            statement.addBatch(createCardapio());
 
             statement.executeBatch();
         } catch (SQLException e) {
@@ -93,6 +94,21 @@ public class DatabaseBuilder {
         builder.append("inicio TEXT NOT NULL,\n");
         builder.append("fim TEXT NOT NULL,\n");
         builder.append("FOREIGN KEY (paciente) REFERENCES Paciente (id)\n");
+        builder.append(");\n");
+
+        System.out.println(builder);
+        return builder.toString();
+    }
+
+    private String createCardapio() {
+        StringBuilder builder = new StringBuilder();
+
+        builder.append("CREATE TABLE Cardapio(\n");
+        builder.append("id INTEGER PRIMARY KEY AUTOINCREMENT,\n");
+        builder.append("planoNutricional INTEGER NOT NULL,\n");
+        builder.append("dia INTEGER NOT NULL,\n");
+        builder.append("FOREIGN KEY (planoNutricional) REFERENCES PlanoNutricional (id),\n");
+        builder.append("CONSTRAINT cardapio_dia_ck CHECK (dia > 0)\n");
         builder.append(");\n");
 
         System.out.println(builder);
