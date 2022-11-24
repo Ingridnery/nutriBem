@@ -19,6 +19,7 @@ public class DatabaseBuilder {
             statement.addBatch(createPlanoNutricional());
             statement.addBatch(createCardapio());
             statement.addBatch(createRefeicao());
+            statement.addBatch(createAlimento());
 
             statement.executeBatch();
         } catch (SQLException e) {
@@ -127,6 +128,29 @@ public class DatabaseBuilder {
         builder.append("FOREIGN KEY (cardapio) REFERENCES Cardapio (id),\n");
         builder.append("CONSTRAINT refeicao_categoria_ck CHECK (categoria IN ('Café da manhã', 'Lanche da manhã', 'Almoço', 'Lanche da tarde', 'Jantar', 'Ceia'))\n");
         builder.append(");\n");
+
+        System.out.println(builder);
+        return builder.toString();
+    }
+
+    private String createAlimento() {
+        StringBuilder builder = new StringBuilder();
+
+        builder.append("CREATE TABLE Alimento(\n");
+        builder.append("id INTEGER PRIMARY KEY AUTOINCREMENT,\n");
+        builder.append("nome TEXT NOT NULL UNIQUE,\n");
+        builder.append("porcao INTEGER NOT NULL,\n");
+        builder.append("calorias INTEGER NOT NULL,\n");
+        builder.append("colesterol INTEGER NOT NULL,\n");
+        builder.append("gluten INTEGER NOT NULL,\n");
+        builder.append("gorduras_saturadas REAL NOT NULL,\n");
+        builder.append("sodio REAL NOT NULL,\n");
+        builder.append("acucar REAL NOT NULL,\n");
+        builder.append("lactose REAL NOT NULL,\n");
+        builder.append("ativado INTEGER DEFAULT 1,\n");
+        builder.append("CONSTRAINT alimento_gluten_ck CHECK (gluten IN (0, 1)),\n");
+        builder.append("CONSTRAINT alimento_ativado_ck CHECK (ativado IN (0, 1))\n");
+        builder.append(");");
 
         System.out.println(builder);
         return builder.toString();
