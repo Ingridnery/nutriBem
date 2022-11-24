@@ -115,7 +115,7 @@ public class Main {
         PlanoNutricional planoNutricional1 = new PlanoNutricional("Ganho de massa",LocalDate.now(),LocalDate.of(2022,12,25),paciente);
         createPlanoNutricionalUseCase.insert(planoNutricional1);
 
-        PlanoNutricional planoNutricional2 = new PlanoNutricional("Saúdavel", LocalDate.now(),LocalDate.of(2022,10,29),paciente2);
+        PlanoNutricional planoNutricional2 = new PlanoNutricional("Saúdavel", LocalDate.now(),LocalDate.of(2022,12,29),paciente2);
         createPlanoNutricionalUseCase.insert(planoNutricional2);
 
         Cardapio cardapio = new Cardapio(15,planoNutricional);

@@ -7,6 +7,8 @@ import com.example.nutribem.domain.usecases.utils.EntityAlreadyExistsException;
 import com.example.nutribem.domain.usecases.utils.Notification;
 import com.example.nutribem.domain.usecases.utils.Validator;
 
+import java.time.LocalDate;
+
 public class CreatePlanoNutricionalUseCase {
 
     private PlanoNutricionalDAO dao;
@@ -24,6 +26,10 @@ public class CreatePlanoNutricionalUseCase {
             throw new IllegalArgumentException(notification.errorMessage());
         if(dao.findOne(planoNutricional.getId()).isPresent())
             throw new EntityAlreadyExistsException("O plano nutricional: '"+ planoNutricional.getNome() +"' já está cadastrado.");
+        if(planoNutricional.getDataFim().isBefore(LocalDate.now()))
+            throw new IllegalStateException("A data final do plano é anterior a hoje.");
+        if(planoNutricional.getDataFim().isBefore(planoNutricional.getDataInicio()))
+            throw new IllegalStateException("A data final é anterior à date de início.");
 
         return dao.create(planoNutricional);
     }
