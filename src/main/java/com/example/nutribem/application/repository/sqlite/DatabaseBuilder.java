@@ -18,6 +18,7 @@ public class DatabaseBuilder {
             statement.addBatch(createPaciente());
             statement.addBatch(createPlanoNutricional());
             statement.addBatch(createCardapio());
+            statement.addBatch(createRefeicao());
 
             statement.executeBatch();
         } catch (SQLException e) {
@@ -109,6 +110,22 @@ public class DatabaseBuilder {
         builder.append("dia INTEGER NOT NULL,\n");
         builder.append("FOREIGN KEY (planoNutricional) REFERENCES PlanoNutricional (id),\n");
         builder.append("CONSTRAINT cardapio_dia_ck CHECK (dia > 0)\n");
+        builder.append(");\n");
+
+        System.out.println(builder);
+        return builder.toString();
+    }
+
+    private String createRefeicao() {
+        StringBuilder builder = new StringBuilder();
+
+        builder.append("CREATE TABLE Refeicao(\n");
+        builder.append("id INTEGER PRIMARY KEY AUTOINCREMENT,\n");
+        builder.append("cardapio INTEGER NOT NULL,\n");
+        builder.append("horario TEXT NOT NULL,\n");
+        builder.append("categoria TEXT NOT NULL,\n");
+        builder.append("FOREIGN KEY (cardapio) REFERENCES Cardapio (id),\n");
+        builder.append("CONSTRAINT refeicao_categoria_ck CHECK (categoria IN ('Café da manhã', 'Lanche da manhã', 'Almoço', 'Lanche da tarde', 'Jantar', 'Ceia'))\n");
         builder.append(");\n");
 
         System.out.println(builder);
