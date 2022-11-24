@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 
 
-<AnchorPane prefHeight="600.0" prefWidth="782.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.nutribem.application.controller.LoginUIController">
+<AnchorPane prefHeight="700.0" prefWidth="782.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.nutribem.application.controller.LoginUIController">
    <children>
       <Label layoutX="169.0" layoutY="51.0" text="Nutribem" />
       <Label layoutX="33.0" layoutY="107.0" text="Usuario" />
