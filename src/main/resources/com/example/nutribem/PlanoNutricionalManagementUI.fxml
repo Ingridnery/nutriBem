@@ -1,33 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.nutribem.application.controller.PlanoNutricionalManagementUIController"
-            prefHeight="400.0" prefWidth="600.0">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.nutribem.application.controller.PlanoNutricionalManagementUIController">
     <children>
 
-        <Text layoutX="240.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gerenciar Plano Nutricional" textAlignment="CENTER">
+        <Text layoutX="239.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gerenciar Plano Nutricional" textAlignment="CENTER">
             <font>
                 <Font size="24.0" />
             </font>
         </Text>
 
 
-        <Label layoutX="25.0" layoutY="70.0" text="Nome do plano: ">
+        <Label layoutX="21.0" layoutY="99.0" text="Nome do plano: ">
             <font>
                 <Font size="15." />
             </font>
         </Label>
 
-        <TextField fx:id="txtNamePlano" onKeyPressed="#handle" layoutX="155.0" layoutY="65.0" prefHeight="34.0" prefWidth="132.0" />
+        <TextField fx:id="txtNamePlano" layoutX="135.0" layoutY="92.0" onKeyPressed="#handle" prefHeight="34.0" prefWidth="632.0" />
 
         <TableView fx:id="tableView" layoutX="25.0" layoutY="119.0" onMouseClicked="#getSelectedAndSetButton" prefHeight="900.0" prefWidth="753.0" AnchorPane.bottomAnchor="134.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="134.0">
             <columns>
@@ -35,19 +28,32 @@
                 <TableColumn fx:id="cName" prefWidth="652.0" text="Nome" />
             </columns>
         </TableView>
-        <Pane layoutX="14.0" layoutY="200.0" prefHeight="61.0" prefWidth="573.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0">
-            <children>
-                <Button fx:id="btnCreate" layoutX="15.0" layoutY="-30.0" mnemonicParsing="false" onAction="#createPlanoNutricional" prefHeight="34.0" text="Novo" />
+        <Button fx:id="btnBack" layoutX="22.0" layoutY="606.0" mnemonicParsing="false" onAction="#backScene" prefHeight="34.0" prefWidth="75.0" text="Voltar" />
+
+        <ButtonBar layoutX="106.0" layoutY="599.0" prefHeight="47.0" prefWidth="648.0">
+            <buttons>
+                <Button fx:id="btnRemove" mnemonicParsing="false" onAction="#removePlanoNutricional" prefHeight="34.0" text="Excluir" />
                 <Button fx:id="btnUpdate" layoutX="90.0" layoutY="-30.0" mnemonicParsing="false" onAction="#updatePlanoNutricional" prefHeight="34.0" text="Editar" />
-                <Button fx:id="btnRemove" layoutX="165.0" layoutY="-30.0" mnemonicParsing="false" onAction="#removePlanoNutricional" prefHeight="34.0" text="Excluir" />
                 <Button fx:id="btnFind" layoutX="240.0" layoutY="-30.0" mnemonicParsing="false" onAction="#detailPlanoNutricional" prefHeight="34.0" text="Detalhar" />
-                <Button fx:id="btnBack" layoutX="320.0" layoutY="-30.0" mnemonicParsing="false" onAction="#backScene" prefHeight="34.0" text="Voltar" />
-                <Button fx:id="btnCardapio" layoutX="385.0" layoutY="-30.0" mnemonicParsing="false" onAction="#cardapioUI" prefHeight="34.0" text="Gerenciar Cardápio" />
-                <Button fx:id="btnRelatorio" layoutX="15.0" layoutY="12.0" mnemonicParsing="false" onAction="#createRelatorio" prefHeight="34.0" text="Gerar relátorio do plano " />
+                <Button fx:id="btnCreate" layoutX="15.0" layoutY="-30.0" mnemonicParsing="false" onAction="#createPlanoNutricional" prefHeight="34.0" text="Novo" />
+            </buttons>
+        </ButtonBar>
 
-            </children>
 
-        </Pane>
+      <MenuBar layoutY="1.0" prefHeight="26.0" prefWidth="831.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="Relatório ">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#createRelatorio" text="Exportar Plano Nutricional" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Cardápio">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#cardapioUI" text="Gerenciar cardápios do plano" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
     </children>
 
 

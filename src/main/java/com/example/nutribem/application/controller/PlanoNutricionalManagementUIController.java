@@ -127,9 +127,9 @@ public class PlanoNutricionalManagementUIController {
     @FXML
     public void handle(KeyEvent key){
         String txtSearch = (txtNamePlano.getText() + key.getText()).toUpperCase();
-        List<PlanoNutricional> planosList = findPlanoNutricionalUseCase.findAll();
+        List<PlanoNutricional> planosList = findPlanoNutricionalUseCase.findByPaciente(paciente.getId());
         List<PlanoNutricional> matchesWithSearch = planosList.stream()
-                .filter(planoNutricional -> planoNutricional.getNome().toUpperCase().startsWith(txtSearch))
+                .filter(planoNutricional -> planoNutricional.getNome().toUpperCase().contains(txtSearch))
                 .toList();
         tableData.clear();
         tableData.addAll(matchesWithSearch);

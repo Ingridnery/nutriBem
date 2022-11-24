@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="505.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.nutribem.application.controller.AlimentoManagementUIController">
+<AnchorPane prefHeight="505.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.nutribem.application.controller.AlimentoManagementUIController">
 
     <children>
         <Label layoutX="25.0" layoutY="70.0" text="Nome do alimento: ">
@@ -14,7 +13,7 @@
             </font>
         </Label>
 
-        <TextField fx:id="txtNameAlimento" layoutX="155.0" layoutY="65.0" onKeyPressed="#handle" prefHeight="34.0" prefWidth="132.0" />
+        <TextField fx:id="txtNameAlimento" layoutX="158.0" layoutY="64.0" onKeyPressed="#handle" prefHeight="34.0" prefWidth="602.0" />
 
         <TableView fx:id="tableView" layoutX="25.0" layoutY="119.0" onMouseClicked="#getSelectedAndSetButton" prefHeight="900.0" prefWidth="753.0" AnchorPane.bottomAnchor="134.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="134.0">
         <columns>
@@ -22,22 +21,39 @@
             <TableColumn fx:id="cName" prefWidth="652.0" text="Nome" />
         </columns>
     </TableView>
-    <Pane layoutX="14.0" layoutY="200.0" prefHeight="61.0" prefWidth="573.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0">
-        <children>
-            <Button fx:id="btnCreate" layoutX="15.0" layoutY="-30.0" mnemonicParsing="false" onAction="#createAlimento" prefHeight="34.0" text="Novo" />
-            <Button fx:id="btnUpdate" layoutX="90.0" layoutY="-30.0" mnemonicParsing="false" onAction="#updateAlimento" prefHeight="34.0" text="Editar" />
-            <Button fx:id="btnRemove" layoutX="165.0" layoutY="-30.0" mnemonicParsing="false" onAction="#removeAlimento" prefHeight="34.0" text="Excluir" />
-            <Button fx:id="btnFind" layoutX="240.0" layoutY="-30.0" mnemonicParsing="false" onAction="#detailAlimento" prefHeight="34.0" text="Detalhar" />
-            <Button fx:id="btnBack" layoutX="320.0" layoutY="-30.0" mnemonicParsing="false" onAction="#backScene" prefHeight="34.0" text="Voltar" />
-
-        </children>
-
-    </Pane>
       <Text layoutX="290.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gerenciar Alimento" textAlignment="CENTER">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
+      <ButtonBar layoutY="599.0" prefHeight="47.0" prefWidth="754.0">
+        <buttons>
+            <Button fx:id="btnBack" mnemonicParsing="false" onAction="#backScene" prefHeight="34.0" text="Voltar" />
+            <Button fx:id="btnUpdate" mnemonicParsing="false" onAction="#updateAlimento" prefHeight="34.0" text="Editar" />
+            <Button fx:id="btnFind" mnemonicParsing="false" onAction="#detailAlimento" prefHeight="34.0" text="Detalhar" />
+            <Button fx:id="btnCreate" mnemonicParsing="false" onAction="#createAlimento" prefHeight="34.0" text="Novo" />
+            <Button fx:id="btnRemove" graphicTextGap="0.0" mnemonicParsing="false" onAction="#removeAlimento" prefHeight="34.0" prefWidth="188.0" text="Excluir" />
+        </buttons>
+      </ButtonBar>
+      <MenuBar>
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
     </children>
 
 

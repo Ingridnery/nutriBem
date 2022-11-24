@@ -69,6 +69,7 @@ public class PacienteUIController {
         cbGluten.getItems().add("Não");
         cbDiabetes.getItems().add("Sim");
         cbDiabetes.getItems().add("Não");
+        btnStatus.setVisible(false);
     }
     public void saveOrUpdate(ActionEvent actionEvent) throws IOException {
 
@@ -115,6 +116,7 @@ public class PacienteUIController {
         paciente.setSexo(cbSexo.getValue());
         paciente.setObservacoesGerais(txtObservacoes.getText());
         paciente.setDataNascimento(dtDataNasc.getValue());
+        paciente.setAtivado(true);
 
 
     }
@@ -131,6 +133,7 @@ public class PacienteUIController {
         txtPeso.setText(String.valueOf(paciente.getPeso()));
         txtTelefone.setText(paciente.getTelefone());
         txtObservacoes.setText(paciente.getObservacoesGerais());
+        btnStatus.setVisible(true);
         if(paciente.getDiabetes())
             cbDiabetes.setValue("Sim");
         else
@@ -158,10 +161,12 @@ public class PacienteUIController {
         if(mode == UIMode.VIEW)
             configureViewMode();
 
+
     }
     private void configureViewMode(){
         btnConfirm.setVisible(false);
         btnCancel.setText("Fechar");
+        btnStatus.setVisible(false);
 
         if(paciente.getAtivado())
             btnStatus.setText("Desativar");

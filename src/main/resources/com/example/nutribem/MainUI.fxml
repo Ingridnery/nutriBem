@@ -6,18 +6,18 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="782.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.nutribem.application.controller.MainUIController">
    <children>
-       <Text layoutX="290.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nutribem" textAlignment="CENTER">
+       <Text layoutX="313.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nutribem" textAlignment="CENTER">
            <font>
-               <Font size="24.0" />
+               <Font size="28.0" />
            </font>
        </Text>
-       <Label layoutX="25.0" layoutY="70.0" text="Nome do paciente: ">
+       <Label layoutX="15.0" layoutY="94.0" text="Nome do paciente: ">
                <font>
                        <Font size="15." />
                </font>
        </Label>
 
-       <TextField fx:id="txtNamePaciente" onKeyPressed="#handle" layoutX="155.0" layoutY="65.0" prefHeight="34.0" prefWidth="132.0" />
+       <TextField fx:id="txtNamePaciente" layoutX="145.0" layoutY="87.0" onKeyPressed="#handle" prefHeight="34.0" prefWidth="622.0" />
       <TableView fx:id="tableView" layoutX="25.0" layoutY="119.0" onMouseClicked="#getSelectedAndSetButton" prefHeight="900.0" prefWidth="753.0" AnchorPane.bottomAnchor="134.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="134.0">
         <columns>
           <TableColumn fx:id="cId" prefWidth="100.0" text="ID" />
@@ -25,19 +25,35 @@
             <TableColumn fx:id="cCPF" prefWidth="278.0" text="CPF" />
         </columns>
       </TableView>
-       <Pane layoutX="14.0" layoutY="200.0" prefHeight="61.0" prefWidth="573.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0">
-            <children>
-                <Button fx:id="btnCreate" layoutX="15.0" layoutY="-30.0" mnemonicParsing="false" onAction="#createPaciente" prefHeight="34.0" text="Novo" />
-                <Button fx:id="btnUpdate" layoutX="70.0" layoutY="-30.0" mnemonicParsing="false" onAction="#updatePaciente" prefHeight="34.0" text="Editar" />
-                <Button fx:id="btnRemove" layoutX="127.0" layoutY="-30.0" mnemonicParsing="false" onAction="#removePaciente" prefHeight="34.0" text="Excluir" />
+       <ButtonBar layoutY="599.0" prefHeight="47.0" prefWidth="754.0">
+           <buttons>
+               <Button fx:id="btnRemove" layoutX="127.0" layoutY="-30.0" mnemonicParsing="false" onAction="#removePaciente" prefHeight="34.0" text="Excluir" />
+               <Button fx:id="btnUpdate" layoutX="70.0" mnemonicParsing="false" onAction="#updatePaciente" prefHeight="34.0" text="Editar" />
                 <Button fx:id="btnFind" layoutX="187.0" layoutY="-30.0" mnemonicParsing="false" onAction="#detailPaciente" prefHeight="34.0" text="Detalhar" />
-                <Button fx:id="btnAlimento" layoutX="260.0" layoutY="-30.0" mnemonicParsing="false" onAction="#alimentoUI" prefHeight="34.0" text="Gerenciar Alimentos" />
-                <Button fx:id="btnPlanoNutricional" layoutX="395.0" layoutY="-30.0" mnemonicParsing="false" onAction="#planoNutricionalUI" prefHeight="34.0" text="Gerenciar Plano Nutricional" />
-                <Button fx:id="btnRelatorioContatos" layoutX="15.0" layoutY="12.0" mnemonicParsing="false" onAction="#createRelatorioPacienteContato" prefHeight="34.0" text="Emitir relátorio de contatos" />
-                <Button fx:id="btnRelatorioPlanos" layoutX="187.0" layoutY="12.0" mnemonicParsing="false" onAction="#createRelatorioPlanoNutricionalVencido" prefHeight="34.0" text="Emitir relátorio de planos vencidos" />
-            </children>
+               <Button fx:id="btnCreate" layoutX="15.0" layoutY="-30.0" mnemonicParsing="false" onAction="#createPaciente" prefHeight="34.0" text="Novo" />
 
-       </Pane>
+           </buttons>
+       </ButtonBar>
+      <MenuBar fx:id="mAlimentos" prefHeight="26.0" prefWidth="796.0" AnchorPane.rightAnchor="-14.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="Relátorios">
+            <items>
+              <MenuItem fx:id="miRelatorioPacientes" mnemonicParsing="false" onAction="#createRelatorioPacientesContatos" text="Contatos Pacientes" />
+                  <MenuItem fx:id="miRelatorioPlanos" mnemonicParsing="false" onAction="#createRelatorioPlanosVencidos" text="Planos vencidos" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Alimentos">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#alimentoUI" text="Gerenciar" />
+               </items></Menu>
+            <Menu mnemonicParsing="false" text="Plano Nutricional">
+              <items>
+                <MenuItem fx:id="miPlanoUi" mnemonicParsing="false" onAction="#planoNutricionalUI" text="Gerenciar planos do paciente" />
+              </items>
+            </Menu>
+
+        </menus>
+      </MenuBar>
    </children>
 
 

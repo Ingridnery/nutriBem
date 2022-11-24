@@ -18,8 +18,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.*;
-import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
 import java.util.List;
 
 import static com.example.nutribem.application.main.Main.*;
@@ -55,7 +53,7 @@ public class MainUIController {
         String txtSearch = (txtNamePaciente.getText() + key.getText()).toUpperCase();
         List<Paciente> pacienteList = findPacienteUseCase.findAll();
         List<Paciente> matchesWithSearch = pacienteList.stream()
-                .filter(paciente -> paciente.getNome().toUpperCase().startsWith(txtSearch))
+                .filter(paciente -> paciente.getNome().toUpperCase().contains(txtSearch))
                 .toList();
         tableData.clear();
         tableData.addAll(matchesWithSearch);
@@ -140,9 +138,7 @@ public class MainUIController {
     }
 
 
-
-    public void createRelatorioPacienteContato(ActionEvent actionEvent) throws IOException {
-
+    public void createRelatorioPacientesContatos(ActionEvent actionEvent) {
         try{
             FileWriter arq = new FileWriter(new File("resources/relatorios/relatorioContatosPacientes "+ LocalDate.now()+".txt").toString());
             PrintWriter gravarArq = new PrintWriter(arq);
@@ -157,10 +153,9 @@ public class MainUIController {
         }catch (Exception e){
             alert.showAlert("Error","Erro ao gerar relatório! \n Tente novamente", Alert.AlertType.ERROR);
         }
-
     }
 
-    public void createRelatorioPlanoNutricionalVencido(ActionEvent actionEvent) {
+    public void createRelatorioPlanosVencidos(ActionEvent actionEvent) {
         try{
             FileWriter arq = new FileWriter(new File("resources/relatorios/relatorioPlanosVencidos "+ LocalDate.now()+".txt").toString());
             PrintWriter gravarArq = new PrintWriter(arq);
