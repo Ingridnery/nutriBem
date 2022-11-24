@@ -38,7 +38,7 @@ public class ConnectionFactory implements AutoCloseable {
         return preparedStatement;
     }
 
-    public static Statement createStatement(String sql) {
+    public static Statement createStatement() {
         try {
             statement = createConnection().createStatement();
 
