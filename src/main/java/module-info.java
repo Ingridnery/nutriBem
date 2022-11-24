@@ -3,6 +3,8 @@ module com.example.nutribem {
     requires javafx.fxml;
     requires com.opencsv;
     requires java.desktop;
+    requires java.sql;
+    requires org.xerial.sqlitejdbc;
 
     opens com.example.nutribem to javafx.fxml;
     opens com.example.nutribem.domain.entities.paciente to javafx.fxml;
