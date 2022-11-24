@@ -16,6 +16,7 @@ public class DatabaseBuilder {
             statement.addBatch(createNutricionista());
             statement.addBatch(createDicas());
             statement.addBatch(createPaciente());
+            statement.addBatch(createPlanoNutricional());
 
             statement.executeBatch();
         } catch (SQLException e) {
@@ -76,6 +77,22 @@ public class DatabaseBuilder {
         builder.append("CONSTRAINT gluten_ck CHECK (intolerancia_gluten IN (0, 1)),\n");
         builder.append("CONSTRAINT diabetes_ck CHECK (diabetes IN (0, 1)),\n");
         builder.append("CONSTRAINT ativado_ck CHECK (ativado IN (0, 1))\n");
+        builder.append(");\n");
+
+        System.out.println(builder);
+        return builder.toString();
+    }
+
+    private String createPlanoNutricional() {
+        StringBuilder builder = new StringBuilder();
+
+        builder.append("CREATE TABLE PlanoNutricional(\n");
+        builder.append("id INTEGER PRIMARY KEY AUTOINCREMENT,\n");
+        builder.append("paciente INTEGER NOT NULL,\n");
+        builder.append("nome TEXT NOT NULL,\n");
+        builder.append("inicio TEXT NOT NULL,\n");
+        builder.append("fim TEXT NOT NULL,\n");
+        builder.append("FOREIGN KEY (paciente) REFERENCES Paciente (id)\n");
         builder.append(");\n");
 
         System.out.println(builder);
