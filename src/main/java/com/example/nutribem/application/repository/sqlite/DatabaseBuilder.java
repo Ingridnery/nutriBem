@@ -73,11 +73,11 @@ public class DatabaseBuilder {
         builder.append("intolerancia_gluten INTEGER NOT NULL,\n");
         builder.append("diabetes INTEGER NOT NULL,\n");
         builder.append("ativado INTEGER DEFAULT 1,\n");
-        builder.append("CONSTRAINT sexo_ck CHECK (sexo IN ('M', 'm', 'F', 'f')),\n");
-        builder.append("CONSTRAINT lactose_ck CHECK (intolerancia_lactose IN ('Apto', 'Intolerante', 'Restrito')),\n");
-        builder.append("CONSTRAINT gluten_ck CHECK (intolerancia_gluten IN (0, 1)),\n");
-        builder.append("CONSTRAINT diabetes_ck CHECK (diabetes IN (0, 1)),\n");
-        builder.append("CONSTRAINT ativado_ck CHECK (ativado IN (0, 1))\n");
+        builder.append("CONSTRAINT paciente_sexo_ck CHECK (sexo IN ('M', 'm', 'F', 'f')),\n");
+        builder.append("CONSTRAINT paciente_lactose_ck CHECK (intolerancia_lactose IN ('Apto', 'Intolerante', 'Restrito')),\n");
+        builder.append("CONSTRAINT paciente_gluten_ck CHECK (intolerancia_gluten IN (0, 1)),\n");
+        builder.append("CONSTRAINT paciente_diabetes_ck CHECK (diabetes IN (0, 1)),\n");
+        builder.append("CONSTRAINT paciente_ativado_ck CHECK (ativado IN (0, 1))\n");
         builder.append(");\n");
 
         System.out.println(builder);
