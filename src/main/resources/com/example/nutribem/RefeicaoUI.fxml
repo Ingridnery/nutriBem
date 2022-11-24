@@ -1,31 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.nutribem.application.controller.RefeicaoUIController">
+<AnchorPane prefHeight="646.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.nutribem.application.controller.RefeicaoUIController">
     <children>
-        <Label layoutX="37.0" layoutY="38.0" text="Horário:" />
-        <Label layoutX="37.0" layoutY="83.0" text="Categoria:" />
+        <Label layoutX="22.0" layoutY="25.0" text="Horário:" />
+        <Label layoutX="250.0" layoutY="25.0" text="Categoria:" />
 
-        <TextField fx:id="txtHorario" layoutX="129.0" layoutY="33.0" onKeyReleased="#txtHorarioKeyReleased" prefHeight="31.0" />
-        <TableView fx:id="tableView" layoutX="25.0" layoutY="110.0" prefHeight="157.0" prefWidth="477.0" AnchorPane.bottomAnchor="133.0" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="110.0">
+        <TextField fx:id="txtHorario" layoutX="79.0" layoutY="22.0" onKeyReleased="#txtHorarioKeyReleased" prefHeight="31.0" />
+        <TableView fx:id="tableAlimentos" layoutX="14.0" layoutY="109.0" prefHeight="146.0" prefWidth="558.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="27.600000000000023" AnchorPane.topAnchor="109.0">
             <columns>
                 <TableColumn fx:id="cId" prefWidth="100.0" text="ID" />
-                <TableColumn fx:id="cName" prefWidth="216.0" text="Nome" />
-                <TableColumn fx:id="cCheck" prefWidth="160.0" text="Selecionar" />
+                <TableColumn fx:id="cName" prefWidth="457.6000122070312" text="Nome" />
             </columns>
         </TableView>
 
-        <Button fx:id="btnCancel" layoutX="261.0" layoutY="500" mnemonicParsing="false" onAction="#backScene" prefHeight="39.0" prefWidth="88.0" text="Voltar" />
-        <Button fx:id="btnConfirm" layoutX="141.0" layoutY="500.0" mnemonicParsing="false" onAction="#saveOrUpdate" prefHeight="39.0" prefWidth="88.0" text="Salvar" />
-      <ComboBox fx:id="cbCategoria" layoutX="128.0" layoutY="79.0" prefWidth="150.0" />
-      <Label fx:id="lbInformation" layoutX="37.0" layoutY="133.0" text="Para editar os alimentos de uma refeição, vá para a tela de gerenciar alimentos   ">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
+        <Button fx:id="btnCancel" layoutX="14.0" layoutY="592.0" mnemonicParsing="false" onAction="#backScene" prefHeight="39.0" prefWidth="88.0" text="Voltar" />
+        <Button fx:id="btnConfirm" layoutX="484.0" layoutY="592.0" mnemonicParsing="false" onAction="#saveOrUpdate" prefHeight="39.0" prefWidth="88.0" text="Salvar" AnchorPane.rightAnchor="28.0" />
+      <ComboBox fx:id="cbCategoria" layoutX="314.0" layoutY="21.0" prefWidth="150.0" AnchorPane.leftAnchor="314.0" AnchorPane.rightAnchor="135.6" />
+      <TextField fx:id="txtBusca" layoutX="14.0" layoutY="63.0" onKeyReleased="#txtHorarioKeyReleased" prefHeight="31.0" prefWidth="558.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="27.600000000000023" />
+      <Button fx:id="btnAddToRefeicao" layoutX="484.0" layoutY="275.0" mnemonicParsing="false" onAction="#addToRefeicao" prefHeight="39.0" prefWidth="88.0" text="Adicionar" AnchorPane.rightAnchor="28.0" />
+      <TableView fx:id="tableAdded" layoutX="21.0" layoutY="325.0" prefHeight="146.0" prefWidth="558.0" AnchorPane.leftAnchor="21.0" AnchorPane.rightAnchor="20.600000000000023">
+         <columns>
+            <TableColumn fx:id="cId1" prefWidth="100.0" text="ID" />
+            <TableColumn fx:id="cName1" prefWidth="457.6000122070312" text="Nome" />
+         </columns>
+      </TableView>
+      <Label layoutX="19.0" layoutY="500.0" text="Calorias:" />
+      <Label fx:id="txtCalorias" layoutX="75.0" layoutY="500.0" text="XXX" />
+      <Label layoutX="238.0" layoutY="500.0" text="Gluten:" />
+      <Label fx:id="txtGluten" layoutX="300.0" layoutY="500.0" text="XXX" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="278.4" />
+      <Label layoutX="436.0" layoutY="500.0" text="Lactose:" AnchorPane.rightAnchor="120.0" />
+      <Label fx:id="txtLactose" layoutX="492.0" layoutY="500.0" text="XXX" AnchorPane.rightAnchor="86.4" />
+      <Label layoutX="240.0" layoutY="538.0" text="Sódio:" />
+      <Label fx:id="txtSodio" layoutX="293.0" layoutY="538.0" text="XXX" />
+      <Label layoutX="19.0" layoutY="538.0" text="Açúcar:" />
+      <Label fx:id="txtAcucar" layoutX="75.0" layoutY="538.0" text="XXX" />
+      <Label layoutX="436.0" layoutY="538.0" text="Gorduras:" AnchorPane.rightAnchor="110.0" />
+      <Label fx:id="txtGorduras" layoutX="492.0" layoutY="538.0" text="XXX" AnchorPane.rightAnchor="86.4" />
     </children>
 
 </AnchorPane>

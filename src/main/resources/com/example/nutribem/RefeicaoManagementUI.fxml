@@ -41,8 +41,6 @@
                 <Button fx:id="btnRemove" layoutX="165.0" layoutY="-30.0" mnemonicParsing="false" onAction="#removeRefeicao" prefHeight="34.0" text="Excluir" />
                 <Button fx:id="btnFind" layoutX="240.0" layoutY="-30.0" mnemonicParsing="false" onAction="#detailRefeicao" prefHeight="34.0" text="Detalhar" />
                 <Button fx:id="btnBack" layoutX="320.0" layoutY="-30.0" mnemonicParsing="false" onAction="#backScene" prefHeight="34.0" text="Voltar" />
-                <Button fx:id="btnAlimento" layoutX="390.0" layoutY="-30.0" mnemonicParsing="false" onAction="#addAlimento" prefHeight="34.0" text="Adicionar Alimentos" />
-
             </children>
 
         </Pane>

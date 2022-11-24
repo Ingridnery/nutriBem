@@ -106,10 +106,10 @@ public class RefeicaoUIController {
 
         for(Alimento bean : tableData)
         {
-            if(bean.getCheckBox().isSelected())
-            {
-                alimentoList.add(bean);
-            }
+//            if(bean.getCheckBox().isSelected())
+//            {
+//                alimentoList.add(bean);
+//            }
         }
         refeicao.setAlimentos(alimentoList);
 
@@ -158,4 +158,8 @@ public class RefeicaoUIController {
         textFieldFormater.setTf(txtHorario);
         textFieldFormater.formatter();
     }
+
+    public void addToRefeicao(ActionEvent actionEvent) {
+    }
+
 }

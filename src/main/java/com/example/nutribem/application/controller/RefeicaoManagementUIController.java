@@ -134,15 +134,7 @@ public class RefeicaoManagementUIController {
     }
 
     public void addAlimento(ActionEvent actionEvent) throws IOException {
-            if(refeicao != null){
-                WindowLoader.setRoot("RefeicaoAddAlimentoUI");
-                RefeicaoAddAlimentoUIController controller = (RefeicaoAddAlimentoUIController) WindowLoader.getController();
-                controller.setRefeicao(refeicao);
-            }
-            else{
-                alert.showAlert("Erro!","Selecione uma refeição!", Alert.AlertType.ERROR);
-            }
-
+        WindowLoader.setRoot("RefeicaoAlimentoUI");
 
     }
 }
