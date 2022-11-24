@@ -2,6 +2,7 @@ package com.example.nutribem.application.main;
 
 import com.example.nutribem.WindowLoader;
 import com.example.nutribem.application.repository.*;
+import com.example.nutribem.application.repository.sqlite.DatabaseBuilder;
 import com.example.nutribem.domain.contexts.AuthenticationContext;
 import com.example.nutribem.domain.entities.alimento.Alimento;
 import com.example.nutribem.domain.entities.cardapio.Cardapio;
@@ -73,8 +74,8 @@ public class Main {
     public static EmitirRelatorioPlanoNutricionalUseCase emitirRelatorioPlanoNutricionalUseCase;
 
     public static void main(String[] args) {
+        createDatabase();
         configureInjection();
-
 
         Nutricionista nutricionista = new Nutricionista("admin","admin");
         createNutricionistaUseCase.insert(nutricionista,"admin");
@@ -131,6 +132,11 @@ public class Main {
         createRefeicaoUseCase.insert(refeicao1);
 
         WindowLoader.main(args);
+    }
+
+    private static void createDatabase() {
+        DatabaseBuilder db = new DatabaseBuilder();
+        db.buildIfMissing();
     }
 
     public static void configureInjection(){
