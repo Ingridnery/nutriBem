@@ -41,6 +41,16 @@ public class ValoresNutricionais {
         this.lactose += novo.getLactose();
     }
 
+    public void subtrair(ValoresNutricionais novo){
+        this.calorias -= novo.getCalorias();
+        this.colesterol -= novo.getColesterol();
+        if(this.gluten && novo.getGluten()) this.gluten = false;
+        this.gordurasSaturadas -= novo.getGordurasSaturadas();
+        this.sodio -= novo.getSodio();
+        this.acucar -= novo.getAcucar();
+        this.lactose -= novo.getLactose();
+    }
+
     public Integer getCalorias() {
         return calorias;
     }
