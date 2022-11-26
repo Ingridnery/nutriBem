@@ -45,7 +45,7 @@
       <Label fx:id="txtAcucar" layoutX="73.0" layoutY="615.0" text="XXX" />
       <Label layoutX="223.0" layoutY="616.0" text="Gorduras:" AnchorPane.rightAnchor="435.0" />
       <Label fx:id="txtGorduras" layoutX="300.4" layoutY="616.0" text="XXX" AnchorPane.rightAnchor="388.0" />
-      <Label layoutX="641.0" layoutY="55.0" text="🔎" AnchorPane.rightAnchor="27.0">
+      <Label fx:id="lLupa" layoutX="641.0" layoutY="55.0" text="🔎" AnchorPane.rightAnchor="27.0">
          <font>
             <Font size="32.0" />
          </font>

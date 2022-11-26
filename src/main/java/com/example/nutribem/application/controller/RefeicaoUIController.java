@@ -17,6 +17,9 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 
+import java.io.IOException;
+import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.example.nutribem.application.main.Main.*;
@@ -76,13 +79,20 @@ public class RefeicaoUIController {
 
     @FXML
     private Label txtSodio;
+    @FXML
+    private Button btnRemover;
+    @FXML
+    private Label lLupa;
 
     private Refeicao refeicao;
     private Cardapio cardapio;
+    private List<Alimento> alimentoList = new ArrayList<>();
+    private List<Alimento> alimentosAdded = new ArrayList<>();
     private final AlertMessage alert = new AlertMessage();
     private ObservableList<Alimento> allAlimentosData;
     private ObservableList<Alimento> addedAlimentosData;
     private ValoresNutricionais totalValoresNutricionais;
+    private UIMode mode;
 
     @FXML
     void addToRefeicao(ActionEvent event) {
@@ -91,6 +101,7 @@ public class RefeicaoUIController {
             alert.showAlert("Alimento inválido", "Nenhum alimento foi selecionado", Alert.AlertType.ERROR);
             return;
         }
+        alimentosAdded.add(alimento);
         addedAlimentosData.add(alimento);
         allAlimentosData.remove(alimento);
 
@@ -106,6 +117,7 @@ public class RefeicaoUIController {
             alert.showAlert("Alimento inválido", "Nenhum alimento foi selecionado", Alert.AlertType.ERROR);
             return;
         }
+        alimentosAdded.remove(alimento);
         allAlimentosData.add(alimento);
         addedAlimentosData.remove(alimento);
 
@@ -136,7 +148,7 @@ public class RefeicaoUIController {
         addedAlimentosTableView.setItems(addedAlimentosData);
     }
     private void loadDataAndShow(){
-        List<Alimento> alimentoList = findAlimentoUseCase.findAll();
+        alimentoList = findAlimentoUseCase.findAll();
         allAlimentosData.clear();
         allAlimentosData.addAll(alimentoList);
     }
@@ -164,8 +176,25 @@ public class RefeicaoUIController {
     }
 
     @FXML
-    void saveOrUpdate(ActionEvent event) {
+    void saveOrUpdate(ActionEvent event) throws IOException {
+        getEntityToView();
+        if(refeicao.getId()==null){
+            createRefeicaoUseCase.insert(refeicao);
+        }
+        else{
+            updateRefeicaoUseCase.update(refeicao);
+        }
+        WindowLoader.setRoot("RefeicaoManagementUI");
+        RefeicaoManagementUIController controller = (RefeicaoManagementUIController) WindowLoader.getController();
+        controller.setRefeicaoFromCardapio(refeicao.getCardapio());
 
+    }
+    private void getEntityToView(){
+        if(refeicao == null)
+            refeicao = new Refeicao();
+        refeicao.setHorario(LocalTime.parse(txtHorario.getText()));
+        refeicao.setCategoria(cbCategoria.getValue());
+        refeicao.setAlimentos(alimentosAdded);
     }
 
     @FXML
@@ -177,10 +206,61 @@ public class RefeicaoUIController {
         textFieldFormater.formatter();
     }
 
+    public void setRefeicao(Refeicao refeicao,UIMode mode){
+        this.refeicao = refeicao;
+        this.mode = mode;
+        setEntityToView();
+        if(mode == UIMode.VIEW)
+            configureViewMode();
+
+
+    }
+
     public void setCardapio(Cardapio cardapio){
         this.cardapio = cardapio;
         cbCategoria.getItems().setAll(RefeicaoCategoria.values());
+
     }
 
+    private void setEntityToView(){
+        txtHorario.setText(refeicao.getHorario().toString());
+        cbCategoria.setValue(refeicao.getCategoria());
+        List<Alimento> alimentosRefeicao = refeicao.getAlimentos();
+        allAlimentosData.clear();
+
+
+        for (Alimento alimento: alimentosRefeicao) {
+            alimentosAdded.add(alimento);
+            ValoresNutricionais valoresNutricionais = alimento.calculateValoresNutricionais();
+            totalValoresNutricionais.somar(valoresNutricionais);
+            updateValoresNutricionais();
+            if(mode == UIMode.UPDATE)
+                alimentoList.remove(alimento);
+        }
+
+        if(mode == UIMode.UPDATE){
+            addedAlimentosData.clear();
+            addedAlimentosData.addAll(alimentosRefeicao);
+            allAlimentosData.addAll(alimentoList);
+
+        }
+        else{
+            allAlimentosData.addAll(alimentosRefeicao);
+            allAlimentosTableView.setEditable(false);
+        }
+
+    }
+    private void configureViewMode(){
+        txtBusca.setVisible(false);
+        btnAddToRefeicao.setVisible(false);
+        addedAlimentosTableView.setVisible(false);
+        txtHorario.setDisable(true);
+        cbCategoria.setDisable(true);
+        btnRemover.setVisible(false);
+        lLupa.setVisible(false);
+        btnConfirm.setVisible(false);
+        btnCancel.setText("Fechar");
+
+    }
 
 }
