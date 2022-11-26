@@ -102,13 +102,13 @@ public class Main {
 
         createPacienteUseCase.insert(paciente2);
 
-        //Alimento alimento = new Alimento("Cenoura",1,1,14,false,15.4,2.4,0.0,0.0);
-//        createAlimentoUseCase.insert(alimento);
-//        Alimento alimento1 = new Alimento("Feijoada",1,500,100,true,275.0,100.5,50.8,41.8);
-//
-//        createAlimentoUseCase.insert(alimento1);
+        Alimento alimento = new Alimento("Cenoura",1,1,14,false,15.4,2.4,0.0,0.0);
+        createAlimentoUseCase.insert(alimento);
+        Alimento alimento1 = new Alimento("Feijoada",1,500,100,true,275.0,100.5,50.8,41.8);
 
-        // alimento.setNome("Cenoura ralada");
+        createAlimentoUseCase.insert(alimento1);
+
+         alimento.setNome("Cenoura ralada");
 
         PlanoNutricional planoNutricional = new PlanoNutricional("Emagrecimento",LocalDate.now(),LocalDate.of(2022,12,10),paciente2);
         createPlanoNutricionalUseCase.insert(planoNutricional);

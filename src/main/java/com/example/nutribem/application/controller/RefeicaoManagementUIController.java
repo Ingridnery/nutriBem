@@ -62,7 +62,6 @@ public class RefeicaoManagementUIController {
     public void createRefeicao(ActionEvent actionEvent) throws IOException {
         WindowLoader.setRoot("RefeicaoUI");
         RefeicaoUIController controller = (RefeicaoUIController)  WindowLoader.getController();
-        controller.setCardapio(cardapio);
     }
 
     public void updateRefeicao(ActionEvent actionEvent) throws IOException {
@@ -94,7 +93,7 @@ public class RefeicaoManagementUIController {
         if(refeicao!=null){
             WindowLoader.setRoot("RefeicaoUI");
             RefeicaoUIController controller = (RefeicaoUIController) WindowLoader.getController();
-            controller.setRefeicao(refeicao,mode);
+//            controller.setRefeicao(refeicao,mode);
             controller.setCardapio(cardapio);
         }
         else

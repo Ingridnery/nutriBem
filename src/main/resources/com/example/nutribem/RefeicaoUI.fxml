@@ -15,10 +15,10 @@
         <Label layoutX="250.0" layoutY="25.0" text="Categoria:" />
 
         <TextField fx:id="txtHorario" layoutX="79.0" layoutY="22.0" onKeyReleased="#txtHorarioKeyReleased" prefHeight="31.0" />
-        <TableView fx:id="tableAlimentos" layoutX="14.0" layoutY="109.0" prefHeight="146.0" prefWidth="558.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="21.0" AnchorPane.topAnchor="109.0">
+        <TableView fx:id="allAlimentosTableView" layoutX="14.0" layoutY="109.0" prefHeight="146.0" prefWidth="558.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="21.0" AnchorPane.topAnchor="109.0">
             <columns>
-                <TableColumn fx:id="cId" prefWidth="100.0" text="ID" />
-                <TableColumn fx:id="cName" prefWidth="457.6000122070312" text="Nome" />
+                <TableColumn fx:id="cAllId" prefWidth="100.0" text="ID" />
+                <TableColumn fx:id="cAllName" prefWidth="457.6000122070312" text="Nome" />
             </columns>
         </TableView>
 
@@ -27,29 +27,30 @@
       <ComboBox fx:id="cbCategoria" layoutX="314.0" layoutY="21.0" prefHeight="26.0" prefWidth="366.0" AnchorPane.leftAnchor="314.0" AnchorPane.rightAnchor="20.0" />
       <TextField fx:id="txtBusca" layoutX="14.0" layoutY="63.0" onKeyReleased="#txtHorarioKeyReleased" prefHeight="31.0" prefWidth="627.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="59.0" />
       <Button fx:id="btnAddToRefeicao" layoutX="484.0" layoutY="275.0" mnemonicParsing="false" onAction="#addToRefeicao" prefHeight="39.0" prefWidth="94.0" text="Adicionar" AnchorPane.rightAnchor="22.0" />
-      <TableView fx:id="tableAdded" layoutX="14.0" layoutY="339.0" prefHeight="232.0" prefWidth="665.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="21.0">
+      <TableView fx:id="addedAlimentosTableView" layoutX="14.0" layoutY="339.0" prefHeight="232.0" prefWidth="665.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="21.0">
          <columns>
-            <TableColumn fx:id="cId1" prefWidth="100.0" text="ID" />
-            <TableColumn fx:id="cName1" prefWidth="457.6000122070312" text="Nome" />
+            <TableColumn fx:id="cAddedId" prefWidth="100.0" text="ID" />
+            <TableColumn fx:id="cAddedName" prefWidth="457.6000122070312" text="Nome" />
          </columns>
       </TableView>
       <Label layoutX="17.0" layoutY="577.0" text="Calorias:" />
       <Label fx:id="txtCalorias" layoutX="73.0" layoutY="577.0" text="XXX" />
-      <Label layoutX="293.0" layoutY="577.0" text="Gluten:" />
-      <Label fx:id="txtGluten" layoutX="355.0" layoutY="577.0" prefHeight="18.0" prefWidth="34.0" text="XXX" AnchorPane.leftAnchor="355.0" AnchorPane.rightAnchor="311.0" />
-      <Label layoutX="535.0" layoutY="577.0" text="Lactose:" AnchorPane.rightAnchor="122.60000000000002" />
-      <Label fx:id="txtLactose" layoutX="590.0" layoutY="577.0" text="XXX" AnchorPane.rightAnchor="88.39999999999998" />
-      <Label layoutX="294.0" layoutY="615.0" text="Sódio:" />
-      <Label fx:id="txtSodio" layoutX="347.0" layoutY="615.0" text="XXX" />
+      <Label layoutX="137.0" layoutY="578.0" text="Gluten:" />
+      <Label fx:id="txtGluten" layoutX="199.0" layoutY="578.0" prefHeight="18.0" prefWidth="34.0" text="XXX" AnchorPane.leftAnchor="199.0" AnchorPane.rightAnchor="467.0" />
+      <Label layoutX="221.99999999999997" layoutY="578.0" text="Lactose:" AnchorPane.rightAnchor="445.6" />
+      <Label fx:id="txtLactose" layoutX="290.4" layoutY="578.0" text="XXX" AnchorPane.rightAnchor="398.0" />
+      <Label layoutX="138.0" layoutY="616.0" text="Sódio:" />
+      <Label fx:id="txtSodio" layoutX="191.0" layoutY="616.0" text="XXX" />
       <Label layoutX="17.0" layoutY="615.0" text="Açúcar:" />
       <Label fx:id="txtAcucar" layoutX="73.0" layoutY="615.0" text="XXX" />
-      <Label layoutX="536.0" layoutY="615.0" text="Gorduras:" AnchorPane.rightAnchor="112.0" />
-      <Label fx:id="txtGorduras" layoutX="590.0" layoutY="615.0" text="XXX" AnchorPane.rightAnchor="88.39999999999998" />
+      <Label layoutX="223.0" layoutY="616.0" text="Gorduras:" AnchorPane.rightAnchor="435.0" />
+      <Label fx:id="txtGorduras" layoutX="300.4" layoutY="616.0" text="XXX" AnchorPane.rightAnchor="388.0" />
       <Label layoutX="641.0" layoutY="55.0" text="🔎" AnchorPane.rightAnchor="27.0">
          <font>
             <Font size="32.0" />
          </font>
       </Label>
+      <Button fx:id="btnRemover" layoutX="590.0" layoutY="586.0" mnemonicParsing="false" onAction="#removeFromRefeicao" prefHeight="39.0" prefWidth="88.0" text="Remover" AnchorPane.rightAnchor="22.0" />
     </children>
 
 </AnchorPane>
