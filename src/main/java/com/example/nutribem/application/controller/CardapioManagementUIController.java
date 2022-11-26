@@ -72,7 +72,7 @@ public class CardapioManagementUIController {
     public void removeCardapio(ActionEvent actionEvent) {
         if(cardapio!= null) {
             removeCardapioUseCase.delete(cardapio);
-            loadDataAndShow();
+            setCardapioFromPlanoNutricional(planoNutricional);
         }
         else
             setMessageCardapio();

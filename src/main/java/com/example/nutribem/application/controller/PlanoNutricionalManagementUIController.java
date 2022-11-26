@@ -4,6 +4,8 @@ import com.example.nutribem.WindowLoader;
 import com.example.nutribem.domain.entities.paciente.Paciente;
 import com.example.nutribem.domain.entities.planoNutricional.PlanoNutricional;
 import com.example.nutribem.domain.usecases.utils.AlertMessage;
+import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.PdfWriter;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -16,15 +18,13 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 
 import static com.example.nutribem.application.main.Main.*;
+import static com.itextpdf.text.FontFactory.getFont;
 
 public class PlanoNutricionalManagementUIController {
     @FXML
@@ -74,7 +74,7 @@ public class PlanoNutricionalManagementUIController {
     public void removePlanoNutricional(ActionEvent actionEvent) {
         if(planoNutricional!= null) {
             removePlanoNutricionalUseCase.remove(planoNutricional);
-            loadDataAndShow();
+            setPlanoNutricionalFromPaciente(paciente);
         }
         else
             setMessagePlanoNutricional();
@@ -137,18 +137,22 @@ public class PlanoNutricionalManagementUIController {
 
     public void createRelatorio(ActionEvent actionEvent) {
         try{
-            FileWriter arq = new FileWriter(new File("resources/relatorios/relatorioPlanosNutricionais"+ LocalDate.now()+".txt").toString());
-            PrintWriter gravarArq = new PrintWriter(arq);
+            Document document = new Document();
+            PdfWriter.getInstance(document,new FileOutputStream("resources/relatorios/Plano Nutricional "+paciente.getNome()+" "+LocalDate.now()+".pdf"));
+            document.open();
+            Chunk chunk = new Chunk();
             List<String> planos = emitirRelatorioPlanoNutricionalUseCase.emitir(planoNutricional,calculateValoresNutricionaisUseCase);
-            gravarArq.printf("--Planos nutricionais cadastrados--\n");
+            chunk.append("--Planos nutricionais cadastrados--\n");
             for (String plano: planos) {
-                gravarArq.printf(plano+"\n");
+                document.add(new Paragraph(plano));
             }
-            arq.close();
+            document.close();
+
             alert.showAlert("Success","Relatório gerado com sucesso!", Alert.AlertType.INFORMATION);
 
+
         }catch (Exception e){
-            alert.showAlert("Error","Erro ao gerar relatório! \n Tente novamente", Alert.AlertType.ERROR);
+            alert.showAlert("Error",e.getMessage()+"\n Tente novamente", Alert.AlertType.ERROR);
         }
     }
 }

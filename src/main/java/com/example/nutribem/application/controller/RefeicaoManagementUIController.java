@@ -51,7 +51,6 @@ public class RefeicaoManagementUIController {
         tableView.setItems(tableData);
     }
     private void loadDataAndShow(){
-
         tableData.clear();
         tableData.addAll(refeicaoList);
     }
@@ -62,6 +61,7 @@ public class RefeicaoManagementUIController {
     public void createRefeicao(ActionEvent actionEvent) throws IOException {
         WindowLoader.setRoot("RefeicaoUI");
         RefeicaoUIController controller = (RefeicaoUIController)  WindowLoader.getController();
+        controller.setCardapio(cardapio);
     }
 
     public void updateRefeicao(ActionEvent actionEvent) throws IOException {
@@ -70,8 +70,9 @@ public class RefeicaoManagementUIController {
 
     public void removeRefeicao(ActionEvent actionEvent) {
         if(refeicao!= null) {
+            System.out.println("foiiii");
             removeRefeicaoUseCase.remove(refeicao);
-            loadDataAndShow();
+            setRefeicaoFromCardapio(cardapio);
         }
         else
             setMessageRefeicao();
@@ -93,8 +94,8 @@ public class RefeicaoManagementUIController {
         if(refeicao!=null){
             WindowLoader.setRoot("RefeicaoUI");
             RefeicaoUIController controller = (RefeicaoUIController) WindowLoader.getController();
-//            controller.setRefeicao(refeicao,mode);
             controller.setCardapio(cardapio);
+            controller.setRefeicao(refeicao,mode);
         }
         else
             setMessageRefeicao();
@@ -111,7 +112,7 @@ public class RefeicaoManagementUIController {
 
     public void setRefeicaoFromCardapio(Cardapio cardapio){
 
-        Objects.requireNonNull(cardapio,"Paciente não pode ser nulo!");
+        Objects.requireNonNull(cardapio,"Cardapio não pode ser nulo!");
         refeicaoList = findRefeicaoUseCase.findByCardapio(cardapio);
         bindTableViewToItemsList();
         bindColumnsToValueSources();
