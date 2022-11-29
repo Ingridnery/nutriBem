@@ -10,11 +10,17 @@
     <children>
         <MenuBar layoutY="1.0" prefHeight="26.0" prefWidth="831.0">
             <menus>
+                <Menu mnemonicParsing="false" text="Início">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#backMain" text="Voltar para tela inicial" />
+                    </items>
+                </Menu>
                 <Menu mnemonicParsing="false" text="Refeição">
                     <items>
                         <MenuItem mnemonicParsing="false" onAction="#refeicaoUI" text="Gerenciar refeição do cardápio" />
                     </items>
                 </Menu>
+
             </menus>
         </MenuBar>
         <Text layoutX="275.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gerenciar Cardápio" textAlignment="CENTER">

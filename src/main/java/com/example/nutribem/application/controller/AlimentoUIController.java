@@ -113,10 +113,7 @@ public class AlimentoUIController {
 
         btnConfirm.setVisible(false);
         btnCancel.setText("Fechar");
-        if(alimento.isAtivado())
-            btnStatus.setText("Desativar");
-        else
-            btnStatus.setText("Ativar");
+        btnStatus.setVisible(false);
 
         txtNome.setDisable(true);
         txtPorcao.setDisable(true);

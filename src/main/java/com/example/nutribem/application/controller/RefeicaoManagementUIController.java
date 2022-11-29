@@ -137,4 +137,8 @@ public class RefeicaoManagementUIController {
         WindowLoader.setRoot("RefeicaoAlimentoUI");
 
     }
+
+    public void backMain(ActionEvent actionEvent) throws IOException {
+        WindowLoader.setRoot("MainUI");
+    }
 }

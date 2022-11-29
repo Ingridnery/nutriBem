@@ -6,9 +6,7 @@ import com.example.nutribem.domain.entities.planoNutricional.PlanoNutricional;
 import com.example.nutribem.domain.usecases.utils.AlertMessage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -23,11 +21,9 @@ public class CardapioUIController {
     private Button btnConfirm;
     @FXML
     private Button btnCancel;
-
     private Cardapio cardapio;
     private PlanoNutricional planoNutricional;
-    private AlertMessage alertMessage = new AlertMessage();
-
+    private final AlertMessage alertMessage = new AlertMessage();
 
 
     public void backScene(ActionEvent actionEvent) throws IOException {
@@ -78,7 +74,6 @@ public class CardapioUIController {
     private void configureViewMode(){
         btnConfirm.setVisible(false);
         btnCancel.setText("Fechar");
-
         txtNumeroDia.setDisable(true);
     }
     public void setPlanoNutricional(PlanoNutricional planoNutricional){this.planoNutricional=planoNutricional;}

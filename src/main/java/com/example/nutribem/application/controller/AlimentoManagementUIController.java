@@ -2,7 +2,6 @@ package com.example.nutribem.application.controller;
 
 import com.example.nutribem.WindowLoader;
 import com.example.nutribem.domain.entities.alimento.Alimento;
-import com.example.nutribem.domain.entities.paciente.Paciente;
 import com.example.nutribem.domain.usecases.utils.AlertMessage;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -15,7 +14,6 @@ import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Objects;
 
 import static com.example.nutribem.application.main.Main.*;
 
@@ -30,8 +28,8 @@ public class AlimentoManagementUIController {
     private TableColumn<Alimento,String> cName;
     private ObservableList<Alimento> tableData;
     private Alimento alimento;
+    private final AlertMessage alertMessage = new AlertMessage();
 
-    private final AlertMessage alert = new AlertMessage();
 
 
 
@@ -71,7 +69,13 @@ public class AlimentoManagementUIController {
 
     public void removeAlimento(ActionEvent actionEvent) {
         if(alimento != null){
-            removeAlimentoUseCase.remove(alimento);
+            try{
+                removeAlimentoUseCase.remove(alimento);
+            }
+            catch (Exception e){
+                 alertMessage.showAlert("Error",e.getMessage(), Alert.AlertType.ERROR);
+
+            }
             loadDataAndShow();
         }
         else
@@ -86,7 +90,7 @@ public class AlimentoManagementUIController {
     private void setMessageAlimento(){
         String title = "Alimento invalido.";
         String message = "Nenhum alimento foi selecionado!";
-        alert.showAlert(title, message, Alert.AlertType.ERROR);
+        alertMessage.showAlert(title, message, Alert.AlertType.ERROR);
     }
     private void showAlimentoInMode(UIMode mode) throws IOException {
         if(alimento !=null){

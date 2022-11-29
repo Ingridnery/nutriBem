@@ -139,4 +139,8 @@ public class CardapioManagementUIController {
 
 
     }
+
+    public void backMain(ActionEvent actionEvent) throws IOException {
+        WindowLoader.setRoot("MainUI");
+    }
 }
