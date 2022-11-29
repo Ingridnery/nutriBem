@@ -3,6 +3,7 @@ package com.example.nutribem.application.controller;
 import com.example.nutribem.WindowLoader;
 import com.example.nutribem.domain.entities.paciente.Paciente;
 import com.example.nutribem.domain.usecases.utils.AlertMessage;
+import com.itextpdf.text.DocumentException;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -13,10 +14,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import javax.swing.text.Document;
+import java.io.*;
 import java.time.*;
 import java.util.List;
 
@@ -138,37 +137,24 @@ public class MainUIController {
     }
 
 
-    public void createRelatorioPacientesContatos(ActionEvent actionEvent) {
-        try{
-            FileWriter arq = new FileWriter(new File("resources/relatorios/relatorioContatosPacientes "+ LocalDate.now()+".txt").toString());
-            PrintWriter gravarArq = new PrintWriter(arq);
-            List<String> relatorios = emitirRelatorioContatosUseCase.emitir();
-            gravarArq.printf("--Contato dos pacientes cadastrados--\n");
-            for (String relatorio: relatorios) {
-                gravarArq.printf(relatorio+"\n");
-            }
-            arq.close();
+    public void createRelatorioPacientesContatos(ActionEvent actionEvent) throws DocumentException, FileNotFoundException {
+
+        Boolean emitir = emitirRelatorioContatosUseCase.emitir();
+
+        if(!emitir)
+            alert.showAlert("Error","Erro ao gerar relatório! \n Tente novamente", Alert.AlertType.ERROR);
+        else
             alert.showAlert("Success","Relatório gerado com sucesso!", Alert.AlertType.INFORMATION);
 
-        }catch (Exception e){
-            alert.showAlert("Error","Erro ao gerar relatório! \n Tente novamente", Alert.AlertType.ERROR);
-        }
     }
 
-    public void createRelatorioPlanosVencidos(ActionEvent actionEvent) {
-        try{
-            FileWriter arq = new FileWriter(new File("resources/relatorios/relatorioPlanosVencidos "+ LocalDate.now()+".txt").toString());
-            PrintWriter gravarArq = new PrintWriter(arq);
-            List<String> planos = emitirRelatorioPlanosVencidosUseCase.emitir();
-            gravarArq.printf("--Planos nutricionais vencidos--\n");
-            for (String plano: planos) {
-                gravarArq.printf(plano+"\n");
-            }
-            arq.close();
+    public void createRelatorioPlanosVencidos(ActionEvent actionEvent) throws DocumentException, FileNotFoundException {
+
+        Boolean emitir = emitirRelatorioPlanosVencidosUseCase.emitir();
+        if(!emitir)
+            alert.showAlert("Error","Erro ao gerar relatório! \n Tente novamente", Alert.AlertType.ERROR);
+        else
             alert.showAlert("Success","Relatório gerado com sucesso!", Alert.AlertType.INFORMATION);
 
-        }catch (Exception e){
-            alert.showAlert("Error","Erro ao gerar relatório! \n Tente novamente", Alert.AlertType.ERROR);
-        }
     }
 }

@@ -135,24 +135,15 @@ public class PlanoNutricionalManagementUIController {
         tableData.addAll(matchesWithSearch);
     }
 
-    public void createRelatorio(ActionEvent actionEvent) {
-        try{
-            Document document = new Document();
-            PdfWriter.getInstance(document,new FileOutputStream("resources/relatorios/Plano Nutricional "+paciente.getNome()+" "+LocalDate.now()+".pdf"));
-            document.open();
-            Chunk chunk = new Chunk();
-            List<String> planos = emitirRelatorioPlanoNutricionalUseCase.emitir(planoNutricional,calculateValoresNutricionaisUseCase);
-            chunk.append("--Planos nutricionais cadastrados--\n");
-            for (String plano: planos) {
-                document.add(new Paragraph(plano));
-            }
-            document.close();
+    public void createRelatorio(ActionEvent actionEvent) throws DocumentException, FileNotFoundException {
 
-            alert.showAlert("Success","Relatório gerado com sucesso!", Alert.AlertType.INFORMATION);
+        Boolean emitir = emitirRelatorioPlanoNutricionalUseCase.emitir(planoNutricional,calculateValoresNutricionaisUseCase);
 
-
-        }catch (Exception e){
-            alert.showAlert("Error",e.getMessage()+"\n Tente novamente", Alert.AlertType.ERROR);
+        if (!emitir) {
+            alert.showAlert("Error", "Erro ao gerar relátorio\n Tente novamente", Alert.AlertType.ERROR);
+        } else {
+            alert.showAlert("Success", "Relatório gerado com sucesso!", Alert.AlertType.INFORMATION);
         }
+
     }
 }

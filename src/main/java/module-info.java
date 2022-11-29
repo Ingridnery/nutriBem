@@ -2,6 +2,8 @@ module com.example.nutribem {
     requires javafx.controls;
     requires javafx.fxml;
     requires com.opencsv;
+    requires org.apache.commons.text;
+    requires itextpdf;
     requires java.desktop;
     requires java.sql;
     requires org.xerial.sqlitejdbc;
