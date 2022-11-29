@@ -6,6 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.control.PasswordField?>
 <AnchorPane prefHeight="700.0" prefWidth="782.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.nutribem.application.controller.LoginUIController">
    <children>
       <Label layoutX="256.0" layoutY="60.0" text="Nutribem">
@@ -21,7 +22,7 @@
             <Font size="18.0" />
          </font></Label>
       <TextField fx:id="txtUserName" layoutX="270.0" layoutY="217.0" minHeight="30.0" prefHeight="26.0" prefWidth="233.0" />
-      <TextField fx:id="txtSenha" layoutX="271.0" layoutY="294.0" prefHeight="30.0" prefWidth="233.0" />
+      <PasswordField fx:id="txtSenha" layoutX="271.0" layoutY="294.0" prefHeight="30.0" prefWidth="233.0" />
       <Button fx:id="btnLogin" layoutX="311.0" layoutY="366.0" minHeight="50.0" minWidth="150.0" mnemonicParsing="false" onAction="#login" text="Login" />
       <Button fx:id="btnDica" layoutX="315.0" layoutY="517.0" minHeight="50.0" minWidth="150.0" mnemonicParsing="false" onAction="#findDicas" text="Dicas de senha" />
    </children>
