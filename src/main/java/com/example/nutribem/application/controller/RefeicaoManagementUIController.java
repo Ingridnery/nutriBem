@@ -135,7 +135,8 @@ public class RefeicaoManagementUIController {
 
     public void addAlimento(ActionEvent actionEvent) throws IOException {
         WindowLoader.setRoot("RefeicaoAlimentoUI");
-
+        RefeicaoUIController controller = (RefeicaoUIController)WindowLoader.getController();
+        controller.setCardapio(cardapio);
     }
 
     public void backMain(ActionEvent actionEvent) throws IOException {

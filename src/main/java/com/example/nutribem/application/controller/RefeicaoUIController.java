@@ -93,6 +93,7 @@ public class RefeicaoUIController {
     private ObservableList<Alimento> addedAlimentosData;
     private ValoresNutricionais totalValoresNutricionais;
     private UIMode mode;
+    private final AlertMessage alertMessage = new AlertMessage();
 
     @FXML
     void addToRefeicao(ActionEvent event) {
@@ -178,23 +179,38 @@ public class RefeicaoUIController {
     @FXML
     void saveOrUpdate(ActionEvent event) throws IOException {
         getEntityToView();
-        if(refeicao.getId()==null){
-            createRefeicaoUseCase.insert(refeicao);
+        try{
+            if(refeicao.getId()==null){
+                createRefeicaoUseCase.insert(refeicao);
+            }
+            else{
+                updateRefeicaoUseCase.update(refeicao);
+            }
+            WindowLoader.setRoot("RefeicaoManagementUI");
+            RefeicaoManagementUIController controller = (RefeicaoManagementUIController) WindowLoader.getController();
+            controller.setRefeicaoFromCardapio(refeicao.getCardapio());
+
+        }catch (Exception e){
+            alertMessage.showAlert("Erro!", e.getMessage(), Alert.AlertType.ERROR);
+
         }
-        else{
-            updateRefeicaoUseCase.update(refeicao);
-        }
-        WindowLoader.setRoot("RefeicaoManagementUI");
-        RefeicaoManagementUIController controller = (RefeicaoManagementUIController) WindowLoader.getController();
-        controller.setRefeicaoFromCardapio(refeicao.getCardapio());
+
 
     }
     private void getEntityToView(){
         if(refeicao == null)
             refeicao = new Refeicao();
-        refeicao.setHorario(LocalTime.parse(txtHorario.getText()));
-        refeicao.setCategoria(cbCategoria.getValue());
-        refeicao.setAlimentos(alimentosAdded);
+        try{
+            refeicao.setHorario(LocalTime.parse(txtHorario.getText()));
+            refeicao.setCategoria(cbCategoria.getValue());
+            refeicao.setAlimentos(alimentosAdded);
+            refeicao.setCardapio(cardapio);
+
+        }catch (Exception e){
+            alertMessage.showAlert("Erro!", "Verifique os dados digitados!", Alert.AlertType.ERROR);
+
+        }
+
     }
 
     @FXML
@@ -229,6 +245,7 @@ public class RefeicaoUIController {
         allAlimentosData.clear();
 
 
+
         for (Alimento alimento: alimentosRefeicao) {
             alimentosAdded.add(alimento);
             ValoresNutricionais valoresNutricionais = alimento.calculateValoresNutricionais();
@@ -248,6 +265,7 @@ public class RefeicaoUIController {
             allAlimentosData.addAll(alimentosRefeicao);
             allAlimentosTableView.setEditable(false);
         }
+
 
     }
     private void configureViewMode(){
