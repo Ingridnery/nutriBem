@@ -55,13 +55,14 @@ public class SQLiteNutricionistaDAO implements NutricionistaDAO {
 
     @Override
     public boolean update(Nutricionista nutricionista) {
-        String sql = "UPDATE Nutricionista SET senha = ? WHERE nome = ?";
+        String sql = "DELETE FROM Dicas WHERE nutricionista = ?";
 
         try (PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
-            stmt.setString(1, nutricionista.getSenha());
-            stmt.setString(2, nutricionista.getNomeUsuario());
-
+            stmt.setString(1, nutricionista.getNomeUsuario());
             stmt.execute();
+
+            createDicasSenha(nutricionista.getNomeUsuario(), nutricionista.getDicas());
+
             return true;
         } catch (SQLException e) {
             throw new RuntimeException(e);
