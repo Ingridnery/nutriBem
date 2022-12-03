@@ -208,8 +208,7 @@ public class SQLitePacienteDAO implements PacienteDAO {
 
     @Override
     public boolean delete(Paciente paciente) {
-        deleteByKey(paciente.getId());
-        return false;
+        return deleteByKey(paciente.getId());
     }
 
     private Paciente resultsetToEntity(ResultSet rs) throws SQLException {
