@@ -47,7 +47,7 @@ public class DatabaseBuilder {
         builder.append("nutricionista TEXT,\n");
         builder.append("dica TEXT,\n");
         builder.append("PRIMARY KEY (nutricionista, dica),\n");
-        builder.append("FOREIGN KEY (nutricionista) REFERENCES Nutricionista(nome)\n");
+        builder.append("FOREIGN KEY (nutricionista) REFERENCES Nutricionista(nome) ON DELETE CASCADE\n");
         builder.append(");\n");
 
         System.out.println(builder);
@@ -96,7 +96,7 @@ public class DatabaseBuilder {
         builder.append("nome TEXT NOT NULL,\n");
         builder.append("inicio TEXT NOT NULL,\n");
         builder.append("fim TEXT NOT NULL,\n");
-        builder.append("FOREIGN KEY (paciente) REFERENCES Paciente (id)\n");
+        builder.append("FOREIGN KEY (paciente) REFERENCES Paciente (id) ON DELETE CASCADE\n");
         builder.append(");\n");
 
         System.out.println(builder);
@@ -110,7 +110,7 @@ public class DatabaseBuilder {
         builder.append("id INTEGER PRIMARY KEY AUTOINCREMENT,\n");
         builder.append("planoNutricional INTEGER NOT NULL,\n");
         builder.append("dia INTEGER NOT NULL,\n");
-        builder.append("FOREIGN KEY (planoNutricional) REFERENCES PlanoNutricional (id),\n");
+        builder.append("FOREIGN KEY (planoNutricional) REFERENCES PlanoNutricional (id) ON DELETE CASCADE,\n");
         builder.append("CONSTRAINT cardapio_dia_ck CHECK (dia > 0)\n");
         builder.append(");\n");
 
@@ -126,7 +126,7 @@ public class DatabaseBuilder {
         builder.append("cardapio INTEGER NOT NULL,\n");
         builder.append("horario TEXT NOT NULL,\n");
         builder.append("categoria TEXT NOT NULL,\n");
-        builder.append("FOREIGN KEY (cardapio) REFERENCES Cardapio (id),\n");
+        builder.append("FOREIGN KEY (cardapio) REFERENCES Cardapio (id) ON DELETE CASCADE,\n");
         builder.append("CONSTRAINT refeicao_categoria_ck CHECK (categoria IN ('Café da manhã', 'Lanche da manhã', 'Almoço', 'Lanche da tarde', 'Jantar', 'Ceia'))\n");
         builder.append(");\n");
 
@@ -164,8 +164,8 @@ public class DatabaseBuilder {
         builder.append("alimento INTEGER,\n");
         builder.append("refeicao INTEGER,\n");
         builder.append("PRIMARY KEY (alimento, refeicao),\n");
-        builder.append("FOREIGN KEY (alimento) REFERENCES Alimento(id),\n");
-        builder.append("FOREIGN KEY (refeicao) REFERENCES Refeicao(id)\n");
+        builder.append("FOREIGN KEY (alimento) REFERENCES Alimento(id) ON DELETE CASCADE,\n");
+        builder.append("FOREIGN KEY (refeicao) REFERENCES Refeicao(id) ON DELETE CASCADE\n");
         builder.append(");\n");
 
         System.out.println(builder);
