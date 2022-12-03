@@ -3,6 +3,7 @@ package com.example.nutribem.application.main;
 import com.example.nutribem.WindowLoader;
 import com.example.nutribem.application.repository.inmemory.*;
 import com.example.nutribem.application.repository.sqlite.DatabaseBuilder;
+import com.example.nutribem.application.repository.sqlite.SQLiteNutricionistaDAO;
 import com.example.nutribem.domain.entities.nutricionista.Nutricionista;
 import com.example.nutribem.domain.usecases.alimento.*;
 import com.example.nutribem.domain.usecases.cardapio.*;
@@ -62,6 +63,7 @@ public class Main {
 
     public static void main(String[] args) {
         createDatabase();
+        //configureSQLiteInjection();
         configureInMemoryInjection();
 
         Nutricionista nutricionista = new Nutricionista("admin","admin");
@@ -131,6 +133,11 @@ public class Main {
     }
 
     public static void configureSQLiteInjection() {
-        
+        NutricionistaDAO nutricionistaDAO = new SQLiteNutricionistaDAO();
+        createDicaSenhaUseCase = new CreateDicaSenhaUseCase(nutricionistaDAO);
+        createNutricionistaUseCase = new CreateNutricionistaUseCase(nutricionistaDAO);
+        loginUseCase = new LoginUseCase(nutricionistaDAO);
+        logoutUseCase =  new LogoutUseCase();
+        recuperaSenhaUseCase = new RecuperaSenhaUseCase(nutricionistaDAO);
     }
 }
