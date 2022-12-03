@@ -62,7 +62,7 @@ public class Main {
 
     public static void main(String[] args) {
         createDatabase();
-        configureInjection();
+        configureInMemoryInjection();
 
         Nutricionista nutricionista = new Nutricionista("admin","admin");
         createNutricionistaUseCase.insert(nutricionista,"admin");
@@ -81,7 +81,7 @@ public class Main {
         db.buildIfMissing();
     }
 
-    public static void configureInjection(){
+    public static void configureInMemoryInjection(){
         RefeicaoDAO refeicaoDAO = new InMemoryRefeicaoDAO();
         createRefeicaoUseCase = new CreateRefeicaoUseCase(refeicaoDAO);
         findRefeicaoUseCase = new FindRefeicaoUseCase(refeicaoDAO);
