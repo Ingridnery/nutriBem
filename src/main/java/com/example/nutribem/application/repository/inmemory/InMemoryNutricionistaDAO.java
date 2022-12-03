@@ -1,4 +1,4 @@
-package com.example.nutribem.application.repository;
+package com.example.nutribem.application.repository.inmemory;
 
 import com.example.nutribem.domain.entities.alimento.Alimento;
 import com.example.nutribem.domain.entities.nutricionista.Nutricionista;

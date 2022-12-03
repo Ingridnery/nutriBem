@@ -1,4 +1,4 @@
-package com.example.nutribem.application.repository;
+package com.example.nutribem.application.repository.inmemory;
 
 import com.example.nutribem.domain.entities.paciente.Paciente;
 import com.example.nutribem.domain.usecases.paciente.PacienteDAO;

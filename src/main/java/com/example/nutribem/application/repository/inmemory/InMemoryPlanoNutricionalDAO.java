@@ -1,7 +1,6 @@
-package com.example.nutribem.application.repository;
+package com.example.nutribem.application.repository.inmemory;
 
 import com.example.nutribem.domain.entities.cardapio.Cardapio;
-import com.example.nutribem.domain.entities.paciente.Paciente;
 import com.example.nutribem.domain.entities.planoNutricional.PlanoNutricional;
 import com.example.nutribem.domain.usecases.planoNutricional.PlanoNutricionalDAO;
 
