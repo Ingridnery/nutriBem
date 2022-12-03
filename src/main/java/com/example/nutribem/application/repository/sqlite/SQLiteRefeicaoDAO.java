@@ -16,6 +16,7 @@ import java.util.Optional;
 public class SQLiteRefeicaoDAO implements RefeicaoDAO {
 
     private final SQLiteCardapioDAO cardapioDAO = new SQLiteCardapioDAO();
+    private final SQLiteAlimentoDAO alimentoDAO = new SQLiteAlimentoDAO();
 
     @Override
     public List<Refeicao> findByCardapio(Integer cardapio) {
@@ -54,7 +55,22 @@ public class SQLiteRefeicaoDAO implements RefeicaoDAO {
 
     @Override
     public List<Alimento> findAlimentosFromRefeicao(Refeicao refeicao) {
-        return null;
+        String sql = "SELECT * FROM Alimento a JOIN AlimentoRefeicao af ON a.id = af.alimento WHERE af.refeicao = ?";
+        List<Alimento> alimentos = new ArrayList<>();
+
+        try (PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
+            stmt.setInt(1, refeicao.getId());
+            ResultSet resultSet = stmt.executeQuery();
+
+            while (resultSet.next()) {
+                alimentos.add(alimentoDAO.resultsetToEntity(resultSet));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return alimentos;
     }
 
     @Override
