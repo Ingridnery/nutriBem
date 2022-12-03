@@ -5,6 +5,7 @@ import com.example.nutribem.application.repository.inmemory.*;
 import com.example.nutribem.application.repository.sqlite.DatabaseBuilder;
 import com.example.nutribem.application.repository.sqlite.SQLiteNutricionistaDAO;
 import com.example.nutribem.application.repository.sqlite.SQLitePacienteDAO;
+import com.example.nutribem.application.repository.sqlite.SQLitePlanoNutricionalDAO;
 import com.example.nutribem.domain.entities.nutricionista.Nutricionista;
 import com.example.nutribem.domain.usecases.alimento.*;
 import com.example.nutribem.domain.usecases.cardapio.*;
@@ -148,5 +149,10 @@ public class Main {
         removePacienteUseCase = new RemovePacienteUseCase(pacienteDAO);
         updatePacienteUseCase = new UpdatePacienteUseCase(pacienteDAO);
 
+        PlanoNutricionalDAO planoNutricionalDAO = new SQLitePlanoNutricionalDAO();
+        createPlanoNutricionalUseCase = new CreatePlanoNutricionalUseCase(planoNutricionalDAO);
+        findPlanoNutricionalUseCase = new FindPlanoNutricionalUseCase(planoNutricionalDAO);
+        removePlanoNutricionalUseCase = new RemovePlanoNutricionalUseCase(planoNutricionalDAO);
+        updatePlanoNutricionalUseCase = new UpdatePlanoNutricionalUseCase(planoNutricionalDAO);
     }
 }
