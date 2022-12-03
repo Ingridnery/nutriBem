@@ -4,6 +4,7 @@ import com.example.nutribem.WindowLoader;
 import com.example.nutribem.application.repository.inmemory.*;
 import com.example.nutribem.application.repository.sqlite.DatabaseBuilder;
 import com.example.nutribem.application.repository.sqlite.SQLiteNutricionistaDAO;
+import com.example.nutribem.application.repository.sqlite.SQLitePacienteDAO;
 import com.example.nutribem.domain.entities.nutricionista.Nutricionista;
 import com.example.nutribem.domain.usecases.alimento.*;
 import com.example.nutribem.domain.usecases.cardapio.*;
@@ -139,5 +140,13 @@ public class Main {
         loginUseCase = new LoginUseCase(nutricionistaDAO);
         logoutUseCase =  new LogoutUseCase();
         recuperaSenhaUseCase = new RecuperaSenhaUseCase(nutricionistaDAO);
+
+        PacienteDAO pacienteDAO = new SQLitePacienteDAO();
+        activatePacienteUseCase = new ActivatePacienteUseCase(pacienteDAO);
+        createPacienteUseCase = new CreatePacienteUseCase(pacienteDAO);
+        findPacienteUseCase = new FindPacienteUseCase(pacienteDAO);
+        removePacienteUseCase = new RemovePacienteUseCase(pacienteDAO);
+        updatePacienteUseCase = new UpdatePacienteUseCase(pacienteDAO);
+
     }
 }
