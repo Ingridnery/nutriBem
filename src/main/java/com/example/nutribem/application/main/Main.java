@@ -158,5 +158,11 @@ public class Main {
         removeCardapioUseCase = new RemoveCardapioUseCase(cardapioDAO);
         findCardapioByNumeroDiaUseCase = new FindCardapioByNumeroDiaUseCase(cardapioDAO);
         updateCardapioUseCase = new UpdateCardapioUseCase(cardapioDAO);
+
+        RefeicaoDAO refeicaoDAO = new SQLiteRefeicaoDAO();
+        createRefeicaoUseCase = new CreateRefeicaoUseCase(refeicaoDAO);
+        findRefeicaoUseCase = new FindRefeicaoUseCase(refeicaoDAO);
+        removeRefeicaoUseCase = new RemoveRefeicaoUseCase(refeicaoDAO);
+        updateRefeicaoUseCase = new UpdateRefeicaoUseCase(refeicaoDAO);
     }
 }
