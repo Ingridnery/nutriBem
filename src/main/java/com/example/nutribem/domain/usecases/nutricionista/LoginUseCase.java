@@ -1,6 +1,5 @@
 package com.example.nutribem.domain.usecases.nutricionista;
 
-import com.example.nutribem.domain.contexts.AuthenticationContext;
 import com.example.nutribem.domain.usecases.utils.Notification;
 
 import static com.example.nutribem.domain.usecases.utils.Validator.nullOrEmpty;
@@ -36,7 +35,6 @@ public class LoginUseCase {
         if(notification.hasErrors())
             throw new IllegalArgumentException(notification.errorMessage());
 
-        AuthenticationContext.login();
         return true;
     }
 }
