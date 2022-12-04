@@ -2,6 +2,8 @@ package com.example.nutribem.domain.entities.cardapio;
 
 import com.example.nutribem.domain.entities.planoNutricional.PlanoNutricional;
 
+import java.util.Objects;
+
 public class Cardapio {
     private Integer id;
     private Integer numeroDia;
@@ -41,5 +43,18 @@ public class Cardapio {
 
     public void setPlanoNutricional(PlanoNutricional planoNutricional) {
         this.planoNutricional = planoNutricional;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Cardapio cardapio = (Cardapio) o;
+        return Objects.equals(getId(), cardapio.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId());
     }
 }
