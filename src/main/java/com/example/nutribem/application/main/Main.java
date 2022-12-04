@@ -33,7 +33,6 @@ public class Main {
     public static CreateDicaSenhaUseCase createDicaSenhaUseCase;
     public static CreateNutricionistaUseCase createNutricionistaUseCase;
     public static LoginUseCase loginUseCase;
-    public static LogoutUseCase logoutUseCase;
     public static RecuperaSenhaUseCase recuperaSenhaUseCase;
 
     public static ActivatePacienteUseCase activatePacienteUseCase;
@@ -108,7 +107,6 @@ public class Main {
         createDicaSenhaUseCase = new CreateDicaSenhaUseCase(nutricionistaDAO);
         createNutricionistaUseCase = new CreateNutricionistaUseCase(nutricionistaDAO);
         loginUseCase = new LoginUseCase(nutricionistaDAO);
-        logoutUseCase =  new LogoutUseCase();
         recuperaSenhaUseCase = new RecuperaSenhaUseCase(nutricionistaDAO);
 
         PacienteDAO pacienteDAO = new InMemoryPacienteDAO();
@@ -136,7 +134,6 @@ public class Main {
         createDicaSenhaUseCase = new CreateDicaSenhaUseCase(nutricionistaDAO);
         createNutricionistaUseCase = new CreateNutricionistaUseCase(nutricionistaDAO);
         loginUseCase = new LoginUseCase(nutricionistaDAO);
-        logoutUseCase =  new LogoutUseCase();
         recuperaSenhaUseCase = new RecuperaSenhaUseCase(nutricionistaDAO);
 
         PacienteDAO pacienteDAO = new SQLitePacienteDAO();
