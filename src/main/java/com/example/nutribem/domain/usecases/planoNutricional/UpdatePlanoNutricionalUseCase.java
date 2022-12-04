@@ -7,22 +7,22 @@ import com.example.nutribem.domain.usecases.utils.Validator;
 
 public class UpdatePlanoNutricionalUseCase {
 
-    private PlanoNutricionalDAO planoNutricionalDAO;
+    private final PlanoNutricionalDAO planoNutricionalDAO;
 
     public UpdatePlanoNutricionalUseCase(PlanoNutricionalDAO planoNutricionalDAO) {
         this.planoNutricionalDAO = planoNutricionalDAO;
     }
 
 
-    public Boolean update(PlanoNutricional planoNutricional){
+    public Boolean update(PlanoNutricional planoNutricional) {
         Validator<PlanoNutricional> validator = new PlanoNutricionalInputRequestValidator();
         Notification notification = validator.validate(planoNutricional);
 
-        if(notification.hasErrors())
+        if (notification.hasErrors())
             throw new IllegalArgumentException(notification.errorMessage());
         String nome = planoNutricional.getNome();
-        if(planoNutricionalDAO.findByName(nome).isPresent())
-            throw new EntityAlreadyExistsException("O plano nutricional: '"+ nome +"' já está cadastrado.");
+        if (planoNutricionalDAO.findByName(nome).isPresent())
+            throw new EntityAlreadyExistsException("O plano nutricional: '" + nome + "' já está cadastrado.");
 
         planoNutricionalDAO.findByIdPaciente(planoNutricional.getPaciente().getId());
 

@@ -7,19 +7,19 @@ import java.util.List;
 import java.util.Optional;
 
 public class FindAlimentoUseCase {
-    private AlimentoDAO dao;
+    private final AlimentoDAO dao;
 
     public FindAlimentoUseCase(AlimentoDAO dao) {
         this.dao = dao;
     }
 
-    public Optional<Alimento> findByNome(String name){
-        if(Validator.nullOrEmpty(name))
+    public Optional<Alimento> findByNome(String name) {
+        if (Validator.nullOrEmpty(name))
             throw new IllegalArgumentException("O nome da busca não pode ser nulo.");
         return dao.findByName(name);
     }
 
-    public List<Alimento> findAll(){
+    public List<Alimento> findAll() {
         return dao.findAll();
     }
 }

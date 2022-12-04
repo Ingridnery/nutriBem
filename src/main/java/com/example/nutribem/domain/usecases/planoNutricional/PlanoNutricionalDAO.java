@@ -6,7 +6,8 @@ import com.example.nutribem.domain.usecases.utils.DAO;
 import java.util.List;
 import java.util.Optional;
 
-public interface PlanoNutricionalDAO extends DAO<PlanoNutricional,Integer> {
+public interface PlanoNutricionalDAO extends DAO<PlanoNutricional, Integer> {
     Optional<PlanoNutricional> findByName(String name);
+
     List<PlanoNutricional> findByIdPaciente(Integer id);
 }

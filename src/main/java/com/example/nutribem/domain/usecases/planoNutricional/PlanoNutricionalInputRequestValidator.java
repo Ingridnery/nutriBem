@@ -11,7 +11,7 @@ public class PlanoNutricionalInputRequestValidator extends Validator<PlanoNutric
     public Notification validate(PlanoNutricional planoNutricional) {
 
         Notification notification = new Notification();
-        if (Objects.isNull(planoNutricional)){
+        if (Objects.isNull(planoNutricional)) {
             notification.addError("Plano nutricional is null!");
             return notification;
         }

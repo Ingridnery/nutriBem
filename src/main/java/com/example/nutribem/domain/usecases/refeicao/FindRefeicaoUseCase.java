@@ -9,7 +9,7 @@ import java.util.Objects;
 import java.util.Optional;
 
 public class FindRefeicaoUseCase {
-    private RefeicaoDAO dao;
+    private final RefeicaoDAO dao;
 
     public FindRefeicaoUseCase(RefeicaoDAO dao) {
         this.dao = dao;
@@ -22,7 +22,7 @@ public class FindRefeicaoUseCase {
         return dao.findByCardapio(cardapio);
     }
 
-    public Optional<Refeicao> findById(Integer idRefeicao){
+    public Optional<Refeicao> findById(Integer idRefeicao) {
         Objects.requireNonNull(idRefeicao, "ID da refeição não pode ser nulo.");
         return dao.findOne(idRefeicao);
     }
@@ -34,7 +34,7 @@ public class FindRefeicaoUseCase {
         return findByCardapio(cardapio.getId());
     }
 
-    public List<Refeicao> findAll(){
+    public List<Refeicao> findAll() {
         return dao.findAll();
     }
 }

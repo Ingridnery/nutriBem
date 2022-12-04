@@ -5,7 +5,7 @@ import com.example.nutribem.domain.usecases.utils.Notification;
 import com.example.nutribem.domain.usecases.utils.Validator;
 
 public class UpdatePacienteUseCase {
-    private PacienteDAO dao;
+    private final PacienteDAO dao;
 
     public UpdatePacienteUseCase(PacienteDAO dao) {
         this.dao = dao;

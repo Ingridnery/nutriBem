@@ -16,7 +16,7 @@ public class CreatePacienteUseCase {
         Validator<Paciente> validator = new PacienteInputRequestValidator();
         Notification notification = validator.validate(paciente);
 
-        if(notification.hasErrors())
+        if (notification.hasErrors())
             throw new IllegalArgumentException(notification.errorMessage());
 
         String cpf = paciente.getCpf().getNumber();

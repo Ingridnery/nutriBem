@@ -9,20 +9,20 @@ import java.util.Objects;
 
 public class CreateCardapioUseCase {
 
-    private CardapioDAO cardapioDAO;
+    private final CardapioDAO cardapioDAO;
 
     public CreateCardapioUseCase(CardapioDAO cardapioDAO) {
         this.cardapioDAO = cardapioDAO;
     }
 
-    public Integer insert(Cardapio cardapio){
+    public Integer insert(Cardapio cardapio) {
         Validator<Cardapio> validator = new CardapioInpustRequestValidator();
         Notification notification = validator.validate(cardapio);
 
-        if(notification.hasErrors())
+        if (notification.hasErrors())
             throw new IllegalArgumentException(notification.errorMessage());
-        if(Objects.nonNull(cardapio.getId()) && cardapioDAO.findOne(cardapio.getId()).isPresent())
-            throw new EntityAlreadyExistsException("O cardapio '"+ cardapio.getId() +"' já está cadastrado.");
+        if (Objects.nonNull(cardapio.getId()) && cardapioDAO.findOne(cardapio.getId()).isPresent())
+            throw new EntityAlreadyExistsException("O cardapio '" + cardapio.getId() + "' já está cadastrado.");
         return cardapioDAO.create(cardapio);
     }
 }

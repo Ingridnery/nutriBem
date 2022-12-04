@@ -6,7 +6,7 @@ import com.example.nutribem.domain.usecases.utils.Notification;
 import com.example.nutribem.domain.usecases.utils.Validator;
 
 public class UpdateRefeicaoUseCase {
-    private RefeicaoDAO dao;
+    private final RefeicaoDAO dao;
 
     public UpdateRefeicaoUseCase(RefeicaoDAO dao) {
         this.dao = dao;
@@ -21,7 +21,7 @@ public class UpdateRefeicaoUseCase {
 
         Refeicao oldRefeicao = dao.findOne(refeicao.getId())
                 .orElseThrow(
-                    () -> new EntityNotFoundException("Refeicao nao encontrada.")
+                        () -> new EntityNotFoundException("Refeicao nao encontrada.")
                 );
 
         if (!refeicao.getCardapio().equals(oldRefeicao.getCardapio()))

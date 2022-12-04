@@ -11,36 +11,36 @@ public class AlimentoInputRequestValidator extends Validator<Alimento> {
     public Notification validate(Alimento alimento) {
         Notification notification = new Notification();
 
-        if(alimento == null){
+        if (alimento == null) {
             notification.addError("Alimento is null");
             return notification;
         }
 
-        if(nullOrEmpty(alimento.getNome()))
+        if (nullOrEmpty(alimento.getNome()))
             notification.addError("Nome is null or empty");
 
-        if(nullOrEmpty(alimento.getAcucar()))
+        if (nullOrEmpty(alimento.getAcucar()))
             notification.addError("Acucar is null");
 
-        if(nullOrEmpty(alimento.getPorcao()))
+        if (nullOrEmpty(alimento.getPorcao()))
             notification.addError("Porcao is null");
 
-        if(nullOrEmpty(alimento.getColesterol()))
+        if (nullOrEmpty(alimento.getColesterol()))
             notification.addError("Colesterol is null");
 
-        if(nullOrEmpty(alimento.getCalorias()))
+        if (nullOrEmpty(alimento.getCalorias()))
             notification.addError("Calorias is null");
 
-        if(nullOrEmpty(Collections.singleton(alimento.getGluten())))
+        if (nullOrEmpty(Collections.singleton(alimento.getGluten())))
             notification.addError("Gluten is null");
 
-        if(nullOrEmpty(alimento.getGordurasSaturadas()))
+        if (nullOrEmpty(alimento.getGordurasSaturadas()))
             notification.addError("Gorduras Saturadas is null");
 
-        if(nullOrEmpty(alimento.getSodio()))
+        if (nullOrEmpty(alimento.getSodio()))
             notification.addError("Sodio is null");
 
-        if(nullOrEmpty(alimento.getLactose()))
+        if (nullOrEmpty(alimento.getLactose()))
             notification.addError("Lactose is null");
 
         return notification;

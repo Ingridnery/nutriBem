@@ -5,7 +5,7 @@ import com.example.nutribem.domain.usecases.utils.Notification;
 import com.example.nutribem.domain.usecases.utils.Validator;
 
 public class CreateRefeicaoUseCase {
-    private RefeicaoDAO dao;
+    private final RefeicaoDAO dao;
 
     public CreateRefeicaoUseCase(RefeicaoDAO dao) {
         this.dao = dao;

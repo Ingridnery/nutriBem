@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class FindPacienteUseCase {
-    private PacienteDAO dao;
+    private final PacienteDAO dao;
 
     public FindPacienteUseCase(PacienteDAO dao) {
         this.dao = dao;

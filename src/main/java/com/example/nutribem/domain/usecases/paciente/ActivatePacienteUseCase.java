@@ -3,7 +3,7 @@ package com.example.nutribem.domain.usecases.paciente;
 import com.example.nutribem.domain.entities.paciente.Paciente;
 
 public class ActivatePacienteUseCase {
-    private PacienteDAO dao;
+    private final PacienteDAO dao;
 
     public ActivatePacienteUseCase(PacienteDAO dao) {
         this.dao = dao;

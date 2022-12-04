@@ -5,7 +5,7 @@ import com.example.nutribem.domain.usecases.utils.EntityNotFoundException;
 import com.example.nutribem.domain.usecases.utils.Validator;
 
 public class RemovePacienteUseCase {
-    private PacienteDAO dao;
+    private final PacienteDAO dao;
 
     public RemovePacienteUseCase(PacienteDAO dao) {
         this.dao = dao;

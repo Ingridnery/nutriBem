@@ -14,13 +14,13 @@ import java.util.List;
 
 public class ImportAlimentosUseCase {
 
-    private AlimentoDAO alimentoDAO;
+    private final AlimentoDAO alimentoDAO;
 
     public ImportAlimentosUseCase(AlimentoDAO alimentoDAO) {
         this.alimentoDAO = alimentoDAO;
     }
 
-    public void importFrom(String filePath){
+    public void importFrom(String filePath) {
         Path myPath = Paths.get(filePath);
         try (BufferedReader br = Files.newBufferedReader(myPath,
                 StandardCharsets.UTF_8)) {

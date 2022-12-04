@@ -8,43 +8,43 @@ import static com.example.nutribem.domain.usecases.utils.Validator.nullOrEmpty;
 
 public class RecuperaSenhaUseCase {
 
-    private NutricionistaDAO dao;
+    private final NutricionistaDAO dao;
     Notification notification = new Notification();
-     private static final int MINLENGTH = 4;
+    private static final int MINLENGTH = 4;
 
     public RecuperaSenhaUseCase(NutricionistaDAO dao) {
         this.dao = dao;
     }
 
-    public ArrayList<String>dicasSenha(String userName){
-        if(nullOrEmpty(userName)){
+    public ArrayList<String> dicasSenha(String userName) {
+        if (nullOrEmpty(userName)) {
             notification.addError("Nome de usuario is null or empty");
         }
-        if(notification.hasErrors())
+        if (notification.hasErrors())
             throw new IllegalArgumentException(notification.errorMessage());
         return dao.getDicasSenhaFromUserName(userName);
     }
 
-    public Boolean recuperaSenha(String senha,String userName){
+    public Boolean recuperaSenha(String senha, String userName) {
 
-        if(nullOrEmpty(userName))
+        if (nullOrEmpty(userName))
             notification.addError("Nome de usuario is null or empty");
 
-        if(notification.hasErrors())
+        if (notification.hasErrors())
             throw new IllegalArgumentException(notification.errorMessage());
 
-        if(nullOrEmpty(senha))
+        if (nullOrEmpty(senha))
             notification.addError("Senha is null or empty");
 
-        if(senha.length()<MINLENGTH)
+        if (senha.length() < MINLENGTH)
             notification.addError("Senha does not have four digits");
 
-        String senhaDB= dao.getSenhaFromUserName(userName);
+        String senhaDB = dao.getSenhaFromUserName(userName);
 
-        if(!senhaDB.equals(senha)){
+        if (!senhaDB.equals(senha)) {
             notification.addError("Senha invalida!");
         }
-        if(notification.hasErrors())
+        if (notification.hasErrors())
             throw new IllegalArgumentException(notification.errorMessage());
 
         return true;

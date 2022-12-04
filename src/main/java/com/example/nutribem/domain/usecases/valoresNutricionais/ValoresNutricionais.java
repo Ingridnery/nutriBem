@@ -31,20 +31,20 @@ public class ValoresNutricionais {
         this.lactose = 0.0;
     }
 
-    public void somar(ValoresNutricionais novo){
+    public void somar(ValoresNutricionais novo) {
         this.calorias += novo.getCalorias();
         this.colesterol += novo.getColesterol();
-        if(!this.gluten) this.gluten = novo.getGluten();
+        if (!this.gluten) this.gluten = novo.getGluten();
         this.gordurasSaturadas += novo.getGordurasSaturadas();
         this.sodio += novo.getSodio();
         this.acucar += novo.getAcucar();
         this.lactose += novo.getLactose();
     }
 
-    public void subtrair(ValoresNutricionais novo){
+    public void subtrair(ValoresNutricionais novo) {
         this.calorias -= novo.getCalorias();
         this.colesterol -= novo.getColesterol();
-        if(this.gluten && novo.getGluten()) this.gluten = false;
+        if (this.gluten && novo.getGluten()) this.gluten = false;
         this.gordurasSaturadas -= novo.getGordurasSaturadas();
         this.sodio -= novo.getSodio();
         this.acucar -= novo.getAcucar();

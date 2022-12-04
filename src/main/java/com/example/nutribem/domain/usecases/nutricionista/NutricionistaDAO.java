@@ -3,7 +3,6 @@ package com.example.nutribem.domain.usecases.nutricionista;
 import com.example.nutribem.domain.entities.nutricionista.Nutricionista;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 public interface NutricionistaDAO {

@@ -14,21 +14,21 @@ public class FindPlanoNutricionalUseCase {
         this.planoNutricionalDAO = planoNutricionalDAO;
     }
 
-    public Optional<PlanoNutricional> findByNome(String name){
+    public Optional<PlanoNutricional> findByNome(String name) {
         if (Validator.nullOrEmpty(name))
             throw new IllegalArgumentException("O nome da busca não pode ser nulo.");
 
         if (planoNutricionalDAO.findByName(name).isEmpty())
-            throw new EntityNotFoundException("O plano nutricional: '"+ name +"' não está cadastrado.");
+            throw new EntityNotFoundException("O plano nutricional: '" + name + "' não está cadastrado.");
 
         return planoNutricionalDAO.findByName(name);
     }
 
-    public List<PlanoNutricional> findByPaciente(Integer idPaciente){
+    public List<PlanoNutricional> findByPaciente(Integer idPaciente) {
         return planoNutricionalDAO.findByIdPaciente(idPaciente);
     }
 
-    public List<PlanoNutricional> findAll(){
+    public List<PlanoNutricional> findAll() {
         return planoNutricionalDAO.findAll();
     }
 }

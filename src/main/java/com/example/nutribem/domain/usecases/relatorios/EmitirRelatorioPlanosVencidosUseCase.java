@@ -33,7 +33,7 @@ public class EmitirRelatorioPlanosVencidosUseCase {
 
                     Paragraph paragraph = new Paragraph("Paciente: " + plano.getPaciente().getNome() + ": Telefone: "
                             + plano.getPaciente().getTelefone() + ", Email: " + plano.getPaciente().getEmail()
-                            + ", Plano Nutricional: " + plano.getNome() + ", venceu em " + plano.getDataFim(),font);
+                            + ", Plano Nutricional: " + plano.getNome() + ", venceu em " + plano.getDataFim(), font);
                     try {
                         document.add(paragraph);
                     } catch (DocumentException e) {
@@ -42,9 +42,9 @@ public class EmitirRelatorioPlanosVencidosUseCase {
                 }
             });
             return true;
-        }catch (Exception e){
+        } catch (Exception e) {
             return false;
-        }finally {
+        } finally {
             document.close();
         }
 

@@ -6,7 +6,7 @@ import com.example.nutribem.domain.usecases.utils.EntityNotFoundException;
 import java.util.Objects;
 
 public class RemoveRefeicaoUseCase {
-    private RefeicaoDAO dao;
+    private final RefeicaoDAO dao;
 
     public RemoveRefeicaoUseCase(RefeicaoDAO dao) {
         this.dao = dao;

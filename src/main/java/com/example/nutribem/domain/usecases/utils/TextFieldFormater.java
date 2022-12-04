@@ -1,10 +1,11 @@
 package com.example.nutribem.domain.usecases.utils;
 
 import javafx.scene.control.TextField;
+
 import javax.swing.text.MaskFormatter;
 import java.text.ParseException;
 
-public class TextFieldFormater{
+public class TextFieldFormater {
 
     private final MaskFormatter mf = new MaskFormatter();
     private TextField tf;
@@ -55,7 +56,7 @@ public class TextFieldFormater{
         }
     }
 
-    public void formatter(){
+    public void formatter() {
         formatter(this.tf, this.CaracteresValidos, this.mask);
     }
 
