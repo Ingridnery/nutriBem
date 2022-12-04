@@ -164,5 +164,13 @@ public class Main {
         findRefeicaoUseCase = new FindRefeicaoUseCase(refeicaoDAO);
         removeRefeicaoUseCase = new RemoveRefeicaoUseCase(refeicaoDAO);
         updateRefeicaoUseCase = new UpdateRefeicaoUseCase(refeicaoDAO);
+
+        AlimentoDAO alimentoDAO = new SQLiteAlimentoDAO();
+        createAlimentoUseCase = new CreateAlimentoUseCase(alimentoDAO);
+        findAlimentoUseCase = new FindAlimentoUseCase(alimentoDAO);
+        removeAlimentoUseCase = new RemoveAlimentoUseCase(alimentoDAO, refeicaoDAO);
+        updateAlimentoUseCase = new UpdateAlimentoUseCase(alimentoDAO);
+        activateAlimentoUseCase = new ActivateAlimentoUseCase(alimentoDAO, refeicaoDAO);
+        calculateValoresNutricionaisUseCase = new CalculateValoresNutricionaisUseCase(alimentoDAO, refeicaoDAO);
     }
 }
