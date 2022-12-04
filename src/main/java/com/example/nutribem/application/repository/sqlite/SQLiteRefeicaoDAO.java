@@ -28,7 +28,9 @@ public class SQLiteRefeicaoDAO implements RefeicaoDAO {
             ResultSet resultSet = stmt.executeQuery();
 
             while (resultSet.next()) {
-                refeicoes.add(resultsetToEntity(resultSet));
+                Refeicao refeicao = resultsetToEntity(resultSet);
+                refeicao.setAlimentos(findAlimentosFromRefeicao(refeicao));
+                refeicoes.add(refeicao);
             }
 
         } catch (SQLException e) {
@@ -102,6 +104,7 @@ public class SQLiteRefeicaoDAO implements RefeicaoDAO {
 
             if (resultSet.next()) {
                 refeicao = resultsetToEntity(resultSet);
+                refeicao.setAlimentos(findAlimentosFromRefeicao(refeicao));
             }
 
         } catch (SQLException e) {
@@ -120,7 +123,9 @@ public class SQLiteRefeicaoDAO implements RefeicaoDAO {
             ResultSet resultSet = stmt.executeQuery();
 
             while (resultSet.next()) {
-                refeicoes.add(resultsetToEntity(resultSet));
+                Refeicao refeicao = resultsetToEntity(resultSet);
+                refeicao.setAlimentos(findAlimentosFromRefeicao(refeicao));
+                refeicoes.add(refeicao);
             }
 
         } catch (SQLException e) {
