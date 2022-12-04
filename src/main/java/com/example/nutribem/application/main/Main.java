@@ -169,5 +169,9 @@ public class Main {
         updateAlimentoUseCase = new UpdateAlimentoUseCase(alimentoDAO);
         activateAlimentoUseCase = new ActivateAlimentoUseCase(alimentoDAO, refeicaoDAO);
         calculateValoresNutricionaisUseCase = new CalculateValoresNutricionaisUseCase(alimentoDAO, refeicaoDAO);
+
+        emitirRelatorioContatosUseCase = new EmitirRelatorioContatosUseCase(pacienteDAO);
+        emitirRelatorioPlanosVencidosUseCase = new EmitirRelatorioPlanosVencidosUseCase(planoNutricionalDAO);
+        emitirRelatorioPlanoNutricionalUseCase = new EmitirRelatorioPlanoNutricionalUseCase(cardapioDAO,refeicaoDAO);
     }
 }
