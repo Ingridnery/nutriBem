@@ -14,7 +14,8 @@ import javafx.scene.control.TextField;
 import java.io.IOException;
 import java.util.Objects;
 
-import static com.example.nutribem.application.main.Main.*;
+import static com.example.nutribem.application.main.Main.createPlanoNutricionalUseCase;
+import static com.example.nutribem.application.main.Main.updatePlanoNutricionalUseCase;
 
 public class PlanoNutricionalUIController {
 
@@ -33,67 +34,61 @@ public class PlanoNutricionalUIController {
     private Paciente paciente;
     private AlertMessage alert = new AlertMessage();
 
-
-
     public void backScene(ActionEvent actionEvent) throws IOException {
         WindowLoader.setRoot("PlanoNutricionalManagementUI");
 
         PlanoNutricionalManagementUIController controller = (PlanoNutricionalManagementUIController) WindowLoader.getController();
         controller.setPlanoNutricionalFromPaciente(paciente);
-
     }
 
     public void saveOrUpdate(ActionEvent actionEvent) throws IOException {
+        try {
+            getEntityToView();
+            if (planoNutricional.getId() == null)
+                createPlanoNutricionalUseCase.insert(planoNutricional);
+            else
+                updatePlanoNutricionalUseCase.update(planoNutricional);
 
-            try {
-                getEntityToView();
-                if(planoNutricional.getId() == null)
-                    createPlanoNutricionalUseCase.insert(planoNutricional);
-                else
-                    updatePlanoNutricionalUseCase.update(planoNutricional);
-
-                WindowLoader.setRoot("PlanoNutricionalManagementUI");
-                PlanoNutricionalManagementUIController controller = (PlanoNutricionalManagementUIController) WindowLoader.getController();
-                controller.setPlanoNutricionalFromPaciente(paciente);
-            }catch (Exception e){
-                alert.showAlert("Erro!", "Dados inválidos!", Alert.AlertType.ERROR);
-            }
-
-
+            WindowLoader.setRoot("PlanoNutricionalManagementUI");
+            PlanoNutricionalManagementUIController controller = (PlanoNutricionalManagementUIController) WindowLoader.getController();
+            controller.setPlanoNutricionalFromPaciente(paciente);
+        } catch (Exception e) {
+            alert.showAlert("Erro!", "Dados inválidos!", Alert.AlertType.ERROR);
+        }
     }
 
-    public void getEntityToView(){
-        if(planoNutricional==null)
-            planoNutricional= new PlanoNutricional();
+    public void getEntityToView() {
+        if (planoNutricional == null)
+            planoNutricional = new PlanoNutricional();
 
         planoNutricional.setNome(txtName.getText());
         planoNutricional.setDataInicio(dpStartDate.getValue());
         planoNutricional.setDataFim(dpEndDate.getValue());
         planoNutricional.setPaciente(paciente);
-
-
     }
-    public void setEntityIntoView(){
+
+    public void setEntityIntoView() {
         txtName.setText(planoNutricional.getNome());
         dpStartDate.setValue(planoNutricional.getDataInicio());
         dpEndDate.setValue(planoNutricional.getDataFim());
     }
 
-    public void setPlanoNutricional(PlanoNutricional planoNutricional, UIMode mode){
-        Objects.requireNonNull(planoNutricional,"Plano nutricional não pode ser nulo!");
+    public void setPlanoNutricional(PlanoNutricional planoNutricional, UIMode mode) {
+        Objects.requireNonNull(planoNutricional, "Plano nutricional não pode ser nulo!");
 
-        this.planoNutricional=planoNutricional;
+        this.planoNutricional = planoNutricional;
         setEntityIntoView();
-        if(mode == UIMode.VIEW)
+        if (mode == UIMode.VIEW)
             configureViewMode();
     }
-    public void setPaciente(Paciente paciente){
-       this.paciente=paciente;
+
+    public void setPaciente(Paciente paciente) {
+        this.paciente = paciente;
     }
-    private void configureViewMode(){
+
+    private void configureViewMode() {
         btnConfirm.setVisible(false);
         btnCancel.setText("Fechar");
-
 
         txtName.setDisable(true);
         dpStartDate.setDisable(true);

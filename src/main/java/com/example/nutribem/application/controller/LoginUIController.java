@@ -6,14 +6,14 @@ import com.example.nutribem.domain.usecases.utils.EntityNotFoundException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
-import static com.example.nutribem.application.main.Main.*;
+import static com.example.nutribem.application.main.Main.loginUseCase;
+import static com.example.nutribem.application.main.Main.recuperaSenhaUseCase;
 
 public class LoginUIController {
 
@@ -25,15 +25,15 @@ public class LoginUIController {
     private final AlertMessage alert = new AlertMessage();
 
     public void login(ActionEvent actionEvent) {
-        if(txtUserName.getText().isEmpty() || txtSenha.getText().isEmpty()){
+        if (txtUserName.getText().isEmpty() || txtSenha.getText().isEmpty()) {
             alert.showAlert("Erro!", "Dados invalidos!", Alert.AlertType.ERROR);
             return;
         }
-        try{
-            loginUseCase.login(txtUserName.getText(),txtSenha.getText());
+
+        try {
+            loginUseCase.login(txtUserName.getText(), txtSenha.getText());
             WindowLoader.setRoot("MainUI");
-        }
-        catch (EntityNotFoundException e){
+        } catch (EntityNotFoundException e) {
             alert.showAlert("Erro!", e.getMessage(), Alert.AlertType.ERROR);
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -41,14 +41,12 @@ public class LoginUIController {
     }
 
     public void findDicas(ActionEvent actionEvent) {
-        if(txtUserName.getText().isEmpty()){
+        if (txtUserName.getText().isEmpty()) {
             alert.showAlert("Erro!", "Nome de usuario não preenchido", Alert.AlertType.ERROR);
             return;
         }
 
         ArrayList<String> dicasSenha = recuperaSenhaUseCase.dicasSenha(txtUserName.getText());
-        alert.showAlert("Dicas de senha", dicasSenha.get(0)+" "+dicasSenha.get(1)+" "+dicasSenha.get(2), Alert.AlertType.INFORMATION);
-
+        alert.showAlert("Dicas de senha", dicasSenha.get(0) + " " + dicasSenha.get(1) + " " + dicasSenha.get(2), Alert.AlertType.INFORMATION);
     }
-
 }

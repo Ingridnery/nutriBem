@@ -28,9 +28,9 @@ public class CardapioManagementUIController {
     @FXML
     private TextField txtNumeroDia;
     @FXML
-    private TableColumn<Cardapio,Integer> cId;
+    private TableColumn<Cardapio, Integer> cId;
     @FXML
-    private TableColumn<Cardapio,Integer> cNumeroDia;
+    private TableColumn<Cardapio, Integer> cNumeroDia;
 
     private ObservableList<Cardapio> tableData;
     private List<Cardapio> cardapioList;
@@ -39,21 +39,21 @@ public class CardapioManagementUIController {
     private PlanoNutricional planoNutricional;
     private final AlertMessage alert = new AlertMessage();
 
-    private void bindColumnsToValueSources(){
+    private void bindColumnsToValueSources() {
         cId.setCellValueFactory(new PropertyValueFactory<>("id"));
         cNumeroDia.setCellValueFactory(new PropertyValueFactory<>("numeroDia"));
 
     }
-    private void bindTableViewToItemsList(){
+
+    private void bindTableViewToItemsList() {
         tableData = FXCollections.observableArrayList();
         tableView.setItems(tableData);
     }
-    private void loadDataAndShow(){
+
+    private void loadDataAndShow() {
         tableData.clear();
         tableData.addAll(cardapioList);
     }
-
-
 
     public void getSelectedAndSetButton(MouseEvent mouseEvent) {
         cardapio = tableView.getSelectionModel().getSelectedItem();
@@ -70,11 +70,10 @@ public class CardapioManagementUIController {
     }
 
     public void removeCardapio(ActionEvent actionEvent) {
-        if(cardapio!= null) {
+        if (cardapio != null) {
             removeCardapioUseCase.delete(cardapio);
             setCardapioFromPlanoNutricional(planoNutricional);
-        }
-        else
+        } else
             setMessageCardapio();
     }
 
@@ -89,52 +88,53 @@ public class CardapioManagementUIController {
         controller.setPlanoNutricionalFromPaciente(planoNutricional.getPaciente());
     }
 
-    private void setMessageCardapio(){
+    private void setMessageCardapio() {
         String title = "Cardapio invalido!";
         String message = "Nenhum cardapio foi selecionado!";
         alert.showAlert(title, message, Alert.AlertType.ERROR);
     }
-    public void setCardapioFromPlanoNutricional(PlanoNutricional planoNutricional){
 
-        Objects.requireNonNull(planoNutricional,"Plano nutricional não pode ser nulo!");
+    public void setCardapioFromPlanoNutricional(PlanoNutricional planoNutricional) {
+
+        Objects.requireNonNull(planoNutricional, "Plano nutricional não pode ser nulo!");
         cardapioList = findCardapioUseCase.findByPlanoNutricional(planoNutricional.getId());
         bindTableViewToItemsList();
         bindColumnsToValueSources();
         loadDataAndShow();
         this.planoNutricional = planoNutricional;
     }
+
     private void showCardapioInMode(UIMode mode) throws IOException {
-        if(cardapio!=null){
+        if (cardapio != null) {
             WindowLoader.setRoot("CardapioUI");
             CardapioUIController controller = (CardapioUIController) WindowLoader.getController();
-            controller.setCardapio(cardapio,mode);
+            controller.setCardapio(cardapio, mode);
             controller.setPlanoNutricional(planoNutricional);
-        }
-        else
+        } else
             setMessageCardapio();
     }
 
     public void refeicaoUI(ActionEvent actionEvent) throws IOException {
-        if(cardapio!= null){
+        if (cardapio != null) {
             WindowLoader.setRoot("RefeicaoManagementUI");
             RefeicaoManagementUIController controller = (RefeicaoManagementUIController) WindowLoader.getController();
             controller.setRefeicaoFromCardapio(cardapio);
-        }else
+        } else
             setMessageCardapio();
 
-     }
+    }
 
     public void findByNumeroDia(ActionEvent actionEvent) {
         tableData.clear();
-        try{
+        try {
             Integer txtSearch = Integer.valueOf(txtNumeroDia.getText());
             List<Cardapio> cardapios = findCardapioByNumeroDiaUseCase.findByNumeroDia(txtSearch);
             List<Cardapio> matchesWithSearch = cardapios.stream()
-                    .filter(cardapio -> cardapio.getNumeroDia().equals(txtSearch) && cardapio.getPlanoNutricional().getId().equals(planoNutricional.getId()) )
+                    .filter(cardapio -> cardapio.getNumeroDia().equals(txtSearch) && cardapio.getPlanoNutricional().getId().equals(planoNutricional.getId()))
                     .toList();
             tableData.addAll(matchesWithSearch);
-        }catch (Exception e){
-            alert.showAlert("Nenhum cardapio encontrado","Nenhum cardapio foi encontrado!", Alert.AlertType.INFORMATION);
+        } catch (Exception e) {
+            alert.showAlert("Nenhum cardapio encontrado", "Nenhum cardapio foi encontrado!", Alert.AlertType.INFORMATION);
         }
 
 

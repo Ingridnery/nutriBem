@@ -2,7 +2,6 @@ package com.example.nutribem.application.controller;
 
 import com.example.nutribem.WindowLoader;
 import com.example.nutribem.domain.entities.cardapio.Cardapio;
-import com.example.nutribem.domain.entities.planoNutricional.PlanoNutricional;
 import com.example.nutribem.domain.entities.refeicao.Refeicao;
 import com.example.nutribem.domain.entities.refeicao.RefeicaoCategoria;
 import com.example.nutribem.domain.usecases.utils.AlertMessage;
@@ -22,13 +21,14 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
 
-import static com.example.nutribem.application.main.Main.*;
+import static com.example.nutribem.application.main.Main.findRefeicaoUseCase;
+import static com.example.nutribem.application.main.Main.removeRefeicaoUseCase;
 
 public class RefeicaoManagementUIController {
     @FXML
     private TableView<Refeicao> tableView;
     @FXML
-    private TableColumn<Refeicao,Integer> cId;
+    private TableColumn<Refeicao, Integer> cId;
     @FXML
     private TableColumn<Refeicao, RefeicaoCategoria> cCategoria;
 
@@ -41,26 +41,28 @@ public class RefeicaoManagementUIController {
     private List<Refeicao> refeicaoList;
     private final AlertMessage alert = new AlertMessage();
 
-    private void bindColumnsToValueSources(){
+    private void bindColumnsToValueSources() {
         cId.setCellValueFactory(new PropertyValueFactory<>("id"));
         cCategoria.setCellValueFactory(new PropertyValueFactory<>("categoria"));
-
     }
-    private void bindTableViewToItemsList(){
+
+    private void bindTableViewToItemsList() {
         tableData = FXCollections.observableArrayList();
         tableView.setItems(tableData);
     }
-    private void loadDataAndShow(){
+
+    private void loadDataAndShow() {
         tableData.clear();
         tableData.addAll(refeicaoList);
     }
+
     public void getSelectedAndSetButton(MouseEvent mouseEvent) {
         refeicao = tableView.getSelectionModel().getSelectedItem();
     }
 
     public void createRefeicao(ActionEvent actionEvent) throws IOException {
         WindowLoader.setRoot("RefeicaoUI");
-        RefeicaoUIController controller = (RefeicaoUIController)  WindowLoader.getController();
+        RefeicaoUIController controller = (RefeicaoUIController) WindowLoader.getController();
         controller.setCardapio(cardapio);
     }
 
@@ -69,12 +71,11 @@ public class RefeicaoManagementUIController {
     }
 
     public void removeRefeicao(ActionEvent actionEvent) {
-        if(refeicao!= null) {
+        if (refeicao != null) {
             System.out.println("foiiii");
             removeRefeicaoUseCase.remove(refeicao);
             setRefeicaoFromCardapio(cardapio);
-        }
-        else
+        } else
             setMessageRefeicao();
     }
 
@@ -88,19 +89,14 @@ public class RefeicaoManagementUIController {
         controller.setCardapioFromPlanoNutricional(cardapio.getPlanoNutricional());
     }
 
-
-
     private void showRefeicaoInMode(UIMode mode) throws IOException {
-        if(refeicao!=null){
+        if (refeicao != null) {
             WindowLoader.setRoot("RefeicaoUI");
             RefeicaoUIController controller = (RefeicaoUIController) WindowLoader.getController();
             controller.setCardapio(cardapio);
-            controller.setRefeicao(refeicao,mode);
-        }
-        else
+            controller.setRefeicao(refeicao, mode);
+        } else
             setMessageRefeicao();
-
-
     }
 
     private void setMessageRefeicao() {
@@ -109,19 +105,16 @@ public class RefeicaoManagementUIController {
         alert.showAlert(title, message, Alert.AlertType.ERROR);
     }
 
-
-    public void setRefeicaoFromCardapio(Cardapio cardapio){
-
-        Objects.requireNonNull(cardapio,"Cardapio não pode ser nulo!");
+    public void setRefeicaoFromCardapio(Cardapio cardapio) {
+        Objects.requireNonNull(cardapio, "Cardapio não pode ser nulo!");
         refeicaoList = findRefeicaoUseCase.findByCardapio(cardapio);
         bindTableViewToItemsList();
         bindColumnsToValueSources();
         loadDataAndShow();
-        this.cardapio=cardapio;
+        this.cardapio = cardapio;
     }
 
     public void handle(KeyEvent key) {
-
         String txtSearch = txtCategoriaRefeicao.getText();
         List<Refeicao> refeicoes = findRefeicaoUseCase.findAll();
         List<Refeicao> matchesWithSearch = refeicoes.stream()
@@ -130,12 +123,11 @@ public class RefeicaoManagementUIController {
                 .toList();
         tableData.clear();
         tableData.addAll(matchesWithSearch);
-
     }
 
     public void addAlimento(ActionEvent actionEvent) throws IOException {
         WindowLoader.setRoot("RefeicaoAlimentoUI");
-        RefeicaoUIController controller = (RefeicaoUIController)WindowLoader.getController();
+        RefeicaoUIController controller = (RefeicaoUIController) WindowLoader.getController();
         controller.setCardapio(cardapio);
     }
 

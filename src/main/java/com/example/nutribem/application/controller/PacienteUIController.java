@@ -16,7 +16,8 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.util.Objects;
 
-import static com.example.nutribem.application.main.Main.*;
+import static com.example.nutribem.application.main.Main.createPacienteUseCase;
+import static com.example.nutribem.application.main.Main.updatePacienteUseCase;
 
 public class PacienteUIController {
     @FXML
@@ -62,7 +63,7 @@ public class PacienteUIController {
     private AlertMessage alert = new AlertMessage();
 
     @FXML
-    public void initialize(){
+    public void initialize() {
         cbSexo.getItems().setAll(Sexo.values());
         cbLactose.getItems().setAll(IntoleranciaLactose.values());
         cbGluten.getItems().add("Sim");
@@ -71,19 +72,18 @@ public class PacienteUIController {
         cbDiabetes.getItems().add("Não");
         btnStatus.setVisible(false);
     }
-    public void saveOrUpdate(ActionEvent actionEvent) throws IOException {
 
-        try{
+    public void saveOrUpdate(ActionEvent actionEvent) throws IOException {
+        try {
             getEntityToView();
-            if(paciente.getId() == null)
+            if (paciente.getId() == null)
                 createPacienteUseCase.insert(paciente);
             else
                 updatePacienteUseCase.update(paciente);
             WindowLoader.setRoot("MainUI");
-        }catch (Exception e){
-                alert.showAlert("Erro!", e.getMessage(), Alert.AlertType.ERROR);
+        } catch (Exception e) {
+            alert.showAlert("Erro!", e.getMessage(), Alert.AlertType.ERROR);
         }
-
     }
 
     public void backScene(ActionEvent actionEvent) throws IOException {
@@ -96,8 +96,8 @@ public class PacienteUIController {
         WindowLoader.setRoot("MainUI");
     }
 
-    public void getEntityToView(){
-        if(paciente == null)
+    public void getEntityToView() {
+        if (paciente == null)
             paciente = new Paciente();
 
         paciente.setNome(txtNome.getText());
@@ -117,11 +117,9 @@ public class PacienteUIController {
         paciente.setObservacoesGerais(txtObservacoes.getText());
         paciente.setDataNascimento(dtDataNasc.getValue());
         paciente.setAtivado(true);
-
-
     }
 
-    public void setEntityIntoView(){
+    public void setEntityIntoView() {
         txtNome.setText(paciente.getNome());
         txtCPF.setText(paciente.getCpf().getCpfFormatted());
         txtAlergias.setText(paciente.getAlergias());
@@ -134,15 +132,18 @@ public class PacienteUIController {
         txtTelefone.setText(paciente.getTelefone());
         txtObservacoes.setText(paciente.getObservacoesGerais());
         btnStatus.setVisible(true);
-        if(paciente.getDiabetes())
+
+        if (paciente.getDiabetes())
             cbDiabetes.setValue("Sim");
         else
             cbDiabetes.setValue("Não");
-        if(paciente.getIntoleranciaGluten())
+
+        if (paciente.getIntoleranciaGluten())
             cbGluten.setValue("Sim");
         else
             cbGluten.setValue("Não");
-        if(paciente.getAtivado())
+
+        if (paciente.getAtivado())
             btnStatus.setText("Desativar");
         else
             btnStatus.setText("Ativar");
@@ -152,23 +153,21 @@ public class PacienteUIController {
         dtDataNasc.setValue(paciente.getDataNascimento());
     }
 
+    public void setPaciente(Paciente paciente, UIMode mode) {
+        Objects.requireNonNull(paciente, "Paciente não pode ser nulo!");
 
-    public void setPaciente(Paciente paciente, UIMode mode){
-        Objects.requireNonNull(paciente,"Paciente não pode ser nulo!");
-
-        this.paciente= paciente;
+        this.paciente = paciente;
         setEntityIntoView();
-        if(mode == UIMode.VIEW)
+        if (mode == UIMode.VIEW)
             configureViewMode();
-
-
     }
-    private void configureViewMode(){
+
+    private void configureViewMode() {
         btnConfirm.setVisible(false);
         btnCancel.setText("Fechar");
         btnStatus.setVisible(false);
 
-        if(paciente.getAtivado())
+        if (paciente.getAtivado())
             btnStatus.setText("Desativar");
         else
             btnStatus.setText("Ativar");
@@ -189,7 +188,6 @@ public class PacienteUIController {
         cbSexo.setDisable(true);
         dtDataNasc.setDisable(true);
         txtObservacoes.setDisable(true);
-
     }
 
     public void txtTelefoneKeyReleased(KeyEvent keyEvent) throws ParseException {
@@ -206,6 +204,5 @@ public class PacienteUIController {
         textFieldFormater.setCaracteresValidos("0123456789");
         textFieldFormater.setTf(txtCPF);
         textFieldFormater.formatter();
-
     }
 }

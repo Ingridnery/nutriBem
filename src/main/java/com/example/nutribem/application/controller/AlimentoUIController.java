@@ -5,12 +5,16 @@ import com.example.nutribem.domain.entities.alimento.Alimento;
 import com.example.nutribem.domain.usecases.utils.AlertMessage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
 
 import java.io.IOException;
 import java.util.Objects;
 
-import static com.example.nutribem.application.main.Main.*;
+import static com.example.nutribem.application.main.Main.createAlimentoUseCase;
+import static com.example.nutribem.application.main.Main.updateAlimentoUseCase;
 
 public class AlimentoUIController {
     @FXML
@@ -42,11 +46,12 @@ public class AlimentoUIController {
     private final AlertMessage alert = new AlertMessage();
 
     @FXML
-    public void initialize(){
+    public void initialize() {
         cbGluten.getItems().add("Sim");
         cbGluten.getItems().add("Não");
 
     }
+
     @FXML
     public void activeOrDisabled(ActionEvent actionEvent) throws IOException {
         alimento.setAtivado(!alimento.isAtivado());
@@ -61,25 +66,22 @@ public class AlimentoUIController {
 
     public void saveOrUpdate(ActionEvent actionEvent) throws IOException {
 
-        try{
+        try {
             getEntityToView();
-            if(alimento.getId() == null){
+            if (alimento.getId() == null) {
                 createAlimentoUseCase.insert(alimento);
-            }
-            else{
+            } else {
                 updateAlimentoUseCase.update(alimento);
             }
             WindowLoader.setRoot("AlimentoManagementUI");
 
-        }catch (Exception e){
+        } catch (Exception e) {
             alert.showAlert("Erro!", "Dados inválidos!", Alert.AlertType.ERROR);
         }
-
-
     }
 
-    public void getEntityToView(){
-        if(alimento == null)
+    public void getEntityToView() {
+        if (alimento == null)
             alimento = new Alimento();
 
         alimento.setNome(txtNome.getText());
@@ -94,12 +96,12 @@ public class AlimentoUIController {
         alimento.setAtivado(true);
     }
 
-    public void setEntityIntoView(){
+    public void setEntityIntoView() {
         txtNome.setText(alimento.getNome());
         txtPorcao.setText(String.valueOf(alimento.getPorcao()));
         txtCalorias.setText(String.valueOf(alimento.getCalorias()));
         txtColesterol.setText(String.valueOf(alimento.getColesterol()));
-        if(alimento.getGluten())
+        if (alimento.getGluten())
             cbGluten.setValue("Sim");
         else
             cbGluten.setValue("Não");
@@ -109,7 +111,7 @@ public class AlimentoUIController {
         txtLactose.setText(String.valueOf(alimento.getLactose()));
     }
 
-    public void configureViewMode(){
+    public void configureViewMode() {
 
         btnConfirm.setVisible(false);
         btnCancel.setText("Fechar");
@@ -126,15 +128,13 @@ public class AlimentoUIController {
         txtLactose.setDisable(true);
     }
 
-    public void setAlimento(Alimento alimento, UIMode mode){
-        Objects.requireNonNull(alimento,"Alimento não informado");
+    public void setAlimento(Alimento alimento, UIMode mode) {
+        Objects.requireNonNull(alimento, "Alimento não informado");
 
-        this.alimento=alimento;
+        this.alimento = alimento;
         setEntityIntoView();
-        if(mode == UIMode.VIEW)
+        if (mode == UIMode.VIEW)
             configureViewMode();
 
     }
-
-
 }

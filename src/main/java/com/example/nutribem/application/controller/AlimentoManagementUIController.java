@@ -7,7 +7,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -15,7 +18,8 @@ import javafx.scene.input.MouseEvent;
 import java.io.IOException;
 import java.util.List;
 
-import static com.example.nutribem.application.main.Main.*;
+import static com.example.nutribem.application.main.Main.findAlimentoUseCase;
+import static com.example.nutribem.application.main.Main.removeAlimentoUseCase;
 
 public class AlimentoManagementUIController {
     @FXML
@@ -23,36 +27,37 @@ public class AlimentoManagementUIController {
     @FXML
     private TableView<Alimento> tableView;
     @FXML
-    private TableColumn<Alimento,Integer> cId;
+    private TableColumn<Alimento, Integer> cId;
     @FXML
-    private TableColumn<Alimento,String> cName;
+    private TableColumn<Alimento, String> cName;
     private ObservableList<Alimento> tableData;
     private Alimento alimento;
     private final AlertMessage alertMessage = new AlertMessage();
 
-
-
-
     @FXML
-    private void initialize(){
+    private void initialize() {
         bindTableViewToItemsList();
         bindColumnsToValueSources();
         loadDataAndShow();
     }
-    private void bindColumnsToValueSources(){
+
+    private void bindColumnsToValueSources() {
         cId.setCellValueFactory(new PropertyValueFactory<>("id"));
         cName.setCellValueFactory(new PropertyValueFactory<>("nome"));
 
     }
-    private void bindTableViewToItemsList(){
+
+    private void bindTableViewToItemsList() {
         tableData = FXCollections.observableArrayList();
         tableView.setItems(tableData);
     }
-    private void loadDataAndShow(){
+
+    private void loadDataAndShow() {
         List<Alimento> alimentoList = findAlimentoUseCase.findAll();
         tableData.clear();
         tableData.addAll(alimentoList);
     }
+
     public void getSelectedAndSetButton(MouseEvent mouseEvent) {
         alimento = tableView.getSelectionModel().getSelectedItem();
 
@@ -68,38 +73,35 @@ public class AlimentoManagementUIController {
     }
 
     public void removeAlimento(ActionEvent actionEvent) {
-        if(alimento != null){
-            try{
+        if (alimento != null) {
+            try {
                 removeAlimentoUseCase.remove(alimento);
-            }
-            catch (Exception e){
-                 alertMessage.showAlert("Error",e.getMessage(), Alert.AlertType.ERROR);
+            } catch (Exception e) {
+                alertMessage.showAlert("Error", e.getMessage(), Alert.AlertType.ERROR);
 
             }
             loadDataAndShow();
-        }
-        else
+        } else
             setMessageAlimento();
-
     }
 
     public void detailAlimento(ActionEvent actionEvent) throws IOException {
         showAlimentoInMode(UIMode.VIEW);
     }
 
-    private void setMessageAlimento(){
+    private void setMessageAlimento() {
         String title = "Alimento invalido.";
         String message = "Nenhum alimento foi selecionado!";
         alertMessage.showAlert(title, message, Alert.AlertType.ERROR);
     }
+
     private void showAlimentoInMode(UIMode mode) throws IOException {
-        if(alimento !=null){
+        if (alimento != null) {
             WindowLoader.setRoot("AlimentoUI");
             AlimentoUIController controller = (AlimentoUIController) WindowLoader.getController();
-            controller.setAlimento(alimento,mode);
+            controller.setAlimento(alimento, mode);
 
-        }
-        else
+        } else
             setMessageAlimento();
     }
 
@@ -108,7 +110,7 @@ public class AlimentoManagementUIController {
     }
 
     @FXML
-    public void handle(KeyEvent key){
+    public void handle(KeyEvent key) {
         String txtSearch = (txtNameAlimento.getText() + key.getText()).toUpperCase();
         List<Alimento> alimentoList = findAlimentoUseCase.findAll();
         List<Alimento> matchesWithSearch = alimentoList.stream()
