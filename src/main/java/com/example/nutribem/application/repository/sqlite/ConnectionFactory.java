@@ -1,11 +1,12 @@
 package com.example.nutribem.application.repository.sqlite;
+
+import org.sqlite.SQLiteDataSource;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Objects;
-
-import org.sqlite.SQLiteDataSource;
 
 public class ConnectionFactory implements AutoCloseable {
     private static Connection connection;
@@ -17,7 +18,7 @@ public class ConnectionFactory implements AutoCloseable {
             SQLiteDataSource dataSource = new SQLiteDataSource();
             dataSource.setUrl("jdbc:sqlite:database.db");
 
-            if(Objects.isNull(connection))
+            if (Objects.isNull(connection))
                 connection = dataSource.getConnection();
 
         } catch (SQLException e) {

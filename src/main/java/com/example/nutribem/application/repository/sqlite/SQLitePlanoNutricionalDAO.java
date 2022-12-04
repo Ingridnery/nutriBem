@@ -20,7 +20,7 @@ public class SQLitePlanoNutricionalDAO implements PlanoNutricionalDAO {
         String sql = "SELECT * FROM PlanoNutricional WHERE nome = ?";
         PlanoNutricional plano = null;
 
-        try(PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
+        try (PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
             stmt.setString(1, name);
             ResultSet resultSet = stmt.executeQuery();
 
@@ -40,7 +40,7 @@ public class SQLitePlanoNutricionalDAO implements PlanoNutricionalDAO {
 
         List<PlanoNutricional> planos = new ArrayList<>();
 
-        try(PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
+        try (PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
             stmt.setInt(1, id);
             ResultSet resultSet = stmt.executeQuery();
 
@@ -58,7 +58,7 @@ public class SQLitePlanoNutricionalDAO implements PlanoNutricionalDAO {
     public Integer create(PlanoNutricional plano) {
         String sql = "INSERT INTO PlanoNutricional (nome, paciente, inicio, fim) VALUES (?, ?, ?, ?)";
 
-        try(PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
+        try (PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
             stmt.setString(1, plano.getNome());
             stmt.setInt(2, plano.getPaciente().getId());
             stmt.setString(3, plano.getDataInicio().toString());
@@ -78,7 +78,7 @@ public class SQLitePlanoNutricionalDAO implements PlanoNutricionalDAO {
         String sql = "SELECT * FROM PlanoNutricional WHERE id = ?";
         PlanoNutricional plano = null;
 
-        try(PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
+        try (PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
             stmt.setInt(1, id);
             ResultSet resultSet = stmt.executeQuery();
 
@@ -98,7 +98,7 @@ public class SQLitePlanoNutricionalDAO implements PlanoNutricionalDAO {
 
         List<PlanoNutricional> planos = new ArrayList<>();
 
-        try(PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
+        try (PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
             ResultSet resultSet = stmt.executeQuery();
 
             while (resultSet.next()) {
@@ -134,7 +134,7 @@ public class SQLitePlanoNutricionalDAO implements PlanoNutricionalDAO {
     public boolean deleteByKey(Integer id) {
         String sql = "DELETE FROM PlanoNutricional WHERE id = ?";
 
-        try(PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
+        try (PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
             stmt.setInt(1, id);
             stmt.execute();
 

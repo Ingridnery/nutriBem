@@ -16,7 +16,7 @@ public class SQLiteNutricionistaDAO implements NutricionistaDAO {
     public String create(Nutricionista nutricionista) {
         String sql = "INSERT INTO Nutricionista VALUES (?, ?)";
 
-        try(PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
+        try (PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
             stmt.setString(1, nutricionista.getNomeUsuario());
             stmt.setString(2, nutricionista.getSenha());
             stmt.execute();
@@ -39,7 +39,7 @@ public class SQLiteNutricionistaDAO implements NutricionistaDAO {
             stmt.setString(1, userName);
             ResultSet resultSet = stmt.executeQuery();
 
-            if(resultSet.next()) {
+            if (resultSet.next()) {
                 nutricionista = new Nutricionista(
                         resultSet.getString("nome"),
                         resultSet.getString("senha")
@@ -75,7 +75,7 @@ public class SQLiteNutricionistaDAO implements NutricionistaDAO {
 
         ArrayList<String> dicas = new ArrayList<>();
 
-        try(PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
+        try (PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
             stmt.setString(1, userName);
             ResultSet rs = stmt.executeQuery();
 
@@ -94,7 +94,7 @@ public class SQLiteNutricionistaDAO implements NutricionistaDAO {
 
     @Override
     public String getSenhaFromUserName(String username) {
-        Nutricionista nutricionista = findByUserName(username).orElseThrow(()->
+        Nutricionista nutricionista = findByUserName(username).orElseThrow(() ->
                 new EntityNotFoundException("Usuario não encontrado!")
         );
         return nutricionista.getSenha();

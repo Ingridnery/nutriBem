@@ -23,7 +23,7 @@ public class SQLiteRefeicaoDAO implements RefeicaoDAO {
         String sql = "SELECT * FROM Refeicao WHERE cardapio = ?";
         List<Refeicao> refeicoes = new ArrayList<>();
 
-        try(PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
+        try (PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
             stmt.setInt(1, cardapio);
             ResultSet resultSet = stmt.executeQuery();
 
@@ -52,6 +52,7 @@ public class SQLiteRefeicaoDAO implements RefeicaoDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
         return false;
     }
 
@@ -79,7 +80,7 @@ public class SQLiteRefeicaoDAO implements RefeicaoDAO {
     public Integer create(Refeicao refeicao) {
         String sql = "INSERT INTO Refeicao (cardapio, horario, categoria) VALUES (?, ? , ?)";
 
-        try(PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
+        try (PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
             stmt.setInt(1, refeicao.getCardapio().getId());
             stmt.setString(2, refeicao.getHorario().toString());
             stmt.setString(3, refeicao.getCategoria().toString());
@@ -98,7 +99,7 @@ public class SQLiteRefeicaoDAO implements RefeicaoDAO {
         String sql = "SELECT * FROM Refeicao WHERE id = ?";
         Refeicao refeicao = null;
 
-        try(PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
+        try (PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
             stmt.setInt(1, id);
             ResultSet resultSet = stmt.executeQuery();
 
@@ -119,7 +120,7 @@ public class SQLiteRefeicaoDAO implements RefeicaoDAO {
         String sql = "SELECT * FROM Refeicao";
         List<Refeicao> refeicoes = new ArrayList<>();
 
-        try(PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
+        try (PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
             ResultSet resultSet = stmt.executeQuery();
 
             while (resultSet.next()) {

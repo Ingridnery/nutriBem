@@ -30,6 +30,7 @@ public class SQLitePacienteDAO implements PacienteDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
         return Optional.ofNullable(paciente);
     }
 
@@ -117,6 +118,7 @@ public class SQLitePacienteDAO implements PacienteDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
         return Optional.ofNullable(paciente);
     }
 

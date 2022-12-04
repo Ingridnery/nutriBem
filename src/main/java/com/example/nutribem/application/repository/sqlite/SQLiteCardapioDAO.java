@@ -19,7 +19,7 @@ public class SQLiteCardapioDAO implements CardapioDAO {
         String sql = "SELECT * FROM Cardapio WHERE dia = ?";
         List<Cardapio> cardapios = new ArrayList<>();
 
-        try(PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
+        try (PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
             stmt.setInt(1, numeroDia);
             ResultSet resultSet = stmt.executeQuery();
 
@@ -39,7 +39,7 @@ public class SQLiteCardapioDAO implements CardapioDAO {
         String sql = "SELECT * FROM Cardapio WHERE planoNutricional = ?";
         List<Cardapio> cardapios = new ArrayList<>();
 
-        try(PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
+        try (PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
             stmt.setInt(1, idPlano);
             ResultSet resultSet = stmt.executeQuery();
 
@@ -58,7 +58,7 @@ public class SQLiteCardapioDAO implements CardapioDAO {
     public Integer create(Cardapio cardapio) {
         String sql = "INSERT INTO Cardapio(planoNutricional, dia) VALUES (?, ?)";
 
-        try(PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
+        try (PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
             stmt.setInt(1, cardapio.getPlanoNutricional().getId());
             stmt.setInt(2, cardapio.getNumeroDia());
             stmt.execute();
@@ -76,7 +76,7 @@ public class SQLiteCardapioDAO implements CardapioDAO {
         String sql = "SELECT * FROM Cardapio WHERE id = ?";
         Cardapio cardapio = null;
 
-        try(PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
+        try (PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
             stmt.setInt(1, id);
             ResultSet resultSet = stmt.executeQuery();
 
@@ -95,7 +95,7 @@ public class SQLiteCardapioDAO implements CardapioDAO {
         String sql = "SELECT * FROM Cardapio";
         List<Cardapio> cardapios = new ArrayList<>();
 
-        try(PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
+        try (PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
             ResultSet resultSet = stmt.executeQuery();
 
             while (resultSet.next()) {
@@ -113,7 +113,7 @@ public class SQLiteCardapioDAO implements CardapioDAO {
     public boolean update(Cardapio cardapio) {
         String sql = "UPDATE Cardapio SET dia = ? WHERE id = ?";
 
-        try(PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
+        try (PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
             stmt.setInt(1, cardapio.getNumeroDia());
             stmt.setInt(2, cardapio.getId());
             stmt.execute();
@@ -130,7 +130,7 @@ public class SQLiteCardapioDAO implements CardapioDAO {
     public boolean deleteByKey(Integer id) {
         String sql = "DELETE FROM Cardapio WHERE id = ?";
 
-        try(PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
+        try (PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
             stmt.setInt(1, id);
             stmt.execute();
 

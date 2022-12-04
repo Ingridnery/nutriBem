@@ -16,11 +16,11 @@ public class SQLiteAlimentoDAO implements AlimentoDAO {
         String sql = "SELECT * FROM Alimento WHERE nome = ?";
         Alimento alimento = null;
 
-        try(PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
+        try (PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
             stmt.setString(1, name);
             ResultSet resultSet = stmt.executeQuery();
 
-            if(resultSet.next()) {
+            if (resultSet.next()) {
                 alimento = resultsetToEntity(resultSet);
             }
 
@@ -36,7 +36,7 @@ public class SQLiteAlimentoDAO implements AlimentoDAO {
         String sql = "INSERT INTO Alimento (nome, porcao, calorias, colesterol, gluten, gorduras_saturadas, sodio, acucar, lactose) " +
                 "VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-        try(PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
+        try (PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
             stmt.setString(1, alimento.getNome());
             stmt.setInt(2, alimento.getPorcao());
             stmt.setInt(3, alimento.getCalorias());
@@ -61,11 +61,11 @@ public class SQLiteAlimentoDAO implements AlimentoDAO {
         String sql = "SELECT * FROM Alimento WHERE id = ?";
         Alimento alimento = null;
 
-        try(PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
+        try (PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
             stmt.setInt(1, id);
             ResultSet resultSet = stmt.executeQuery();
 
-            if(resultSet.next()) {
+            if (resultSet.next()) {
                 alimento = resultsetToEntity(resultSet);
             }
 
@@ -81,10 +81,10 @@ public class SQLiteAlimentoDAO implements AlimentoDAO {
         String sql = "SELECT * FROM Alimento";
         List<Alimento> alimentos = new ArrayList<>();
 
-        try(PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
+        try (PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
             ResultSet resultSet = stmt.executeQuery();
 
-            while(resultSet.next()) {
+            while (resultSet.next()) {
                 alimentos.add(resultsetToEntity(resultSet));
             }
 
@@ -136,7 +136,7 @@ public class SQLiteAlimentoDAO implements AlimentoDAO {
     public boolean deleteByKey(Integer id) {
         String sql = "DELETE FROM Alimento WHERE id = ?";
 
-        try(PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
+        try (PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
             stmt.setInt(1, id);
             stmt.execute();
 
