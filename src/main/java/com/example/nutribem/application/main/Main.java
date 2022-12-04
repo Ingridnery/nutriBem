@@ -64,14 +64,14 @@ public class Main {
         //configureSQLiteInjection();
         configureInMemoryInjection();
 
-        Nutricionista nutricionista = new Nutricionista("admin","admin");
-        createNutricionistaUseCase.insert(nutricionista,"admin");
+        Nutricionista nutricionista = new Nutricionista("admin", "admin");
+        createNutricionistaUseCase.insert(nutricionista, "admin");
 
         ArrayList<String> dicasSenha = new ArrayList<>();
         dicasSenha.add("Cachorro");
         dicasSenha.add("Data de aniversario");
         dicasSenha.add("Padrão");
-        createDicaSenhaUseCase.insert(nutricionista,dicasSenha);
+        createDicaSenhaUseCase.insert(nutricionista, dicasSenha);
 
         WindowLoader.main(args);
     }
@@ -81,7 +81,7 @@ public class Main {
         db.buildIfMissing();
     }
 
-    public static void configureInMemoryInjection(){
+    public static void configureInMemoryInjection() {
         RefeicaoDAO refeicaoDAO = new InMemoryRefeicaoDAO();
         createRefeicaoUseCase = new CreateRefeicaoUseCase(refeicaoDAO);
         findRefeicaoUseCase = new FindRefeicaoUseCase(refeicaoDAO);
@@ -124,7 +124,7 @@ public class Main {
 
         emitirRelatorioContatosUseCase = new EmitirRelatorioContatosUseCase(pacienteDAO);
         emitirRelatorioPlanosVencidosUseCase = new EmitirRelatorioPlanosVencidosUseCase(planoNutricionalDAO);
-        emitirRelatorioPlanoNutricionalUseCase = new EmitirRelatorioPlanoNutricionalUseCase(cardapioDAO,refeicaoDAO);
+        emitirRelatorioPlanoNutricionalUseCase = new EmitirRelatorioPlanoNutricionalUseCase(cardapioDAO, refeicaoDAO);
 
 
     }
@@ -172,6 +172,6 @@ public class Main {
 
         emitirRelatorioContatosUseCase = new EmitirRelatorioContatosUseCase(pacienteDAO);
         emitirRelatorioPlanosVencidosUseCase = new EmitirRelatorioPlanosVencidosUseCase(planoNutricionalDAO);
-        emitirRelatorioPlanoNutricionalUseCase = new EmitirRelatorioPlanoNutricionalUseCase(cardapioDAO,refeicaoDAO);
+        emitirRelatorioPlanoNutricionalUseCase = new EmitirRelatorioPlanoNutricionalUseCase(cardapioDAO, refeicaoDAO);
     }
 }
