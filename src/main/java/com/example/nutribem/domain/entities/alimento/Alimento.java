@@ -1,8 +1,6 @@
 package com.example.nutribem.domain.entities.alimento;
 
-import com.example.nutribem.domain.entities.refeicao.Refeicao;
 import com.example.nutribem.domain.usecases.valoresNutricionais.ValoresNutricionais;
-import javafx.scene.control.CheckBox;
 
 import java.util.Objects;
 
@@ -19,6 +17,7 @@ public class Alimento {
     private Double acucar;
     private Double lactose;
     private Boolean ativado;
+
     public Alimento(String nome, Integer porcao, Integer calorias, Integer colesterol, Boolean gluten, Double gordurasSaturadas, Double sodio, Double acucar, Double lactose) {
         this.nome = nome;
         this.id = null;
@@ -37,7 +36,7 @@ public class Alimento {
     public Alimento() {
     }
 
-    public ValoresNutricionais calculateValoresNutricionais(){
+    public ValoresNutricionais calculateValoresNutricionais() {
         return new ValoresNutricionais(getCalorias(), getColesterol(), getGluten(),
                 getGordurasSaturadas(), getSodio(), getAcucar(), getLactose());
     }
@@ -56,8 +55,8 @@ public class Alimento {
 
 
     public void setId(Integer id) {
-        if(this.id != null)
-            throw new IllegalArgumentException("O alimento "+this.nome+" já possui um id associado.");
+        if (this.id != null)
+            throw new IllegalArgumentException("O alimento " + this.nome + " já possui um id associado.");
         this.id = id;
     }
 

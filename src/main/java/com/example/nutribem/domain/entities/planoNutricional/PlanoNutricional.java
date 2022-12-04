@@ -1,4 +1,5 @@
 package com.example.nutribem.domain.entities.planoNutricional;
+
 import com.example.nutribem.domain.entities.paciente.Paciente;
 
 import java.time.LocalDate;

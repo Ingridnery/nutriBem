@@ -20,7 +20,7 @@ public class Cardapio {
     }
 
     public void setId(Integer id) {
-        if(this.id != null)
+        if (this.id != null)
             throw new IllegalStateException("Id não pode ser alterado!");
         this.id = id;
     }

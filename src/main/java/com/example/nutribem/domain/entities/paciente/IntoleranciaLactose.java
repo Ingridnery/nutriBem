@@ -3,9 +3,9 @@ package com.example.nutribem.domain.entities.paciente;
 import java.util.Arrays;
 
 public enum IntoleranciaLactose {
-    APTO ("Apto"),
-    INTOLERANTE ("Intolerante"),
-    RESTRITO ("Restrito");
+    APTO("Apto"),
+    INTOLERANTE("Intolerante"),
+    RESTRITO("Restrito");
 
     private final String label;
 

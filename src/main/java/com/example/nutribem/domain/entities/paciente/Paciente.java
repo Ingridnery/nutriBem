@@ -1,6 +1,8 @@
 package com.example.nutribem.domain.entities.paciente;
+
 import com.example.nutribem.domain.entities.alimento.Alimento;
 import com.example.nutribem.domain.usecases.utils.PacienteIsIntolerantException;
+
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.Objects;
@@ -28,7 +30,7 @@ public class Paciente {
     public Paciente() {
     }
 
-    public Paciente(Integer circunferencia, Integer altura, String nome, CPF cpf, String email, String telefone, String historicoClinicoGeral, IntoleranciaLactose intoleranciaLactose, Boolean intoleranciaGluten, Boolean diabetes, String alergias, String observacoesGerais, String objetivos, LocalDate dataNascimento, Double peso, Sexo sexo){
+    public Paciente(Integer circunferencia, Integer altura, String nome, CPF cpf, String email, String telefone, String historicoClinicoGeral, IntoleranciaLactose intoleranciaLactose, Boolean intoleranciaGluten, Boolean diabetes, String alergias, String observacoesGerais, String objetivos, LocalDate dataNascimento, Double peso, Sexo sexo) {
         this.circunferencia = circunferencia;
         this.altura = altura;
         this.nome = nome;
@@ -48,7 +50,7 @@ public class Paciente {
         this.ativado = true;
     }
 
-    public Paciente( Integer circunferencia, Integer altura, String nome, CPF cpf, String email, String telefone, String historicoClinicoGeral, IntoleranciaLactose intoleranciaLactose, Boolean intoleranciaGluten, Boolean diabetes, String alergias, String observacoesGerais, String objetivos, LocalDate dataNascimento, Double peso, Sexo sexo, Boolean ativado) {
+    public Paciente(Integer circunferencia, Integer altura, String nome, CPF cpf, String email, String telefone, String historicoClinicoGeral, IntoleranciaLactose intoleranciaLactose, Boolean intoleranciaGluten, Boolean diabetes, String alergias, String observacoesGerais, String objetivos, LocalDate dataNascimento, Double peso, Sexo sexo, Boolean ativado) {
         this.circunferencia = circunferencia;
         this.altura = altura;
         this.nome = nome;
@@ -68,11 +70,11 @@ public class Paciente {
         this.ativado = ativado;
     }
 
-    public Boolean canEat(Alimento alimento){
-        if(alimento.getGluten() && intoleranciaGluten)
-            throw new PacienteIsIntolerantException("O alimento contém gluten: "+ alimento.getNome());
-        if(alimento.getLactose() > 0 && intoleranciaLactose != IntoleranciaLactose.APTO)
-            throw new PacienteIsIntolerantException("O alimento contém lactose: "+ alimento.getLactose());
+    public Boolean canEat(Alimento alimento) {
+        if (alimento.getGluten() && intoleranciaGluten)
+            throw new PacienteIsIntolerantException("O alimento contém gluten: " + alimento.getNome());
+        if (alimento.getLactose() > 0 && intoleranciaLactose != IntoleranciaLactose.APTO)
+            throw new PacienteIsIntolerantException("O alimento contém lactose: " + alimento.getLactose());
         return true;
     }
 
@@ -81,8 +83,8 @@ public class Paciente {
     }
 
     public void setId(Integer id) {
-        if(this.id != null)
-            throw new IllegalArgumentException("O paciente "+ this.nome +" já possui um id associado.");
+        if (this.id != null)
+            throw new IllegalArgumentException("O paciente " + this.nome + " já possui um id associado.");
         this.id = id;
     }
 
@@ -113,7 +115,6 @@ public class Paciente {
     public CPF getCpf() {
         return cpf;
     }
-
 
 
     public void setCpf(CPF cpf) {

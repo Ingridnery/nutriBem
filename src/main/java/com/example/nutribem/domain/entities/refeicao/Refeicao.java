@@ -3,7 +3,6 @@ package com.example.nutribem.domain.entities.refeicao;
 import com.example.nutribem.domain.entities.alimento.Alimento;
 import com.example.nutribem.domain.entities.cardapio.Cardapio;
 
-import java.net.CacheRequest;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -40,10 +39,11 @@ public class Refeicao {
 
 
     public void setId(Integer id) {
-        if(this.id != null)
+        if (this.id != null)
             throw new IllegalArgumentException("Id não pode ser alterado!");
         this.id = id;
     }
+
     public LocalTime getHorario() {
         return horario;
     }

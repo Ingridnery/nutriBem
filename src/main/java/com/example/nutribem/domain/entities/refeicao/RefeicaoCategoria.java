@@ -3,17 +3,17 @@ package com.example.nutribem.domain.entities.refeicao;
 import java.util.Arrays;
 
 public enum RefeicaoCategoria {
-    CAFE_MANHA ("Café da manhã"),
-    LANCHE_MANHA ("Lanche da manhã"),
+    CAFE_MANHA("Café da manhã"),
+    LANCHE_MANHA("Lanche da manhã"),
     ALMOCO("Almoço"),
     LANCHE_TARDE("Lanche da tarde"),
     JANTAR("Jantar"),
     CEIA("Ceia");
 
-    private String label;
+    private final String label;
 
-    RefeicaoCategoria(String label){
-        this.label=label;
+    RefeicaoCategoria(String label) {
+        this.label = label;
     }
 
     public static RefeicaoCategoria ofString(String categoria) {
