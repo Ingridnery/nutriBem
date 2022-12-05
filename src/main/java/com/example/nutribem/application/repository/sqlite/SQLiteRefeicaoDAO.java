@@ -159,7 +159,7 @@ public class SQLiteRefeicaoDAO implements RefeicaoDAO {
             addAlimentosToRefeicao(newAlimentos, refeicao.getId());
 
             List<Alimento> removedAlimentos = alimentosInRefeicao.stream()
-                    .filter(aliemnto -> !refeicao.getAlimentos().contains(aliemnto))
+                    .filter(alimento -> !refeicao.getAlimentos().contains(alimento))
                     .collect(Collectors.toList());
 
             removeAlimentosFromRefeicao(removedAlimentos, refeicao.getId());
