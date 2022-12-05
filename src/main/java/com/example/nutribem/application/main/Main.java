@@ -61,8 +61,8 @@ public class Main {
 
     public static void main(String[] args) {
         createDatabase();
-        //configureSQLiteInjection();
-        configureInMemoryInjection();
+        configureSQLiteInjection();
+        /*configureInMemoryInjection();
 
         Nutricionista nutricionista = new Nutricionista("admin", "admin");
         createNutricionistaUseCase.insert(nutricionista, "admin");
@@ -71,7 +71,7 @@ public class Main {
         dicasSenha.add("Cachorro");
         dicasSenha.add("Data de aniversario");
         dicasSenha.add("Padrão");
-        createDicaSenhaUseCase.insert(nutricionista, dicasSenha);
+        createDicaSenhaUseCase.insert(nutricionista, dicasSenha);*/
 
         WindowLoader.main(args);
     }
