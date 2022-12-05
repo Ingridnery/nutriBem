@@ -10,7 +10,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -151,18 +150,18 @@ public class SQLiteRefeicaoDAO implements RefeicaoDAO {
             stmt.setInt(3, refeicao.getId());
             stmt.execute();
 
-            /* UPDATE ALIMENTOS IN REFEICAO */
-            List<Alimento> alimentosInRefeicao = findAlimentosFromRefeicao(refeicao); // Todos s alimentos ja inseridos
+            List<Alimento> alimentosInRefeicao = findAlimentosFromRefeicao(refeicao);
 
-            // Alimentos que foram adicionados
             List<Alimento> newAlimentos = refeicao.getAlimentos().stream()
-                            .collect(Collectors.toList());
-            newAlimentos.removeAll(alimentosInRefeicao);
+                    .filter(alimento -> !alimentosInRefeicao.contains(alimento))
+                    .collect(Collectors.toList());
+
             addAlimentosToRefeicao(newAlimentos, refeicao.getId());
 
-            // Alimentos que foram removidos
-            List<Alimento> removedAlimentos = alimentosInRefeicao;
-            removedAlimentos.removeAll(refeicao.getAlimentos());
+            List<Alimento> removedAlimentos = alimentosInRefeicao.stream()
+                    .filter(aliemnto -> !refeicao.getAlimentos().contains(aliemnto))
+                    .collect(Collectors.toList());
+
             removeAlimentosFromRefeicao(removedAlimentos, refeicao.getId());
 
             return true;
@@ -208,7 +207,7 @@ public class SQLiteRefeicaoDAO implements RefeicaoDAO {
     private boolean addAlimentosToRefeicao(List<Alimento> alimentos, Integer refeicao) {
         String sql = "INSERT INTO AlimentoRefeicao (alimento, refeicao) VALUES (?, ?)";
 
-        try(PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
+        try (PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
 
             alimentos.forEach(alimento -> {
                 try {
@@ -233,7 +232,7 @@ public class SQLiteRefeicaoDAO implements RefeicaoDAO {
     private boolean removeAlimentosFromRefeicao(List<Alimento> alimentos, Integer refeicao) {
         String sql = "DELETE FROM AlimentoRefeicao WHERE alimento = ? AND refeicao = ?";
 
-        try(PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
+        try (PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
             alimentos.forEach(alimento -> {
                 try {
                     stmt.setInt(1, alimento.getId());
