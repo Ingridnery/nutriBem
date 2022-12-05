@@ -86,7 +86,10 @@ public class SQLiteRefeicaoDAO implements RefeicaoDAO {
             stmt.setString(3, refeicao.getCategoria().toString());
             stmt.execute();
 
-            return stmt.getGeneratedKeys().getInt(1);
+            Integer id = stmt.getGeneratedKeys().getInt(1);
+            addAlimentosToRefeicao(refeicao.getAlimentos(), id);
+
+            return id;
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -186,5 +189,30 @@ public class SQLiteRefeicaoDAO implements RefeicaoDAO {
 
         refeicao.setId(rs.getInt("id"));
         return refeicao;
+    }
+
+    private boolean addAlimentosToRefeicao(List<Alimento> alimentos, Integer refeicao) {
+        String sql = "INSERT INTO AlimentoRefeicao (alimento, refeicao) VALUES (?, ?)";
+
+        try(PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
+
+            alimentos.forEach(alimento -> {
+                try {
+                    stmt.setInt(1, alimento.getId());
+                    stmt.setInt(2, refeicao);
+
+                    stmt.addBatch();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            });
+
+            stmt.executeBatch();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return false;
     }
 }
