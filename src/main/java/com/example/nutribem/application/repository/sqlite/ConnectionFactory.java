@@ -16,7 +16,7 @@ public class ConnectionFactory implements AutoCloseable {
     public static Connection createConnection() {
         try {
             SQLiteDataSource dataSource = new SQLiteDataSource();
-            dataSource.setUrl("jdbc:sqlite:database.db");
+            dataSource.setUrl("jdbc:sqlite:database.db?foreign_keys=on");
 
             if (Objects.isNull(connection))
                 connection = dataSource.getConnection();
