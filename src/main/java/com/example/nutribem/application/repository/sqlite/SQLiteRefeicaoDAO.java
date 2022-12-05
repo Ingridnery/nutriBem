@@ -150,6 +150,12 @@ public class SQLiteRefeicaoDAO implements RefeicaoDAO {
             stmt.execute();
 
             /* UPDATE ALIMENTOS IN REFEICAO */
+            List<Alimento> alimentosInRefeicao = findAlimentosFromRefeicao(refeicao); // Todos s alimentos ja inseridos
+
+            // Alimentos que foram adicionados
+            List<Alimento> newAlimentos = refeicao.getAlimentos();
+            newAlimentos.removeAll(alimentosInRefeicao);
+            addAlimentosToRefeicao(newAlimentos, refeicao.getId());
 
             return true;
         } catch (SQLException e) {
