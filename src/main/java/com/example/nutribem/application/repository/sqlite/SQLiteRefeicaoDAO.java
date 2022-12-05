@@ -10,8 +10,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class SQLiteRefeicaoDAO implements RefeicaoDAO {
 
@@ -153,9 +155,15 @@ public class SQLiteRefeicaoDAO implements RefeicaoDAO {
             List<Alimento> alimentosInRefeicao = findAlimentosFromRefeicao(refeicao); // Todos s alimentos ja inseridos
 
             // Alimentos que foram adicionados
-            List<Alimento> newAlimentos = refeicao.getAlimentos();
+            List<Alimento> newAlimentos = refeicao.getAlimentos().stream()
+                            .collect(Collectors.toList());
             newAlimentos.removeAll(alimentosInRefeicao);
             addAlimentosToRefeicao(newAlimentos, refeicao.getId());
+
+            // Alimentos que foram removidos
+            List<Alimento> removedAlimentos = alimentosInRefeicao;
+            removedAlimentos.removeAll(refeicao.getAlimentos());
+            removeAlimentosFromRefeicao(removedAlimentos, refeicao.getId());
 
             return true;
         } catch (SQLException e) {
@@ -202,6 +210,30 @@ public class SQLiteRefeicaoDAO implements RefeicaoDAO {
 
         try(PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
 
+            alimentos.forEach(alimento -> {
+                try {
+                    stmt.setInt(1, alimento.getId());
+                    stmt.setInt(2, refeicao);
+
+                    stmt.addBatch();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            });
+
+            stmt.executeBatch();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+
+    private boolean removeAlimentosFromRefeicao(List<Alimento> alimentos, Integer refeicao) {
+        String sql = "DELETE FROM AlimentoRefeicao WHERE alimento = ? AND refeicao = ?";
+
+        try(PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
             alimentos.forEach(alimento -> {
                 try {
                     stmt.setInt(1, alimento.getId());
