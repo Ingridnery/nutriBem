@@ -12,8 +12,8 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 
 - [x] Documentação
 - [x] Desenvolvimento do domínio
-- [ ] Integração com Banco de Dados
-- [ ] Desenvolvimento da UI
+- [x] Integração com Banco de Dados
+- [x] Desenvolvimento da UI
 
 ## 📒 Documentação
 
