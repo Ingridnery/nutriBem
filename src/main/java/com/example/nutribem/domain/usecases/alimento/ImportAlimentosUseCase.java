@@ -1,15 +1,9 @@
 package com.example.nutribem.domain.usecases.alimento;
 
 import com.example.nutribem.domain.entities.alimento.Alimento;
-import com.opencsv.bean.CsvToBean;
-import com.opencsv.bean.CsvToBeanBuilder;
-import com.opencsv.bean.HeaderColumnNameMappingStrategy;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -65,14 +59,14 @@ public class ImportAlimentosUseCase {
         Integer calorias = Integer.valueOf(data[3]);
         Double gordurasSaturadas = Double.valueOf(extractNumberPart(data[5]));
         Integer colesterol = Integer.valueOf(extractNumberPart(data[6]));
-        Double proteina = Double.valueOf(extractNumberPart(data[38]));
+        Double proteinas = Double.valueOf(extractNumberPart(data[38]));
         boolean hasGluten = hasGluten(data[1]);
         Double sodio = Double.valueOf(extractNumberPart(data[7]));
         Double acucar = Double.valueOf(extractNumberPart(data[60]));
         Double lactose = Double.valueOf(extractNumberPart(data[64]));
 
         return  new Alimento(nome,porcao,calorias, colesterol,
-                hasGluten, gordurasSaturadas, sodio, acucar, lactose);
+                hasGluten, gordurasSaturadas, proteinas, sodio, acucar, lactose);
 
     }
 
