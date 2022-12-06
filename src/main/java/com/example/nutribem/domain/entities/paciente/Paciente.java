@@ -70,11 +70,11 @@ public class Paciente {
         this.ativado = ativado;
     }
 
-    public Boolean canEat(Alimento alimento) {
+    public Boolean canEat(Alimento alimento){
         if (alimento.getGluten() && intoleranciaGluten)
             throw new PacienteIsIntolerantException("O alimento contém gluten: " + alimento.getNome());
         if (alimento.getLactose() > 0 && intoleranciaLactose != IntoleranciaLactose.APTO)
-            throw new PacienteIsIntolerantException("O alimento contém lactose: " + alimento.getLactose());
+            throw new PacienteIsIntolerantException("O alimento contém lactose: " + alimento.getNome() + "(" + alimento.getLactose()+"g)");
         return true;
     }
 

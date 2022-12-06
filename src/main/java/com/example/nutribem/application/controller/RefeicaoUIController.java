@@ -6,6 +6,7 @@ import com.example.nutribem.domain.entities.cardapio.Cardapio;
 import com.example.nutribem.domain.entities.refeicao.Refeicao;
 import com.example.nutribem.domain.entities.refeicao.RefeicaoCategoria;
 import com.example.nutribem.domain.usecases.utils.AlertMessage;
+import com.example.nutribem.domain.usecases.utils.PacienteIsIntolerantException;
 import com.example.nutribem.domain.usecases.utils.TextFieldFormater;
 import com.example.nutribem.domain.usecases.valoresNutricionais.ValoresNutricionais;
 import javafx.collections.FXCollections;
@@ -104,20 +105,34 @@ public class RefeicaoUIController {
             alert.showAlert("Alimento inválido", "Nenhum alimento foi selecionado", Alert.AlertType.ERROR);
             return;
         }
-        alimentosAdded.add(alimento);
-        addedAlimentosData.add(alimento);
-        allAlimentosData.remove(alimento);
 
-        ValoresNutricionais valoresNutricionais = alimento.calculateValoresNutricionais();
-        totalValoresNutricionais.somar(valoresNutricionais);
-        updateValoresNutricionais();
+        if(isAbleToAdd(alimento)){
+            alimentosAdded.add(alimento);
+            addedAlimentosData.add(alimento);
+            allAlimentosData.remove(alimento);
+
+            ValoresNutricionais valoresNutricionais = alimento.calculateValoresNutricionais();
+            totalValoresNutricionais.somar(valoresNutricionais);
+            updateValoresNutricionais();
+        } else {
+
+        }
+
+    }
+
+    private boolean isAbleToAdd(Alimento alimento) {
+        try{
+            return cardapio.getPlanoNutricional().getPaciente().canEat(alimento);
+        } catch(PacienteIsIntolerantException e){
+            alert.showAlert("Paciente é intolerante", e.getMessage(), Alert.AlertType.ERROR);
+            return false;
+        }
     }
 
     @FXML
     public void removeFromRefeicao(ActionEvent actionEvent) {
         Alimento alimento = addedAlimentosTableView.getSelectionModel().getSelectedItem();
         if (alimento == null) {
-            alert.showAlert("Alimento inválido", "Nenhum alimento foi selecionado", Alert.AlertType.ERROR);
             return;
         }
 
