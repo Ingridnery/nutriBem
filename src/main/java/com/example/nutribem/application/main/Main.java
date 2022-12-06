@@ -15,6 +15,7 @@ import com.example.nutribem.domain.usecases.relatorios.EmitirRelatorioPlanoNutri
 import com.example.nutribem.domain.usecases.relatorios.EmitirRelatorioPlanosVencidosUseCase;
 import com.example.nutribem.domain.usecases.valoresNutricionais.CalculateValoresNutricionaisUseCase;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Main {
@@ -23,6 +24,7 @@ public class Main {
     public static RemoveAlimentoUseCase removeAlimentoUseCase;
     public static UpdateAlimentoUseCase updateAlimentoUseCase;
     public static ActivateAlimentoUseCase activateAlimentoUseCase;
+    public static ImportAlimentosUseCase importAlimentosUseCase;
 
     public static CreateCardapioUseCase createCardapioUseCase;
     public static UpdateCardapioUseCase updateCardapioUseCase;
@@ -62,6 +64,7 @@ public class Main {
     public static void main(String[] args) {
         createDatabase();
         configureSQLiteInjection();
+
         /*configureInMemoryInjection();
 
         Nutricionista nutricionista = new Nutricionista("admin", "admin");
@@ -168,6 +171,7 @@ public class Main {
         removeAlimentoUseCase = new RemoveAlimentoUseCase(alimentoDAO, refeicaoDAO);
         updateAlimentoUseCase = new UpdateAlimentoUseCase(alimentoDAO);
         activateAlimentoUseCase = new ActivateAlimentoUseCase(alimentoDAO, refeicaoDAO);
+        importAlimentosUseCase = new ImportAlimentosUseCase(alimentoDAO);
         calculateValoresNutricionaisUseCase = new CalculateValoresNutricionaisUseCase(alimentoDAO, refeicaoDAO);
 
         emitirRelatorioContatosUseCase = new EmitirRelatorioContatosUseCase(pacienteDAO);
