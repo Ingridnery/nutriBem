@@ -13,13 +13,15 @@ public class Alimento {
     private Integer colesterol;
     private Boolean gluten;
     private Double gordurasSaturadas;
+    private Double proteinas;
     private Double sodio;
     private Double acucar;
     private Double lactose;
     private Boolean ativado;
 
-    public Alimento(String nome, Integer porcao, Integer calorias, Integer colesterol, Boolean gluten, Double gordurasSaturadas, Double sodio, Double acucar, Double lactose) {
+    public Alimento(String nome, Integer porcao, Integer calorias, Integer colesterol, Boolean gluten, Double gordurasSaturadas, Double proteinas, Double sodio, Double acucar, Double lactose) {
         this.nome = nome;
+        this.proteinas = proteinas;
         this.id = null;
         this.porcao = porcao;
         this.calorias = calorias;
@@ -38,7 +40,7 @@ public class Alimento {
 
     public ValoresNutricionais calculateValoresNutricionais() {
         return new ValoresNutricionais(getCalorias(), getColesterol(), getGluten(),
-                getGordurasSaturadas(), getSodio(), getAcucar(), getLactose());
+                getGordurasSaturadas(), proteinas, getSodio(), getAcucar(), getLactose());
     }
 
     public String getNome() {
@@ -98,6 +100,14 @@ public class Alimento {
 
     public void setGordurasSaturadas(Double gordurasSaturadas) {
         this.gordurasSaturadas = gordurasSaturadas;
+    }
+
+    public Double getProteinas() {
+        return proteinas;
+    }
+
+    public void setProteinas(Double proteinas) {
+        this.proteinas = proteinas;
     }
 
     public Double getSodio() {
