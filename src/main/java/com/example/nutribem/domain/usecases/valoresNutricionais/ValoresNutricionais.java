@@ -7,15 +7,17 @@ public class ValoresNutricionais {
     private Integer colesterol;
     private Boolean gluten;
     private Double gordurasSaturadas;
+    private Double proteinas;
     private Double sodio;
     private Double acucar;
     private Double lactose;
 
-    public ValoresNutricionais(Integer calorias, Integer colesterol, Boolean gluten, Double gordurasSaturadas, Double sodio, Double acucar, Double lactose) {
+    public ValoresNutricionais(Integer calorias, Integer colesterol, Boolean gluten, Double gordurasSaturadas, Double proteinas, Double sodio, Double acucar, Double lactose) {
         this.calorias = calorias;
         this.colesterol = colesterol;
         this.gluten = gluten;
         this.gordurasSaturadas = gordurasSaturadas;
+        this.proteinas = proteinas;
         this.sodio = sodio;
         this.acucar = acucar;
         this.lactose = lactose;
@@ -26,6 +28,7 @@ public class ValoresNutricionais {
         this.colesterol = 0;
         this.gluten = false;
         this.gordurasSaturadas = 0.0;
+        this.proteinas = 0.0;
         this.sodio = 0.0;
         this.acucar = 0.0;
         this.lactose = 0.0;
@@ -36,6 +39,7 @@ public class ValoresNutricionais {
         this.colesterol += novo.getColesterol();
         if (!this.gluten) this.gluten = novo.getGluten();
         this.gordurasSaturadas += novo.getGordurasSaturadas();
+        this.proteinas += novo.getProteinas();
         this.sodio += novo.getSodio();
         this.acucar += novo.getAcucar();
         this.lactose += novo.getLactose();
@@ -46,6 +50,7 @@ public class ValoresNutricionais {
         this.colesterol -= novo.getColesterol();
         if (this.gluten && novo.getGluten()) this.gluten = false;
         this.gordurasSaturadas -= novo.getGordurasSaturadas();
+        this.proteinas -= novo.getProteinas();
         this.sodio -= novo.getSodio();
         this.acucar -= novo.getAcucar();
         this.lactose -= novo.getLactose();
@@ -81,6 +86,14 @@ public class ValoresNutricionais {
 
     public void setGordurasSaturadas(Double gordurasSaturadas) {
         this.gordurasSaturadas = gordurasSaturadas;
+    }
+
+    public Double getProteinas() {
+        return proteinas;
+    }
+
+    public void setProteinas(Double proteinas) {
+        this.proteinas = proteinas;
     }
 
     public Double getSodio() {
