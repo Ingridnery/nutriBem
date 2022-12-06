@@ -125,6 +125,10 @@ public class CardapioManagementUIController {
     }
 
     public void findByNumeroDia(ActionEvent actionEvent) {
+        if(txtNumeroDia.getText().isEmpty()){
+            loadDataAndShow();
+            return;
+        }
         tableData.clear();
         try {
             Integer txtSearch = Integer.valueOf(txtNumeroDia.getText());
