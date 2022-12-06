@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="700.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.nutribem.application.controller.RefeicaoUIController">
+<AnchorPane prefHeight="700.0" prefWidth="765.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.nutribem.application.controller.RefeicaoUIController">
     <children>
         <Label layoutX="22.0" layoutY="25.0" text="Horário:" />
         <Label layoutX="250.0" layoutY="25.0" text="Categoria:" />
@@ -33,18 +33,54 @@
             <TableColumn fx:id="cAddedName" prefWidth="457.6000122070312" text="Nome" />
          </columns>
       </TableView>
-      <Label layoutX="17.0" layoutY="577.0" text="Calorias:" />
-      <Label fx:id="txtCalorias" layoutX="70.0" layoutY="577.0" text="XXX" />
-      <Label layoutX="137.0" layoutY="578.0" text="Gluten:" />
-      <Label fx:id="txtGluten" layoutX="199.0" layoutY="578.0" prefHeight="18.0" prefWidth="34.0" text="XXX" AnchorPane.leftAnchor="199.0" AnchorPane.rightAnchor="467.0" />
-      <Label layoutX="221.99999999999997" layoutY="578.0" text="Lactose:" AnchorPane.rightAnchor="445.6" />
-      <Label fx:id="txtLactose" layoutX="290.4" layoutY="578.0" text="XXX" AnchorPane.rightAnchor="398.0" />
-      <Label layoutX="138.0" layoutY="616.0" text="Sódio:" />
-      <Label fx:id="txtSodio" layoutX="191.0" layoutY="616.0" text="XXX" />
-      <Label layoutX="17.0" layoutY="615.0" text="Açúcar:" />
-      <Label fx:id="txtAcucar" layoutX="73.0" layoutY="615.0" text="XXX" />
-      <Label layoutX="223.0" layoutY="616.0" text="Gorduras:" AnchorPane.rightAnchor="435.0" />
-      <Label fx:id="txtGorduras" layoutX="300.4" layoutY="616.0" text="XXX" AnchorPane.rightAnchor="388.0" />
+      <Label layoutX="17.0" layoutY="577.0" text="Calorias:">
+         <font>
+            <Font size="19.0" />
+         </font></Label>
+      <Label fx:id="txtCalorias" layoutX="99.0" layoutY="577.0" prefHeight="28.0" prefWidth="114.0" text="XXX">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font></Label>
+      <Label layoutX="473.0" layoutY="610.0" text="Gluten:">
+         <font>
+            <Font size="19.0" />
+         </font></Label>
+      <Label fx:id="txtGluten" layoutX="557.0" layoutY="610.0" prefHeight="28.0" prefWidth="53.0" text="XXX">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font></Label>
+      <Label layoutX="469.0" layoutY="572.0" text="Lactose:">
+         <font>
+            <Font size="19.0" />
+         </font></Label>
+      <Label fx:id="txtLactose" layoutX="557.0" layoutY="572.0" text="XXX">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font></Label>
+      <Label layoutX="262.0" layoutY="611.0" text="Sódio:">
+         <font>
+            <Font size="19.0" />
+         </font></Label>
+      <Label fx:id="txtSodio" layoutX="346.0" layoutY="610.0" prefHeight="28.0" prefWidth="122.0" text="XXX">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font></Label>
+      <Label layoutX="17.0" layoutY="615.0" text="Açúcar:">
+         <font>
+            <Font size="19.0" />
+         </font></Label>
+      <Label fx:id="txtAcucar" layoutX="98.0" layoutY="615.0" prefHeight="28.0" prefWidth="122.0" text="XXX">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font></Label>
+      <Label layoutX="238.0" layoutY="577.0" text="Gorduras:" AnchorPane.rightAnchor="445.4">
+         <font>
+            <Font size="19.0" />
+         </font></Label>
+      <Label fx:id="txtGorduras" layoutX="332.0" layoutY="577.0" prefHeight="28.0" prefWidth="114.0" text="XXX" AnchorPane.rightAnchor="318.6">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font></Label>
       <Label fx:id="lLupa" layoutX="641.0" layoutY="55.0" text="🔎" AnchorPane.rightAnchor="27.0">
          <font>
             <Font size="32.0" />
