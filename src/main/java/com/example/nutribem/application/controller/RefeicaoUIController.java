@@ -273,4 +273,14 @@ public class RefeicaoUIController {
         btnConfirm.setVisible(false);
         btnCancel.setText("Fechar");
     }
+
+    public void handle(KeyEvent keyEvent) {
+        String txtSearch = txtBusca.getText().toLowerCase();
+        List<Alimento> alimentos = findAlimentoUseCase.findAll();
+        List<Alimento> matchesWithSearch = alimentos.stream()
+                .filter(alimento -> alimento.getNome().toLowerCase().contains(txtSearch))
+                .toList();
+        allAlimentosData.clear();
+        allAlimentosData.addAll(matchesWithSearch);
+    }
 }

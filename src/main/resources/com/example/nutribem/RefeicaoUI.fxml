@@ -25,7 +25,7 @@
         <Button fx:id="btnCancel" layoutX="21.0" layoutY="649.0" mnemonicParsing="false" onAction="#backScene" prefHeight="39.0" prefWidth="88.0" text="Voltar" />
         <Button fx:id="btnConfirm" layoutX="590.0" layoutY="649.0" mnemonicParsing="false" onAction="#saveOrUpdate" prefHeight="39.0" prefWidth="88.0" text="Salvar" AnchorPane.rightAnchor="22.0" />
       <ComboBox fx:id="cbCategoria" layoutX="314.0" layoutY="21.0" prefHeight="26.0" prefWidth="366.0" AnchorPane.leftAnchor="314.0" AnchorPane.rightAnchor="20.0" />
-      <TextField fx:id="txtBusca" layoutX="14.0" layoutY="63.0" onKeyReleased="#txtHorarioKeyReleased" prefHeight="31.0" prefWidth="627.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="59.0" />
+      <TextField fx:id="txtBusca" layoutX="14.0" layoutY="63.0" onKeyPressed="#handle" prefHeight="31.0" prefWidth="627.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="59.0" />
       <Button fx:id="btnAddToRefeicao" layoutX="484.0" layoutY="275.0" mnemonicParsing="false" onAction="#addToRefeicao" prefHeight="39.0" prefWidth="94.0" text="Adicionar" AnchorPane.rightAnchor="22.0" />
       <TableView fx:id="addedAlimentosTableView" layoutX="14.0" layoutY="339.0" prefHeight="232.0" prefWidth="665.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="21.0">
          <columns>
@@ -34,7 +34,7 @@
          </columns>
       </TableView>
       <Label layoutX="17.0" layoutY="577.0" text="Calorias:" />
-      <Label fx:id="txtCalorias" layoutX="73.0" layoutY="577.0" text="XXX" />
+      <Label fx:id="txtCalorias" layoutX="70.0" layoutY="577.0" text="XXX" />
       <Label layoutX="137.0" layoutY="578.0" text="Gluten:" />
       <Label fx:id="txtGluten" layoutX="199.0" layoutY="578.0" prefHeight="18.0" prefWidth="34.0" text="XXX" AnchorPane.leftAnchor="199.0" AnchorPane.rightAnchor="467.0" />
       <Label layoutX="221.99999999999997" layoutY="578.0" text="Lactose:" AnchorPane.rightAnchor="445.6" />
