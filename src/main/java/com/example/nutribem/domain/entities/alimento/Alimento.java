@@ -145,4 +145,21 @@ public class Alimento {
     public int hashCode() {
         return Objects.hash(id);
     }
+
+    @Override
+    public String toString() {
+        return "Alimento{" +
+                "nome='" + nome + '\'' +
+                ", id=" + id +
+                ", porcao=" + porcao +
+                ", calorias=" + calorias +
+                ", colesterol=" + colesterol +
+                ", gluten=" + gluten +
+                ", gordurasSaturadas=" + gordurasSaturadas +
+                ", sodio=" + sodio +
+                ", acucar=" + acucar +
+                ", lactose=" + lactose +
+                ", ativado=" + ativado +
+                '}';
+    }
 }
