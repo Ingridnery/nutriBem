@@ -30,6 +30,8 @@ public class AlimentoUIController {
     @FXML
     private TextField txtGorduraSaturada;
     @FXML
+    private TextField txtProteinas;
+    @FXML
     private TextField txtSodio;
     @FXML
     private TextField txtAcucar;
@@ -90,6 +92,7 @@ public class AlimentoUIController {
         alimento.setColesterol(Integer.valueOf(txtColesterol.getText()));
         alimento.setGluten(cbGluten.getValue().equals("Sim"));
         alimento.setGordurasSaturadas(Double.valueOf(txtGorduraSaturada.getText()));
+        alimento.setProteinas(Double.valueOf(txtProteinas.getText()));
         alimento.setSodio(Double.valueOf(txtSodio.getText()));
         alimento.setAcucar(Double.valueOf(txtAcucar.getText()));
         alimento.setLactose(Double.valueOf(txtLactose.getText()));
@@ -106,6 +109,7 @@ public class AlimentoUIController {
         else
             cbGluten.setValue("Não");
         txtGorduraSaturada.setText(String.valueOf(alimento.getGordurasSaturadas()));
+        txtProteinas.setText(String.valueOf(alimento.getProteinas()));
         txtSodio.setText(String.valueOf(alimento.getSodio()));
         txtAcucar.setText(String.valueOf(alimento.getAcucar()));
         txtLactose.setText(String.valueOf(alimento.getLactose()));
@@ -123,6 +127,7 @@ public class AlimentoUIController {
         txtColesterol.setDisable(true);
         cbGluten.setDisable(true);
         txtGorduraSaturada.setDisable(true);
+        txtProteinas.setDisable(true);
         txtSodio.setDisable(true);
         txtAcucar.setDisable(true);
         txtLactose.setDisable(true);

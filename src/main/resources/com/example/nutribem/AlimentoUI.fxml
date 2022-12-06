@@ -1,32 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.nutribem.application.controller.AlimentoUIController">
+<AnchorPane prefHeight="700.0" prefWidth="772.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.nutribem.application.controller.AlimentoUIController">
 
     <children>
-        <Label layoutX="26.0" layoutY="27.0" text="Nome:" />
-        <Label layoutX="250.0" layoutY="27.0" text="Porção(gr):" />
-        <Label layoutX="26.0" layoutY="76.0" text="Calorias(kcal):" />
-        <Label layoutX="162.0" layoutY="76.0" text="Colesterol(gr):" />
-        <Label layoutX="26.0" layoutY="120.0" text="Glúten:" />
-        <Label layoutX="300.0" layoutY="76.0" prefHeight="21.0" prefWidth="139.0" text="Gorduras Saturadas(gr):" />
-        <Label layoutX="370.0" layoutY="27.0" text="Sódio(gr):" />
-        <Label layoutX="490.0" layoutY="27.0" text="Açúcar(gr):" />
-        <Label layoutX="490.0" layoutY="76.0" text="Lactose(gr):" />
-        <TextField fx:id="txtNome" layoutX="80.0" layoutY="22.0" prefHeight="31.0" />
-        <TextField fx:id="txtPorcao" layoutX="309.0" layoutY="22.0" prefHeight="31.0" prefWidth="56.0" />
-        <TextField fx:id="txtSodio" layoutX="428.0" layoutY="22.0" prefHeight="31.0" prefWidth="56.0" />
-        <TextField fx:id="txtAcucar" layoutX="553.0" layoutY="22.0" prefHeight="31.0" prefWidth="56.0" />
-        <TextField fx:id="txtCalorias" layoutX="100.0" layoutY="71.0" prefHeight="31.0" prefWidth="56.0" />
-        <TextField fx:id="txtColesterol" layoutX="238.0" layoutY="71.0" prefHeight="31.0" prefWidth="56.0" />
-        <TextField fx:id="txtGorduraSaturada" layoutX="428.0" layoutY="71.0" prefHeight="31.0" prefWidth="56.0" />
-        <TextField fx:id="txtLactose" layoutX="553.0" layoutY="71.0" prefHeight="31.0" prefWidth="56.0" />
-        <ComboBox fx:id="cbGluten" layoutX="79.0" layoutY="115.0" prefWidth="108.0" />
-        <Button fx:id="btnStatus" layoutX="373.0" layoutY="283.0" mnemonicParsing="false" onAction="#activeOrDisabled" prefHeight="39.0" prefWidth="88.0" text="Desativar" />
-        <Button fx:id="btnCancel" layoutX="14.0" layoutY="283.0" mnemonicParsing="false" onAction="#backScene" prefHeight="39.0" prefWidth="88.0" text="Voltar" />
-        <Button fx:id="btnConfirm" layoutX="488.0" layoutY="283.0" mnemonicParsing="false" onAction="#saveOrUpdate" prefHeight="39.0" prefWidth="88.0" text="Salvar" />
+        <Label layoutX="29.0" layoutY="177.0" text="Nome:" />
+        <Label layoutX="280.0" layoutY="177.0" text="Porção(gr):" />
+        <Label layoutX="10.0" layoutY="226.0" prefWidth="73.0" text="Calorias(kcal):" />
+        <Label layoutX="263.0" layoutY="226.0" text="Colesterol(gr):" />
+        <Label layoutX="300.0" layoutY="333.0" text="Glúten:" />
+        <Label layoutX="535.0" layoutY="211.0" prefHeight="48.0" prefWidth="88.0" text="Gorduras&#10;Saturadas(gr):" />
+        <Label layoutX="544.0" layoutY="179.0" text="Sódio(gr):" />
+        <Label layoutX="24.0" layoutY="271.0" text="Açúcar(gr):" />
+        <Label layoutX="278.0" layoutY="273.0" text="Lactose(gr):" />
+        <TextField fx:id="txtNome" layoutX="83.0" layoutY="172.0" prefHeight="31.0" prefWidth="150.0" />
+        <TextField fx:id="txtPorcao" layoutX="345.0" layoutY="172.0" prefHeight="31.0" prefWidth="150.0" />
+        <TextField fx:id="txtSodio" layoutX="610.0" layoutY="172.0" prefHeight="31.0" prefWidth="150.0" />
+        <TextField fx:id="txtCalorias" layoutX="83.0" layoutY="221.0" prefHeight="31.0" prefWidth="150.0" />
+        <TextField fx:id="txtColesterol" layoutX="345.0" layoutY="219.0" prefHeight="31.0" prefWidth="150.0" />
+        <TextField fx:id="txtGorduraSaturada" layoutX="610.0" layoutY="221.0" prefHeight="31.0" prefWidth="150.0" />
+        <TextField fx:id="txtAcucar" layoutX="83.0" layoutY="266.0" prefHeight="31.0" prefWidth="150.0" />
+        <TextField fx:id="txtLactose" layoutX="345.0" layoutY="266.0" prefHeight="31.0" prefWidth="150.0" />
+        <TextField fx:id="txtProteinas" layoutX="610.0" layoutY="266.0" prefHeight="31.0" prefWidth="150.0" />
+        <ComboBox fx:id="cbGluten" layoutX="345.0" layoutY="329.0" prefWidth="150.0" />
+        <Button fx:id="btnStatus" layoutX="376.0" layoutY="433.0" mnemonicParsing="false" onAction="#activeOrDisabled" prefHeight="39.0" prefWidth="88.0" text="Desativar" />
+        <Button fx:id="btnCancel" layoutX="17.0" layoutY="433.0" mnemonicParsing="false" onAction="#backScene" prefHeight="39.0" prefWidth="88.0" text="Voltar" />
+        <Button fx:id="btnConfirm" layoutX="663.0" layoutY="433.0" mnemonicParsing="false" onAction="#saveOrUpdate" prefHeight="39.0" prefWidth="88.0" text="Salvar" />
+      <Label layoutX="535.0" layoutY="273.0" text="Proteínas(gr):" />
 
     </children>
 
