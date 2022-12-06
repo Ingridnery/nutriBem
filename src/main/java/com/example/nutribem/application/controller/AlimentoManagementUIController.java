@@ -14,12 +14,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.FileChooser;
 
 import java.io.IOException;
 import java.util.List;
 
-import static com.example.nutribem.application.main.Main.findAlimentoUseCase;
-import static com.example.nutribem.application.main.Main.removeAlimentoUseCase;
+import static com.example.nutribem.application.main.Main.*;
 
 public class AlimentoManagementUIController {
     @FXML
@@ -30,6 +30,8 @@ public class AlimentoManagementUIController {
     private TableColumn<Alimento, Integer> cId;
     @FXML
     private TableColumn<Alimento, String> cName;
+    @FXML
+    private FileChooser fileChooser;
     private ObservableList<Alimento> tableData;
     private Alimento alimento;
     private final AlertMessage alertMessage = new AlertMessage();
@@ -118,5 +120,17 @@ public class AlimentoManagementUIController {
                 .toList();
         tableData.clear();
         tableData.addAll(matchesWithSearch);
+    }
+
+    public void importAlimentos(ActionEvent actionEvent) {
+        fileChooser = new FileChooser();
+        fileChooser.setTitle("Escolha o arquivo para importar");
+        String path = fileChooser.showOpenDialog(txtNameAlimento.getScene().getWindow()).getPath();
+        try{
+            importAlimentosUseCase.importFrom(path);
+            loadDataAndShow();
+        } catch (IOException e){
+            alertMessage.showAlert("Operação inválida", "O arquivo não existe ou não pode ser acessado", Alert.AlertType.ERROR);
+        }
     }
 }
