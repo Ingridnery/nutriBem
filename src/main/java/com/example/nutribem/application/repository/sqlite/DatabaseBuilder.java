@@ -145,6 +145,7 @@ public class DatabaseBuilder {
         builder.append("colesterol INTEGER NOT NULL,\n");
         builder.append("gluten INTEGER NOT NULL,\n");
         builder.append("gorduras_saturadas REAL NOT NULL,\n");
+        builder.append("proteinas REAL NOT NULL,\n");
         builder.append("sodio REAL NOT NULL,\n");
         builder.append("acucar REAL NOT NULL,\n");
         builder.append("lactose REAL NOT NULL,\n");

@@ -33,8 +33,8 @@ public class SQLiteAlimentoDAO implements AlimentoDAO {
 
     @Override
     public Integer create(Alimento alimento) {
-        String sql = "INSERT INTO Alimento (nome, porcao, calorias, colesterol, gluten, gorduras_saturadas, sodio, acucar, lactose) " +
-                "VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Alimento (nome, porcao, calorias, colesterol, gluten, gorduras_saturadas, sodio, acucar, lactose, proteinas) " +
+                "VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
             stmt.setString(1, alimento.getNome());
@@ -46,6 +46,7 @@ public class SQLiteAlimentoDAO implements AlimentoDAO {
             stmt.setDouble(7, alimento.getSodio());
             stmt.setDouble(8, alimento.getAcucar());
             stmt.setDouble(9, alimento.getLactose());
+            stmt.setDouble(10, alimento.getProteinas());
             stmt.execute();
 
             return stmt.getGeneratedKeys().getInt(1);
@@ -108,6 +109,7 @@ public class SQLiteAlimentoDAO implements AlimentoDAO {
                 "acucar = ?, " +
                 "lactose = ?, " +
                 "ativado = ? " +
+                "proteinas = ?" +
                 "WHERE id = ?";
 
         try (PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
@@ -121,7 +123,8 @@ public class SQLiteAlimentoDAO implements AlimentoDAO {
             stmt.setDouble(8, alimento.getAcucar());
             stmt.setDouble(9, alimento.getLactose());
             stmt.setBoolean(10, alimento.isAtivado());
-            stmt.setInt(11, alimento.getId());
+            stmt.setDouble(11, alimento.getProteinas());
+            stmt.setInt(12, alimento.getId());
             stmt.execute();
 
             return true;
@@ -161,6 +164,7 @@ public class SQLiteAlimentoDAO implements AlimentoDAO {
                 rs.getInt("colesterol"),
                 rs.getBoolean("gluten"),
                 rs.getDouble("gorduras_saturadas"),
+                rs.getDouble("proteinas"),
                 rs.getDouble("sodio"),
                 rs.getDouble("acucar"),
                 rs.getDouble("lactose")
