@@ -115,10 +115,10 @@ public class RefeicaoManagementUIController {
     }
 
     public void handle(KeyEvent key) {
-        String txtSearch = txtCategoriaRefeicao.getText();
+        String txtSearch = txtCategoriaRefeicao.getText().toLowerCase();
         List<Refeicao> refeicoes = findRefeicaoUseCase.findAll();
         List<Refeicao> matchesWithSearch = refeicoes.stream()
-                .filter(refeicao -> refeicao.getCategoria().toString().startsWith(txtSearch) &&
+                .filter(refeicao -> refeicao.getCategoria().toString().toLowerCase().contains(txtSearch) &&
                         refeicao.getCardapio().getId().equals(cardapio.getId()))
                 .toList();
         tableData.clear();
