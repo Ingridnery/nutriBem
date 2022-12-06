@@ -27,6 +27,8 @@ public class AlimentoInputRequestValidator extends Validator<Alimento> {
 
         if (nullOrEmpty(alimento.getColesterol()))
             notification.addError("Colesterol is null");
+        if (nullOrEmpty(alimento.getProteinas()))
+            notification.addError("Proteinas is null");
 
         if (nullOrEmpty(alimento.getCalorias()))
             notification.addError("Calorias is null");
