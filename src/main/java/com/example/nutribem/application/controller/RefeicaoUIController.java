@@ -17,6 +17,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -94,6 +95,8 @@ public class RefeicaoUIController {
     private UIMode mode;
     private final AlertMessage alertMessage = new AlertMessage();
 
+    private static final DecimalFormat decfor = new DecimalFormat("0.00");
+
     @FXML
     void addToRefeicao(ActionEvent event) {
         Alimento alimento = allAlimentosTableView.getSelectionModel().getSelectedItem();
@@ -128,12 +131,12 @@ public class RefeicaoUIController {
     }
 
     private void updateValoresNutricionais() {
-        txtCalorias.setText(totalValoresNutricionais.getCalorias() + " kcal");
+        txtCalorias.setText(decfor.format(totalValoresNutricionais.getCalorias()) + " kcal");
         txtGluten.setText(totalValoresNutricionais.getGluten() ? "SIM" : "NÃO");
-        txtLactose.setText(totalValoresNutricionais.getLactose() + " g");
-        txtAcucar.setText(totalValoresNutricionais.getAcucar() + " g");
-        txtSodio.setText(totalValoresNutricionais.getSodio() + " g");
-        txtGorduras.setText(totalValoresNutricionais.getGordurasSaturadas() + " g");
+        txtLactose.setText(decfor.format(totalValoresNutricionais.getLactose()) + " g");
+        txtAcucar.setText(decfor.format(totalValoresNutricionais.getAcucar()) + " g");
+        txtSodio.setText(decfor.format(totalValoresNutricionais.getSodio()) + " g");
+        txtGorduras.setText(decfor.format(totalValoresNutricionais.getGordurasSaturadas()) + " g");
     }
 
     private void bindColumnsToValueSources() {
