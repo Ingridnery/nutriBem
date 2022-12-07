@@ -11,6 +11,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 
 
@@ -18,6 +19,8 @@ public class EmitirRelatorioPlanoNutricionalUseCase {
 
     private final CardapioDAO cardapioDAO;
     private final RefeicaoDAO refeicaoDAO;
+
+    private static final DecimalFormat decfor = new DecimalFormat("0.00");
 
 
     public EmitirRelatorioPlanoNutricionalUseCase(CardapioDAO cardapioDAO, RefeicaoDAO refeicaoDAO) {
@@ -59,10 +62,10 @@ public class EmitirRelatorioPlanoNutricionalUseCase {
                         refeicao.getAlimentos().forEach(alimento -> {
 
                             Paragraph paragraphAlimento = new Paragraph("   " + alimento.getNome() + "\n        Porção: "
-                                    + alimento.getPorcao() + " gramas\n        Calorias: " + alimento.getCalorias()
-                                    + " kcal\n        Açúcar: " + alimento.getAcucar() + " gramas\n        Sódio: " + alimento.getSodio()
-                                    + " gramas\n        Gorduras saturadas: " + alimento.getGordurasSaturadas() + " gramas\n        Colesterol: "
-                                    + " gramas\n        Lactose: " + alimento.getLactose() + " gramas\n        Glúten: " + (!alimento.getGluten() ? "Não" : "Sim") + "\n        Proteínas: " + alimento.getProteinas() + " gramas", font);
+                                    + decfor.format(alimento.getPorcao()) + " gramas\n        Calorias: " + decfor.format(alimento.getCalorias())
+                                    + " kcal\n        Açúcar: " + decfor.format(alimento.getAcucar()) + " gramas\n        Sódio: " + decfor.format(alimento.getSodio())
+                                    + " gramas\n        Gorduras saturadas: " + decfor.format(alimento.getGordurasSaturadas()) + " gramas\n        Colesterol: " + decfor.format(alimento.getColesterol())
+                                    + " gramas\n        Lactose: " + decfor.format(alimento.getLactose()) + " gramas\n        Glúten: " + (!alimento.getGluten() ? "Não" : "Sim") + "\n        Proteínas: " + decfor.format(alimento.getProteinas()) + " gramas", font);
                             try {
                                 document.add(paragraphAlimento);
                             } catch (DocumentException e) {
@@ -73,9 +76,9 @@ public class EmitirRelatorioPlanoNutricionalUseCase {
                         ValoresNutricionais valoresNutricionais = calculateValoresNutricionaisUseCase.from(refeicao);
 
 
-                        Paragraph paragraphValoresNutricionais = new Paragraph("\nValores nutricionais da refeição: \n    Açúcar: " + valoresNutricionais.getAcucar() + "  gramas \n    Calorias: " +
-                                valoresNutricionais.getCalorias() + " kcal\n    Colesterol: " + valoresNutricionais.getColesterol() + " gramas \n    Gorduras saturadas:" + valoresNutricionais.getGordurasSaturadas() + " gramas\n    Sódio: "
-                                + valoresNutricionais.getSodio() + " gramas\n    Lactose: " + valoresNutricionais.getLactose() + " gramas\n    Glúten: " + (!valoresNutricionais.getGluten() ? "Não" : "Sim") + "\n    Proteínas: " + valoresNutricionais.getProteinas() + " gramas", font);
+                        Paragraph paragraphValoresNutricionais = new Paragraph("\nValores nutricionais da refeição: \n    Açúcar: " + decfor.format(valoresNutricionais.getAcucar()) + "  gramas \n    Calorias: " +
+                                decfor.format(valoresNutricionais.getCalorias()) + " kcal\n    Colesterol: " + decfor.format(valoresNutricionais.getColesterol()) + " gramas \n    Gorduras saturadas:" + decfor.format(valoresNutricionais.getGordurasSaturadas()) + " gramas\n    Sódio: "
+                                + decfor.format(valoresNutricionais.getSodio()) + " gramas\n    Lactose: " + decfor.format(valoresNutricionais.getLactose()) + " gramas\n    Glúten: " + (!valoresNutricionais.getGluten() ? "Não" : "Sim") + "\n    Proteínas: " + decfor.format(valoresNutricionais.getProteinas()) + " gramas", font);
                         try {
                             document.add(paragraphValoresNutricionais);
                         } catch (DocumentException e) {
