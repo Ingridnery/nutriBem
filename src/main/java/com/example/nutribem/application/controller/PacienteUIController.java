@@ -122,7 +122,6 @@ public class PacienteUIController {
         paciente.setObservacoesGerais(txtObservacoes.getText());
         paciente.setDataNascimento(dtDataNasc.getValue());
         paciente.setAtivado(true);
-        activatePacienteUseCase.activate(paciente);
     }
 
     public void setEntityIntoView() {
