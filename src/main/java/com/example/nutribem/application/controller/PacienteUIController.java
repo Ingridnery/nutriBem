@@ -16,8 +16,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.util.Objects;
 
-import static com.example.nutribem.application.main.Main.createPacienteUseCase;
-import static com.example.nutribem.application.main.Main.updatePacienteUseCase;
+import static com.example.nutribem.application.main.Main.*;
 
 public class PacienteUIController {
     @FXML
@@ -91,8 +90,14 @@ public class PacienteUIController {
     }
 
     public void activeOrDisabled(ActionEvent actionEvent) throws IOException {
-        paciente.setAtivado(!paciente.getAtivado());
-        updatePacienteUseCase.update(paciente);
+        try{
+            if(paciente.isAtivado())
+                activatePacienteUseCase.deactivate(paciente);
+            else
+                activatePacienteUseCase.activate(paciente);
+        } catch (Exception e){
+            alert.showAlert("Erro!", e.getMessage(), Alert.AlertType.ERROR);
+        }
         WindowLoader.setRoot("MainUI");
     }
 
@@ -117,6 +122,7 @@ public class PacienteUIController {
         paciente.setObservacoesGerais(txtObservacoes.getText());
         paciente.setDataNascimento(dtDataNasc.getValue());
         paciente.setAtivado(true);
+        activatePacienteUseCase.activate(paciente);
     }
 
     public void setEntityIntoView() {
