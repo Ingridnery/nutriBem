@@ -108,8 +108,8 @@ public class SQLiteAlimentoDAO implements AlimentoDAO {
                 "sodio = ?, " +
                 "acucar = ?, " +
                 "lactose = ?, " +
-                "ativado = ? " +
-                "proteinas = ?" +
+                "ativado = ?, " +
+                "proteinas = ? " +
                 "WHERE id = ?";
 
         try (PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
