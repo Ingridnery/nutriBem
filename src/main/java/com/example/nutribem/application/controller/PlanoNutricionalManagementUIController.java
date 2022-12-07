@@ -65,7 +65,10 @@ public class PlanoNutricionalManagementUIController {
     }
 
     public void updatePlanoNutricional(ActionEvent actionEvent) throws IOException {
-        showPlanoNutricionalInMode(UIMode.UPDATE);
+        if(planoNutricional.isVencido())
+            alert.showAlert("Erro", "Não é possivel editar um Plano Nutricional vencido!", Alert.AlertType.ERROR);
+        else
+            showPlanoNutricionalInMode(UIMode.UPDATE);
     }
 
     public void removePlanoNutricional(ActionEvent actionEvent) {
@@ -111,9 +114,15 @@ public class PlanoNutricionalManagementUIController {
 
     public void cardapioUI(ActionEvent actionEvent) throws IOException {
         if (planoNutricional != null) {
-            WindowLoader.setRoot("CardapioManagementUI");
-            CardapioManagementUIController controller = (CardapioManagementUIController) WindowLoader.getController();
-            controller.setCardapioFromPlanoNutricional(planoNutricional);
+            if(!planoNutricional.isVencido()){
+                WindowLoader.setRoot("CardapioManagementUI");
+                CardapioManagementUIController controller = (CardapioManagementUIController) WindowLoader.getController();
+                controller.setCardapioFromPlanoNutricional(planoNutricional);
+            }else
+                alert.showAlert("Erro", "Não é possível acessar informações \n" +
+                        "de um Plano Nutricional vencido, \n" +
+                        "para ver as informações, gere um relatório.", Alert.AlertType.ERROR);
+
         } else
             setMessagePlanoNutricional();
     }

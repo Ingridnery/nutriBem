@@ -64,6 +64,10 @@ public class PlanoNutricional {
         this.paciente = paciente;
     }
 
+    public boolean isVencido(){
+        return dataFim.isBefore(LocalDate.now());
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
