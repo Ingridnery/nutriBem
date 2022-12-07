@@ -25,6 +25,8 @@ public class CreatePlanoNutricionalUseCase {
             throw new IllegalArgumentException(notification.errorMessage());
         if (Objects.nonNull(planoNutricional.getId()) && dao.findOne(planoNutricional.getId()).isPresent())
             throw new EntityAlreadyExistsException("O plano nutricional: '" + planoNutricional.getNome() + "' já está cadastrado.");
+        if(planoNutricional.getDataInicio().isBefore(LocalDate.now()))
+            throw new IllegalStateException("A data inicial do plano é anterior a hoje.");
         if (planoNutricional.getDataFim().isBefore(LocalDate.now()))
             throw new IllegalStateException("A data final do plano é anterior a hoje.");
         if (planoNutricional.getDataFim().isBefore(planoNutricional.getDataInicio()))

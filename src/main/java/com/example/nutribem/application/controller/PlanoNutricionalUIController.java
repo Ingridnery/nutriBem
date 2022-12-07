@@ -53,7 +53,7 @@ public class PlanoNutricionalUIController {
             PlanoNutricionalManagementUIController controller = (PlanoNutricionalManagementUIController) WindowLoader.getController();
             controller.setPlanoNutricionalFromPaciente(paciente);
         } catch (Exception e) {
-            alert.showAlert("Erro!", "Dados inválidos!", Alert.AlertType.ERROR);
+            alert.showAlert("Erro!", "Dados inválidos: "+ e.getMessage(), Alert.AlertType.ERROR);
         }
     }
 
