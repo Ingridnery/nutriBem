@@ -13,8 +13,7 @@ import javafx.scene.control.TextField;
 import java.io.IOException;
 import java.util.Objects;
 
-import static com.example.nutribem.application.main.Main.createAlimentoUseCase;
-import static com.example.nutribem.application.main.Main.updateAlimentoUseCase;
+import static com.example.nutribem.application.main.Main.*;
 
 public class AlimentoUIController {
     @FXML
@@ -56,8 +55,15 @@ public class AlimentoUIController {
 
     @FXML
     public void activeOrDisabled(ActionEvent actionEvent) throws IOException {
-        alimento.setAtivado(!alimento.isAtivado());
-        //updateAlimentoUseCase.update(alimento);
+        try{
+            if(alimento.isAtivado())
+                activateAlimentoUseCase.deactivate(alimento);
+            else
+                activateAlimentoUseCase.activate(alimento);
+        } catch (Exception e){
+            alert.showAlert("Erro!", e.getMessage(), Alert.AlertType.ERROR);
+        }
+
         WindowLoader.setRoot("AlimentoManagementUI");
     }
 
@@ -113,6 +119,7 @@ public class AlimentoUIController {
         txtSodio.setText(String.valueOf(alimento.getSodio()));
         txtAcucar.setText(String.valueOf(alimento.getAcucar()));
         txtLactose.setText(String.valueOf(alimento.getLactose()));
+        btnStatus.setText((alimento.isAtivado()) ? "Desativar" : "Ativar");
     }
 
     public void configureViewMode() {
