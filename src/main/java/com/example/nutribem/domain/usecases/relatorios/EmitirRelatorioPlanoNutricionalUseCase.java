@@ -41,10 +41,11 @@ public class EmitirRelatorioPlanoNutricionalUseCase {
             Paragraph paragraphPaciente = new Paragraph("\n" + paciente.getNome() + " CPF: " + paciente.getCpf().getCpfFormatted() + " Email: " + paciente.getEmail(), font);
             paragraphPaciente.setAlignment(Element.ALIGN_CENTER);
             document.add(paragraphPaciente);
+            Paragraph paragraphPlano = new Paragraph("\nPlano nutricional " + planoNutricional.getNome(), font);
+            document.add(paragraphPlano);
 
             cardapioDAO.findAll().forEach(cardapio -> {
                 if (cardapio.getPlanoNutricional().getId().equals(planoNutricional.getId())) {
-                    Paragraph paragraphPlano = new Paragraph("\nPlano nutricional " + planoNutricional.getNome(), font);
                     Paragraph paragraphCardapio = new Paragraph("Cardapio " + cardapio.getId() + " Dia: " + cardapio.getNumeroDia(), font);
 
                     refeicaoDAO.findByCardapio(cardapio.getId()).forEach(refeicao -> {
@@ -52,7 +53,6 @@ public class EmitirRelatorioPlanoNutricionalUseCase {
                         Paragraph paragraph = new Paragraph("Alimentos da refeição:", font);
 
                         try {
-                            document.add(paragraphPlano);
                             document.add(paragraphCardapio);
                             document.add(paragraphRefeicao);
                             document.add(paragraph);
