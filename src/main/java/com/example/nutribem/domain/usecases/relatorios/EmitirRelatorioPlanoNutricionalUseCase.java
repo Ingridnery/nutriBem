@@ -62,7 +62,7 @@ public class EmitirRelatorioPlanoNutricionalUseCase {
                                     + alimento.getPorcao() + " gramas\n        Calorias: " + alimento.getCalorias()
                                     + " kcal\n        Açúcar: " + alimento.getAcucar() + " gramas\n        Sódio: " + alimento.getSodio()
                                     + " gramas\n        Gorduras saturadas: " + alimento.getGordurasSaturadas() + " gramas\n        Colesterol: "
-                                    + " gramas\n        Lactose: " + alimento.getLactose() + " gramas\n        Glúten: " + (!alimento.getGluten() ? "Não" : "Sim"), font);
+                                    + " gramas\n        Lactose: " + alimento.getLactose() + " gramas\n        Glúten: " + (!alimento.getGluten() ? "Não" : "Sim") + "\n        Proteínas: " + alimento.getProteinas() + " gramas", font);
                             try {
                                 document.add(paragraphAlimento);
                             } catch (DocumentException e) {
@@ -75,7 +75,7 @@ public class EmitirRelatorioPlanoNutricionalUseCase {
 
                         Paragraph paragraphValoresNutricionais = new Paragraph("\nValores nutricionais da refeição: \n    Açúcar: " + valoresNutricionais.getAcucar() + "  gramas \n    Calorias: " +
                                 valoresNutricionais.getCalorias() + " kcal\n    Colesterol: " + valoresNutricionais.getColesterol() + " gramas \n    Gorduras saturadas:" + valoresNutricionais.getGordurasSaturadas() + " gramas\n    Sódio: "
-                                + valoresNutricionais.getSodio() + " gramas\n    Lactose: " + valoresNutricionais.getLactose() + " gramas\n   Glúten: " + (!valoresNutricionais.getGluten() ? "Não" : "Sim"), font);
+                                + valoresNutricionais.getSodio() + " gramas\n    Lactose: " + valoresNutricionais.getLactose() + " gramas\n    Glúten: " + (!valoresNutricionais.getGluten() ? "Não" : "Sim") + "\n    Proteínas: " + valoresNutricionais.getProteinas() + " gramas", font);
                         try {
                             document.add(paragraphValoresNutricionais);
                         } catch (DocumentException e) {
