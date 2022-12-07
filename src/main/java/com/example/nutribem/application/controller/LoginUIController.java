@@ -45,8 +45,13 @@ public class LoginUIController {
             alert.showAlert("Erro!", "Nome de usuario não preenchido", Alert.AlertType.ERROR);
             return;
         }
-
-        ArrayList<String> dicasSenha = recuperaSenhaUseCase.dicasSenha(txtUserName.getText());
-        alert.showAlert("Dicas de senha", dicasSenha.get(0) + " " + dicasSenha.get(1) + " " + dicasSenha.get(2), Alert.AlertType.INFORMATION);
+        try {
+            ArrayList<String> dicasSenha = recuperaSenhaUseCase.dicasSenha(txtUserName.getText());
+            alert.showAlert("Dicas de senha", dicasSenha.get(0) + " " + dicasSenha.get(1) + " " + dicasSenha.get(2), Alert.AlertType.INFORMATION);
+        } catch (EntityNotFoundException e) {
+            alert.showAlert("Erro!", e.getMessage(), Alert.AlertType.ERROR);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }
