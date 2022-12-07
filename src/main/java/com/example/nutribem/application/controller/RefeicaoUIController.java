@@ -169,9 +169,8 @@ public class RefeicaoUIController {
     }
 
     private void loadDataAndShow() {
-        alimentoList = findAlimentoUseCase.findAll().stream().filter(alimento -> alimento.isAtivado()).toList();
         allAlimentosData.clear();
-        allAlimentosData.addAll(alimentoList);
+        allAlimentosData.addAll(findAlimentoUseCase.findAll().stream().filter(Alimento::isAtivado).toList());
     }
 
     @FXML
@@ -260,12 +259,13 @@ public class RefeicaoUIController {
         allAlimentosData.clear();
 
         for (Alimento alimento : alimentosRefeicao) {
-            alimentosAdded.add(alimento);
             ValoresNutricionais valoresNutricionais = alimento.calculateValoresNutricionais();
             totalValoresNutricionais.somar(valoresNutricionais);
             updateValoresNutricionais();
-            if (mode == UIMode.UPDATE)
-                alimentoList.remove(alimento);
+
+            alimentosAdded.add(alimento);
+//            if (mode == UIMode.UPDATE)
+//                alimentoList.remove(alimento);
         }
 
         if (mode == UIMode.UPDATE) {
@@ -299,5 +299,10 @@ public class RefeicaoUIController {
                 .toList();
         allAlimentosData.clear();
         allAlimentosData.addAll(matchesWithSearch);
+    }
+
+    public void updateRefeicoes() {
+        allAlimentosData.clear();
+        allAlimentosData.addAll(findAlimentoUseCase.findAll().stream().filter(alimento -> alimento.isAtivado() && !addedAlimentosData.contains(alimento)).toList());
     }
 }

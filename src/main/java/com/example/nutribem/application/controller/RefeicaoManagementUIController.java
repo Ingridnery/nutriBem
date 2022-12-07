@@ -95,6 +95,7 @@ public class RefeicaoManagementUIController {
             RefeicaoUIController controller = (RefeicaoUIController) WindowLoader.getController();
             controller.setCardapio(cardapio);
             controller.setRefeicao(refeicao, mode);
+            controller.updateRefeicoes();
         } else
             setMessageRefeicao();
     }
