@@ -169,7 +169,7 @@ public class RefeicaoUIController {
     }
 
     private void loadDataAndShow() {
-        alimentoList = findAlimentoUseCase.findAll();
+        alimentoList = findAlimentoUseCase.findAll().stream().filter(alimento -> alimento.isAtivado()).toList();
         allAlimentosData.clear();
         allAlimentosData.addAll(alimentoList);
     }
@@ -218,7 +218,6 @@ public class RefeicaoUIController {
     private void getEntityToView() {
         if (refeicao == null)
             refeicao = new Refeicao();
-
         try {
             refeicao.setHorario(LocalTime.parse(txtHorario.getText()));
             refeicao.setCategoria(cbCategoria.getValue());
@@ -296,7 +295,7 @@ public class RefeicaoUIController {
         String txtSearch = txtBusca.getText().toLowerCase();
         List<Alimento> alimentos = findAlimentoUseCase.findAll();
         List<Alimento> matchesWithSearch = alimentos.stream()
-                .filter(alimento -> alimento.getNome().toLowerCase().contains(txtSearch) && !addedAlimentosData.contains(alimento))
+                .filter(alimento -> alimento.getNome().toLowerCase().contains(txtSearch) && !addedAlimentosData.contains(alimento) && alimento.isAtivado())
                 .toList();
         allAlimentosData.clear();
         allAlimentosData.addAll(matchesWithSearch);
