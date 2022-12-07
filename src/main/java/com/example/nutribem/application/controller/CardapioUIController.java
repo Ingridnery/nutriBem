@@ -55,8 +55,13 @@ public class CardapioUIController {
     public void getEntityToView() {
         if (cardapio == null)
             cardapio = new Cardapio();
-        cardapio.setNumeroDia(Integer.valueOf(txtNumeroDia.getText()));
-        cardapio.setPlanoNutricional(planoNutricional);
+
+        try {
+            cardapio.setNumeroDia(Integer.valueOf(txtNumeroDia.getText()));
+            cardapio.setPlanoNutricional(planoNutricional);
+        } catch (Exception e) {
+            throw new IllegalArgumentException("Dia inválido");
+        }
     }
 
     public void setEntityIntoView() {
