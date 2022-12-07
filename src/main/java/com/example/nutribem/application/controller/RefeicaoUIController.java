@@ -296,7 +296,7 @@ public class RefeicaoUIController {
         String txtSearch = txtBusca.getText().toLowerCase();
         List<Alimento> alimentos = findAlimentoUseCase.findAll();
         List<Alimento> matchesWithSearch = alimentos.stream()
-                .filter(alimento -> alimento.getNome().toLowerCase().contains(txtSearch))
+                .filter(alimento -> alimento.getNome().toLowerCase().contains(txtSearch) && !addedAlimentosData.contains(alimento))
                 .toList();
         allAlimentosData.clear();
         allAlimentosData.addAll(matchesWithSearch);
