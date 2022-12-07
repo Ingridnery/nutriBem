@@ -132,6 +132,11 @@ public class PlanoNutricionalManagementUIController {
     }
 
     public void createRelatorio(ActionEvent actionEvent) throws DocumentException, FileNotFoundException {
+        if(planoNutricional == null){
+            alert.showAlert("Error", "Erro ao gerar relátorio\nNenhum plano nutricional foi selecionado", Alert.AlertType.ERROR);
+            return;
+        }
+
         Boolean emitir = emitirRelatorioPlanoNutricionalUseCase.emitir(planoNutricional, calculateValoresNutricionaisUseCase);
 
         if (!emitir) {
