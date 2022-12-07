@@ -105,23 +105,31 @@ public class PacienteUIController {
         if (paciente == null)
             paciente = new Paciente();
 
-        paciente.setNome(txtNome.getText());
-        paciente.setCpf(CPF.valueOf(txtCPF.getText()));
-        paciente.setAlergias(txtAlergias.getText());
-        paciente.setAltura(Integer.valueOf(txtAltura.getText()));
-        paciente.setEmail(txtEmail.getText());
-        paciente.setCircunferencia(Integer.valueOf(txtCircunferencia.getText()));
-        paciente.setHistoricoClinicoGeral(txtHistorico.getText());
-        paciente.setPeso(Double.valueOf(txtPeso.getText()));
-        paciente.setObjetivos(txtObjetivos.getText());
-        paciente.setTelefone(txtTelefone.getText());
-        paciente.setDiabetes(cbDiabetes.getValue().equals("Sim"));
-        paciente.setIntoleranciaGluten(cbGluten.getValue().equals("Sim"));
-        paciente.setIntoleranciaLactose(cbLactose.getValue());
-        paciente.setSexo(cbSexo.getValue());
-        paciente.setObservacoesGerais(txtObservacoes.getText());
-        paciente.setDataNascimento(dtDataNasc.getValue());
-        paciente.setAtivado(true);
+        if (!CPF.isValid(txtCPF.getText())) {
+            throw new IllegalArgumentException("CPF Inválido");
+        }
+
+        try {
+            paciente.setNome(txtNome.getText());
+            paciente.setCpf(CPF.valueOf(txtCPF.getText()));
+            paciente.setAlergias(txtAlergias.getText());
+            paciente.setAltura(Integer.valueOf(txtAltura.getText()));
+            paciente.setEmail(txtEmail.getText());
+            paciente.setCircunferencia(Integer.valueOf(txtCircunferencia.getText()));
+            paciente.setHistoricoClinicoGeral(txtHistorico.getText());
+            paciente.setPeso(Double.valueOf(txtPeso.getText()));
+            paciente.setObjetivos(txtObjetivos.getText());
+            paciente.setTelefone(txtTelefone.getText());
+            paciente.setDiabetes(cbDiabetes.getValue().equals("Sim"));
+            paciente.setIntoleranciaGluten(cbGluten.getValue().equals("Sim"));
+            paciente.setIntoleranciaLactose(cbLactose.getValue());
+            paciente.setSexo(cbSexo.getValue());
+            paciente.setObservacoesGerais(txtObservacoes.getText());
+            paciente.setDataNascimento(dtDataNasc.getValue());
+            paciente.setAtivado(true);
+        } catch (Exception e) {
+            throw new IllegalArgumentException("Dados inválidos");
+        }
     }
 
     public void setEntityIntoView() {
