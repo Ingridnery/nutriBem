@@ -85,12 +85,9 @@ public class MainUIController {
 
     public void removePaciente(ActionEvent actionEvent) {
         if (paciente != null) {
-            if (!paciente.isAtivado())
-                alert.showAlert("Paciente desativado!", "O paciente selecionado está desativado, é necessário ativa-lo para alterações!", Alert.AlertType.INFORMATION);
-            else{
                 removePacienteUseCase.remove(paciente);
                 loadDataAndShow();
-            }
+
 
         } else
             setMessagePaciente();
