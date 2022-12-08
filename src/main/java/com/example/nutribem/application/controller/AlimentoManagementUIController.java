@@ -125,11 +125,11 @@ public class AlimentoManagementUIController {
     public void importAlimentos(ActionEvent actionEvent) {
         fileChooser = new FileChooser();
         fileChooser.setTitle("Escolha o arquivo para importar");
-        String path = fileChooser.showOpenDialog(txtNameAlimento.getScene().getWindow()).getPath();
         try{
+            String path = fileChooser.showOpenDialog(txtNameAlimento.getScene().getWindow()).getPath();
             importAlimentosUseCase.importFrom(path);
             loadDataAndShow();
-        } catch (IOException e){
+        } catch (Exception e){
             alertMessage.showAlert("Operação inválida", "O arquivo não existe ou não pode ser acessado", Alert.AlertType.ERROR);
         }
     }
