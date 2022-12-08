@@ -5,6 +5,9 @@ import com.example.nutribem.domain.usecases.utils.EntityAlreadyExistsException;
 import com.example.nutribem.domain.usecases.utils.Notification;
 import com.example.nutribem.domain.usecases.utils.Validator;
 
+import java.util.Objects;
+import java.util.Optional;
+
 public class UpdatePlanoNutricionalUseCase {
 
     private final PlanoNutricionalDAO planoNutricionalDAO;
@@ -21,7 +24,9 @@ public class UpdatePlanoNutricionalUseCase {
         if (notification.hasErrors())
             throw new IllegalArgumentException(notification.errorMessage());
         String nome = planoNutricional.getNome();
-        if (planoNutricionalDAO.findByName(nome).isPresent())
+
+        Optional<PlanoNutricional> optionalPlanoNutricional = planoNutricionalDAO.findByName(nome);
+        if (optionalPlanoNutricional.isPresent() && !Objects.equals(optionalPlanoNutricional.get().getId(), planoNutricional.getId()))
             throw new EntityAlreadyExistsException("O plano nutricional: '" + nome + "' já está cadastrado.");
 
         planoNutricionalDAO.findByIdPaciente(planoNutricional.getPaciente().getId());
