@@ -65,10 +65,14 @@ public class PlanoNutricionalManagementUIController {
     }
 
     public void updatePlanoNutricional(ActionEvent actionEvent) throws IOException {
-        if(planoNutricional.isVencido())
-            alert.showAlert("Erro", "Não é possivel editar um Plano Nutricional vencido!", Alert.AlertType.ERROR);
-        else
-            showPlanoNutricionalInMode(UIMode.UPDATE);
+        if (planoNutricional != null) {
+            if (planoNutricional.isVencido())
+                alert.showAlert("Erro", "Não é possivel editar um Plano Nutricional vencido!", Alert.AlertType.ERROR);
+            else
+                showPlanoNutricionalInMode(UIMode.UPDATE);
+        } else {
+            setMessagePlanoNutricional();
+        }
     }
 
     public void removePlanoNutricional(ActionEvent actionEvent) {
