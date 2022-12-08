@@ -4,6 +4,7 @@ import com.example.nutribem.domain.entities.planoNutricional.PlanoNutricional;
 import com.example.nutribem.domain.usecases.utils.Notification;
 import com.example.nutribem.domain.usecases.utils.Validator;
 
+import java.time.LocalDate;
 import java.util.Objects;
 
 public class PlanoNutricionalInputRequestValidator extends Validator<PlanoNutricional> {
@@ -27,6 +28,12 @@ public class PlanoNutricionalInputRequestValidator extends Validator<PlanoNutric
 
         if (Objects.isNull(planoNutricional.getPaciente()))
             notification.addError("Paciente is null!");
+        if(planoNutricional.getDataInicio().isBefore(LocalDate.now()))
+           notification.addError("A data inicial do plano é anterior a hoje.");
+        if (planoNutricional.getDataFim().isBefore(LocalDate.now()))
+            notification.addError("A data final do plano é anterior a hoje.");
+        if (planoNutricional.getDataFim().isBefore(planoNutricional.getDataInicio()))
+            notification.addError("A data final é anterior à data de início.");
 
         return notification;
     }
