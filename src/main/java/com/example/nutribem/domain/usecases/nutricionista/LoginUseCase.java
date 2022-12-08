@@ -17,12 +17,9 @@ public class LoginUseCase {
         Notification notification = new Notification();
 
         if (nullOrEmpty(senha)) {
-            notification.addError("Senha is null or empty");
+            notification.addError("Senha não pode ser vazia!");
         }
 
-        if (senha.length() < MINLENGTH) {
-            notification.addError("Senha does not have four digits");
-        }
 
         if (nullOrEmpty(userName)) {
             notification.addError("Nome de usuario is null or empty");

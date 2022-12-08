@@ -33,10 +33,8 @@ public class LoginUIController {
         try {
             loginUseCase.login(txtUserName.getText(), txtSenha.getText());
             WindowLoader.setRoot("MainUI");
-        } catch (EntityNotFoundException e) {
+        } catch (Exception e) {
             alert.showAlert("Erro!", e.getMessage(), Alert.AlertType.ERROR);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
         }
     }
 
