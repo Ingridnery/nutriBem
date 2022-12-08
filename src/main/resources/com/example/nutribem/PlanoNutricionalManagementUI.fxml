@@ -28,7 +28,7 @@
                 <TableColumn fx:id="cName" prefWidth="652.0" text="Nome" />
             </columns>
         </TableView>
-        <Button fx:id="btnBack" layoutX="22.0" layoutY="606.0" mnemonicParsing="false" onAction="#backScene" prefHeight="34.0" prefWidth="75.0" text="Voltar" />
+        <Button fx:id="btnBack" layoutX="22.0" layoutY="606.0" mnemonicParsing="false" onAction="#backScene" prefHeight="34.0" prefWidth="115.0" text="Voltar" />
 
         <ButtonBar layoutX="106.0" layoutY="599.0" prefHeight="47.0" prefWidth="648.0">
             <buttons>
